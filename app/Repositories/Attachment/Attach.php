@@ -3,32 +3,11 @@ namespace App\Repositories\Attachment ;
 use App\Repositories\Attachment\Interfaces\AttachInterface ;
 use App\Repositories\Attachment\Traits\staticTrait;
 
-use Illuminate\Support\Facades\File;
-use Image;
 class Attach implements AttachInterface
 {
     use staticTrait ;
 
     protected static $disk ;
-    //* سایز عمس ها *//
-    protected static $sizes = [
-        'full' => [
-            "H" => null ,
-            "W" => null ,
-        ],
-        'thumbnail' => [
-            "H" => 200 , 
-            "W" => 200 ,
-        ],
-        'medium' => [
-            "H" => 400 ,
-            "W" => 400 ,
-        ]
-    ];
-
-    protected $format ; 
-    
-    public $errors = [] ; 
 
     protected static $formats = [
         'file' => [
@@ -51,6 +30,10 @@ class Attach implements AttachInterface
         ]
     ];
 
+    protected $format , $file ;
+    
+    public $errors = [] ; 
+
     public static function disk($name = 'local')
     {
         if( !in_array( $name , ['local','ftp'] ) )
@@ -62,8 +45,7 @@ class Attach implements AttachInterface
     public function set($name){
         if( request()->hasFile($name) )
         {
-            
-            $file = request()->file($name) ;
+            $file = $this->file = request()->file($name) ;
             // search format input
             array_walk( static::$formats , function($value , $key) use ($file){
                 array_walk($value , function($kvalue) use ($file , $key) {
@@ -78,15 +60,14 @@ class Attach implements AttachInterface
         }else{
             $this->errors[] = 'The requested file could not be found.' ;
         }
-        return ;
     }
 
     public function put($name , $size = ['thumbnail' , 'full'] )
     {
         $this->set($name) ;
-        if( !empty($this->errors) ) return $this->errors ;
-        $file = request()->file($name) ;
-        return static::put( self::$disk , $file , $size ) ;
+        if (!empty($this->errors)) return false ;
+
+        return static::upload(self::$disk , $this->format , $this->file , $size ) ;
     }
 
 }
