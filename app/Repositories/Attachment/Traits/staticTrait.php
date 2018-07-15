@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\Attachment\Traits ;
+use App\Events\UploadedEvent;
 use Illuminate\Support\Facades\File;
 use Image ;
 
@@ -7,8 +8,8 @@ trait staticTrait{
     //* سایز عمس ها *//
     protected static $sizes = [
         'full' => [
-            "H" => null ,
-            "W" => null ,
+            "H" => "" ,
+            "W" => "" ,
         ],
         'thumbnail' => [
             "H" => 200 ,
@@ -22,16 +23,36 @@ trait staticTrait{
 
     protected static $path = "public" ;
 
-    private function upload($disk , $format , $file , $size )
+    private function upload($disk , $format , $file ,array $size )
     {
+        $attachInformation = [] ;
         if ($disk == 'local')
         {
-            $folder = $this->DirLocal($format) ;
+            $this->DirLocal($format);
             if ($format == 'image')
             {
-
+                foreach ( $size as $key )
+                {
+                    $newName = $this->NewNameImage($file) ;
+                    $currentDir = $this->DirLocal($format , $key)  ;
+                    $fullCurrentpath = $currentDir.DIRECTORY_SEPARATOR.$newName ;
+                    Image::make($file)
+                        ->resize(static::$sizes[$key]['W'] , static::$sizes[$key]['H'] )
+                        ->save($fullCurrentpath) ;
+                    event(new UploadedEvent($attachment = [
+                        'size' => $key ,
+                        'format' => $format ,
+                        'disk' => $disk ,
+                        'url' => $newName ,
+                        'base_path' => static::$path ,
+                    ]));
+                    $attachInformation[] = $attachment ;
+                }
+            }elseif($format == 'file'){
+               
             }
         }
+        return $attachInformation ;
     }
 
     // @return string
@@ -51,5 +72,20 @@ trait staticTrait{
         }
         return $path ;
     }
+
+
+    // @return string
+    // @return name jadid
+    private function NewNameImage($file)
+    {
+        $mime =  $file->getClientOriginalExtension() ;
+        $orginalName = basename($file->getClientOriginalName() , ".".$mime ) ;
+        $orginalName = str_slug($orginalName) ;
+        $orginalName .= sprintf("_%s_%s.%s" ,  str_random(7) , time() , $mime );
+
+        return $orginalName ;
+    }
+
+
 
 }

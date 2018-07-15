@@ -62,7 +62,7 @@ class Attach implements AttachInterface
         }
     }
 
-    public function put($name , $size = ['thumbnail' , 'full'] )
+    public function put($name , $size = ['full'] )
     {
         $this->set($name) ;
         if (!empty($this->errors)) return false ;

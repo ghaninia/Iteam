@@ -17,9 +17,13 @@ class CreateFilesTable extends Migration
             $table->increments('id');
             $table->string("fileable_id") ;
             $table->string("fileable_type") ;
-            $table->text("url") ;
-            $table->string("type")->nullable();
-            $table->timestamps();
+            $table->string("size")->nullable() ;
+            $table->string("format")->nullable();
+            $table->string("disk")->nullable();
+            $table->string("base_path")->nullable();
+            $table->text('url') ;
+
+            $table->timestamp("created_at");
         });
     }
 
