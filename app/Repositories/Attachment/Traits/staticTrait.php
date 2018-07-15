@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories\Attachment\Traits ;
-use App\Events\UploadedEvent;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Image ;
 
 trait staticTrait{
@@ -21,62 +21,56 @@ trait staticTrait{
         ]
     ];
 
-    protected static $path = "public" ;
-
     private function upload($disk , $format , $file ,array $size )
     {
-        $attachInformation = [] ;
-        if ($disk == 'local')
+        $attachmemts = [] ;
+        $newName = $this->createNewName($file) ;
+
+        if ($format == 'image')
         {
-            $this->DirLocal($format);
-            if ($format == 'image')
+
+            foreach ( $size as $key )
             {
-                foreach ( $size as $key )
-                {
-                    $newName = $this->NewNameImage($file) ;
-                    $currentDir = $this->DirLocal($format , $key)  ;
-                    $fullCurrentpath = $currentDir.DIRECTORY_SEPARATOR.$newName ;
-                    Image::make($file)
-                        ->resize(static::$sizes[$key]['W'] , static::$sizes[$key]['H'] )
-                        ->save($fullCurrentpath) ;
-                    event(new UploadedEvent($attachment = [
-                        'size' => $key ,
-                        'format' => $format ,
-                        'disk' => $disk ,
-                        'url' => $newName ,
-                        'base_path' => static::$path ,
-                    ]));
-                    $attachInformation[] = $attachment ;
-                }
-            }elseif($format == 'file'){
-               
+                $path = $this->makeDirectory($disk , $format , $key ) ;
+
+                $image = Image::make($file)
+                    ->resize(static::$sizes[$key]['W'] , static::$sizes[$key]['H'] );
+                $image->stream() ;
+
+                $pathSave = $path . DIRECTORY_SEPARATOR . $newName ;
+
+                Storage::disk($disk)->put($pathSave,$image);
+
+                $attachmemts[] = [
+                    'size' => $key ,
+                    'format' => $format ,
+                    'disk' => $disk ,
+                    'url' => $pathSave ,
+                ] ;
+
             }
+
+        }elseif($format == 'file'){
+
         }
-        return $attachInformation ;
+
+        return $attachmemts ;
     }
 
     // @return string
     // @return اسم دایرکتوری
     //**  چک وجود داشتن یا نداشتن دایرکتوری در لوکال برنامه **//
-    private function DirLocal($format , $size = null )
+
+    private function makeDirectory($disk , $format , $size = null )
     {
-        $path = (static::$path . "_path")(
-            "uploads" .
-            DIRECTORY_SEPARATOR .
-            $format .
-            ( !is_null($size) ? DIRECTORY_SEPARATOR.$size  : "" )
-        ) ;
-        if (! File::exists( $path ) )
-        {
-            File::makeDirectory($path , 0777 , true );
-        }
+        $path = $format . ( !is_null($size) ? DIRECTORY_SEPARATOR . $size : "" ) ;
+        Storage::disk($disk)->makeDirectory($path, $mode = 0755);;
         return $path ;
     }
 
-
     // @return string
     // @return name jadid
-    private function NewNameImage($file)
+    private function createNewName($file)
     {
         $mime =  $file->getClientOriginalExtension() ;
         $orginalName = basename($file->getClientOriginalName() , ".".$mime ) ;

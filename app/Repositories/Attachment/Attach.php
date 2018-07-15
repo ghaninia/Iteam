@@ -65,7 +65,7 @@ class Attach implements AttachInterface
     public function put($name , $size = ['full'] )
     {
         $this->set($name) ;
-        if (!empty($this->errors)) return false ;
+        if (!empty($this->errors)) return $this->errors ;
 
         return static::upload(self::$disk , $this->format , $this->file , $size ) ;
     }
