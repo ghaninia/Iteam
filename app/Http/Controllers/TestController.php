@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\File;
 use Illuminate\Http\Request;
 use App\Repositories\Attachment\Attach ;
 
@@ -13,6 +14,7 @@ class TestController extends Controller
 
     public function store(Request $request)
     {
-        return Attach::disk('local')->put("attachment");
+//        $file =  Attach::disk('local')->put("attachment");
+
     }
 }

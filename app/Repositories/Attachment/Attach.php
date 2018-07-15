@@ -42,7 +42,7 @@ class Attach implements AttachInterface
         return new self() ;
     }
 
-    public function set($name){
+    private function set($name){
         if( request()->hasFile($name) )
         {
             $file = $this->file = request()->file($name) ;
@@ -54,12 +54,9 @@ class Attach implements AttachInterface
                 });
             });
             if(is_null($this->format))
-            {
                 $this->errors[] = 'File format is invalid.' ;
-            }
-        }else{
+        }else
             $this->errors[] = 'The requested file could not be found.' ;
-        }
     }
 
     public function put($name , $size = ['full'] )
@@ -68,6 +65,10 @@ class Attach implements AttachInterface
         if (!empty($this->errors)) return $this->errors ;
 
         return static::upload(self::$disk , $this->format , $this->file , $size ) ;
+    }
+
+    public static function remove($attachments)
+    {
     }
 
 }

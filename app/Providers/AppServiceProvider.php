@@ -1,31 +1,25 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
+
     public function boot()
     {
         \Schema::defaultStringLength(191) ;
-        // \Realtion::morphMap([
-
-        // ]);
+        Relation::morphMap([
+            'user' => 'App\Models\User',
+            'admin' => 'App\Models\Admin'
+        ]);
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
-        //
+
     }
+
 }

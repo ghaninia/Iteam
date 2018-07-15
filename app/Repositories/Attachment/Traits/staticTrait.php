@@ -21,11 +21,12 @@ trait staticTrait{
         ]
     ];
 
+    // @return array
+    // @return اطلاعات فایل ضمیمه
+    //** تمام خصوصیات فایل آپلود شده را بر میگرداند **//
     private function upload($disk , $format , $file ,array $size )
     {
-        $attachmemts = [] ;
         $newName = $this->createNewName($file) ;
-
         if ($format == 'image')
         {
 
@@ -41,7 +42,7 @@ trait staticTrait{
 
                 Storage::disk($disk)->put($pathSave,$image);
 
-                $attachmemts[] = [
+                $attachmemts = [
                     'size' => $key ,
                     'format' => $format ,
                     'disk' => $disk ,
@@ -51,7 +52,15 @@ trait staticTrait{
             }
 
         }elseif($format == 'file'){
-
+            $path = $this->makeDirectory($disk , $format ) ;
+            $pathSave = $path . DIRECTORY_SEPARATOR . $newName ;
+            Storage::disk($disk)->put($path,$file);
+            $attachmemts = [
+                'size' => $file->getClientSize() ,
+                'format' => $format ,
+                'disk' => $disk ,
+                'url' => $pathSave ,
+            ] ;
         }
 
         return $attachmemts ;
@@ -60,7 +69,6 @@ trait staticTrait{
     // @return string
     // @return اسم دایرکتوری
     //**  چک وجود داشتن یا نداشتن دایرکتوری در لوکال برنامه **//
-
     private function makeDirectory($disk , $format , $size = null )
     {
         $path = $format . ( !is_null($size) ? DIRECTORY_SEPARATOR . $size : "" ) ;
@@ -68,8 +76,9 @@ trait staticTrait{
         return $path ;
     }
 
+
     // @return string
-    // @return name jadid
+    // @return new name
     private function createNewName($file)
     {
         $mime =  $file->getClientOriginalExtension() ;
@@ -79,7 +88,6 @@ trait staticTrait{
 
         return $orginalName ;
     }
-
 
 
 }
