@@ -26,7 +26,7 @@ trait staticTrait{
     {
         if ($disk == 'local')
         {
-            $folder = $this->DirLocal($format , 'thumbnail') ;
+            $folder = $this->DirLocal($format) ;
             if ($format == 'image')
             {
 
@@ -34,6 +34,8 @@ trait staticTrait{
         }
     }
 
+    // @return string
+    // @return اسم دایرکتوری
     //**  چک وجود داشتن یا نداشتن دایرکتوری در لوکال برنامه **//
     private function DirLocal($format , $size = null )
     {
@@ -43,10 +45,11 @@ trait staticTrait{
             $format .
             ( !is_null($size) ? DIRECTORY_SEPARATOR.$size  : "" )
         ) ;
-        if (!file_exists($path))
-            mkdir($path , 777 ) ;
+        if (! File::exists( $path ) )
+        {
+            File::makeDirectory($path , 0777 , true );
+        }
         return $path ;
-
     }
 
 }
