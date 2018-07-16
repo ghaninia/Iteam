@@ -2,6 +2,7 @@
 namespace App\Repositories\Attachment ;
 use App\Repositories\Attachment\Interfaces\AttachInterface ;
 use App\Repositories\Attachment\Traits\staticTrait;
+use Illuminate\Support\Facades\Storage;
 
 class Attach implements AttachInterface
 {
@@ -62,13 +63,19 @@ class Attach implements AttachInterface
     public function put($name , $size = ['full'] )
     {
         $this->set($name) ;
-        if (!empty($this->errors)) return $this->errors ;
+        if (!empty($this->errors)) return false ;
 
         return static::upload(self::$disk , $this->format , $this->file , $size ) ;
     }
 
-    public static function remove($attachments)
+    public static function remove($attachment)
     {
+        // TODO: Implement remove() method.
+    }
+
+    public function show($links)
+    {
+        
     }
 
 }

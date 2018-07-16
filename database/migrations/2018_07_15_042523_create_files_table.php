@@ -17,14 +17,11 @@ class CreateFilesTable extends Migration
             $table->increments('id');
             $table->string("fileable_id")->nullable() ;
             $table->string("fileable_type")->nullable() ;
-
-            $table->unsignedInteger('guard_id')->nullable() ;
-            $table->string('guard_type')->nullable() ;
-
-            $table->string("size")->nullable() ;
-            $table->string("format")->nullable();
-            $table->string("disk")->nullable();
             $table->text('url') ;
+            $table->string("usage")->nullable();
+            $table->string("disk")->nullable();
+            $table->string("format")->nullable();
+            $table->string("size")->nullable() ;
             $table->timestamp("created_at");
         });
     }

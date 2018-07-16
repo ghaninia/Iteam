@@ -2,19 +2,20 @@
 namespace App\Http\Controllers;
 use App\Models\File;
 use Illuminate\Http\Request;
-use App\Repositories\Attachment\Attach ;
 
 class TestController extends Controller
 {
 
     public function index()
     {
-        return view("welcome");
+        $user = auth()->guard('user')->loginUsingId(1) ;
+        return File::show($user , 'avatar' , 'image' );
     }
 
     public function store(Request $request)
     {
-//        $file =  Attach::disk('local')->put("attachment");
-
+        $user = auth()->guard('user')->user() ;
+        File::create($user , 'attachment' , 'avatar' );
     }
+
 }

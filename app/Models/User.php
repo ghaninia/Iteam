@@ -27,7 +27,7 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
-        'plan_expired_at'
+        'plan_expired_at',
         'password', 
         'remember_token',
     ];
@@ -35,5 +35,10 @@ class User extends Authenticatable
     public function plan(){
         return $this->belongsTo(Plan::class , "plan_id" , 'id') ;
     }
+
+    public function files(){
+        return $this->morphMany( File::class , 'fileable' ) ;
+    }
+
 
 }

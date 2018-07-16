@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Models;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Admin extends Model
+class Admin extends Authenticatable
 {
+    use Notifiable;
+
     protected $fillable = [
         'departement_id' ,
         'province_id' ,
@@ -24,18 +24,17 @@ class Admin extends Model
         'information' ,
         'password' ,
     ];
-    protected $guards = [
+
+    protected $guarded = [
         'departement_id'
     ] ;
 
-    public function files(){
-        return $this->morphMany(File::class , 'files' ) ;
+    public function fileable(){
+        return $this->morphMany(File::class , 'fileable' ) ;
     }
 
-    public function pic($size = ['thumbnail','full'])
-    {
-        return $this->files()->whereIn('type' , ['thum'])
+    public function picture(){
+        return $this-$this->files()->format('image')->first();
     }
-
 
 }
