@@ -21,12 +21,12 @@ var data = {
     };
 })(jQuery);
 
-
+// login
 $(function () {
     $("form#login").validator().submit(function (e) {
-        e.preventDefault() ;
         var form = $(this) ;
-        // if (!e.isDefaultPrevented()) {
+        if (!e.isDefaultPrevented()) {
+            e.preventDefault() ;
             NProgress.start() ;
             var action = $(this).attr('action') ;
             $.ajax({
@@ -39,9 +39,29 @@ $(function () {
                 } ,
                 error : function (jqXHR, exception ) {
                     response = jqXHR.responseJSON.errors ;
+                    for(i in response)
+                    {
+                        var input = $("input[name='"+i+"']" , form ) ;
+                        var formgroup = input.closest(".form-group") ;
+                        formgroup.addClass('has-error has-danger') ;
+
+                        setTimeout(function () {
+                            Snackbar.show({
+                                text: response[i] ,
+                                pos: 'bottom-right',
+                                showAction: false ,
+                                actionText: "Dismiss",
+                                duration: 3000,
+                                textColor: '#fff',
+                                backgroundColor: '#383838'
+                            }).onClose(function () {
+
+                            });
+                        },100) ;
+                    }
                 }
             });
             NProgress.done() ;
-        // }
+        }
     });
 });

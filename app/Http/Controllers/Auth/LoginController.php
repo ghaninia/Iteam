@@ -32,24 +32,13 @@ class LoginController extends Controller
         return 'username';
     }
 
-    protected function authenticated(Request $request, $user)
+    protected function validateLogin(Request $request)
     {
-        //
-    }
-
-    public function login(Request $request)
-    {
-        $this->validateLogin($request);
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-            return $this->sendLockoutResponse($request);
-        }
-
-        if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
-        }
-        $this->incrementLoginAttempts($request);
-        return $this->sendFailedLoginResponse($request);
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'guard' => 'required|in:user,admin'
+        ]);
     }
 
 }

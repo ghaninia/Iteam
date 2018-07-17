@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/library.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 
     <title>{{ isset($information['title']) ? $information['title'] : options('title')  }}</title>
@@ -16,8 +16,8 @@
 <div class="all-wrapper menu-side with-pattern">
     <div class="auth-box-w">
         <div class="logo-w">
-            <a href="index.html">
-                <img alt="" src="img/logo-big.png">
+            <a href="">
+                <img alt="" src="">
             </a>
         </div>
         @yield("main")
