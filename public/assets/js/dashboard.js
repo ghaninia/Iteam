@@ -1,3 +1,7 @@
+var data = {
+    token : $("meta[name='csrf-token']").attr('content')
+};
+
 (function ($) {
     $.fn.serializeFormJSON = function () {
 
@@ -19,9 +23,25 @@
 
 
 $(function () {
-    // $("form#login").submit(function (e) {
-    //     e.preventDefault() ;
-    //     var action = $(this).attr('action') ;
-    //     alert(action) ;
-    // });
+    $("form#login").validator().submit(function (e) {
+        e.preventDefault() ;
+        var form = $(this) ;
+        // if (!e.isDefaultPrevented()) {
+            NProgress.start() ;
+            var action = $(this).attr('action') ;
+            $.ajax({
+                url : action ,
+                type : "POST" ,
+                dataType : "json" ,
+                data : $(this).serializeFormJSON() ,
+                headers : {
+                    "X-CSRF-TOKEN" : data.token
+                } ,
+                error : function (jqXHR, exception ) {
+                    response = jqXHR.responseJSON.errors ;
+                }
+            });
+            NProgress.done() ;
+        // }
+    });
 });
