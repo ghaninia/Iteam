@@ -19,7 +19,7 @@ Main javascript functions to init most of the elements
 #13. EMAIL APP
 #14. FULL CHAT APP
 #15. CRM PIPELINE
-#16. OUR OWN CUSTOM DROPDOWNS 
+#16. OUR OWN CUSTOM DROPDOWNS
 #17. BOOTSTRAP RELATED JS ACTIVATIONS
 #18. TODO Application
 #19. Fancy Selector
@@ -675,7 +675,7 @@ $(function () {
     $('.all-wrapper').toggleClass('content-panel-active');
   });
 
-  // #13. EMAIL APP 
+  // #13. EMAIL APP
 
   $('.more-messages').on('click', function () {
     $(this).hide();
@@ -751,7 +751,7 @@ $(function () {
     });
   }
 
-  // #16. OUR OWN CUSTOM DROPDOWNS 
+  // #16. OUR OWN CUSTOM DROPDOWNS
   $('.os-dropdown-trigger').on('mouseenter', function () {
     $(this).addClass('over');
   });
