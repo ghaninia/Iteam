@@ -62,6 +62,7 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
+
         'ftp' => [
             'driver' => 'ftp',
             'host' => env('FTP_HOST'),

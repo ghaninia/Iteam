@@ -21,6 +21,8 @@ trait staticTrait{
         ]
     ];
 
+    protected static $rootPath = 'uploads' ;
+
     // @return array
     // @return اطلاعات فایل ضمیمه
     //** تمام خصوصیات فایل آپلود شده را بر میگرداند **//

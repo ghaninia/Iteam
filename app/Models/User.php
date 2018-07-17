@@ -40,5 +40,24 @@ class User extends Authenticatable
         return $this->morphMany( File::class , 'fileable' ) ;
     }
 
+    public function skills()
+    {
+        return $this->morphToMany( Skill::class , "skillable" ) ;
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class , "user_id" , 'id') ;
+    }
+
+    public function teams()
+    {
+        return $this->hasMany(Team::class , "user_id" , 'id' ) ;
+    }
+
+    public function tickets()
+    {
+        return $this->morphToMany( Ticket::class , "ticketable" );
+    }
 
 }

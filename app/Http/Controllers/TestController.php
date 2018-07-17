@@ -9,13 +9,13 @@ class TestController extends Controller
     public function index()
     {
         $user = auth()->guard('user')->loginUsingId(1) ;
-        return File::show($user , 'avatar' , 'image' );
+        return File::show($user , 'avatar' , [] ,'ftp' );
     }
 
     public function store(Request $request)
     {
         $user = auth()->guard('user')->user() ;
-        File::create($user , 'attachment' , 'avatar' );
+        File::create($user , 'attachment' , 'avatar' , 'ftp');
     }
 
 }

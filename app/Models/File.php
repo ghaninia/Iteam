@@ -36,9 +36,10 @@ class File extends Model
     // @filename = فایل موجود در درخواست ها
     // @disk = نحوه ذخیره شدن اطلاعات و تصاویر بر اساس ftp , local
     // @return در صورت تایید ایجاد مثبت و در صورت مشکل منفی
-    public static function create( $item , $filename , $usage , $disk = 'local' )
+    public static function create( $item , $filename , $usage )
     {
-        $fileUploaded = Attach::disk($disk)->put($filename);
+
+        $fileUploaded = Attach::disk(config('iteam.disk'))->put($filename);
         if ($fileUploaded)
         {
             $file = new File() ;
@@ -53,19 +54,25 @@ class File extends Model
         return false ;
     }
 
-    public static function show( $item , $usage , $format ,array $size = [] , $disk = 'local' )
+
+    // @item ایتمی که دارای ریلیشن files میباشد
+    // @usage جایی که این ایتم استفاده گردید .
+    // @size سایز و اندازه تصاویر
+    // @disk جایگاه دیسک که میتواند ftp , local باشد .
+    public static function show( $item , $usage , array $size = [] )
     {
-        $where =
-            [
-                'format' => $format ,
-                'disk'   => $disk,
+        $where = [
+                'disk'   => config('iteam.disk') ,
                 'usage'  => $usage
-            ] ;
+            ];
         $items = $item->files()->where($where) ;
         if (!empty($size)) $items->whereIn('size') ;
         $items = $items->pluck('url') ;
-        return Attach::disk($disk)->show($items) ;
-
+        return Attach::disk(config('iteam.disk'))->show($items) ;
     }
 
+    public static function remove( $item  )
+    {
+        
+    }
 }

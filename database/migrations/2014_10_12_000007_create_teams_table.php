@@ -15,15 +15,16 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger("creator_id") ; // maker team user id
+            $table->unsignedInteger("user_id") ; // maker team user id
             $table->string("name") ;
 
-            $table->boolean("creator_info") ;
+            // dar sorate pardaljt ghabel namayesh ast !
             $table->string("phone")->nullable() ;
             $table->string("fax")->nullable() ;
             $table->string("mobile")->nullable() ;
             $table->string("email")->nullable() ;
             $table->string("website")->nullable() ;
+
 
             $table->text("excerpt")->nullable() ;
             $table->text("content")->nullable() ;
@@ -38,7 +39,8 @@ class CreateTeamsTable extends Migration
             $table->unsignedInteger("province_id")->nullable();
             $table->unsignedInteger("city_id")->nullable();
             $table->timestamps();
-            $table->foreign("creator_id")->references("id")->on("users")->onDelete("cascade")->onUpdate('cascade') ;
+
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate('cascade') ;
         });
     }
 

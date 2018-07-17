@@ -68,14 +68,32 @@ class Attach implements AttachInterface
         return static::upload(self::$disk , $this->format , $this->file , $size ) ;
     }
 
-    public static function remove($attachment)
+    public static function remove($items)
     {
-        // TODO: Implement remove() method.
+
     }
 
-    public function show($links)
+    public function show($items)
     {
-        
+        $links = [] ;
+        if (self::$disk == 'local')
+        {
+            $root = config('filesystems.disks.local.root') ;
+            $root = str_replace(public_path() , "" , $root) ;
+            $root = trim($root , DIRECTORY_SEPARATOR ) ;
+            foreach ($items as $item)
+            {
+                $links[] = asset( str_replace(DIRECTORY_SEPARATOR , "/" , sprintf("%s/%s",$root,$item) ) );
+            }
+        }elseif ( self::$disk == 'ftp')
+        {
+            foreach ($items as $item)
+            {
+                $root = config('filesystems.disks.ftp.host') ;
+                return $root ;
+            }
+        }
+        return collect($links) ;
     }
 
 }
