@@ -15,8 +15,13 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('ticketable_id') ;
+            $table->unsignedInteger('ticketable_type') ;
+
+            $table->string('tracking_code') ;
+
             $table->text('subject')->nullable() ;
-            $table->longText('text')->nullable() ;
+            $table->longText('content')->nullable() ;
             $table->timestamps();
         });
     }

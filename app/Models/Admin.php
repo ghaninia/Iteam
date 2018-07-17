@@ -37,4 +37,8 @@ class Admin extends Authenticatable
         return $this-$this->files()->format('image')->first();
     }
 
+    public function tickets()
+    {
+        return $this->morphMany(Ticket::class , "ticketable") ;
+    }
 }

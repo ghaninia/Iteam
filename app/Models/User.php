@@ -55,9 +55,14 @@ class User extends Authenticatable
         return $this->hasMany(Team::class , "user_id" , 'id' ) ;
     }
 
+    public function payments()
+    {
+        return $this->hasMany(Payment::class) ;
+    }
+
     public function tickets()
     {
-        return $this->morphToMany( Ticket::class , "ticketable" );
+        return $this->morphMany(Ticket::class , "ticketable") ;
     }
 
 }

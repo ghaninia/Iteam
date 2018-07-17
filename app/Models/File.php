@@ -71,8 +71,9 @@ class File extends Model
         return Attach::disk(config('iteam.disk'))->show($items) ;
     }
 
-    public static function remove( $item  )
+
+    public function fileable()
     {
-        
+        return $this->morphTo() ;
     }
 }
