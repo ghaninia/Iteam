@@ -59,16 +59,16 @@ class File extends Model
     // @usage جایی که این ایتم استفاده گردید .
     // @size سایز و اندازه تصاویر
     // @disk جایگاه دیسک که میتواند ftp , local باشد .
-    public static function show( $item , $usage , array $size = [] )
+    public static function show( $item , $usage , $size = "thumbnail" )
     {
         $where = [
                 'disk'   => config('iteam.disk') ,
-                'usage'  => $usage
+                'usage'  => $usage ,
+                'size'   => $size
             ];
         $items = $item->files()->where($where) ;
-        if (!empty($size)) $items->whereIn('size') ;
         $items = $items->pluck('url') ;
-        return Attach::disk(config('iteam.disk'))->show($items) ;
+        return Attach::disk(config('timo.disk'))->show($items) ;
     }
 
 

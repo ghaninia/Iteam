@@ -15,11 +15,18 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request , Closure $next , $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/home');
-        }
+        $guards = array_keys(config('auth.guards')) ;
+
+        // if select guard
+        if (!! $guard)
+            if (Auth::guard($guard)->check())
+                return redirect()->route("dashboard.{$guard}.main") ;
+        // if not select guard
+        foreach ($guards as $guard)
+            if (Auth::guard($guard)->check())
+                return redirect()->route("dashboard.{$guard}.main") ;
 
         return $next($request);
     }

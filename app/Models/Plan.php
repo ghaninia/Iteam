@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plan extends Model
 {
     protected $fillable = [
+        'name' ,
         'price' ,
         'max_create_team' ,
         'offer_daily' ,

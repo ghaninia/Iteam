@@ -10,12 +10,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger("plan_id")->nullable();
             $table->boolean('is_active')->default(FALSE);
+            $table->boolean('confirmed_email')->default(FALSE);
+
             $table->string('name');
             $table->string('family');
-            $table->string('username')->unique();            
+            $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('mobile')->unique();
+            $table->string('mobile')->length(11)->unique();
             $table->string('website')->nullable() ;
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
@@ -26,20 +29,21 @@ class CreateUsersTable extends Migration
             $table->string("min_salary")->default(0) ;
             $table->string("max_salary")->default(0) ;
 
-            $table->text("resume")->nullable();
-            $table->text("avatar")->nullable();
-            $table->text('information');
+            $table->text('bio')->nullable() ;
+            $table->text('instagram_account')->nullable() ;
+            $table->text('linkedin_account')->nullable() ;
+
+
             $table->string('password');
             $table->rememberToken();
             
             $table->unsignedInteger("province_id")->nullable();
             $table->unsignedInteger("city_id")->nullable();
 
-            $table->unsignedInteger("plan_id")->nullable();
             $table->timestamp("plan_expired_at")->nullable();
             $table->timestamps();
 
-            $table->foreign("plan_id")->references("id")->on("plans")->onDelete("cascade")->onUpdate("cascade") ;
+            $table->foreign("plan_id")->references("id")->on("plans")->onDelete("SET NULL")->onUpdate("SET NULL") ;
         });
     }
 

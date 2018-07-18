@@ -10,20 +10,28 @@ class User extends Authenticatable
 
     protected $fillable = [
         'is_active',
+        'confirmed_email' ,
         'name',
         'family' ,
         'username' ,
         'email',
         'phone' ,
+        'fax' ,
         'mobile' ,
-        'information',
+        'gender' ,
+        'website' ,
+        'bio',
+        'instagram_account' ,
+        'linkedin_account' ,
+
+        'type_assist' ,
+        'interplay_fiscal' ,
+        'min_salary' ,
+        'max_salary' ,
+
 
         'province_id',
         'city_id' ,
-        
-        'resume_id' ,
-        'picture_id' , 
-        
     ];
 
     protected $hidden = [
@@ -65,4 +73,8 @@ class User extends Authenticatable
         return $this->morphMany(Ticket::class , "ticketable") ;
     }
 
+    public function getFullnameAttribute()
+    {
+        return sprintf("%s %s", $this->attributes['name'], $this->attributes['family']);
+    }
 }

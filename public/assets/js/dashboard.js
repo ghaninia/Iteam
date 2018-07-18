@@ -44,7 +44,6 @@ $(function () {
                         var input = $("input[name='"+i+"']" , form ) ;
                         var formgroup = input.closest(".form-group") ;
                         formgroup.addClass('has-error has-danger') ;
-
                         setTimeout(function () {
                             Snackbar.show({
                                 text: response[i] ,
@@ -54,14 +53,48 @@ $(function () {
                                 duration: 3000,
                                 textColor: '#fff',
                                 backgroundColor: '#383838'
-                            }).onClose(function () {
-
                             });
                         },100) ;
                     }
+                } ,
+                success : function () {
+                    window.location.reload(true) ;
                 }
             });
             NProgress.done() ;
         }
     });
+});
+
+//logout
+$(function () {
+    $("a#logout").click(function (e) {
+        e.preventDefault() ;
+        var url = $(this).attr('href') ;
+        NProgress.start() ;
+        $.ajax({
+            url : url,
+            dataType : "JSON" ,
+            type : "POST" ,
+            headers : {
+                "X-CSRF-TOKEN" : data.token
+            },
+            success : function (response) {
+                Snackbar.show({
+                    text: response.message ,
+                    pos: 'bottom-right',
+                    showAction: false ,
+                    actionText: "Dismiss",
+                    duration: 3000,
+                });
+                if (response.status)
+                {
+                    setTimeout(function () {
+                        window.location.reload(true);
+                    } , 1000 );
+                }
+            }
+        });
+        NProgress.done() ;
+    })
 });

@@ -10,7 +10,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     public function showLoginForm()
     {
@@ -39,6 +39,12 @@ class LoginController extends Controller
             'password' => 'required|string',
             'guard' => 'required|in:user,admin'
         ]);
+    }
+
+    protected function guard()
+    {
+        $default = config('auth.defaults.guard') ;
+        return \Auth::guard( request()->input('guard' , $default) ) ;
     }
 
 }

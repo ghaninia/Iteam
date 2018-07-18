@@ -11560,7 +11560,7 @@ legend:before {
     margin-bottom: 0px;
     display: inline-block;
     text-transform: uppercase;
-    font-size: .585rem;
+    font-size: .7rem;
     font-family: inherit ;
 }
 
@@ -12794,7 +12794,7 @@ div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-chil
 }
 
 .user-profile.compact .up-header {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 10px;
     padding-bottom: 5px
 }
@@ -12813,7 +12813,7 @@ div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-chil
 
 .value-pair .label {
     color: rgba(0, 0, 0, 0.4);
-    font-size: .63rem;
+    font-size: .73rem;
     text-transform: uppercase;
     display: inline-block
 }
@@ -12958,7 +12958,7 @@ body.menu-position-side .layout-w {
 }
 
 body.menu-position-side .content-w {
-    border-radius: 0px 6px 6px 0px;
+    border-radius: 6px 0px 0px 6px;
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1
@@ -16369,7 +16369,7 @@ body.menu-side-left .layout-w {
 
 .el-tablo .label {
     display: block;
-    font-size: .63rem;
+    font-size: .8rem;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.4);
     letter-spacing: 1px

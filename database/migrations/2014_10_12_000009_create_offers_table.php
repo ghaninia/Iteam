@@ -15,6 +15,7 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('status')->default(false) ;
             $table->unsignedInteger("user_id") ;
             $table->unsignedInteger("team_id") ;
             $table->ipAddress("user_ip")->nullable() ;
