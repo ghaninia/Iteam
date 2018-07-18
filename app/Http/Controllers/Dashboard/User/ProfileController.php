@@ -20,7 +20,7 @@ class ProfileController extends Controller
 
         $account = User::whereId( Auth::guard('user')->id() )
             ->withCount(['offers','teams'])
-            ->with(['offers','teams','plan'])
+            ->with(['offers','teams'])
             ->first() ;
 
         return view('dash.user.profile.account' , compact('account' , 'information') ) ;

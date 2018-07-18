@@ -75,6 +75,7 @@
                     </div>
 
                     <div class="padded">
+
                         <div class="os-progress-bar primary">
                             <div class="bar-labels">
                                 <div class="bar-label-left">

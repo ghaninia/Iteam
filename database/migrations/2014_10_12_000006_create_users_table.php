@@ -10,7 +10,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger("plan_id")->nullable();
             $table->boolean('is_active')->default(FALSE);
             $table->boolean('confirmed_email')->default(FALSE);
 
@@ -40,10 +39,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger("province_id")->nullable();
             $table->unsignedInteger("city_id")->nullable();
 
-            $table->timestamp("plan_expired_at")->nullable();
             $table->timestamps();
-
-            $table->foreign("plan_id")->references("id")->on("plans")->onDelete("SET NULL")->onUpdate("SET NULL") ;
         });
     }
 

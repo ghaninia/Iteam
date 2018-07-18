@@ -29,21 +29,29 @@ class User extends Authenticatable
         'min_salary' ,
         'max_salary' ,
 
-
         'province_id',
         'city_id' ,
     ];
 
     protected $hidden = [
-        'plan_expired_at',
-        'password', 
+        'password',
         'remember_token',
-    ];
+    ] ;
 
-    public function plan(){
-        return $this->belongsTo(Plan::class , "plan_id" , 'id') ;
+    public function getFullnameAttribute()
+    {
+        return sprintf("%s %s", $this->attributes['name'], $this->attributes['family']);
     }
 
+    public function plans(){
+        return $this->belongsToMany(Plan::class)->withPivot(['expired_at','status'])->withTimestamps() ;
+    }
+
+    public function scopePlan()
+    {
+        
+    }
+    
     public function files(){
         return $this->morphMany( File::class , 'fileable' ) ;
     }
@@ -73,8 +81,5 @@ class User extends Authenticatable
         return $this->morphMany(Ticket::class , "ticketable") ;
     }
 
-    public function getFullnameAttribute()
-    {
-        return sprintf("%s %s", $this->attributes['name'], $this->attributes['family']);
-    }
+
 }
