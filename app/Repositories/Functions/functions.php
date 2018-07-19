@@ -66,3 +66,8 @@ function str_slice($text , $length = 200 )
         return mb_substr($text , 0 , $length ) . "..." ;
     return $text ;
 }
+
+function genders()
+{
+    return ['male','female'] ;
+}

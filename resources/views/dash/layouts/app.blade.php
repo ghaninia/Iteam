@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="ajax-url" content="{{ route('dashboard.user.ajax') }}">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

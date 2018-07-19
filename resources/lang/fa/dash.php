@@ -17,7 +17,8 @@ return [
         'count_teams' => ' تیم های من' ,
         'contact_information' => 'اطلاعات تماس' ,
         'social_information' => 'شبکه اجتماعی' ,
-
+        'further_information'=> 'اطلاعات تکمیلی' ,
+        'please_select_item' => 'یک گزینه انتخاب نمایید .'
 
     ] ,
     'panel' => [
@@ -75,5 +76,9 @@ return [
     'active' => [
         'enable' => 'فعال' ,
         'disabled' => 'غیرفعال' ,
+    ] ,
+    'genders' => [
+        'male'   => 'آقا' ,
+        'female' => 'خانم'
     ]
 ];

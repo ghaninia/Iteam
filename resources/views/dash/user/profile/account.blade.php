@@ -265,6 +265,56 @@
                             </div>
                         </div>
                     </fieldset>
+                    <fieldset class="form-group">
+                        <legend>
+                            <span>{{ trans('dash.profile.further_information') }}</span>
+                        </legend>
+                        <div class="form-group">
+                            <label for="gender">{{ trans('dash.panel.user.gender')  }}</label>
+                            <select name="gender" id="gender" class="form-control">
+                                @foreach(genders() as $gender)
+                                    <option @if($account->gender==$gender) selected @endif value="{{ $gender }}">{{ trans("dash.genders.{$gender}") }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">{{ trans('dash.panel.user.bio')  }}</label>
+                            <textarea rows="5" id="bio" name="bio" class="small form-control">{{ $account->bio }}</textarea>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="province">{{ trans('dash.panel.user.province_id')  }}</label>
+                                    <select onchange="city(this,'city');" name="province_id" id="province" class="form-control">
+                                        <option selected>{{ trans('dash.profile.please_select_item') }}</option>
+                                        @foreach($provinces as $province)
+                                            <option @if($account->province_id == $province->id) selected @endif value="{{ $province->id }}">
+                                                {{ $province->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="city">{{ trans('dash.panel.user.city_id')  }}</label>
+                                <select name="city_id" id="city" class="form-control" {{ $cities->isEmpty() ? 'style="display: none;"' : "" }} >
+                                    <option selected>{{ trans('dash.profile.please_select_item') }}</option>
+                                    @if($cities->isNotEmpty())
+                                        @foreach($cities as $city)
+                                            <option @if($account->city_id == $city->id) selected @endif value="{{ $city->id }}">
+                                                {{ $city->name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </fieldset>
                 </div>
             </div>
         </div>

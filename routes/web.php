@@ -7,6 +7,7 @@ Route::namespace('Dashboard\\')->name('dashboard.')->prefix('dashboard')->group(
     Route::middleware('auth:user')->namespace('User\\')->name('user.')->group(function (){ //->prefix('member')
 
         Route::get('main', 'MainController@index')->name('main') ;
+        Route::post('ajax', 'AjaxController@ajaxHandle')->name('ajax') ;
 
         //* روت های پروفایل کاربری  *//
         Route::name("profile.")->prefix("profile")->group(function (){

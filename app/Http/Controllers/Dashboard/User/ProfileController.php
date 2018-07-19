@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers\Dashboard\User;
 use App\Http\Controllers\Controller;
+use App\Models\City;
+use App\Models\Province;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +22,15 @@ class ProfileController extends Controller
 
         $account = User::withCount('teams' ,'offers')->find(Auth::guard('user')->id()) ;
 
+        $cities  = City::whereHas("province" ,function ($q) use ($account) {
+            $q->where("id" , $account->province_id);
+        })->select(['id','name'])->get();
+
+        $provinces = Province::select(['id','name'])->get() ;
+
         $log = $account->information() ;
-        return view('dash.user.profile.account' , compact('account' , 'information','log') ) ;
+
+        return view('dash.user.profile.account' , compact('account' , 'information','log' , 'provinces' , 'cities') ) ;
     }
 
     public function accountStore(Request $request)

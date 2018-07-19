@@ -1,5 +1,6 @@
 var data = {
-    token : $("meta[name='csrf-token']").attr('content')
+    token : $("meta[name='csrf-token']").attr('content') ,
+    ajax  : $("meta[name='ajax-url']").attr('content')
 };
 
 (function ($) {
@@ -20,6 +21,61 @@ var data = {
         return o;
     };
 })(jQuery);
+
+
+//set coockie
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date;
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1e3);
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"
+}
+
+//get coockie
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") {
+            c = c.substring(1)
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length)
+        }
+    }
+    return ""
+}
+
+//check coockie
+function checkCookie(cname) {
+    var name = getCookie(cname);
+    if (name != "") {
+        return true
+    } else {
+        return false
+    }
+}
+
+//base64 encode
+function base64_encode(str) {
+    // first we use encodeURIComponent to get percent-encoded UTF-8,
+    // then we convert the percent encodings into raw bytes which
+    // can be fed into btoa.
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        function toSolidBytes(match, p1) {
+            return String.fromCharCode('0x' + p1);
+        }));
+}
+
+//base64 decode
+function base64_decode(str) {
+    // Going backwards: from bytestream, to percent-encoding, to original string.
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+}
+
 
 // login
 $(function () {
@@ -98,3 +154,52 @@ $(function () {
         NProgress.done() ;
     })
 });
+
+
+//province && city
+function city(item , id) {
+    NProgress.start() ;
+    var select = $("#" + id ) ;
+    var name = 'province_'+item.value ;
+
+    if (!checkCookie(name))
+    {
+        $.ajax({
+            url : data.ajax ,
+            dataType : "json" ,
+            type : "POST" ,
+            headers : {
+                "X-CSRF-TOKEN" : data.token
+            },
+            data : {
+                action : "myCities" ,
+                province_id : item.value
+            } ,
+            success : function (response) {
+                setCookie(name , JSON.stringify(response.msg) , 10 ) ;
+                printSelect(name , select ) ;
+            }
+        });
+    }else{
+        printSelect(name , select ) ;
+    }
+    NProgress.done() ;
+}
+
+function  printSelect(name , select) {
+    var items = JSON.parse(getCookie(name)) ;
+    select.animate({opacity : "0.5" }) ;
+
+    if (items.length > 0)
+    {
+        $("option" , select ).not(":first").remove() ;
+        for(i in items)
+        {
+            select.append("<option value='"+items[i]['id']+"'>"+items[i]['name']+"</option>") ;
+        }
+
+
+    }
+
+    select.animate({opacity : "1" }) ;
+}
