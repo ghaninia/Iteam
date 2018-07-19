@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -82,22 +83,41 @@ class User extends Authenticatable
         return 'username' ;
     }
 
-    public function logTeam()
+    public function information()
     {
-        $cpct = 0 ;
-        if ( $this->plan->id == config('timo.default_plan_id') )
-        {
-            $cpct = $this->teams()->where('default_plan' , true )->count() ;
-        }else{
-            $cpct = $this->teams()->whereBetween('created_at' , [
-                $this->plan_created_at ,
-                $this->plan_expired_at ,
-            ])->count() ;
-        }
-        return [
-            'all' => $this->teams->count() , // tedade team haye k sakhte
-            'mct' => $this->plan->max_create_team , //max_create_team
-            'cpct'=> $cpct // tedade
+
+        $information = [] ;
+        $default = config('timo.panel_default') ;
+        $user = User::with(['plan' , 'offers' , 'teams'])->find($this->id) ;
+
+        $information['teams'] = [
+            'max'   => $user->plan->attributes['max_create_team'] , //* حداکثر استفاده در پنل فعلی *//
+            'current_usage' => (
+            $user->plan->id == $default
+                ? $user->teams->where('default_plan' , true )->count()
+                : $user
+                ->teams()
+                ->where('default_plan' , false )
+                ->whereBetween('created_at' , [$this->plan_created_at , $this->plan_expired_at] )
+                ->count()
+            ) ,
+            'all' => $user->teams->count()
         ];
+
+        $information['offers'] = [
+            'max'   => $user->plan->attributes['max_create_offer'] , //* حداکثر تعداد پیشنهاد در پنل فعلی *//
+            'current_usage' => (
+            $user->plan->id == $default
+                ? $user->offers->where('default_plan' , true )->count()
+                : $user
+                ->teams()
+                ->where('default_plan' , false )
+                ->whereBetween('created_at' , [$this->plan_created_at , $this->plan_expired_at] )
+                ->count()
+            ) ,
+            'all' => $user->offers->count()
+        ];
+
+        return $information ;
     }
 }

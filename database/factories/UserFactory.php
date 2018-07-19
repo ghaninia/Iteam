@@ -15,6 +15,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
+		'plan_id' => 1 ,
         'name' => $faker->name,
         'family' => $faker->name,
         'username' => $faker->userName ,

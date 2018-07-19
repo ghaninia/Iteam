@@ -18,11 +18,10 @@ class ProfileController extends Controller
             ]
         ] ;
 
-        $account = Auth::guard('user')->user() ;
+        $account = User::withCount('teams' ,'offers')->find(Auth::guard('user')->id()) ;
 
-        return $account->logTeam() ;
-
-        return view('dash.user.profile.account' , compact('account' , 'information') ) ;
+        $log = $account->information() ;
+        return view('dash.user.profile.account' , compact('account' , 'information','log') ) ;
     }
 
     public function accountStore(Request $request)

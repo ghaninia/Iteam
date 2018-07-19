@@ -13,13 +13,12 @@ class DefaultSeeder extends Seeder
             'price' => "0" ,
             'description' => "پنل رایگان را استفاده مینمایید" ,
             'max_create_team' => 1 ,
-            'offer_daily' => 5 ,
-            'offer_month' => 10 ,
-            'offer_year' => 30 ,
-            'max_tag_offer' => 10 ,
+            'max_create_offer' => 5 ,
         ]);
 
         \App\Models\User::create([
+			'plan_id' => 1 ,
+			
             'name' => "محمدامین",
             'family' => "غنی نیا",
             'username' => 'aminghaninia' ,

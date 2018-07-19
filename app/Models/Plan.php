@@ -14,10 +14,8 @@ class Plan extends Model
 
         'price' ,
         'max_create_team' ,
-        'offer_daily' ,
-        'offer_month' ,
-        'offer_year'  ,
-        'max_tag_offer'
+        'max_create_offer' ,
+
     ];
 
     public function users()

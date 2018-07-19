@@ -4,7 +4,7 @@ Auth::routes() ;
 
 Route::namespace('Dashboard\\')->name('dashboard.')->prefix('dashboard')->group(function (){
     // Route access if Guard user
-    Route::middleware('auth:user')->namespace('User\\')->name('user.')->prefix('member')->group(function (){
+    Route::middleware('auth:user')->namespace('User\\')->name('user.')->group(function (){ //->prefix('member')
 
         Route::get('main', 'MainController@index')->name('main') ;
 

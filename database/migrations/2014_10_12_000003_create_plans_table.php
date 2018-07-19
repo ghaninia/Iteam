@@ -15,11 +15,8 @@ class CreatePlansTable extends Migration
             $table->text('description')->nullable() ;
             $table->string("price")->default(0) ; 
             $table->integer("max_create_team")->default(0) ;
-            $table->integer("offer_daily")->default(0) ;
-            $table->integer("offer_month")->default(0) ;
-            $table->integer("offer_year")->default(0) ;
-            $table->integer("max_tag_offer")->default(0) ;
-            
+            $table->integer("max_create_offer")->default(0) ;
+
             $table->timestamps();
         });
     }
