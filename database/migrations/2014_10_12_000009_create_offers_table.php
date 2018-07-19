@@ -16,7 +16,7 @@ class CreateOffersTable extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('status')->default(false) ;
-            $table->boolean('default_plan')->default(false) ; // agar plan ma default boot hatman in ra true kon ;
+            $table->boolean('default_plan')->default(true) ; // agar plan ma default boot hatman in ra true kon ;
             $table->unsignedInteger("user_id") ;
             $table->unsignedInteger("team_id") ;
             $table->ipAddress("user_ip")->nullable() ;

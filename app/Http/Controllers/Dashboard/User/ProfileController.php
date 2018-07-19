@@ -18,10 +18,9 @@ class ProfileController extends Controller
             ]
         ] ;
 
-        $account = User::whereId( Auth::guard('user')->id() )
-            ->withCount(['offers','teams'])
-            ->with(['offers','teams'])
-            ->first() ;
+        $account = Auth::guard('user')->user() ;
+
+        return $account->logTeam() ;
 
         return view('dash.user.profile.account' , compact('account' , 'information') ) ;
     }

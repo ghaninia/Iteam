@@ -8,10 +8,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public function getRouteKeyName()
-    {
-        return 'username' ;
-    }
 
     protected $fillable = [
         'is_active',
@@ -81,4 +77,27 @@ class User extends Authenticatable
         return $this->morphMany(Ticket::class , "ticketable") ;
     }
 
+    public function getRouteKeyName()
+    {
+        return 'username' ;
+    }
+
+    public function logTeam()
+    {
+        $cpct = 0 ;
+        if ( $this->plan->id == config('timo.default_plan_id') )
+        {
+            $cpct = $this->teams()->where('default_plan' , true )->count() ;
+        }else{
+            $cpct = $this->teams()->whereBetween('created_at' , [
+                $this->plan_created_at ,
+                $this->plan_expired_at ,
+            ])->count() ;
+        }
+        return [
+            'all' => $this->teams->count() , // tedade team haye k sakhte
+            'mct' => $this->plan->max_create_team , //max_create_team
+            'cpct'=> $cpct // tedade
+        ];
+    }
 }
