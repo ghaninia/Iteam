@@ -1,5 +1,6 @@
 <?php
 namespace App\Console\Commands;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -18,33 +19,19 @@ class freshPlan extends Command
 
     public function handle()
     {
-        $now = new Carbon() ;
-        $now = $now->toDateTimeString() ;
 
         //@ وقتی که اکانتی منقضی میشود کامنت پایین کاربر را شناسایی میکند @//
-        //@ سپس پلن کاربر که دیفالت نیست را به false تبدیل میکنه  @//
-        //@ اکانت دیفالت کاربر را برای او فعال میکند @//
-
-        $users =
-            DB::table('plan_user')
-                ->where('status',true)
-                ->whereNotNull("expired_at") // user has default plan
-                ->where('expired_at' , "<" , $now)->pluck('user_id')->toArray();
-
-            DB::table('plan_user')
-                ->whereIn("user_id" , $users )
+        DB::transaction(function (){
+            $now = new Carbon() ;
+            $now = $now->toDateTimeString() ;
+            User::where( "plan_id" , "<>" , config('timo.default_plan_id') )
+                ->where('plan_expired_at' , '<' , $now)
                 ->update([
-                    'status' => false
+                    'plan_created_at' => null ,
+                    'plan_expired_at' => null ,
+                    'plan_id' => config('timo.default_plan_id')
                 ]);
-
-            //*  کاربرانی ک منقضی شدند را بگیر و پنل دیفالت سیستم را برایشان فعال کن *//
-            DB::table('plan_user')
-                ->whereIn("user_id" , $users )
-                ->where('plan_id', config('timo.default_plan_id') )
-                ->update([
-                    'status' => true ,
-                    'expired_at' => null
-                ]);
+        });
 
     }
 }

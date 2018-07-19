@@ -10,6 +10,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->unsignedInteger('plan_id')->nullable() ;
+            $table->timestamp('plan_expired_at')->nullable()->default(null) ;
+            $table->timestamp('plan_created_at')->nullable()->default(null) ;
+
+            $table->foreign('plan_id')
+                ->references('id')->on('plans')
+                ->onDelete('SET NULL')->onUpdate('SET NULL');
+
             $table->boolean('is_active')->default(FALSE);
             $table->boolean('confirmed_email')->default(FALSE);
 

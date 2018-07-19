@@ -43,15 +43,10 @@ class User extends Authenticatable
         return sprintf("%s %s", $this->attributes['name'], $this->attributes['family']);
     }
 
-    public function plans(){
-        return $this->belongsToMany(Plan::class)->withPivot(['expired_at','status'])->withTimestamps() ;
+    public function plan(){
+        return $this->belongsTo(Plan::class) ;
     }
 
-    public function scopePlan()
-    {
-        
-    }
-    
     public function files(){
         return $this->morphMany( File::class , 'fileable' ) ;
     }
@@ -80,6 +75,5 @@ class User extends Authenticatable
     {
         return $this->morphMany(Ticket::class , "ticketable") ;
     }
-
 
 }
