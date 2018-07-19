@@ -8,6 +8,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function getRouteKeyName()
+    {
+        return 'username' ;
+    }
+
     protected $fillable = [
         'is_active',
         'confirmed_email' ,

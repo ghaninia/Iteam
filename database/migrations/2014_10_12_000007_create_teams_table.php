@@ -16,6 +16,7 @@ class CreateTeamsTable extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger("user_id") ; // maker team user id
+            $table->boolean('default_plan')->default(false) ; // agar plan ma default boot hatman in ra true kon ;
             $table->string("name") ;
 
             // dar sorate pardaljt ghabel namayesh ast !
