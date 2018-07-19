@@ -8,6 +8,7 @@ class Offer extends Model
 {
     protected $fillable = [
         'status' ,
+        'default_plan' ,
         'user_id' ,
         'user_ip' ,
         'team_id' ,

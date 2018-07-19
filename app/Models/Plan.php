@@ -8,6 +8,10 @@ class Plan extends Model
 {
     protected $fillable = [
         'name' ,
+        'plan_id' ,
+        'plan_expired_at' ,
+        'plan_created_at' ,
+
         'price' ,
         'max_create_team' ,
         'offer_daily' ,
