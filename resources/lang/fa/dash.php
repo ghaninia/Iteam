@@ -19,13 +19,12 @@ return [
         'social_information' => 'شبکه اجتماعی' ,
         'further_information'=> 'اطلاعات تکمیلی' ,
         'please_select_item' => 'یک گزینه انتخاب نمایید .' ,
-
         'save_submit' => 'ذخیره تغییرات' ,
-
+        'choose_picture' => 'انتخاب تصویر' ,
     ] ,
     'panel' => [
         'user' => [
-            'avatar' => 'عکس پروفایل' ,
+            'avatar' => 'تصویر پروفایل' ,
             'cover' => 'کاور پروفایل' ,
 
             'main' => 'پنل مدیریت' ,

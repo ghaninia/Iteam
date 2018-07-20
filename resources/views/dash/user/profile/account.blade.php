@@ -179,7 +179,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="avatar">{{ trans('dash.panel.user.avatar')  }}</label>
-                                        <div class="avatar-wrapper">
+                                        <div class="avatar-wrapper" title="{{ trans('dash.profile.choose_picture') }}">
                                             <img src="{{ picture("avatar") }}" />
                                             <div class="upload-button"></div>
                                             <input type="file" id="avatar" name="avatar" accept="image/*"/>
@@ -192,7 +192,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="cover">{{ trans('dash.panel.user.cover')  }}</label>
-                                        <div class="avatar-wrapper">
+                                        <div class="avatar-wrapper" title="{{ trans('dash.profile.choose_picture') }}">
                                             <img src="{{ picture("cover" , 'thumbnail') }}" />
                                             <div class="upload-button"></div>
                                             <input id="cover" type="file" name="cover" accept="image/*"/>
