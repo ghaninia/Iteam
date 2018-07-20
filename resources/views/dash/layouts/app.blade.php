@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/library.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 
     <title>{{ isset($information['title']) ? $information['title'] : options('title')  }}</title>
     <meta type="description" content="{{ isset($information['desc']) ? $information['desc'] : options('desc')  }}">
@@ -46,5 +45,8 @@
             <div class="display-type"></div>
         </div>
     </div>
+
+    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+
 </body>
 </html>

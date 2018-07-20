@@ -44,6 +44,7 @@ class Attach implements AttachInterface
     }
 
     private function set($name){
+
         if( request()->hasFile($name) )
         {
             $file = $this->file = request()->file($name) ;
@@ -60,12 +61,12 @@ class Attach implements AttachInterface
             $this->errors[] = 'The requested file could not be found.' ;
     }
 
-    public function put($name , $size = ['full'] )
+    public function put($name , $usage )
     {
         $this->set($name) ;
         if (!empty($this->errors)) return false ;
 
-        return static::upload(self::$disk , $this->format , $this->file , $size ) ;
+        return static::upload(self::$disk , $this->format , $this->file , $usage ) ;
     }
 
     public static function remove($items)

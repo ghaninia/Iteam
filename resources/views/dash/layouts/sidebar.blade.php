@@ -19,7 +19,7 @@
     <div class="logged-user-w avatar-inline">
         <div class="logged-user-i">
             <div class="avatar-w">
-                <img alt="" src="{{ avatar(null,'user') }}">
+                <img alt="" src="{{ picture('avatar') }}">
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">{{ username(null,'user') }}</div>
@@ -31,7 +31,7 @@
             <div class="logged-user-menu color-style-bleft">
                 <div class="logged-user-avatar-info">
                     <div class="avatar-w">
-                        <img alt="" src="{{ avatar(null,'user') }}">
+                        <img alt="" src="{{ picture('avatar') }}">
                     </div>
                     <div class="logged-user-info-w">
                         <div class="logged-user-name">{{ username(null,'user') }}</div>

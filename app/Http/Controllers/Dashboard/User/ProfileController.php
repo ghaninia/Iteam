@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers\Dashboard\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\accountStore;
 use App\Models\City;
+use App\Models\File;
 use App\Models\Province;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,11 +35,31 @@ class ProfileController extends Controller
         return view('dash.user.profile.account' , compact('account' , 'information','log' , 'provinces' , 'cities') ) ;
     }
 
-    public function accountStore(Request $request)
+    public function accountStore(accountStore $request)
     {
-        return $request->all() ;
-    }
+        $account = Auth::guard('user')->user() ;
+        File::create($account , 'avatar' , 'avatar');
+        File::create($account , 'cover' , 'cover');
 
+        $account->update([
+            'name' => $request->input('name') ,
+            'family' => $request->input('family') ,
+            'username' => $request->input('username') ,
+            'email' => $request->input('email') ,
+            'mobile' => $request->input('mobile') ,
+            'website' => $request->input('website') ,
+            'phone' => $request->input('phone') ,
+            'fax' => $request->input('fax') ,
+            'instagram_account' => $request->input('instagram_account') ,
+            'linkedin_account' => $request->input('linkedin_account') ,
+            'gender' => $request->input('gender') ,
+            'bio' => $request->input('bio') ,
+            'province_id' => $request->input('province_id') ,
+            'city_id' => $request->input('city_id') ,
+        ]);
+
+        return ResMessage(trans('dash.messages.success.profile.update'));
+    }
 
     //*  password profile edit  *//
     public function password(Request $request)

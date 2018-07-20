@@ -77,10 +77,11 @@ function base64_decode(str) {
 }
 
 
-// login
+// login , profileUpdate
 $(function () {
-    $("form#login").validator().submit(function (e) {
+    $("form#login , form#profileUpdate").validator().submit(function (e) {
         var form = $(this) ;
+        var formData = new FormData($(this)[0]);
         if (!e.isDefaultPrevented()) {
             e.preventDefault() ;
             NProgress.start() ;
@@ -89,32 +90,64 @@ $(function () {
                 url : action ,
                 type : "POST" ,
                 dataType : "json" ,
-                data : $(this).serializeFormJSON() ,
+                data : formData ,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
                 headers : {
                     "X-CSRF-TOKEN" : data.token
                 } ,
                 error : function (jqXHR, exception ) {
-                    response = jqXHR.responseJSON.errors ;
-                    for(i in response)
+                    var status = jqXHR.status;
+                    if(status == 429) //Too Many Attempts.
                     {
-                        var input = $("input[name='"+i+"']" , form ) ;
-                        var formgroup = input.closest(".form-group") ;
-                        formgroup.addClass('has-error has-danger') ;
-                        setTimeout(function () {
-                            Snackbar.show({
-                                text: response[i] ,
-                                pos: 'bottom-right',
-                                showAction: false ,
-                                actionText: "Dismiss",
-                                duration: 3000,
-                                textColor: '#fff',
-                                backgroundColor: '#383838'
-                            });
-                        },100) ;
+                        Snackbar.show({
+                            text: jqXHR.responseJSON.message  ,
+                            pos: 'bottom-right',
+                            showAction: false ,
+                            actionText: "Dismiss",
+                            duration: 3000,
+                            textColor: '#fff',
+                            backgroundColor: '#383838'
+                        });
+                    }
+                    if(status == 422) // validate error
+                    {
+                        response = jqXHR.responseJSON.errors ;
+                        for(i in response)
+                        {
+                            var input = $("[name='"+i+"']" , form ) ;
+                            var formgroup = input.closest(".form-group");
+                            formgroup.addClass('has-error has-danger') ;
+                            setTimeout(function () {
+                                Snackbar.show({
+                                    text: response[i] ,
+                                    pos: 'bottom-right',
+                                    showAction: false ,
+                                    actionText: "Dismiss",
+                                    duration: 3000,
+                                    textColor: '#fff',
+                                    backgroundColor: '#383838'
+                                });
+                            },100) ;
+                        }
                     }
                 } ,
-                success : function () {
-                    window.location.reload(true) ;
+                success : function (response) {
+                    if(response.status == true)
+                        Snackbar.show({
+                            text: response.message ,
+                            pos: 'bottom-right',
+                            showAction: false ,
+                            actionText: "Dismiss",
+                            duration: 3000,
+                            textColor: '#fff',
+                            backgroundColor: '#383838'
+                        });
+                    setTimeout(function () {
+                        location.reload() ;
+                    },5000);
                 }
             });
             NProgress.done() ;
@@ -157,7 +190,7 @@ $(function () {
 
 
 //province && city
-function city(item , id) {
+function cities(item , id) {
     NProgress.start() ;
     var select = $("#" + id ) ;
     var name = 'province_'+item.value ;
@@ -185,7 +218,6 @@ function city(item , id) {
     }
     NProgress.done() ;
 }
-
 function  printSelect(name , select) {
     var items = JSON.parse(getCookie(name)) ;
     select.animate({opacity : "0.5" }) ;
@@ -203,3 +235,26 @@ function  printSelect(name , select) {
 
     select.animate({opacity : "1" }) ;
 }
+
+//upload
+
+$(".avatar-wrapper").each(function () {
+    var wrapper = $(this) ;
+    $(".upload-button" , this ).click(function () {
+        $( "input[type='file']" , wrapper ).click() ;
+    });
+    $( "input[type='file']" , wrapper ).on('change', function(event) {
+        var input =  event.target ;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('img' , wrapper).attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+});
+
+
+
+

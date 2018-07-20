@@ -2770,8 +2770,8 @@ pre code {
 .form-control {
     display: block;
     width: 100%;
-    padding: .375rem .75rem;
-    font-size: .9rem;
+    padding: .50rem .75rem;
+    font-size: .8rem;
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
@@ -2781,7 +2781,7 @@ pre code {
     -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .form-control::-ms-expand {
@@ -30134,4 +30134,57 @@ body.color-scheme-dark .page-item.disabled .page-link,
         left: 0;
         transform: none
     }
+}
+
+/* change avatar */
+.avatar-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: none;
+    transition: all .3s ease ;
+    margin : 0 auto ;
+}
+
+.avatar-wrapper:hover {
+    transform: scale(1.05);
+    cursor: pointer
+}
+
+.avatar-wrapper img{
+    height: 100%;
+    width: 100%;
+    transition: all .3s ease;
+    object-fit: cover
+}
+
+.avatar-wrapper img:after {
+    font-family: 'osfont' !important ;
+    content: "\e945" ;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 90px;
+    position: absolute;
+    font-size: 30px;
+    background: #f0f0f0;
+    color: #aaa;
+    text-align: center
+}
+
+.avatar-wrapper .upload-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%
+}
+
+.avatar-wrapper .file-upload {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute
 }

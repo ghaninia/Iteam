@@ -18,7 +18,9 @@ return [
         'contact_information' => 'اطلاعات تماس' ,
         'social_information' => 'شبکه اجتماعی' ,
         'further_information'=> 'اطلاعات تکمیلی' ,
-        'please_select_item' => 'یک گزینه انتخاب نمایید .'
+        'please_select_item' => 'یک گزینه انتخاب نمایید .' ,
+
+        'save_submit' => 'ذخیره تغییرات' ,
 
     ] ,
     'panel' => [
@@ -53,7 +55,7 @@ return [
             'password' => 'گذرواژه' ,
             'province_id' => 'استان' ,
             'city_id' => 'شهر' ,
-            'village_id' => 'روستا'
+            'village_id' => 'روستا' ,
         ] ,
         'sidebar' => [
             'mainpage' => 'صفحه اصلی' ,
@@ -68,6 +70,9 @@ return [
     'messages' => [
         'success' => [
             'logout' =>  'شما با موفقیت از حساب کاربری خود خارج شده اید.' ,
+            'profile' => [
+                'update' => 'حساب کاربری شما با موفقیت ویرایش گردید .'
+            ]
         ] ,
         'error' => [
             'logout' =>  'خطایی در هنگام خروج رخ داده است لطفا به پشتیبان اطلاع دهید !' ,

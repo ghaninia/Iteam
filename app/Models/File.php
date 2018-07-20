@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 use App\Repositories\Attachment\Attach ;
-
 use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
@@ -38,17 +37,11 @@ class File extends Model
     // @return در صورت تایید ایجاد مثبت و در صورت مشکل منفی
     public static function create( $item , $filename , $usage )
     {
-
-        $fileUploaded = Attach::disk(config('iteam.disk'))->put($filename);
-        if ($fileUploaded)
+        $disk = config('timo.disk') ;
+        $uploads = Attach::disk($disk)->put($filename , $usage) ;
+        if (is_array($uploads) && !empty($uploads))
         {
-            $file = new File() ;
-            $file->size = $fileUploaded['size'] ;
-            $file->format = $fileUploaded['format'] ;
-            $file->disk = $fileUploaded['disk'] ;
-            $file->url = $fileUploaded['url'] ;
-            $file->usage = $usage ;
-            $item->files()->save($file) ;
+            $item->files()->createMany($uploads) ;
             return true ;
         }
         return false ;
@@ -62,7 +55,7 @@ class File extends Model
     public static function show( $item , $usage , $size = "thumbnail" )
     {
         $where = [
-                'disk'   => config('iteam.disk') ,
+                'disk'   => config('timo.disk') ,
                 'usage'  => $usage ,
                 'size'   => $size
             ];

@@ -5,24 +5,33 @@ function options($key , $default = null )
     return \App\Models\Option::get($key , $default ) ;
 }
 
-function avatar($user = null , $guard = 'user' ){
+
+function picture( $type , $user = null , $guard = 'user' ){
     if ( auth()->guard($guard)->check() && is_null($user))
     {
         $user = auth()->guard($guard)->user() ;
-        $picture = \App\Models\File::show($user , 'avatar')->first() ;
+        $picture = \App\Models\File::show($user , $type )->first() ;
         if (!! $picture)
             return $picture ;
         else{
-            switch ($user->gender)
-            {
-                case "male" :
-                    return asset(config('timo.avatar.male')) ;
-                case "female" :
-                    return asset(config('timo.avatar.female')) ;
+            switch ($type) {
+                case "avatar" : {
+                    switch ($user->gender)
+                    {
+                        case "male" :
+                            return asset(config('timo.profile.avatar.male')) ;
+                        case "female" :
+                            return asset(config('timo.profile.avatar.female')) ;
+                    }
+                }
+                case "cover" : {
+                    return asset( config("timo.profile.cover") ) ;
+                }
             }
         }
     }
 }
+
 
 function username($user = null , $guard = 'user')
 {
