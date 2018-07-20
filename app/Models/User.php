@@ -9,7 +9,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-
     protected $fillable = [
         'is_active',
         'confirmed_email' ,
