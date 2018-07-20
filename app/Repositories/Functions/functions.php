@@ -7,7 +7,7 @@ function options($key , $default = null )
 }
 
 
-function picture( $type , $user = null , $guard = 'user' ){
+function picture( $type , $size = 'full' ){
     if ( auth()->guard($guard)->check() && is_null($user))
     {
         $user = auth()->guard($guard)->user() ;

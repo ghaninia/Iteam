@@ -35,6 +35,7 @@ class Attach implements AttachInterface
     
     public $errors = [] ; 
 
+    // @name فعلا ما از local و ftp پشتیبانی میکنیم
     public static function disk($name = 'local')
     {
         if( !in_array( $name , ['local','ftp'] ) )
@@ -42,7 +43,7 @@ class Attach implements AttachInterface
         static::$disk = $name ;
         return new self() ;
     }
-
+    // @name ست کردن فایل های که میخواهیم در آن 
     private function set($name){
 
         if( request()->hasFile($name) )

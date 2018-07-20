@@ -39,6 +39,11 @@ class File extends Model
         });
     }
 
+
+    // @usage = اسم قراردادی به عنوان کلید دریافت اطلاعات
+    // @item  = ابجکنی که میخواهیم به ان ریلیشن بزنیم
+    // @filename = فایل موجود در درخواست ها
+    // @return حذف فایل های مربوط بر اساس $usage و ساخت دوباره فایل ها
     public static function pull( $item , $filename , $usage )
     {
         if(request()->has($filename))
@@ -46,16 +51,16 @@ class File extends Model
                 'disk'   => config('timo.disk') ,
                 'usage'  => $usage ,
             ])->delete() ;
-        return self::create($item , $filename , $usage) ;
+        
+        return self::put($item , $filename , $usage) ;
     }
 
 
     // @usage = اسم قراردادی به عنوان کلید دریافت اطلاعات
     // @item  = ابجکنی که میخواهیم به ان ریلیشن بزنیم
     // @filename = فایل موجود در درخواست ها
-    // @disk = نحوه ذخیره شدن اطلاعات و تصاویر بر اساس ftp , local
     // @return در صورت تایید ایجاد مثبت و در صورت مشکل منفی
-    public static function create( $item , $filename , $usage )
+    public static function put( $item , $filename , $usage )
     {
         $disk = config('timo.disk') ;
         $uploads = Attach::disk($disk)->put($filename , $usage) ;
