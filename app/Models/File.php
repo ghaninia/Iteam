@@ -30,7 +30,6 @@ class File extends Model
         return $this->morphTo() ;
     }
 
-
     public static function boot()
     {
         parent::boot();
@@ -38,7 +37,6 @@ class File extends Model
             Attach::remove($file) ;
         });
     }
-
 
     // @usage = اسم قراردادی به عنوان کلید دریافت اطلاعات
     // @item  = ابجکنی که میخواهیم به ان ریلیشن بزنیم
@@ -51,10 +49,9 @@ class File extends Model
                 'disk'   => config('timo.disk') ,
                 'usage'  => $usage ,
             ])->delete() ;
-        
+
         return self::put($item , $filename , $usage) ;
     }
-
 
     // @usage = اسم قراردادی به عنوان کلید دریافت اطلاعات
     // @item  = ابجکنی که میخواهیم به ان ریلیشن بزنیم
@@ -71,7 +68,6 @@ class File extends Model
         }
         return false ;
     }
-
 
     // @item ایتمی که دارای ریلیشن files میباشد
     // @usage جایی که این ایتم استفاده گردید .

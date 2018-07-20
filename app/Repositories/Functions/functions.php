@@ -7,11 +7,11 @@ function options($key , $default = null )
 }
 
 
-function picture( $type , $size = 'full' ){
+function picture( $type , $size = 'full' , $guard = 'user' , $user = null ){
     if ( auth()->guard($guard)->check() && is_null($user))
     {
         $user = auth()->guard($guard)->user() ;
-        $picture = File::show($user , $type )->first() ;
+        $picture = File::show($user , $type , $size)->first() ;
         if (!! $picture)
             return $picture ;
         else{

@@ -5,8 +5,6 @@ use Illuminate\Support\Facades\Storage;
 use Image ;
 
 trait staticTrait{
-    //* سایز عمس ها *//
-
 
     protected static $rootPath = 'uploads' ;
 

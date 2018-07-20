@@ -36,6 +36,7 @@ class Attach implements AttachInterface
     public $errors = [] ; 
 
     // @name فعلا ما از local و ftp پشتیبانی میکنیم
+    // @return $this ابتدا نام اتصال را چک کرده و سپس برمیگرداند
     public static function disk($name = 'local')
     {
         if( !in_array( $name , ['local','ftp'] ) )
@@ -43,7 +44,9 @@ class Attach implements AttachInterface
         static::$disk = $name ;
         return new self() ;
     }
-    // @name ست کردن فایل های که میخواهیم در آن 
+
+    // @name ست کردن فایل های که میخواهیم در آن
+    // @return برای ما اندرخواست مورد نظر را بر میگرداند
     private function set($name){
 
         if( request()->hasFile($name) )
@@ -62,6 +65,9 @@ class Attach implements AttachInterface
             $this->errors[] = 'The requested file could not be found.' ;
     }
 
+    // @name نام فایل که از request میگیریم
+    // @usage نوع استفاده را میگیریم
+    // @return فایل را ذخیره میکند و اگر فایل موجود نبود غلط را برمیگرداند
     public function put($name , $usage )
     {
         $this->set($name) ;
@@ -70,15 +76,19 @@ class Attach implements AttachInterface
         return static::upload(self::$disk , $this->format , $this->file , $usage ) ;
     }
 
+    // @file فایل موجود را حذف میکند
+    // @return فایل را حذف میکند و بولین بر میگرداند
     public static function remove($file)
     {
-        if ($item->disk == 'local')
+        if ($file->disk == 'local')
         {
-            $root = str_replace(DIRECTORY_SEPARATOR , "/" , $item->url );
-            return Storage::disk($item->disk)->delete($root) ;
+            $root = str_replace(DIRECTORY_SEPARATOR , "/" , $file->url );
+            return Storage::disk($file->disk)->delete($root) ;
         }
     }
 
+    // @items ساخت لینک نمایش
+    // @return برای ما collect بر میگرداند.
     public function show($items)
     {
         $links = [] ;
@@ -91,7 +101,8 @@ class Attach implements AttachInterface
             {
                 $links[] = asset( str_replace(DIRECTORY_SEPARATOR , "/" , sprintf("%s/%s",$root,$item) ) );
             }
-        }elseif ( self::$disk == 'ftp')
+        }
+        elseif ( self::$disk == 'ftp')
         {
             foreach ($items as $item)
             {
@@ -99,6 +110,7 @@ class Attach implements AttachInterface
                 return $root ;
             }
         }
+
         return collect($links) ;
     }
 }
