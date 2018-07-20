@@ -6,7 +6,6 @@ use App\Models\City;
 use App\Models\File;
 use App\Models\Province;
 use App\Models\User;
-use App\Repositories\Attachment\Attach;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +15,9 @@ class ProfileController extends Controller
     //*  account profile edit  *//
     public function account(Request $request)
     {
+//
+//        $file = File::first() ;
+//        return $file->delete() ;
 
         $information = [
             'title' => trans('dash.panel.sidebar.profile.edit') ,
@@ -40,7 +42,9 @@ class ProfileController extends Controller
     public function accountStore(accountStore $request)
     {
         $account = Auth::guard('user')->user() ;
+
         File::pull($account , 'avatar', 'avatar' );
+
         File::pull($account , 'cover', 'cover' );
 
         $account->update([
@@ -60,7 +64,7 @@ class ProfileController extends Controller
             'city_id' => $request->input('city_id') ,
         ]);
 
-        return ResMessage(trans('dash.messages.success.profile.update'));
+        return ResMessage( trans('dash.messages.success.profile.update') );
     }
 
     //*  password profile edit  *//

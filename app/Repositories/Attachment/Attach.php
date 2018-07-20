@@ -3,6 +3,7 @@ namespace App\Repositories\Attachment ;
 use App\Repositories\Attachment\Interfaces\AttachInterface ;
 use App\Repositories\Attachment\Traits\staticTrait;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Attach implements AttachInterface
 {
@@ -39,15 +40,14 @@ class Attach implements AttachInterface
     // @return $this ابتدا نام اتصال را چک کرده و سپس برمیگرداند
     public static function disk($name = 'local')
     {
-        if( !in_array( $name , ['local','ftp'] ) )
-            abort('404');
         static::$disk = $name ;
         return new self() ;
     }
 
     // @name ست کردن فایل های که میخواهیم در آن
     // @return برای ما اندرخواست مورد نظر را بر میگرداند
-    private function set($name){
+    public function set($name)
+    {
 
         if( request()->hasFile($name) )
         {
@@ -58,7 +58,7 @@ class Attach implements AttachInterface
                     if($file->getClientMimetype() === $kvalue )
                         $this->format = $key ;
                 });
-            });
+            }) ;
             if(is_null($this->format))
                 $this->errors[] = 'File format is invalid.' ;
         }else
@@ -80,6 +80,7 @@ class Attach implements AttachInterface
     // @return فایل را حذف میکند و بولین بر میگرداند
     public static function remove($file)
     {
+
         if ($file->disk == 'local')
         {
             $root = str_replace(DIRECTORY_SEPARATOR , "/" , $file->url );
@@ -98,19 +99,8 @@ class Attach implements AttachInterface
             $root = str_replace(public_path() , "" , $root) ;
             $root = trim($root , DIRECTORY_SEPARATOR ) ;
             foreach ($items as $item)
-            {
                 $links[] = asset( str_replace(DIRECTORY_SEPARATOR , "/" , sprintf("%s/%s",$root,$item) ) );
-            }
         }
-        elseif ( self::$disk == 'ftp')
-        {
-            foreach ($items as $item)
-            {
-                $root = config('filesystems.disks.ftp.host') ;
-                return $root ;
-            }
-        }
-
         return collect($links) ;
     }
 }

@@ -33,7 +33,7 @@ class File extends Model
     public static function boot()
     {
         parent::boot();
-        static::deleted(function ($file){
+        static::deleting(function ($file){
             Attach::remove($file) ;
         });
     }
@@ -44,12 +44,12 @@ class File extends Model
     // @return حذف فایل های مربوط بر اساس $usage و ساخت دوباره فایل ها
     public static function pull( $item , $filename , $usage )
     {
-        if(request()->has($filename))
-            $item->files()->Where([
-                'disk'   => config('timo.disk') ,
-                'usage'  => $usage ,
-            ])->delete() ;
-
+        if( request()->has($filename) )
+            $item->files()->where(['usage'=>$usage,'disk'=>config('timo.disk')])->each(function ($query){
+                $query->delete() ;
+            });
+        else
+            return false ;
         return self::put($item , $filename , $usage) ;
     }
 
@@ -82,7 +82,7 @@ class File extends Model
             ];
         $items = $item->files()->where($where) ;
         $items = $items->pluck('url') ;
-        return Attach::disk(config('timo.disk'))->show($items) ;
+        return Attach::disk( config('timo.disk') )->show($items) ;
     }
 
 
