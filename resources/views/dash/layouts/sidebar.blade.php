@@ -19,7 +19,7 @@
     <div class="logged-user-w avatar-inline">
         <div class="logged-user-i">
             <div class="avatar-w">
-                <img alt="" src="{{ picture('avatar') }}">
+                <img alt="" src="{{ picture('avatar','thumbnail') }}">
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">{{ username(null,'user') }}</div>

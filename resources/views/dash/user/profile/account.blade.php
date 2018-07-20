@@ -8,7 +8,7 @@
         <!--------------------------------->
         <div class="col-sm-5">
             <div class="user-profile compact">
-                <div class="up-head-w" style="background-image:url({{ picture('avatar','thumbnail') }})">
+                <div class="up-head-w" style="background-image:url({{ picture('cover','thumbnail') }})">
                     <div class="up-social">
                         @if(!!$account->instagram_account)
                             <a href="{{ $account->instagram_account }}">
