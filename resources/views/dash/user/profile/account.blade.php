@@ -175,24 +175,22 @@
                         </div>
                         <div>
 
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <div class="avatar-wrapper">
-                                            <img src="{{ picture("avatar") }}" />
-                                            <div class="upload-button"></div>
-                                            <input type="file" name="avatar" accept="image/*"/>
-                                        </div>
-                                    </div>
+                            <div class="form-group">
+                                <div class="avatar-wrapper">
+                                    <img src="{{ picture("avatar") }}" />
+                                    <div class="upload-button"></div>
+                                    <input type="file" name="avatar" accept="image/*"/>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <div class="avatar-wrapper">
-                                            <img src="{{ picture("cover") }}" />
-                                            <div class="upload-button"></div>
-                                            <input type="file" name="cover" accept="image/*"/>
-                                        </div>
-                                    </div>
+                                <div class="form-control-feedback help-block with-errors form-text">
+                                    @if($errors->has("avatar")) {{ $errors->first('avatar') }} @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="avatar-wrapper">
+                                    <img src="{{ picture("cover") }}" />
+                                    <div class="upload-button"></div>
+                                    <input type="file" name="cover" accept="image/*"/>
                                 </div>
                             </div>
 

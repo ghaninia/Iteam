@@ -78,82 +78,82 @@ function base64_decode(str) {
 
 
 // login , profileUpdate
-$(function () {
-    $("form#login , form#profileUpdate").validator().submit(function (e) {
-        var form = $(this) ;
-        var formData = new FormData($(this)[0]);
-        if (!e.isDefaultPrevented()) {
-            e.preventDefault() ;
-            NProgress.start() ;
-            var action = $(this).attr('action') ;
-            $.ajax({
-                url : action ,
-                type : "POST" ,
-                dataType : "json" ,
-                data : formData ,
-                async: false,
-                cache: false,
-                contentType: false,
-                processData: false,
-                headers : {
-                    "X-CSRF-TOKEN" : data.token
-                } ,
-                error : function (jqXHR, exception ) {
-                    var status = jqXHR.status;
-                    if(status == 429) //Too Many Attempts.
-                    {
-                        Snackbar.show({
-                            text: jqXHR.responseJSON.message  ,
-                            pos: 'bottom-right',
-                            showAction: false ,
-                            actionText: "Dismiss",
-                            duration: 3000,
-                            textColor: '#fff',
-                            backgroundColor: '#383838'
-                        });
-                    }
-                    if(status == 422) // validate error
-                    {
-                        response = jqXHR.responseJSON.errors ;
-                        for(i in response)
-                        {
-                            var input = $("[name='"+i+"']" , form ) ;
-                            var formgroup = input.closest(".form-group");
-                            formgroup.addClass('has-error has-danger') ;
-                            setTimeout(function () {
-                                Snackbar.show({
-                                    text: response[i] ,
-                                    pos: 'bottom-right',
-                                    showAction: false ,
-                                    actionText: "Dismiss",
-                                    duration: 3000,
-                                    textColor: '#fff',
-                                    backgroundColor: '#383838'
-                                });
-                            },100) ;
-                        }
-                    }
-                } ,
-                success : function (response) {
-                    if(response.status == true)
-                        Snackbar.show({
-                            text: response.message ,
-                            pos: 'bottom-right',
-                            showAction: false ,
-                            actionText: "Dismiss",
-                            duration: 3000,
-                            textColor: '#fff',
-                            backgroundColor: '#383838'
-                        });
-                    setTimeout(function () {
-                        location.reload() ;
-                    },5000);
-                }
-            });
-            NProgress.done() ;
-        }
-    });
-});
+// $(function () {
+//     $("form#login , form#profileUpdate").validator().submit(function (e) {
+//         var form = $(this) ;
+//         var formData = new FormData($(this)[0]);
+//         if (!e.isDefaultPrevented()) {
+//             e.preventDefault() ;
+//             NProgress.start() ;
+//             var action = $(this).attr('action') ;
+//             $.ajax({
+//                 url : action ,
+//                 type : "POST" ,
+//                 dataType : "json" ,
+//                 data : formData ,
+//                 async: false,
+//                 cache: false,
+//                 contentType: false,
+//                 processData: false,
+//                 headers : {
+//                     "X-CSRF-TOKEN" : data.token
+//                 } ,
+//                 error : function (jqXHR, exception ) {
+//                     var status = jqXHR.status;
+//                     if(status == 429) //Too Many Attempts.
+//                     {
+//                         Snackbar.show({
+//                             text: jqXHR.responseJSON.message  ,
+//                             pos: 'bottom-right',
+//                             showAction: false ,
+//                             actionText: "Dismiss",
+//                             duration: 3000,
+//                             textColor: '#fff',
+//                             backgroundColor: '#383838'
+//                         });
+//                     }
+//                     if(status == 422) // validate error
+//                     {
+//                         response = jqXHR.responseJSON.errors ;
+//                         for(i in response)
+//                         {
+//                             var input = $("[name='"+i+"']" , form ) ;
+//                             var formgroup = input.closest(".form-group");
+//                             formgroup.addClass('has-error has-danger') ;
+//                             setTimeout(function () {
+//                                 Snackbar.show({
+//                                     text: response[i] ,
+//                                     pos: 'bottom-right',
+//                                     showAction: false ,
+//                                     actionText: "Dismiss",
+//                                     duration: 3000,
+//                                     textColor: '#fff',
+//                                     backgroundColor: '#383838'
+//                                 });
+//                             },100) ;
+//                         }
+//                     }
+//                 } ,
+//                 success : function (response) {
+//                     if(response.status == true)
+//                         Snackbar.show({
+//                             text: response.message ,
+//                             pos: 'bottom-right',
+//                             showAction: false ,
+//                             actionText: "Dismiss",
+//                             duration: 3000,
+//                             textColor: '#fff',
+//                             backgroundColor: '#383838'
+//                         });
+//                     setTimeout(function () {
+//                         location.reload() ;
+//                     },5000);
+//                 }
+//             });
+//             NProgress.done() ;
+//         }
+//     });
+// });
 
 //logout
 $(function () {

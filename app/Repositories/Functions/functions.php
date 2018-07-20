@@ -1,4 +1,5 @@
 <?php
+use App\Models\File ;
 
 function options($key , $default = null )
 {
@@ -10,7 +11,7 @@ function picture( $type , $user = null , $guard = 'user' ){
     if ( auth()->guard($guard)->check() && is_null($user))
     {
         $user = auth()->guard($guard)->user() ;
-        $picture = \App\Models\File::show($user , $type )->first() ;
+        $picture = File::show($user , $type )->first() ;
         if (!! $picture)
             return $picture ;
         else{

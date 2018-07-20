@@ -69,7 +69,6 @@ trait staticTrait{
         return $path ;
     }
 
-
     // @return string
     // @return new name
     private function createNewName($file)

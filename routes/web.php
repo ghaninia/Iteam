@@ -13,7 +13,7 @@ Route::namespace('Dashboard\\')->name('dashboard.')->prefix('dashboard')->group(
         Route::name("profile.")->prefix("profile")->group(function (){
             Route::prefix("account")->name("account.")->group(function (){
                 Route::get("/"  , "ProfileController@account")->name("index") ;
-                Route::post( "/"  , "ProfileController@accountStore")->name("store")->middleware("throttle:1:10") ;
+                Route::post( "/"  , "ProfileController@accountStore")->name("store");
             });
             Route::prefix("password")->name("password.")->group(function (){
                 Route::get("/"  , "ProfileController@password")->name("index") ;

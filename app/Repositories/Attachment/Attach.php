@@ -69,9 +69,13 @@ class Attach implements AttachInterface
         return static::upload(self::$disk , $this->format , $this->file , $usage ) ;
     }
 
-    public static function remove($items)
+    public static function remove($file)
     {
-
+        if ($item->disk == 'local')
+        {
+            $root = str_replace(DIRECTORY_SEPARATOR , "/" , $item->url );
+            return Storage::disk($item->disk)->delete($root) ;
+        }
     }
 
     public function show($items)
@@ -96,5 +100,4 @@ class Attach implements AttachInterface
         }
         return collect($links) ;
     }
-
 }

@@ -30,6 +30,26 @@ class File extends Model
         return $this->morphTo() ;
     }
 
+
+    public static function boot()
+    {
+        parent::boot();
+        static::deleted(function ($file){
+            Attach::remove($file) ;
+        });
+    }
+
+    public static function pull( $item , $filename , $usage )
+    {
+        if(request()->has($filename))
+            $item->files()->Where([
+                'disk'   => config('timo.disk') ,
+                'usage'  => $usage ,
+            ])->delete() ;
+        return self::create($item , $filename , $usage) ;
+    }
+
+
     // @usage = اسم قراردادی به عنوان کلید دریافت اطلاعات
     // @item  = ابجکنی که میخواهیم به ان ریلیشن بزنیم
     // @filename = فایل موجود در درخواست ها
@@ -52,7 +72,7 @@ class File extends Model
     // @usage جایی که این ایتم استفاده گردید .
     // @size سایز و اندازه تصاویر
     // @disk جایگاه دیسک که میتواند ftp , local باشد .
-    public static function show( $item , $usage , $size = "thumbnail" )
+    public static function show( $item , $usage , $size = "full" )
     {
         $where = [
                 'disk'   => config('timo.disk') ,
@@ -65,8 +85,4 @@ class File extends Model
     }
 
 
-    public function fileable()
-    {
-        return $this->morphTo() ;
-    }
 }

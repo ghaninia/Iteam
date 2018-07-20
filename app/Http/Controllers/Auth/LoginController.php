@@ -47,4 +47,8 @@ class LoginController extends Controller
         return \Auth::guard( request()->input('guard' , $default) ) ;
     }
 
+    protected function authenticated(Request $request, $user)
+    {
+        return ResMessage(trans('dash.messages.success.profile.enter' , ['attribute' => $user->username ])) ;
+    }
 }

@@ -38,7 +38,8 @@ class accountStore extends FormRequest
                 'nullable' ,
                 Rule::in( City::where('province_id',$this->request->get('province_id'))->pluck('id')->toArray() )
             ] ,
-            'avatar' => ['nullable' , "max:1024" , "mimes:jpeg,jpg,png"]
+            'avatar' => ['nullable' , "mimes:jpeg,jpg,png"] ,
+            'cover'  => ['nullable' ,"mimes:jpeg,jpg,png"]
         ];
     }
 }
