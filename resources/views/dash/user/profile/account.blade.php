@@ -175,22 +175,29 @@
                         </div>
                         <div>
 
-                            <div class="form-group">
-                                <div class="avatar-wrapper">
-                                    <img src="{{ picture("avatar") }}" />
-                                    <div class="upload-button"></div>
-                                    <input type="file" name="avatar" accept="image/*"/>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="avatar">{{ trans('dash.panel.user.avatar')  }}</label>
+                                        <div class="avatar-wrapper">
+                                            <img src="{{ picture("avatar") }}" />
+                                            <div class="upload-button"></div>
+                                            <input type="file" id="avatar" name="avatar" accept="image/*"/>
+                                        </div>
+                                        <div class="form-control-feedback help-block with-errors form-text">
+                                            @if($errors->has("avatar")) {{ $errors->first('avatar', 'thumbnail') }} @endif
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-control-feedback help-block with-errors form-text">
-                                    @if($errors->has("avatar")) {{ $errors->first('avatar') }} @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="avatar-wrapper">
-                                    <img src="{{ picture("cover") }}" />
-                                    <div class="upload-button"></div>
-                                    <input type="file" name="cover" accept="image/*"/>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="cover">{{ trans('dash.panel.user.cover')  }}</label>
+                                        <div class="avatar-wrapper">
+                                            <img src="{{ picture("cover" , 'thumbnail') }}" />
+                                            <div class="upload-button"></div>
+                                            <input id="cover" type="file" name="cover" accept="image/*"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
