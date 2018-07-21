@@ -30,8 +30,8 @@ class Token
         $search = array_search($token , $sessions) ;
         if ($search > 0)
         {
-//            unset($sessions[$search]) ;
-//            session()->put($prefix , $sessions) ;
+            unset($sessions[$search]) ;
+            session()->put($prefix , $sessions) ;
             return true  ;
         }
         return false ;
