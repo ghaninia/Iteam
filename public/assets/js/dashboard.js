@@ -256,5 +256,78 @@ $(".avatar-wrapper").each(function () {
 });
 
 
+//keyword container
+$(".keywords-container").each(function() {
+    var maxitem = $(this).data("max") ;
+    var maxitemmsg = $(this).data("maxmessage") ;
+    var keywordInput = $(this).find(".keyword-input");
+    var keywordsList = $(this).find(".keywords-list");
+    function addKeyword() {
+        var keywordCount = $("span.keyword" , keywordsList ).length + 1 ;
+        if(maxitem < keywordCount)
+        {
+            Snackbar.show({
+                text: maxitemmsg ,
+                pos: 'bottom-right',
+                showAction: false ,
+                actionText: "Dismiss",
+                duration: 3000,
+                textColor: '#fff',
+                backgroundColor: '#383838'
+            });
+        }else{
+            var $newKeyword = $("<span class='keyword'><span class='keyword-remove'></span><span class='keyword-text'>" + keywordInput.val() + "</span></span>");
+            keywordsList.append($newKeyword).trigger('resizeContainer');
+            keywordInput.val("");
+        }
+    }
+    keywordInput.on('keyup', function(e) {
+        if ((e.keyCode == 13) && (keywordInput.val() !== "")) {
+            addKeyword();
+        }
+    });
+    $('.keyword-input-button').on('click', function() {
+        if ((keywordInput.val() !== "")) {
+            addKeyword();
+        }
+    });
+    $(document).on("click", ".keyword-remove", function() {
+        $(this).parent().addClass('keyword-removed');
+
+        function removeFromMarkup() {
+            $(".keyword-removed").remove();
+        }
+        setTimeout(removeFromMarkup, 500);
+        keywordsList.css({
+            'height': 'auto'
+        }).height();
+    });
+    keywordsList.on('resizeContainer', function() {
+        var heightnow = $(this).height();
+        var heightfull = $(this).css({
+            'max-height': 'auto',
+            'height': 'auto'
+        }).height();
+        $(this).css({
+            'height': heightnow
+        }).animate({
+            'height': heightfull
+        }, 200);
+    });
+    $(window).on('resize', function() {
+        keywordsList.css({
+            'height': 'auto'
+        }).height();
+    });
+    $(window).on('load', function() {
+        var keywordCount = $('.keywords-list').children("span").length;
+        if (keywordCount > 0) {
+            keywordsList.css({
+                'height': 'auto'
+            }).height();
+        }
+    });
+});
+
 
 

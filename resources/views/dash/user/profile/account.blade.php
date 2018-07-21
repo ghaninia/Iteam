@@ -14,7 +14,7 @@
                 <!--------------------------------->
                 <div class="col-sm-5">
                     <div class="user-profile compact">
-                        <div class="up-head-w" style="background-image:url({{ picture('cover','thumbnail') }})">
+                        <div class="up-head-w" style="background-image:url({{ picture('cover') }})">
                             <div class="up-social">
                                 @if(!!$account->instagram_account)
                                     <a href="{{ $account->instagram_account }}">
@@ -366,8 +366,19 @@
         </form>
     </div>
     <div class="content-panel">
-        <div class="content-panel-close">
-            <i class="os-icon os-icon-close"></i>
+        <div class="element-wrapper">
+            <h6 class="element-header">{{ trans('dash.panel.user.skills') }}</h6>
+            <div class="element-box-tp">
+                <div class="keywords-container" data-max="5" data-maxmessage="{{ trans('dash.panel.user.skillmax',['max'=> 5 ]) }}">
+                    <div class="keyword-input-container">
+                        <div class="form-group">
+                            <input class="keyword-input form-control" placeholder="{{ trans('dash.profile.choose_skills') }}"/>
+                        </div>
+                    </div>
+                    <div class="keywords-list"><!-- keywords go here --></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
         </div>
     </div>
 @stop

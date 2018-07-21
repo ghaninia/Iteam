@@ -21,12 +21,13 @@ return [
         'please_select_item' => 'یک گزینه انتخاب نمایید .' ,
         'save_submit' => 'ذخیره تغییرات' ,
         'choose_picture' => 'انتخاب تصویر' ,
+        'choose_skills' => 'انتخاب مهارت ها' ,
     ] ,
     'panel' => [
         'user' => [
             'avatar' => 'تصویر پروفایل' ,
             'cover' => 'کاور پروفایل' ,
-
+            'skills' => 'مهارت های من' ,
             'main' => 'پنل مدیریت' ,
             'confirm' => [
                 'text' => 'تایید ایمیل' ,
@@ -58,6 +59,8 @@ return [
             'province_id' => 'استان' ,
             'city_id' => 'شهر' ,
             'village_id' => 'روستا' ,
+
+            'skillmax' => 'حداکثر :max مهارت میتوانید انتخاب نمایید.'
         ] ,
         'sidebar' => [
             'mainpage' => 'صفحه اصلی' ,

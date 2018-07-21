@@ -1,6 +1,12 @@
 <?php
-
+use \App\Repositories\Skill\Skill ;
 Auth::routes() ;
+
+Route::get("/" , function (){
+    $skill = new Skill() ;
+    dd( $skill->GenerateToken() ) ;
+});
+
 
 Route::namespace('Dashboard\\')->name('dashboard.')->prefix('dashboard')->group(function (){
     // Route access if Guard user
