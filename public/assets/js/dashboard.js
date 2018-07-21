@@ -262,6 +262,7 @@ $(".keywords-container").each(function() {
     var maxitemmsg = $(this).data("maxmessage") ;
     var keywordInput = $(this).find(".keyword-input");
     var keywordsList = $(this).find(".keywords-list");
+    // add keyword
     function addKeyword() {
         var keywordCount = $("span.keyword" , keywordsList ).length + 1 ;
         if(maxitem < keywordCount)
@@ -275,12 +276,21 @@ $(".keywords-container").each(function() {
                 textColor: '#fff',
                 backgroundColor: '#383838'
             });
-        }else{
+        }
+        else{
             var $newKeyword = $("<span class='keyword'><span class='keyword-remove'></span><span class='keyword-text'>" + keywordInput.val() + "</span></span>");
             keywordsList.append($newKeyword).trigger('resizeContainer');
             keywordInput.val("");
         }
     }
+    $.getJSON( $(this).data('url') ).done( function (response) {
+        keywordInput.autocomplete({
+            source: response
+        });
+    });
+
+
+    // source edit
     keywordInput.on('keyup', function(e) {
         if ((e.keyCode == 13) && (keywordInput.val() !== "")) {
             addKeyword();
@@ -327,7 +337,6 @@ $(".keywords-container").each(function() {
             }).height();
         }
     });
+
 });
-
-
 

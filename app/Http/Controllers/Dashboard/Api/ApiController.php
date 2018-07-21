@@ -12,7 +12,7 @@ class ApiController extends Controller
         $name = 'skills' ;
         if ( !Cache::has($name) )
         {
-            $skills =  Skill::pluck('name','id')->toJson()  ;
+            $skills =  Skill::pluck('name')->toJson()  ;
             Cache::put($name , $skills , 10 ) ;
         }
         else
