@@ -12,6 +12,11 @@ class TokenMiddleware
         $token = $request->route('token') ;
         if (Token::Compare($sessionName , $token))
             return $next($request);
-        return response()->json(['status' => false , 'message' => trans('dash.messages.error.token_expired') ]) ;
+
+        return response()
+                ->json([
+                        'status' => false ,
+                        'message' => trans('dash.messages.error.token_expired'
+                    )]) ;
     }
 }
