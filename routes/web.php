@@ -4,7 +4,7 @@ Auth::routes() ;
 Route::namespace('Dashboard\\')->name('dashboard.')->prefix('dashboard')->group(function (){
 
     Route::name('api.')->namespace('Api\\')->prefix('api')->group(function (){
-        Route::get( "skill/{token}" , 'ApiController@skill' )->name("skill")->middleware("token:skill") ;
+        Route::get( "skills/{token}" , 'ApiController@skills' )->name("skill")->middleware("token:skill") ;
     });
 
     // Route access if Guard user

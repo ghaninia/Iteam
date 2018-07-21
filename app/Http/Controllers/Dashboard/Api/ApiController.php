@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 
 class ApiController extends Controller
 {
-    public function skill($skill , Request $request)
+    public function skills($skill , Request $request)
     {
         $name = 'skills' ;
         if ( !Cache::has($name) )
