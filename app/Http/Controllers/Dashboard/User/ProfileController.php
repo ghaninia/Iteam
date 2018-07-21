@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\File;
 use App\Models\Province;
 use App\Models\User;
+use App\Repositories\Skill\Skill as apiSkill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,7 @@ class ProfileController extends Controller
         $provinces = Province::select(['id','name'])->get() ;
 
         $log = $account->information() ;
+
 
         return view('dash.user.profile.account' , compact('account' , 'information','log' , 'provinces' , 'cities') ) ;
     }

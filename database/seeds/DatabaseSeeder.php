@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
 
         factory(\App\Models\Plan::class , 4)->create() ;
         factory(\App\Models\User::class , 4)->create() ;
+        factory(\App\Models\Skill::class , 5)->create() ;
     }
 }
