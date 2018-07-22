@@ -265,29 +265,38 @@ $(".keywords-container").each(function() {
 
     // add keyword
     function addKeyword(Input , response) {
-        if( $.inArray(Input , response) >= 0 )
-        {
-            var keywordCount = $("span.keyword" , keywordsList ).length ;
-            if( maxitem-1 < keywordCount)
-            {
-                Snackbar.show({text: maxitemmsg});
-            }else{
-                var $newKeyword = $(
-                    "<span class='keyword'>" +
-                    "<span class='keyword-remove'>" +
-                    "</span>" +
-                    "<span class='keyword-text'>"
-                    + keywordInput.val() +
-                    "</span>" +
-                    "</span>"
-                );
-                keywordsList.append($newKeyword).trigger('resizeContainer');
-                keywordInput.val("");
-            }
-        }else
-        {
+        var isValid = [] ;
+        $(".keywords-list .keyword").each(function () {
+            isValid.push( $(".keyword-text" , this ).text() == Input )
+        });
 
+        if ( $.inArray(true , isValid) != -1 )
+            Snackbar.show({text: "You have already selected this item" });
+        else
+        {
+            if( $.inArray(Input , response) >= 0 )
+            {
+                var keywordCount = $("span.keyword" , keywordsList ).length ;
+                if( maxitem-1 < keywordCount)
+                {
+                    Snackbar.show({text: "شما حداکثر میتوانید "+maxitem+" آیتم انتخاب نمایید." });
+                }else{
+                    var $newKeyword = $(
+                        "<span class='keyword'>" +
+                            "<span class='keyword-remove'>" +
+                            "</span>" +
+                            "<span class='keyword-text'>"
+                            + keywordInput.val() +
+                            "</span>" +
+                        "</span>"
+                    );
+                    keywordsList.append($newKeyword).trigger('resizeContainer');
+                }
+            }
+            else
+                Snackbar.show({text: "شما باید از لیست پیشنهادی انتخاب نمایید ." });
         }
+        keywordInput.val("");
     }
 
     // json and autocomplete
@@ -313,34 +322,34 @@ $(".keywords-container").each(function() {
             $(".keyword-removed").remove();
         }
         setTimeout(removeFromMarkup, 500);
-        keywordsList.css({
-            'height': 'auto'
-        }).height();
+        // keywordsList.css({
+        //     'height': 'auto'
+        // }).height();
     });
-    keywordsList.on('resizeContainer', function() {
-        var heightnow = $(this).height();
-        var heightfull = $(this).css({
-            'max-height': 'auto',
-            'height': 'auto'
-        }).height();
-        $(this).css({
-            'height': heightnow
-        }).animate({
-            'height': heightfull
-        }, 200);
-    });
-    $(window).on('resize', function() {
-        keywordsList.css({
-            'height': 'auto'
-        }).height();
-    });
-    $(window).on('load', function() {
-        var keywordCount = $('.keywords-list').children("span").length;
-        if (keywordCount > 0) {
-            keywordsList.css({
-                'height': 'auto'
-            }).height();
-        }
-    });
+    // keywordsList.on('resizeContainer', function() {
+    //     var heightnow = $(this).height();
+    //     var heightfull = $(this).css({
+    //         'max-height': 'auto',
+    //         'height': 'auto'
+    //     }).height();
+    //     $(this).css({
+    //         'height': heightnow
+    //     }).animate({
+    //         'height': heightfull
+    //     }, 200);
+    // });
+    // $(window).on('resize', function() {
+    //     keywordsList.css({
+    //         'height': 'auto'
+    //     }).height();
+    // });
+    // $(window).on('load', function() {
+    //     var keywordCount = $('.keywords-list').children("span").length;
+    //     if (keywordCount > 0) {
+    //         keywordsList.css({
+    //             'height': 'auto'
+    //         }).height();
+    //     }
+    // });
 });
 

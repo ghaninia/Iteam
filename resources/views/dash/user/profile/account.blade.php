@@ -375,7 +375,6 @@
         </form>
     </div>
 
-
     <!------------------->
     <!------------------->
     <!------------------->
@@ -387,18 +386,20 @@
         <div class="element-wrapper">
             <h6 class="element-header">{{ trans('dash.panel.user.skills') }}</h6>
             <div class="element-box-tp">
-                <div data-url="{{ route("dashboard.api.skill" , \App\Repositories\Token::Generate('skill') ) }}" class="keywords-container" data-max="5" data-maxmessage="{{ trans('dash.panel.user.skillmax',['max'=> 5 ]) }}">
+                <div data-url="{{ route("dashboard.api.skill" , \App\Repositories\Token::Generate('skill') ) }}" class="keywords-container" data-max="5">
                     <div class="keyword-input-container">
                         <div class="form-group">
                             <input class="keyword-input form-control" placeholder="{{ trans('dash.profile.choose_skills') }}"/>
                         </div>
                         <button class="keyword-input-button btn-primary"><i class="os-icon os-icon-ui-54"></i></button>
                     </div>
-                    <div class="keywords-list"><!-- keywords go here --></div>
+                    <div class="keywords-list">
+
+                    </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </div>
     </div>
-    
+
 @stop
