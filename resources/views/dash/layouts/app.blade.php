@@ -8,7 +8,6 @@
     <meta type="description" content="{{ isset($information['desc']) ? $information['desc'] : options('desc')  }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/js/library.js') }}"></script>

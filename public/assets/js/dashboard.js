@@ -262,45 +262,51 @@ $(".keywords-container").each(function() {
     var maxitemmsg = $(this).data("maxmessage") ;
     var keywordInput = $(this).find(".keyword-input");
     var keywordsList = $(this).find(".keywords-list");
+    var Button = $(this).find('.keyword-input-button') ;
+
     // add keyword
     function addKeyword() {
-        var keywordCount = $("span.keyword" , keywordsList ).length + 1 ;
-        if(maxitem < keywordCount)
+        var keywordCount = $("span.keyword" , keywordsList ).length ;
+        if( maxitem-1 < keywordCount)
         {
-            Snackbar.show({
-                text: maxitemmsg ,
-                pos: 'bottom-right',
-                showAction: false ,
-                actionText: "Dismiss",
-                duration: 3000,
-                textColor: '#fff',
-                backgroundColor: '#383838'
-            });
-        }
-        else{
-            var $newKeyword = $("<span class='keyword'><span class='keyword-remove'></span><span class='keyword-text'>" + keywordInput.val() + "</span></span>");
+            Snackbar.show({text: maxitemmsg});
+        }else{
+            var $newKeyword = $(
+                "<span class='keyword'>" +
+                    "<span class='keyword-remove'>" +
+                    "</span>" +
+                    "<span class='keyword-text'>"
+                        + keywordInput.val() +
+                    "</span>" +
+                "</span>"
+            );
             keywordsList.append($newKeyword).trigger('resizeContainer');
             keywordInput.val("");
         }
     }
+
+    function keyexists(val,arr)
+    {
+        return ($.inArray(val , arr) > 0) && ( val != "" ) ;
+    }
+
+    // json and autocomplete
     $.getJSON( $(this).data('url') ).done( function (response) {
         keywordInput.autocomplete({
             source: response
         });
+        Button.on('click', function() {
+            var Input = $.trim( keywordInput.val() );
+            if( keyexists(Input , response ) )
+                addKeyword();
+        });
+        keywordInput.on('keyup', function(e) {
+            var Input = $.trim( keywordInput.val() );
+            if ( (e.keyCode == 13) && keyexists( Input , response ) )
+                addKeyword();
+        });
     });
 
-
-    // source edit
-    keywordInput.on('keyup', function(e) {
-        if ((e.keyCode == 13) && (keywordInput.val() !== "")) {
-            addKeyword();
-        }
-    });
-    $('.keyword-input-button').on('click', function() {
-        if ((keywordInput.val() !== "")) {
-            addKeyword();
-        }
-    });
     $(document).on("click", ".keyword-remove", function() {
         $(this).parent().addClass('keyword-removed');
 
@@ -337,6 +343,5 @@ $(".keywords-container").each(function() {
             }).height();
         }
     });
-
 });
 
