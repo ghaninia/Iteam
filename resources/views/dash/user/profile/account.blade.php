@@ -1,5 +1,14 @@
 @extends('dash.layouts.app')
 @section('main')
+
+    <!------------------->
+    <!------------------->
+    <!------------------->
+    <!--- content box --->
+    <!------------------->
+    <!------------------->
+    <!------------------->
+
     <div class="content-box">
         <form
                 data-toggle="validator"
@@ -365,6 +374,15 @@
             </div>
         </form>
     </div>
+
+
+    <!------------------->
+    <!------------------->
+    <!------------------->
+    <!-- content panel -->
+    <!------------------->
+    <!------------------->
+
     <div class="content-panel">
         <div class="element-wrapper">
             <h6 class="element-header">{{ trans('dash.panel.user.skills') }}</h6>
@@ -382,4 +400,5 @@
             </div>
         </div>
     </div>
+    
 @stop

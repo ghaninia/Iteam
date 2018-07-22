@@ -259,35 +259,35 @@ $(".avatar-wrapper").each(function () {
 //keyword container
 $(".keywords-container").each(function() {
     var maxitem = $(this).data("max") ;
-    var maxitemmsg = $(this).data("maxmessage") ;
     var keywordInput = $(this).find(".keyword-input");
     var keywordsList = $(this).find(".keywords-list");
     var Button = $(this).find('.keyword-input-button') ;
 
     // add keyword
-    function addKeyword() {
-        var keywordCount = $("span.keyword" , keywordsList ).length ;
-        if( maxitem-1 < keywordCount)
+    function addKeyword(Input , response) {
+        if( $.inArray(Input , response) >= 0 )
         {
-            Snackbar.show({text: maxitemmsg});
-        }else{
-            var $newKeyword = $(
-                "<span class='keyword'>" +
+            var keywordCount = $("span.keyword" , keywordsList ).length ;
+            if( maxitem-1 < keywordCount)
+            {
+                Snackbar.show({text: maxitemmsg});
+            }else{
+                var $newKeyword = $(
+                    "<span class='keyword'>" +
                     "<span class='keyword-remove'>" +
                     "</span>" +
                     "<span class='keyword-text'>"
-                        + keywordInput.val() +
+                    + keywordInput.val() +
                     "</span>" +
-                "</span>"
-            );
-            keywordsList.append($newKeyword).trigger('resizeContainer');
-            keywordInput.val("");
-        }
-    }
+                    "</span>"
+                );
+                keywordsList.append($newKeyword).trigger('resizeContainer');
+                keywordInput.val("");
+            }
+        }else
+        {
 
-    function keyexists(val,arr)
-    {
-        return ($.inArray(val , arr) > 0) && ( val != "" ) ;
+        }
     }
 
     // json and autocomplete
@@ -296,14 +296,13 @@ $(".keywords-container").each(function() {
             source: response
         });
         Button.on('click', function() {
-            var Input = $.trim( keywordInput.val() );
-            if( keyexists(Input , response ) )
-                addKeyword();
+            var Input = $.trim(keywordInput.val());
+            addKeyword(Input , response );
         });
         keywordInput.on('keyup', function(e) {
-            var Input = $.trim( keywordInput.val() );
-            if ( (e.keyCode == 13) && keyexists( Input , response ) )
-                addKeyword();
+            var Input = $.trim(keywordInput.val());
+            if ( e.keyCode == 13 )
+                addKeyword(Input , response );
         });
     });
 
