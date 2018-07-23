@@ -59,8 +59,7 @@ return [
             'province_id' => 'استان' ,
             'city_id' => 'شهر' ,
             'village_id' => 'روستا' ,
-
-            'skillmax' => 'حداکثر :max مهارت میتوانید انتخاب نمایید.'
+            'resume' => 'فایل رزومه'  ,
         ] ,
         'sidebar' => [
             'mainpage' => 'صفحه اصلی' ,

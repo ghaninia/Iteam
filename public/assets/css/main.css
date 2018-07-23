@@ -30306,3 +30306,114 @@ body.color-scheme-dark .page-item.disabled .page-link,
 input.keyword-input {
     margin: 0 0 15px
 }
+/** attachment **/
+.attachments-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: calc(100% + 20px);
+    margin-bottom: -30px
+}
+
+.attachment-box {
+    display: flex;
+    margin: 0 0 0 20px;
+    background-color: #f4f4f4;
+    border-radius: 4px 0 4px 4px;
+    font-weight: 600;
+    padding: 15px 20px;
+    padding-bottom: 45px;
+    padding-right: 25px;
+    line-height: 24px;
+    flex-direction: column;
+    color: #666;
+    position: relative;
+    transition: .3s;
+    flex: 0 1 calc(50% - 20px);
+    cursor: default;
+    position: relative
+}
+
+.single-page-section .attachment-box {
+    flex: 0 1 calc(33% - 20px)
+}
+
+.single-page-section .attachments-container {
+    margin-bottom: -20px
+}
+
+a.attachment-box {
+    cursor: pointer
+}
+
+.attachment-box:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 20px 20px 0;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, .15) #f2f4f8;
+    transition: .3s;
+    border-radius: 0 0 0 4px
+}
+
+a.attachment-box:hover {
+    background-color: #66676b;
+    color: #fff
+}
+
+a.attachment-box:hover:before {
+    border-color: rgba(0, 0, 0, .25) #f2f4f8
+}
+
+.attachment-box span {
+    font-size: 14px;
+    line-height: 20px;
+    display: inline-block;
+    flex: auto
+}
+
+.attachment-box i {
+    display: block;
+    font-style: normal;
+    font-size: 14px;
+    color: #999;
+    font-weight: 500;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 10px;
+    transition: .3s
+}
+
+a.attachment-box:hover i {
+    color: rgba(255, 255, 255, .7)
+}
+
+.attachment-box .remove-attachment {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #fff;
+    background-color: #dc3139;
+    box-shadow: 0 3px 8px rgba(234, 65, 81, .15);
+    height: 28px;
+    width: 28px;
+    line-height: 28px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: .3s;
+    opacity: 0;
+    transform: translateY(3px)
+}
+
+.attachment-box .remove-attachment:before {
+    content: "\e9e4";
+    font-family: feather-icons
+}
+
+.attachment-box:hover .remove-attachment {
+    opacity: 1;
+    transform: translateY(0)
+}

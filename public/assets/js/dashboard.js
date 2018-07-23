@@ -271,7 +271,7 @@ $(".keywords-container").each(function() {
         });
 
         if ( $.inArray(true , isValid) != -1 )
-            Snackbar.show({text: "You have already selected this item" });
+            Snackbar.show({text: "شما قبلا این آیتم را انتخاب نموده اید." });
         else
         {
             if( $.inArray(Input , response) >= 0 )
@@ -317,39 +317,10 @@ $(".keywords-container").each(function() {
 
     $(document).on("click", ".keyword-remove", function() {
         $(this).parent().addClass('keyword-removed');
-
         function removeFromMarkup() {
             $(".keyword-removed").remove();
         }
         setTimeout(removeFromMarkup, 500);
-        // keywordsList.css({
-        //     'height': 'auto'
-        // }).height();
     });
-    // keywordsList.on('resizeContainer', function() {
-    //     var heightnow = $(this).height();
-    //     var heightfull = $(this).css({
-    //         'max-height': 'auto',
-    //         'height': 'auto'
-    //     }).height();
-    //     $(this).css({
-    //         'height': heightnow
-    //     }).animate({
-    //         'height': heightfull
-    //     }, 200);
-    // });
-    // $(window).on('resize', function() {
-    //     keywordsList.css({
-    //         'height': 'auto'
-    //     }).height();
-    // });
-    // $(window).on('load', function() {
-    //     var keywordCount = $('.keywords-list').children("span").length;
-    //     if (keywordCount > 0) {
-    //         keywordsList.css({
-    //             'height': 'auto'
-    //         }).height();
-    //     }
-    // });
 });
 
