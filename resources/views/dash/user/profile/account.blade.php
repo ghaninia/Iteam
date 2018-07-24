@@ -386,7 +386,7 @@
         <div class="element-wrapper">
             <h6 class="element-header">{{ trans('dash.panel.user.resume') }}</h6>
             <div class="element-box-tp">
-                <div class="attachments-container">
+                <div class="attachment">
 
                 </div>
             </div>
