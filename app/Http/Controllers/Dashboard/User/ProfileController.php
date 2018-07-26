@@ -65,8 +65,6 @@ class ProfileController extends Controller
             'city_id' => $request->input('city_id') ,
         ]);
 
-
-
         return ResMessage( trans('dash.messages.success.profile.update') );
     }
 
