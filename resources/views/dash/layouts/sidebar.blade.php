@@ -1,14 +1,4 @@
-<div class="menu-w
-    selected-menu-color-light
-    menu-activated-on-hover
-    menu-has-selected-link
-    color-scheme-dark
-    color-style-bleft
-    sub-menu-color-bleft
-    menu-position-side
-    menu-side-left
-    menu-layout-mini
-    sub-menu-style-over">
+<div class="menu-w menu-activated-on-hover menu-has-selected-link selected-menu-color-light color-scheme-light color-style-default sub-menu-color-bright menu-position-side menu-side-left menu-layout-mini sub-menu-style-over">
 
     <div class="logo-w">
         <a class="logo" href="index.html">

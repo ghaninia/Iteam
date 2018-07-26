@@ -2,6 +2,7 @@
 namespace App\Http\Requests;
 use App\Models\City;
 use App\Models\Province;
+use App\Models\Skill;
 use App\Rules\MobileRule;
 use App\Rules\PersianCharRule;
 use App\Rules\UserNameRule;
@@ -19,6 +20,11 @@ class accountStore extends FormRequest
 
     public function rules()
     {
+        $user = $this->user() ;
+
+        $count_skill = 0 ;
+        if(!! $user->plan)
+            $count_skill = $user->plan->count_skill ;
 
         return [
             'name'     => ['nullable' , "max:191" , new PersianCharRule() ] ,
@@ -39,7 +45,9 @@ class accountStore extends FormRequest
                 Rule::in( City::where('province_id',$this->request->get('province_id'))->pluck('id')->toArray() )
             ] ,
             'avatar' => ['nullable' , "max:512" , "mimes:jpeg,jpg,png"] ,
-            'cover'  => ['nullable' , "max:512" , "mimes:jpeg,jpg,png"]
+            'cover'  => ['nullable' , "max:512" , "mimes:jpeg,jpg,png"] ,
+            'skill'  => ['nullable' , 'array' , 'size:'.$count_skill] ,
+            'skill.*'=> ['required' , 'string' , Rule::in(Skill::pluck('name')->toArray()) ]
         ];
     }
 }

@@ -16,10 +16,6 @@ class ProfileController extends Controller
     //*  account profile edit  *//
     public function account(Request $request)
     {
-//
-//        $file = File::first() ;
-//        return $file->delete() ;
-
         $information = [
             'title' => trans('dash.panel.sidebar.profile.edit') ,
             'breadcrumb' => [
@@ -27,7 +23,7 @@ class ProfileController extends Controller
             ]
         ] ;
 
-        $account = User::withCount('teams' ,'offers')->find(Auth::guard('user')->id()) ;
+        $account = User::withCount( 'plan' , 'teams' ,'offers')->find(Auth::guard('user')->id()) ;
 
         $cities  = City::whereHas("province" ,function ($q) use ($account) {
             $q->where("id" , $account->province_id);
@@ -37,8 +33,11 @@ class ProfileController extends Controller
 
         $log = $account->information() ;
 
+        $count_skill = 0 ;
+        if(!! $account->plan)
+            $count_skill = $account->plan->count_skill ;
 
-        return view('dash.user.profile.account' , compact('account' , 'information','log' , 'provinces' , 'cities') ) ;
+        return view('dash.user.profile.account' , compact('account' , 'count_skill' , 'information', 'log' , 'provinces' , 'cities') ) ;
     }
 
     public function accountStore(accountStore $request)
@@ -65,6 +64,8 @@ class ProfileController extends Controller
             'province_id' => $request->input('province_id') ,
             'city_id' => $request->input('city_id') ,
         ]);
+
+
 
         return ResMessage( trans('dash.messages.success.profile.update') );
     }

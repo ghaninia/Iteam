@@ -16,7 +16,7 @@ class CreatePlansTable extends Migration
             $table->string("price")->default(0) ; 
             $table->integer("max_create_team")->default(0) ;
             $table->integer("max_create_offer")->default(0) ;
-
+            $table->integer('count_skill')->default(0) ;
             $table->timestamps();
         });
     }

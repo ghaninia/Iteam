@@ -383,19 +383,10 @@
     <!------------------->
 
     <div class="content-panel">
-        <div class="element-wrapper">
-            <h6 class="element-header">{{ trans('dash.panel.user.resume') }}</h6>
-            <div class="element-box-tp">
-                <div class="attachment">
-
-                </div>
-            </div>
-        </div>
-
-        <div class="element-wrapper">
+        <div class="element-wrapper side-menu-magic">
             <h6 class="element-header">{{ trans('dash.panel.user.skills') }}</h6>
             <div class="element-box-tp">
-                <div data-url="{{ route("dashboard.api.skill" , \App\Repositories\Token::Generate('skill') ) }}" class="keywords-container" data-max="5">
+                <div data-url="{{ route("dashboard.api.skill" , \App\Repositories\Token::Generate('skill') ) }}" class="keywords-container" data-max="{{ $count_skill }}">
                     <div class="keyword-input-container">
                         <div class="form-group">
                             <input class="keyword-input form-control" placeholder="{{ trans('dash.profile.choose_skills') }}"/>
@@ -403,7 +394,12 @@
                         <button class="keyword-input-button btn-primary"><i class="os-icon os-icon-ui-54"></i></button>
                     </div>
                     <div class="keywords-list">
-
+                        @foreach($account->skills as $skill)
+                            <span class='keyword'>
+                                <span class='keyword-remove'></span>
+                                <span class='keyword-text'>{{ $skill->name }}</span>
+                            </span>
+                        @endforeach
                     </div>
                     <div class="clearfix"></div>
                 </div>

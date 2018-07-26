@@ -15,6 +15,7 @@ class Plan extends Model
         'price' ,
         'max_create_team' ,
         'max_create_offer' ,
+        'count_skill'
 
     ];
 
