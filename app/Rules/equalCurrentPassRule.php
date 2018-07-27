@@ -5,7 +5,7 @@ use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class CheckCurrentPassword implements Rule
+class equalCurrentPassRule implements Rule
 {
     public function __construct()
     {
@@ -19,6 +19,6 @@ class CheckCurrentPassword implements Rule
 
     public function message()
     {
-        return trans('validation.');
+        return trans('validation.notmatchpass');
     }
 }

@@ -30,6 +30,11 @@ Route::namespace('Dashboard\\')->name('dashboard.')->prefix('dashboard')->group(
                 Route::post( "/"  , "ProfileController@notificationStore")->name("store") ;
             });
 
+            Route::prefix("panel")->name("panel.")->group(function (){
+                Route::get("/"  , "ProfileController@panel")->name("index") ;
+                Route::post( "/"  , "ProfileController@panelStore")->name("store") ;
+            });
+
             Route::post( "logout"  , "ProfileController@logout")->name("logout") ;
 
         });

@@ -84,9 +84,17 @@ class ProfileController extends Controller
 
     public function passwordStore(passwordStore $request)
     {
+        Auth::guard('user')->user()->update([
+            'password' => bcrypt( $request->input('password') )
+        ]);
 
+        return ResMessage(trans('dash.messages.success.profile.pass'));
     }
 
+    public function panel(Request $request)
+    {
+
+    }
 
     //*  notification profile edit  *//
     public function notification(Request $request)

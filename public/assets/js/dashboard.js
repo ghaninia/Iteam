@@ -79,7 +79,7 @@ function base64_decode(str) {
 
 // login , profileUpdate
 $(function () {
-    $("form#login , form#profileUpdate").validator().submit(function (e) {
+    $("form#login , form#profileUpdate , form#passwordUpdate").validator().submit(function (e) {
         var form = $(this) ;
         var formData = new FormData($(this)[0]);
         if (!e.isDefaultPrevented()) {

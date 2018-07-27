@@ -30294,7 +30294,9 @@ body.color-scheme-dark .page-item.disabled .page-link,
     font-size: 15px;
     text-align: center;
     line-height:5px ;
-    border : none
+    border : none ;
+    border-radius: 5px ;
+    cursor: pointer;
 }
 
 .keyword-input-container .keyword-input-button i {

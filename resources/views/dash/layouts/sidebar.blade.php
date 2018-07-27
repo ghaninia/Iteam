@@ -51,6 +51,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('dashboard.user.profile.panel.index') }}">
+                            <i class="os-icon os-icon-coins-4"></i>
+                            <span>{{ trans('dash.panel.sidebar.profile.changepanel') }}</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('dashboard.user.profile.logout') }}" id="logout">
                             <i class="os-icon os-icon-signs-11"></i>
                             <span>{{ trans('dash.panel.sidebar.profile.logout') }}</span>

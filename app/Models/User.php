@@ -24,7 +24,7 @@ class User extends Authenticatable
         'bio',
         'instagram_account' ,
         'linkedin_account' ,
-
+        'password' ,
         'type_assist' ,
         'interplay_fiscal' ,
         'min_salary' ,

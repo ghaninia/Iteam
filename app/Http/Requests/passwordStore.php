@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Requests;
-
-use App\Rules\CheckCurrentPassword;
+use App\Rules\equalCurrentPassRule;
+use App\Rules\PasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class passwordStore extends FormRequest
@@ -16,7 +16,8 @@ class passwordStore extends FormRequest
     public function rules()
     {
         return [
-            'current_password' => [ 'required' , new CheckCurrentPassword() ]
+            'current_password' => [ 'required' , new equalCurrentPassRule() ] ,
+            'password' => 'required|confirmed|min:6',
         ];
     }
 }
