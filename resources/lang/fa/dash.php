@@ -6,7 +6,7 @@ return [
         'enterusername' => 'نام کاربری را وارد نمایید...' ,
         'firstname' => 'نام' ,
         'lastname' => 'نام خانوادگی' ,
-        'password' => 'گذرواژه' ,
+        'password' => 'رمز عبور' ,
         'enterpassword' => 'گذرواژه را وارد نمایید...' ,
         'confirmed_password' => 'تایید گذرواژه' ,
         'guards' => [
@@ -55,7 +55,10 @@ return [
             'min_salary' => 'حداقل دستمزد' ,
             'max_salary' => 'حداکثر دستمزد' ,
             'bio' => 'بیوگرافی' ,
-            'password' => 'گذرواژه' ,
+            'password' => 'رمز عبور' ,
+            'password_lasted' => 'رمز عبور قبلی' ,
+            'repassword'=> 'تکرار رمز عبور' ,
+            'password_new' => 'رمز عبور جدید' ,
             'province_id' => 'استان' ,
             'city_id' => 'شهر' ,
             'village_id' => 'روستا' ,
@@ -81,7 +84,7 @@ return [
         ] ,
         'error' => [
             'logout' =>  'خطایی در هنگام خروج رخ داده است لطفا به پشتیبان اطلاع دهید !' ,
-            'token_expired' => 'توکن شما اکسپایر شده است لطفا بعدا تلاش نمایید .'
+            'token_expired' => 'توکن شما اکسپایر شده است لطفا بعدا تلاش نمایید .' ,
         ]
     ] ,
     'active' => [

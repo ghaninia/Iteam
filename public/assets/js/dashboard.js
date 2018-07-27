@@ -281,12 +281,13 @@ $(".keywords-container").each(function() {
                 {
                     Snackbar.show({text: "شما حداکثر میتوانید "+maxitem+" آیتم انتخاب نمایید." });
                 }else{
+                    var item = keywordInput.val() ;
                     var $newKeyword = $(
                         "<span class='keyword'>" +
                             "<span class='keyword-remove'>" +
                             "</span>" +
-                            "<span class='keyword-text'>"
-                            + keywordInput.val() +
+                            "<span class='keyword-text'>"+
+                            keywordInput.val() +
                             "</span>" +
                         "</span>"
                     );

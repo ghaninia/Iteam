@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Dashboard\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\accountStore;
+use App\Http\Requests\passwordStore;
 use App\Models\City;
 use App\Models\File;
 use App\Models\Province;
@@ -71,11 +72,19 @@ class ProfileController extends Controller
     //*  password profile edit  *//
     public function password(Request $request)
     {
-        return $request->all() ;
+        $information = [
+            'title' => trans('dash.panel.sidebar.profile.password') ,
+            'breadcrumb' => [
+                trans('dash.panel.sidebar.profile.password') => null
+            ]
+        ] ;
+
+        return view("dash.user.profile.password" , compact('information')) ;
     }
-    public function passwordStore(Request $request)
+
+    public function passwordStore(passwordStore $request)
     {
-        return $request->all() ;
+
     }
 
 

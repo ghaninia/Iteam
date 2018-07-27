@@ -391,7 +391,7 @@
                         <div class="form-group">
                             <input class="keyword-input form-control" placeholder="{{ trans('dash.profile.choose_skills') }}"/>
                         </div>
-                        <button class="keyword-input-button btn-primary"><i class="os-icon os-icon-ui-54"></i></button>
+                        <button class="keyword-input-button btn-primary"><i class="os-icon os-icon-mail-18"></i></button>
                     </div>
                     <div class="keywords-list">
                         @foreach($account->skills as $skill)
