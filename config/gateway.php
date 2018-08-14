@@ -13,11 +13,11 @@ return [
     //--------------------------------
     'zarinpal' => [
         'merchant-id'  => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-        'type'         => 'zarin-gate',             // Types: [zarin-gate || normal]
+        'type'         => 'sandbox',             // Types: [zarin-gate || normal]
         'callback-url' => '/',
-        'server'       => 'germany',                // Servers: [germany || iran || test]
-        'email'        => 'email@gmail.com',
-        'mobile'       => '09xxxxxxxxx',
+        'server'       => 'test',                // Servers: [germany || iran || test]
+        'email'        => '',
+        'mobile'       => '',
         'description'  => 'description',
     ],
 
@@ -117,5 +117,5 @@ return [
     //-------------------------------
     // Tables names
     //--------------------------------
-    'table'    => 'gateway_transactions',
+    'table'    => 'transaction',
 ];

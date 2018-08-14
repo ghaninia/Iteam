@@ -9,8 +9,9 @@ class Payment extends Model
     protected $fillable = [
         'user_id' ,
         'plan_id' ,
-        'status' ,
-        'tracking_code'
+        'transaction_id' ,
+        'ref_id' ,
+        'tracking_code' ,
     ];
 
     public function user(){

@@ -30,6 +30,7 @@ Route::namespace('User\\')->name('user.')->middleware('auth:user')->group(functi
         });
 
         Route::prefix("plan")->name("plan.")->group(function (){
+            Route::get("payment" , "ProfileController@planPayment")->name("payment") ;
             Route::get("/"  , "ProfileController@plan")->name("index") ;
             Route::get( "{plan}"  , "ProfileController@planShow")->name("show") ;
             Route::post( "{plan}"  , "ProfileController@planStore")->name("store") ;

@@ -12,8 +12,9 @@ use App\Models\User;
 use App\Repositories\Skill\Skill as apiSkill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Larabookir\Gateway\Enum;
+use Larabookir\Gateway\Exceptions\RetryException;
 use Larabookir\Gateway\Gateway;
-use Larabookir\Gateway\Zarinpal\Zarinpal;
 
 class ProfileController extends Controller
 {
@@ -144,47 +145,67 @@ class ProfileController extends Controller
     public function planShow(Plan $plan)
     {
         $user = me()->id ;
+        $gateway = Gateway::zarinpal() ;
+        $gateway->setCallback( route('user.profile.plan.payment') );
+        $gateway
+            ->price( $plan->price )
+            ->ready();
 
-        $payment = Gateway::make(new Zarinpal()) ;
-        $payment->setCallback( route('user.profile.plan.index') ) ;
-        $payment->price( $plan->price )->ready() ;
+        // get authority
 
-        $transID = $payment->transactionId()  ;
-        $refID = $payment->refId() ;
+        Payment::create([
+            'user_id' => me()->id ,
+            'plan_id' => $plan->id ,
+            'ref_id' => $gateway->refId() ,
+            'transaction_id' => $gateway->transactionId() ,
+        ]);
 
-
-        $transaction = new Payment() ;
-        $transaction->plan_id = $plan->id ;
-        $transaction->user_id = $user ;
-        $transaction->transaction_code = $transID ;
-        $transaction->ref_code = $refID ;
-        $transaction->save() ;
-
-        return $payment->redirect() ;
+        // redirect payment page
+        return $gateway->redirect();
     }
 
     public function planStore(Plan $plan)
     {
-
         $user = me()->id ;
+        $gateway = Gateway::zarinpal() ;
+        $gateway->setCallback( route('user.profile.plan.payment') );
+        $gateway
+            ->price( $plan->price )
+            ->ready();
 
-        $payment = Gateway::make(new Zarinpal()) ;
-        $payment->setCallback( route('dashboard.user.profile.plan.index') ) ;
-        $payment->price( $plan->price )->ready() ;
+        // get authority
 
-        $transID = $payment->transactionId()  ;
-        $refID = $payment->refId() ;
+        Payment::create([
+            'user_id' => me()->id ,
+            'plan_id' => $plan->id ,
+            'ref_id' => $gateway->refId() ,
+            'transaction_id' => $gateway->transactionId() ,
+        ]);
 
-
-        $transaction = new Payment() ;
-        $transaction->plan_id = $plan->id ;
-        $transaction->user_id = $user ;
-        $transaction->transaction_code = $transID ;
-        $transaction->ref_code = $refID ;
-        $transaction->save() ;
-
-        return $payment->redirect() ;
+        // redirect payment page
+        return $gateway->redirect();
     }
+
+    public function planPayment(Request $request)
+    {
+        try{
+            $gateway = Gateway::verify();
+            $trackingCode = $gateway->trackingCode();
+            $refId = $gateway->refId();
+            Payment::where('ref_id' , $refId)
+                ->update([
+                    'tracking_code' => $trackingCode ,
+                    'status' => Enum::TRANSACTION_SUCCEED
+                ]) ;
+        }
+        catch (RetryException $e){
+            return $e->getMessage() ;
+        }
+        catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
 
     //*  logout profile edit  *//
     public function logout(Request $request)
