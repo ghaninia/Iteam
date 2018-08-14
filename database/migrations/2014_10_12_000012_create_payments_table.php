@@ -15,10 +15,17 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean("status")->default(false) ;
-            $table->string("tracking_code")->nullable() ;
             $table->unsignedInteger("user_id") ;
             $table->unsignedInteger("plan_id") ;
+            $table->boolean("status")->default(false) ;
+
+
+            $table->string("transaction_code");
+            $table->string("ref_code");
+
+            $table->string("tracking_code")->nullable() ;
+            $table->string('card_number')->nullable() ;
+
             $table->timestamps();
         });
     }

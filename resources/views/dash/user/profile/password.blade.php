@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-5 col-xs-12 offset-lg-3">
                 <div class="element-box">
-                    <form id="passwordUpdate" method="POST" action="{{ route('dashboard.user.profile.password.store') }}">
+                    <form id="passwordUpdate" method="POST" action="{{ route('user.profile.password.store') }}">
                         @csrf
                         <div class="form-group  {{ $errors->has("current_password") ? 'has-error has-danger' : "" }}">
                             <label for="current_password">{{ trans('dash.panel.user.password_lasted') }}</label>

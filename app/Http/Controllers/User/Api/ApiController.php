@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Dashboard\Api ;
+namespace App\Http\Controllers\User\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Skill;
 use Illuminate\Http\Request;

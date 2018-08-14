@@ -9,7 +9,7 @@
     <div class="logged-user-w avatar-inline">
         <div class="logged-user-i">
             <div class="avatar-w">
-                <img alt="" src="{{ picture('avatar','thumbnail') }}">
+                <img alt="" src="{{ userPicture('avatar','thumbnail') }}">
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">{{ username(null,'user') }}</div>
@@ -21,7 +21,7 @@
             <div class="logged-user-menu color-style-bleft">
                 <div class="logged-user-avatar-info">
                     <div class="avatar-w">
-                        <img alt="" src="{{ picture('avatar','thumbnail') }}">
+                        <img alt="" src="{{ userPicture('avatar','thumbnail') }}">
                     </div>
                     <div class="logged-user-info-w">
                         <div class="logged-user-name">{{ username(null,'user') }}</div>
@@ -33,31 +33,31 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="{{ route('dashboard.user.profile.account.index') }}">
+                        <a href="{{ route('user.profile.account.index') }}">
                             <i class="os-icon os-icon-tasks-checked"></i>
                             <span>{{ trans('dash.panel.sidebar.profile.edit') }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard.user.profile.password.index') }}">
+                        <a href="{{ route('user.profile.password.index') }}">
                             <i class="os-icon os-icon-fingerprint"></i>
                             <span>{{ trans('dash.panel.sidebar.profile.password') }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard.user.profile.notification.index') }}">
+                        <a href="{{ route('user.profile.notification.index') }}">
                             <i class="os-icon os-icon-email-2-at2"></i>
                             <span>{{ trans('dash.panel.sidebar.profile.notification') }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard.user.profile.panel.index') }}">
+                        <a href="{{ route('user.profile.plan.index') }}">
                             <i class="os-icon os-icon-coins-4"></i>
-                            <span>{{ trans('dash.panel.sidebar.profile.changepanel') }}</span>
+                            <span>{{ trans('dash.panel.sidebar.profile.changeplan') }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('dashboard.user.profile.logout') }}" id="logout">
+                        <a href="{{ route('user.profile.logout') }}" id="logout">
                             <i class="os-icon os-icon-signs-11"></i>
                             <span>{{ trans('dash.panel.sidebar.profile.logout') }}</span>
                         </a>

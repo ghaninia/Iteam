@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e9b37555efe72ec5aba84216925d699",
+    "content-hash": "2d1d5f1495b2539217d4c190203970a7",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -452,6 +452,91 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "larabook/gateway",
+            "version": "3.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/larabook/gateway.git",
+                "reference": "1ad00bf32bd0d61f8afc697407b52bfa3d7217a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/larabook/gateway/zipball/1ad00bf32bd0d61f8afc697407b52bfa3d7217a3",
+                "reference": "1ad00bf32bd0d61f8afc697407b52bfa3d7217a3",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "~1.20",
+                "paypal/rest-api-sdk-php": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Larabookir\\Gateway\\GatewayServiceProvider"
+                    ],
+                    "aliases": {
+                        "Gateway": "Larabookir\\Gateway\\Gateway"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Larabookir\\Gateway\\": "src/",
+                    "Larabookir\\Gateway\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MohammadReza Honarkhah",
+                    "email": "m.honar@gmail.com"
+                },
+                {
+                    "name": "Hamed Pakdaman",
+                    "email": "pakdaman.it@gmail.com"
+                },
+                {
+                    "name": "Amir Khorsandi",
+                    "email": "Khorsandi@me.com"
+                }
+            ],
+            "description": "A Laravel package for connecting to all Iraninan payment  gateways",
+            "homepage": "https://github.com/larabook/gateway",
+            "keywords": [
+                "Bank",
+                "Meli",
+                "Payline",
+                "asan-pardakht",
+                "dargah",
+                "gateway",
+                "ipay",
+                "iran",
+                "iranian-banks",
+                "jahanpay",
+                "laravel",
+                "mellat",
+                "pardakht",
+                "parsian",
+                "pasargad",
+                "pay",
+                "pay-ir",
+                "payment",
+                "paypal",
+                "persian-banks",
+                "poolport",
+                "port",
+                "sadad",
+                "saman",
+                "shaparak",
+                "zarinpal"
+            ],
+            "time": "2018-06-08T05:18:45+00:00"
         },
         {
             "name": "laravel/framework",
@@ -965,6 +1050,55 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "paypal/rest-api-sdk-php",
+            "version": "1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
+                "reference": "192e217beed14c8e75624e821fdc8ec51e2a21f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/192e217beed14c8e75624e821fdc8ec51e2a21f5",
+                "reference": "192e217beed14c8e75624e821fdc8ec51e2a21f5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0",
+                "psr/log": "^1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PayPal": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "PayPal",
+                    "homepage": "https://github.com/paypal/rest-api-sdk-php/contributors"
+                }
+            ],
+            "description": "PayPal's PHP SDK for REST APIs",
+            "homepage": "http://paypal.github.io/PayPal-PHP-SDK/",
+            "keywords": [
+                "payments",
+                "paypal",
+                "rest",
+                "sdk"
+            ],
+            "time": "2017-11-13T19:21:59+00:00"
         },
         {
             "name": "psr/container",
@@ -2291,6 +2425,59 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "artisaninweb/laravel-soap",
+            "version": "0.3.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artisaninweb/laravel-soap.git",
+                "reference": "48f16b0d56c565bbe776d3242865e4b5c47d53e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artisaninweb/laravel-soap/zipball/48f16b0d56c565bbe776d3242865e4b5c47d53e4",
+                "reference": "48f16b0d56c565bbe776d3242865e4b5c47d53e4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-soap": "*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Artisaninweb\\SoapWrapper\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "SoapWrapper": "Artisaninweb\\SoapWrapper\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Artisaninweb\\SoapWrapper": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael van de Rijt",
+                    "email": "me@mvdrijt.com"
+                }
+            ],
+            "description": "A SoapClient wrapper integration for Laravel",
+            "keywords": [
+                "client",
+                "laravel",
+                "soap",
+                "wrapper"
+            ],
+            "time": "2018-05-28T08:54:07+00:00"
+        },
         {
             "name": "fzaninotto/faker",
             "version": "v1.8.0",

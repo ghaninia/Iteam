@@ -73,7 +73,7 @@ class File extends Model
     // @usage جایی که این ایتم استفاده گردید .
     // @size سایز و اندازه تصاویر
     // @disk جایگاه دیسک که میتواند ftp , local باشد .
-    public static function show( $item , $usage , $size = "full" )
+    public static function show( $item , $usage = null , $size = "full" )
     {
         $where = [
                 'disk'   => config('timo.disk') ,
@@ -82,6 +82,7 @@ class File extends Model
             ];
         $items = $item->files()->where($where) ;
         $items = $items->pluck('url') ;
+
         return Attach::disk( config('timo.disk') )->show($items) ;
     }
 

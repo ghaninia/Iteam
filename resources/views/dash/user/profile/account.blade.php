@@ -12,7 +12,7 @@
     <div class="content-box">
         <form
                 data-toggle="validator"
-                action="{{ route('dashboard.user.profile.account.store') }}"
+                action="{{ route('user.profile.account.store') }}"
                 method="POST"
                 id="profileUpdate"
                 enctype="multipart/form-data">
@@ -23,7 +23,7 @@
                 <!--------------------------------->
                 <div class="col-sm-5">
                     <div class="user-profile compact">
-                        <div class="up-head-w" style="background-image:url({{ picture('cover') }})">
+                        <div class="up-head-w" style="background-image:url({{ userPicture('cover') }})">
                             <div class="up-social">
                                 @if(!!$account->instagram_account)
                                     <a href="{{ $account->instagram_account }}">
@@ -40,7 +40,7 @@
                                 <div class="user-avatar-w">
                                     <div class="user-avatar">
                                         <div class="avatar-wrapper" title="{{ trans('dash.profile.choose_picture') }}">
-                                            <img src="{{ picture("avatar") }}" />
+                                            <img src="{{ userPicture("avatar") }}" />
                                             <div class="upload-button"></div>
                                             <input type="file" id="avatar" name="avatar" accept="image/*"/>
                                         </div>
@@ -197,7 +197,7 @@
                             <div>
                                 <div class="form-group">
                                     <div class="avatar-wrapper" title="{{ trans('dash.profile.choose_picture') }}">
-                                        <img src="{{ picture("cover") }}" />
+                                        <img src="{{ userPicture("cover") }}" />
                                         <div class="upload-button"></div>
                                         <input type="file" id="cover" name="cover" accept="image/*"/>
                                     </div>
@@ -386,7 +386,7 @@
         <div class="element-wrapper side-menu-magic">
             <h6 class="element-header">{{ trans('dash.panel.user.skills') }}</h6>
             <div class="element-box-tp">
-                <div data-url="{{ route("dashboard.api.skill" , \App\Repositories\Token::Generate('skill') ) }}" class="keywords-container" data-max="{{ $count_skill }}">
+                <div data-url="{{ route("user.api.skill" , \App\Repositories\Token::Generate('skill') ) }}" class="keywords-container" data-max="{{ $count_skill }}">
                     <div class="keyword-input-container">
                         <div class="form-group">
                             <input class="keyword-input form-control" placeholder="{{ trans('dash.profile.choose_skills') }}"/>

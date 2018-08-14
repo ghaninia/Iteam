@@ -1,15 +1,19 @@
 <?php
-namespace App\Http\Controllers\Dashboard\User;
+namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\accountStore;
 use App\Http\Requests\passwordStore;
 use App\Models\City;
 use App\Models\File;
+use App\Models\Payment;
+use App\Models\Plan;
 use App\Models\Province;
 use App\Models\User;
 use App\Repositories\Skill\Skill as apiSkill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Larabookir\Gateway\Gateway;
+use Larabookir\Gateway\Zarinpal\Zarinpal;
 
 class ProfileController extends Controller
 {
@@ -24,7 +28,7 @@ class ProfileController extends Controller
             ]
         ] ;
 
-        $account = User::withCount( 'plan' , 'teams' ,'offers')->find(Auth::guard('user')->id()) ;
+        $account = User::withCount( 'plan' , 'teams' ,'offers')->find( me()->id ) ;
 
         $cities  = City::whereHas("province" ,function ($q) use ($account) {
             $q->where("id" , $account->province_id);
@@ -43,7 +47,7 @@ class ProfileController extends Controller
 
     public function accountStore(accountStore $request)
     {
-        $account = Auth::guard('user')->user() ;
+        $account = me() ;
 
         File::pull($account , 'avatar', 'avatar' );
 
@@ -84,28 +88,103 @@ class ProfileController extends Controller
 
     public function passwordStore(passwordStore $request)
     {
-        Auth::guard('user')->user()->update([
+        me()->update([
             'password' => bcrypt( $request->input('password') )
         ]);
 
         return ResMessage(trans('dash.messages.success.profile.pass'));
     }
 
-    public function panel(Request $request)
-    {
-
-    }
-
     //*  notification profile edit  *//
     public function notification(Request $request)
     {
-        return $request->all() ;
-    }
-    public function notificationStore(Request $request)
-    {
-        return $request->all() ;
+        $information = [
+            'title' => trans('dash.panel.sidebar.profile.notification') ,
+            'breadcrumb' => [
+                trans('dash.panel.sidebar.profile.notification') => null
+            ]
+        ] ;
+        $user = me() ;
+
+        return view("dash.user.profile.notification" , compact('information' , 'user') ) ;
     }
 
+    public function notificationStore(Request $request)
+    {
+        $user = me() ;
+
+        $user->porfileNotification()->update([
+            'when_login' => $request->input('when_login' , false ) ,
+            'when_create_team' => $request->input('when_create_team' , false ) ,
+            'when_create_offer' => $request->input('when_create_offer' , false ) ,
+            'when_edit_profile' => $request->input('when_edit_profile' , false ) ,
+            'when_myteamhave_offer' => $request->input('when_myteamhave_offer' , false ) ,
+            'when_expired_panel' => $request->input('when_expired_panel' , false ) ,
+            'when_offer_confirmed' => $request->input('when_offer_confirmed' , false ) ,
+        ]);
+
+        return ResMessage( trans('dash.messages.success.profile.notification') );
+
+    }
+
+    //* panel profile edit *//
+    public function plan(Request $request)
+    {
+        $information = [
+            'title' => trans('dash.panel.sidebar.profile.changeplan') ,
+            'breadcrumb' => [
+                trans('dash.panel.sidebar.profile.changeplan') => null
+            ]
+        ] ;
+        $plans = Plan::where('price' , '<>' , 0 )->orderBy("price" , 'desc')->take(4)->get() ;
+
+        return view("dash.user.profile.plan" , compact('information' , 'plans') ) ;
+    }
+
+    public function planShow(Plan $plan)
+    {
+        $user = me()->id ;
+
+        $payment = Gateway::make(new Zarinpal()) ;
+        $payment->setCallback( route('user.profile.plan.index') ) ;
+        $payment->price( $plan->price )->ready() ;
+
+        $transID = $payment->transactionId()  ;
+        $refID = $payment->refId() ;
+
+
+        $transaction = new Payment() ;
+        $transaction->plan_id = $plan->id ;
+        $transaction->user_id = $user ;
+        $transaction->transaction_code = $transID ;
+        $transaction->ref_code = $refID ;
+        $transaction->save() ;
+
+        return $payment->redirect() ;
+    }
+
+    public function planStore(Plan $plan)
+    {
+
+        $user = me()->id ;
+
+        $payment = Gateway::make(new Zarinpal()) ;
+        $payment->setCallback( route('dashboard.user.profile.plan.index') ) ;
+        $payment->price( $plan->price )->ready() ;
+
+        $transID = $payment->transactionId()  ;
+        $refID = $payment->refId() ;
+
+
+        $transaction = new Payment() ;
+        $transaction->plan_id = $plan->id ;
+        $transaction->user_id = $user ;
+        $transaction->transaction_code = $transID ;
+        $transaction->ref_code = $refID ;
+        $transaction->save() ;
+
+        return $payment->redirect() ;
+    }
 
     //*  logout profile edit  *//
     public function logout(Request $request)
@@ -119,4 +198,5 @@ class ProfileController extends Controller
             }
         return ResMessage( trans('dash.messages.error.logout') );
     }
+
 }

@@ -1,6 +1,8 @@
 <?php
 return [
+
     'disk' => 'local' ,
+
     'profile' => [
         'avatar' => [
             'male' => 'assets/img/gender/male.svg' ,
@@ -8,6 +10,7 @@ return [
         ],
         'cover' => 'assets/img/cover.svg'
     ],
+
     'size' => [
         'full' => [
             "H" => "" ,
@@ -17,11 +20,10 @@ return [
             "H" => 200 ,
             "W" => 200 ,
         ],
-//        'medium' => [
-//            "H" => 400 ,
-//            "W" => 400 ,
-//        ]
     ],
+
     'panel_default' => 1 ,
+
+    'currency' => 'toman' ,
 
 ];

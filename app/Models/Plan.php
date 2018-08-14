@@ -8,15 +8,12 @@ class Plan extends Model
 {
     protected $fillable = [
         'name' ,
-        'plan_id' ,
-        'plan_expired_at' ,
-        'plan_created_at' ,
-
+        'description' ,
         'price' ,
         'max_create_team' ,
         'max_create_offer' ,
-        'count_skill'
-
+        'count_skill' ,
+        'sms_notification'
     ];
 
     public function users()
@@ -27,5 +24,8 @@ class Plan extends Model
             ->withTimestamps()  ;
     }
 
+    public function files(){
+        return $this->morphMany( File::class , 'fileable' ) ;
+    }
 
 }

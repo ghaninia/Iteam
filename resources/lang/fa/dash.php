@@ -1,6 +1,18 @@
 <?php
 
 return [
+
+    'currency' => [
+        'rial' => 'ریال' ,
+        'thousandrial' => 'هزار ریال' ,
+        'millionrial' => 'میلیون ریال' ,
+
+        'toman' => 'تومان' ,
+        'thousandtoman' => 'هزار تومان' ,
+        'milliontoman' => 'میلیون تومان' ,
+    ] ,
+
+
     'profile' => [
         'username' => 'نام کاربری' ,
         'enterusername' => 'نام کاربری را وارد نمایید...' ,
@@ -22,7 +34,31 @@ return [
         'save_submit' => 'ذخیره تغییرات' ,
         'choose_picture' => 'انتخاب تصویر' ,
         'choose_skills' => 'انتخاب مهارت ها' ,
+        'notification' => [
+            'when_login' => 'زمانی که وارد سایت میشود به من پیام بده ' ,
+            'when_edit_profile' => 'وقتی پروفایل خودم را آپدیت میکنم به من پیام بده ' ,
+            'when_create_offer' => 'وقتی که پیشنهاد میدهم به من پیام بده ' ,
+            'when_create_team' => 'وقتی تیم میسازم به من پیام بده ' ,
+            'when_offer_confirmed' => 'وقتی درخواست من تایید میشود به من پیام بده ' ,
+            'when_expired_panel' => 'وقتی پنلی که دارم منقضی میشود ' ,
+            'when_myteamhave_offer' => 'وقتی برای تیم من پیشنهاد داده میشود '
+        ] ,
+        'plan' => [
+            'change' => 'تغییر پلن' ,
+            'description' => 'توضیحات' ,
+            'order' => 'سفارش' ,
+            'features' => [
+                'text' => 'ویژگی ها' ,
+                'max_create_team' => 'حداکثر :attribute تیم ' ,
+                'max_create_offer' => 'حداکثر :attribute پیشنهاد ' ,
+                'count_skill' => 'حداکثر :attribute مهارت ' ,
+                'sms_notification' => 'اطلاعیه های پیامکی'
+            ]
+        ]
     ] ,
+
+
+
     'panel' => [
         'user' => [
             'avatar' => 'تصویر پروفایل' ,
@@ -71,17 +107,19 @@ return [
                 'password' => 'ویرایش گذرواژه' ,
                 'notification' => 'ویرایش نوتیفیکیشن' ,
                 'logout' => 'خروج از حساب کاربری' ,
-                'changepanel' => 'تغییر پنل کاربری'
+                'changeplan' => ' پلن کاربری'
             ]
         ],
     ],
+
     'messages' => [
         'success' => [
             'logout' =>  'شما با موفقیت از حساب کاربری خود خارج شده اید.' ,
             'profile' => [
                 'enter'  => 'سلام :attribute شما با موفقیت وارد حساب کاربری خود شده اید .' ,
                 'update' => 'حساب کاربری شما با موفقیت ویرایش گردید .' ,
-                'pass' => 'رمز عبور با موفقیت بروزرسانی گردید .'
+                'pass' => 'رمز عبور با موفقیت بروزرسانی گردید .' ,
+                'notification' => 'نوتیفیکیشن های ارسالی حساب شما ویرایش گردید .'
             ]
         ] ,
         'error' => [
@@ -90,10 +128,12 @@ return [
             'token_expired' => 'توکن شما اکسپایر شده است لطفا بعدا تلاش نمایید .' ,
         ]
     ] ,
+
     'active' => [
         'enable' => 'فعال' ,
         'disabled' => 'غیرفعال' ,
     ] ,
+
     'genders' => [
         'male'   => 'آقا' ,
         'female' => 'خانم'

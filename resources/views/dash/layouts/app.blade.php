@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="ajax-url" content="{{ route('dashboard.user.ajax') }}">
+    <meta name="ajax-url" content="{{ route('user.ajax') }}">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>{{ isset($information['title']) ? $information['title'] : options('title')  }}</title>
     <meta type="description" content="{{ isset($information['desc']) ? $information['desc'] : options('desc')  }}">
@@ -25,7 +25,7 @@
                 @if(isset($information['breadcrumb']) && is_array($information['breadcrumb']))
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('dashboard.user.main') }}">{{ trans('dash.panel.sidebar.mainpage') }}</a>
+                        <a href="{{ route('user.main') }}">{{ trans('dash.panel.sidebar.mainpage') }}</a>
                     </li>
                     @foreach($information['breadcrumb'] as $name => $link )
                         <li class="breadcrumb-item">

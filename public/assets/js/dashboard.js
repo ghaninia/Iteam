@@ -76,10 +76,9 @@ function base64_decode(str) {
     }).join(''));
 }
 
-
 // login , profileUpdate
 $(function () {
-    $("form#login , form#profileUpdate , form#passwordUpdate").validator().submit(function (e) {
+    $("form#login , form#profileUpdate , form#passwordUpdate , form#notificationUpdate").validator().submit(function (e) {
         var form = $(this) ;
         var formData = new FormData($(this)[0]);
         if (!e.isDefaultPrevented()) {
@@ -188,7 +187,6 @@ $(function () {
     })
 });
 
-
 //province && city
 function cities(item , id) {
     NProgress.start() ;
@@ -237,7 +235,6 @@ function  printSelect(name , select) {
 }
 
 //upload
-
 $(".avatar-wrapper").each(function () {
     var wrapper = $(this) ;
     $(".upload-button" , this ).click(function () {
@@ -254,7 +251,6 @@ $(".avatar-wrapper").each(function () {
         }
     });
 });
-
 
 //keyword container
 $(".keywords-container").each(function() {
@@ -324,4 +320,3 @@ $(".keywords-container").each(function() {
         setTimeout(removeFromMarkup, 500);
     });
 });
-

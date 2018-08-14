@@ -13,10 +13,11 @@ class CreatePlansTable extends Migration
             $table->increments('id');
             $table->string('name') ;
             $table->text('description')->nullable() ;
-            $table->string("price")->default(0) ; 
+            $table->float("price")->default(0) ;
             $table->integer("max_create_team")->default(0) ;
             $table->integer("max_create_offer")->default(0) ;
             $table->integer('count_skill')->default(0) ;
+            $table->boolean('sms_notification')->default(false) ;
             $table->timestamps();
         });
     }

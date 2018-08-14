@@ -119,4 +119,20 @@ class User extends Authenticatable
 
         return $information ;
     }
+
+
+    public function porfileNotification()
+    {
+        return $this->hasOne(PorfileNotification::class) ;
+    }
+
+    public static function boot()
+    {
+        static::created(function ($user){
+            $user->porfileNotification()->create() ;
+        });
+
+        parent::boot() ;
+    }
+    
 }

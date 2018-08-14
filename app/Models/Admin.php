@@ -41,4 +41,6 @@ class Admin extends Authenticatable
     {
         return $this->morphMany(Ticket::class , "ticketable") ;
     }
+
+
 }

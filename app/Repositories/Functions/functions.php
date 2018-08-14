@@ -6,12 +6,21 @@ function options($key , $default = null )
     return \App\Models\Option::get($key , $default ) ;
 }
 
+function picture( $type , $size = 'thumbnail' )
+{
+    $picture = File::show( $type , null , $size)->first() ;
+    if (!! $picture)
+        return $picture ;
+    else{
+        return null ;
+    }
+}
 
-function picture( $type , $size = 'full' , $guard = 'user' , $user = null ){
+function userPicture( $type , $size = 'full' , $guard = 'user' , $user = null ){
     if ( auth()->guard($guard)->check() && is_null($user))
     {
         $user = auth()->guard($guard)->user() ;
-        $picture = File::show($user , $type , $size)->first() ;
+        $picture = File::show( $user , $type , $size)->first() ;
         if (!! $picture)
             return $picture ;
         else{
@@ -32,7 +41,6 @@ function picture( $type , $size = 'full' , $guard = 'user' , $user = null ){
         }
     }
 }
-
 
 function username($user = null , $guard = 'user')
 {
@@ -80,4 +88,52 @@ function str_slice($text , $length = 200 )
 function genders()
 {
     return ['male','female'] ;
+}
+
+function currency ($currency , $numberFormat = false )
+{
+    //*  قیمت دیفالت سیستم  *//
+    $format = strtolower( config('timo.currency') ) ;
+
+    if ( $format == 'rial' )
+        return [
+            'currency' => $numberFormat ?  number_format($currency) : $currency  ,
+            'type' => trans('dash.currency.rial')
+        ] ;
+    elseif ($format == 'toman')
+        return [
+            'currency' => $numberFormat ?  number_format( round($currency / 10 , 2) ) : round($currency / 10 , 2) ,
+            'type' => trans('dash.currency.toman')
+        ];
+    elseif ($format == 'thousandtoman')
+        return [
+            'currency' => $numberFormat ?  number_format( round($currency / 1000 , 2) ) : round($currency / 1000 , 2),
+            'type' => trans('dash.currency.thousandtoman')
+        ];
+    elseif ($format == 'thousandrial')
+        return [
+            'currency' => $numberFormat ? number_format( round($currency / 10000 , 2) ) :round($currency / 10000 , 2),
+            'type' => trans('dash.currency.thousandrial')
+        ];
+    elseif ($format == 'millionrial')
+        return [
+            'currency' => $numberFormat ? number_format( round($currency / 10000000 , 2) ) : round($currency / 10000000 , 2)  ,
+            'type' => trans('dash.currency.millionrial')
+        ];
+    elseif ($format == 'milliontoman')
+        return [
+            'currency' => $numberFormat ? number_format( round($currency / 1000000 , 2) ) :  round($currency / 1000000 , 2) ,
+            'type' => trans('dash.currency.milliontoman')
+        ];
+}
+
+function me()
+{
+    $guards = config("auth.guards") ;
+    $currentGuard = null ;
+    foreach ($guards as $guard => $value )
+        if  ( \Auth::guard($guard)->check() )
+            $currentGuard = $guard ;
+
+    return \Auth::guard($currentGuard)->user() ;
 }
