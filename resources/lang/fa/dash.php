@@ -12,7 +12,6 @@ return [
         'milliontoman' => 'میلیون تومان' ,
     ] ,
 
-
     'profile' => [
         'username' => 'نام کاربری' ,
         'enterusername' => 'نام کاربری را وارد نمایید...' ,
@@ -56,8 +55,6 @@ return [
             ]
         ]
     ] ,
-
-
 
     'panel' => [
         'user' => [
@@ -137,5 +134,18 @@ return [
     'genders' => [
         'male'   => 'آقا' ,
         'female' => 'خانم'
+    ] ,
+
+    'sidebar' => [
+        'payments' => 'پرداخت ها' ,
+    ],
+
+    'payment' => [
+        'alled' => 'پرداخت ها گذشته' ,
+        'successed' => 'پرداخت ها موفق' ,
+        'failed' => 'ناموفق' ,
+        'information' => 'مشاهده جزییات' ,
+        'new_plan' => 'پلن کاربری جدید' ,
+        'overview' => 'جزییات پرداخت ها'
     ]
 ];

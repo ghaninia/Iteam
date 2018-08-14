@@ -1,4 +1,14 @@
-<div class="menu-w menu-activated-on-hover menu-has-selected-link selected-menu-color-light color-scheme-light color-style-default sub-menu-color-bright menu-position-side menu-side-left menu-layout-mini sub-menu-style-over">
+<div class="menu-w
+    menu-activated-on-hover
+    menu-has-selected-link
+    selected-menu-color-light
+    color-scheme-light
+    color-style-default
+    sub-menu-color-bright
+    menu-position-side
+    menu-side-left
+    menu-layout-mini
+    sub-menu-style-over">
 
     <div class="logo-w">
         <a class="logo" href="index.html">
@@ -65,5 +75,15 @@
                 </ul>
             </div>
         </div>
+        <ul class="main-menu">
+            <li class="selected">
+                <a href="{{ route('user.payment.index') }}">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-coins-4"></div>
+                    </div>
+                    <span>{{ trans('dash.sidebar.payment') }}</span>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>

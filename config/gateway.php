@@ -117,5 +117,5 @@ return [
     //-------------------------------
     // Tables names
     //--------------------------------
-    'table'    => 'transaction',
+    'table'    => 'transactions',
 ];

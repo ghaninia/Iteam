@@ -40,4 +40,10 @@ Route::namespace('User\\')->name('user.')->middleware('auth:user')->group(functi
 
     });
 
+    Route::prefix("payment")->name("payment.")->group(function (){
+        Route::get("/" , "PaymentController@index")->name('index') ;
+    });
+
+
+
 });

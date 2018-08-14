@@ -144,24 +144,7 @@ class ProfileController extends Controller
 
     public function planShow(Plan $plan)
     {
-        $user = me()->id ;
-        $gateway = Gateway::zarinpal() ;
-        $gateway->setCallback( route('user.profile.plan.payment') );
-        $gateway
-            ->price( $plan->price )
-            ->ready();
-
-        // get authority
-
-        Payment::create([
-            'user_id' => me()->id ,
-            'plan_id' => $plan->id ,
-            'ref_id' => $gateway->refId() ,
-            'transaction_id' => $gateway->transactionId() ,
-        ]);
-
-        // redirect payment page
-        return $gateway->redirect();
+        return $this->planStore($plan) ;
     }
 
     public function planStore(Plan $plan)

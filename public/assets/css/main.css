@@ -17876,8 +17876,9 @@ a.el-tablo:hover .label {
 }
 
 .element-balances span.trending-down-basic {
-    color: #e65252;
-    padding: 0px
+    color: rgba(90, 99, 126, 0.49);
+    padding: 0px ;
+    font-size : 12px!important
 }
 
 .element-balances .balance.balance-v2 {
