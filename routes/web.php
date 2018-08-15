@@ -37,9 +37,7 @@ Route::namespace('User\\')->name('user.')->middleware('auth:user')->group(functi
         });
 
         Route::post( "logout"  , "ProfileController@logout")->name("logout") ;
-
     });
 
     Route::resource('payment', 'PaymentController' , ['only' => ['index' , 'show']]);
-
 });

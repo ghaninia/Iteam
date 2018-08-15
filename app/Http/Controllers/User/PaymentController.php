@@ -39,7 +39,7 @@ class PaymentController extends Controller
         return view('dash.user.payment.index' , compact('information' , 'payments_log' , 'payments') ) ;
     }
 
-    public function factor(Request $request)
+    public function show(Request $request)
     {
 
     }

@@ -118,7 +118,7 @@
                                     </td>
                                     <td class="text-center">
                                         @if(!! $payment->tracking_code )
-                                            <a class="badge badge-success" href="">
+                                            <a class="badge badge-success" href="{{ route('user.payment.show' , $payment->id ) }}">
                                                 {{ $payment->tracking_code }}
                                             </a>
                                         @endif
