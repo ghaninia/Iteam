@@ -181,11 +181,14 @@ class ProfileController extends Controller
                     'status' => Enum::TRANSACTION_SUCCEED
                 ]) ;
         }
-        catch (RetryException $e){
+        catch (RetryException $e){ // کاربر دوباره صفحه فاکتور را رفرش کرده است !
             return $e->getMessage() ;
         }
-        catch (\Exception $e) {
-            echo $e->getMessage();
+        catch (\Exception $e) { // کاربر از پرداخت منصرف شده است .
+            Payment::where('status' , Enum::TRANSACTION_INIT)
+                ->where('transaction_id' , $request->input('transaction_id'))
+                ->update(['status' => Enum::TRANSACTION_FAILED ]) ;
+
         }
     }
 

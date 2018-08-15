@@ -137,3 +137,16 @@ function me()
 
     return \Auth::guard($currentGuard)->user() ;
 }
+
+function statusTransaction($status)
+{
+    switch ($status)
+    {
+        case "SUCCEED" :
+            return trans('dash.status.succeed') ;
+        case "FAILED" :
+            return trans('dash.status.failed') ;
+        case "INIT" :
+            return trans('dash.status.init') ;
+    }
+}

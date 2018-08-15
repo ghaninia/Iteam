@@ -33,6 +33,8 @@ class PaymentController extends Controller
                             ->sum('transaction.price')
         ];
 
-        return view('dash.user.payment.index' , compact('information' , 'payments_log') ) ;
+        $payments = me()->load('payments.transaction')->payments->sortByDesc('created_at');
+
+        return view('dash.user.payment.index' , compact('information' , 'payments_log' , 'payments') ) ;
     }
 }

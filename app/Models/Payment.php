@@ -13,7 +13,8 @@ class Payment extends Model
         'tracking_code' ,
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class) ;
     }
 
@@ -25,6 +26,11 @@ class Payment extends Model
     public function transaction()
     {
         return $this->hasOne( Transaction::class , 'ref_id' , 'ref_id') ;
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return verta($value) ;
     }
 
 }
