@@ -6,6 +6,7 @@ use Larabookir\Gateway\Enum;
 
 class PaymentController extends Controller
 {
+
     public function index(Request $request)
     {
         $information = [
@@ -36,5 +37,10 @@ class PaymentController extends Controller
         $payments = me()->load('payments.transaction')->payments->sortByDesc('created_at');
 
         return view('dash.user.payment.index' , compact('information' , 'payments_log' , 'payments') ) ;
+    }
+
+    public function factor(Request $request)
+    {
+
     }
 }

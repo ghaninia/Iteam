@@ -33,4 +33,9 @@ class Payment extends Model
         return verta($value) ;
     }
 
+    public function getRouteKeyName()
+    {
+        return 'tracking_code' ;
+    }
+
 }
