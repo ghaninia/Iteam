@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
+use App\Models\Plan;
 use Illuminate\Http\Request ;
 use Larabookir\Gateway\Enum;
 
@@ -39,8 +41,17 @@ class PaymentController extends Controller
         return view('dash.user.payment.index' , compact('information' , 'payments_log' , 'payments') ) ;
     }
 
-    public function show(Request $request)
+    public function show(Request $request , Payment $payment )
     {
 
+        $information = [
+            'title' => trans('dash.payment.show_factor' , [ 'attribute' => $payment->tracking_code ] ) ,
+            'breadcrumb' => [
+                trans('dash.sidebar.payments') => route('user.payment.index') ,
+                trans('dash.payment.show_factor' , [ 'attribute' => $payment->tracking_code ] ) => null
+            ]
+        ] ;
+
+        return view('dash.user.payment.show' , compact('information' , 'payment') ) ;
     }
 }

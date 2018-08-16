@@ -156,9 +156,11 @@ return [
         'successed' => 'پرداخت ها موفق' ,
         'failed' => 'ناموفق' ,
         'information' => 'مشاهده جزییات' ,
+        'show_factor' => "جزییات فیش :attribute " ,
         'new_plan' => 'پلن کاربری جدید' ,
         'overview' => 'جزییات پرداخت ها' ,
-        'lasted_transaction' => '10 فاکتور آخر '
+        'lasted_transaction' => '10 فاکتور آخر ' ,
+        'factor' => 'شماره فاکتور'
     ] ,
 
     'status' => [
