@@ -17378,7 +17378,9 @@ a.el-tablo:hover .label {
 .invoice-body {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex
+    display: flex ;
+    position: relative ;
+    z-index: 999 ;
 }
 
 .invoice-body .invoice-desc {

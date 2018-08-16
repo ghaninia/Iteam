@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="invoice-body">
-                    
+
                     <div class="invoice-desc">
                         <div class="desc-label">#{{ trans('dash.payment.factor') }}</div>
                         <div class="desc-value">{{ $payment->tracking_code }}</div>
@@ -39,7 +39,8 @@
                             <tr>
                                 <td>User Interface</td>
                                 <td>2</td>
-                                <td class="text-right">$4,500</td>
+                                @php( $payment = currency($payment->transaction->price) )
+                                <td class="text-right">{{ sprintf('%s %s' , $payment['currency'] , $payment['type'] ) }}</td>
                             </tr>
                             <tr>
                                 <td>Framework Development</td>
