@@ -23,12 +23,6 @@
                                         <span>{{ $alled['type'] }}</span>
                                     </span>
                                 </div>
-                                <div class="balance-link">
-                                    <a class="btn btn-link btn-underlined" href="#">
-                                        <span>{{ trans('dash.payment.information') }}</span>
-                                        <i class="os-icon os-icon-arrow-right4"></i>
-                                    </a>
-                                </div>
                             </div>
                             <div class="balance">
                                 <div class="balance-title">{{ trans('dash.payment.successed') }}</div>
@@ -39,12 +33,6 @@
                                         <span>{{ $successed['type'] }}</span>
                                     </span>
                                 </div>
-                                <div class="balance-link">
-                                    <a class="btn btn-link btn-underlined" href="#">
-                                        <span>{{ trans('dash.payment.information') }}</span>
-                                        <i class="os-icon os-icon-arrow-right4"></i>
-                                    </a>
-                                </div>
                             </div>
                             <div class="balance">
                                 <div class="balance-title">{{ trans('dash.payment.failed') }}</div>
@@ -54,12 +42,6 @@
                                     <span class="trending trending-down-basic">
                                         <span>{{ $failed['type'] }}</span>
                                     </span>
-                                </div>
-                                <div class="balance-link">
-                                    <a class="btn btn-link btn-underlined btn-gold" href="#">
-                                        <span>{{ trans('dash.payment.information') }}</span>
-                                        <i class="os-icon os-icon-arrow-right4"></i>
-                                    </a>
                                 </div>
                             </div>
                         </div>

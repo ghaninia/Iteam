@@ -8,8 +8,9 @@ class Transaction extends Model
 {
     protected $table = "transactions" ;
 
+
     public function log()
     {
-        return $this->belongsTo(TransactionLog::class , 'transaction_id' , 'id');
+        return $this->hasOne( TransactionLog::class );
     }
 }
