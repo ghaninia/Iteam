@@ -16,6 +16,7 @@ class CreateTeamsTable extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger("user_id") ; // maker team user id
+            $table->unsignedInteger("plan_id")->nullable() ; // maker team user id
             $table->boolean('default_plan')->default(true) ; // agar plan ma default boot hatman in ra true kon ;
             $table->string("name") ;
 
@@ -42,6 +43,7 @@ class CreateTeamsTable extends Migration
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate('cascade') ;
+            $table->foreign("plan_id")->references("id")->on("plans")->onDelete("cascade")->onUpdate('cascade') ;
         });
     }
 

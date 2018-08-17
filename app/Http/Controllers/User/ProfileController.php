@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Repositories\Skill\Skill as apiSkill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Larabookir\Gateway\Enum;
 use Larabookir\Gateway\Exceptions\RetryException;
 use Larabookir\Gateway\Gateway;
@@ -175,21 +176,28 @@ class ProfileController extends Controller
             $gateway = Gateway::verify();
             $trackingCode = $gateway->trackingCode();
             $refId = $gateway->refId();
-            Payment::where('ref_id' , $refId)
-                ->update([
+            $payment = Payment::where('ref_id' , $refId)->first() ;
+            Payment::where('ref_id' , $refId)->update([
                     'tracking_code' => $trackingCode ,
                     'status' => Enum::TRANSACTION_SUCCEED
                 ]) ;
+
+            $message = trans('dash.payment.message.succeed');
+            return redirect()->route('user.payment.show' , $payment->id )->with([
+                'message' => $message ,
+                'status' => true
+            ]);
         }
         catch (RetryException $e){ // کاربر دوباره صفحه فاکتور را رفرش کرده است !
-            return $e->getMessage() ;
+            $message =  $e->getMessage() ;
         }
         catch (\Exception $e) { // کاربر از پرداخت منصرف شده است .
+            $message =  $e->getMessage() ;
             Payment::where('status' , Enum::TRANSACTION_INIT)
                 ->where('transaction_id' , $request->input('transaction_id'))
                 ->update(['status' => Enum::TRANSACTION_FAILED ]) ;
-
         }
+        return ResMessage($message , false , 'user.payment.index') ;
     }
 
 

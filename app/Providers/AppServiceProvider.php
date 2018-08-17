@@ -19,10 +19,9 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191) ;
 
         //* فقط فاکتور های خودت رو ببین *//
-        $gate->define("payment" , function (User $user , Payment $payment){
+        $gate->define("payment" , function ( $user , Payment $payment){
             return $payment->user_id == $user->id ;
         });
-
     }
 
     /**

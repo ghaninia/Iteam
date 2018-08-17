@@ -8,7 +8,6 @@ use Larabookir\Gateway\Enum;
 
 class PaymentController extends Controller
 {
-
     public function index(Request $request)
     {
         $information = [
@@ -43,6 +42,8 @@ class PaymentController extends Controller
 
     public function show(Request $request , Payment $payment )
     {
+
+        $this->authorize("payment" , $payment ) ;
 
         $information = [
             'title' => trans('dash.payment.show_factor' , [ 'attribute' => $payment->tracking_code ] ) ,

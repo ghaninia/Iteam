@@ -8,6 +8,7 @@ class Team extends Model
 {
     protected $fillable = [
         'user_id' ,
+        'plan_id' ,
         'name' ,
         'default_plan' ,
         // etelaate tamas

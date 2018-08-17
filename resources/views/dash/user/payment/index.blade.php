@@ -106,7 +106,7 @@
                                         @endif
                                     </td>
                                     <td class="text-right bolder nowrap">
-                                        @php( $currency = currency($payment->transaction->price) )
+                                        @php( $currency = currency($payment->plan->price , true ) )
                                         @switch($payment->status)
                                             @case(\Larabookir\Gateway\Enum::TRANSACTION_SUCCEED)
                                                 <span class="text-success">+ {{ sprintf("%s %s" , $currency['currency'] , $currency['type'] ) }}</span>

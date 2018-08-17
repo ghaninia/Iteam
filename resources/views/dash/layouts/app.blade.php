@@ -49,6 +49,18 @@
     </div>
 
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
-
+    @if(session()->has(['status' , 'message']))
+    <script>
+        Snackbar.show({
+            text: '{{ session()->pull('message') }}' ,
+            pos: 'bottom-right',
+            showAction: false ,
+            actionText: "Dismiss",
+            duration: 3000,
+            textColor: '#fff',
+            backgroundColor: '#383838'
+        });
+    </script>
+    @endif
 </body>
 </html>
