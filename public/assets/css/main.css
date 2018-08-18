@@ -12862,8 +12862,8 @@ body:before {
     content: "";
     position: absolute;
     z-index: -1;
-    background: -webkit-gradient(linear, right top, left bottom, from(#D7BBEA), to(#65A8F1));
-    background: linear-gradient(to bottom left, #D7BBEA, #65A8F1);
+    background: -webkit-gradient(linear, left top, right bottom, from(#D7BBEA), to(#65A8F1));
+    background: linear-gradient(to bottom right, #D7BBEA, #65A8F1);
     top: 0px;
     right: 0px;
     bottom: 0px;
@@ -13355,6 +13355,7 @@ body.menu-side-left .layout-w {
     -webkit-box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
     box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
     -webkit-box-flex: 0;
+    border-radius: 0 6px 6px 0;
     -ms-flex: 0 0 260px;
     flex: 0 0 260px;
     border-left: 0px solid rgba(0, 0, 0, 0.05)
@@ -13390,7 +13391,7 @@ body.menu-side-left .layout-w {
     box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.2);
     position: absolute;
     top: -1px;
-    right: -10px;
+    right: 0;
     overflow: hidden;
     padding: 1rem;
     z-index: 999;
@@ -13678,7 +13679,7 @@ body.menu-side-left .layout-w {
     color: #0073ff;
     font-size: 27px;
     display: block;
-    padding: 1rem 1rem 1rem 0rem;
+    padding: 1rem  0rem 1rem 1rem;
     width: 70px;
     text-align: center;
     -webkit-transition: all 0.2s ease;
