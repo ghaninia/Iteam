@@ -11,8 +11,9 @@ class Team extends Model
         'plan_id' ,
         'name' ,
         'default_plan' ,
+        'expired' ,
+        'expire_day' ,
         // etelaate tamas
-
         'phone' ,
         'fax' ,
         'mobile' ,

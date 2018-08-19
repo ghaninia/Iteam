@@ -18,6 +18,9 @@ class CreateTeamsTable extends Migration
             $table->unsignedInteger("user_id") ; // maker team user id
             $table->unsignedInteger("plan_id")->nullable() ; // maker team user id
             $table->boolean('default_plan')->default(true) ; // agar plan ma default boot hatman in ra true kon ;
+            $table->integer('expire_day') ;
+            $table->boolean('expired')->default(false) ;
+
             $table->string("name") ;
 
             // dar sorate pardaljt ghabel namayesh ast !
@@ -37,6 +40,8 @@ class CreateTeamsTable extends Migration
             $table->text("interplay_fiscal")->nullable() ; //نوع تعامل مالی : هم بنیان گذار / شراکتی حقوق ثابت
             $table->string("min_salary")->default(0) ;
             $table->string("max_salary")->default(0) ;
+
+
 
             $table->unsignedInteger("province_id")->nullable();
             $table->unsignedInteger("city_id")->nullable();

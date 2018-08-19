@@ -11099,8 +11099,8 @@ legend:before {
     font-size: .9rem;
      font-family: "Sahel" , tahoma;
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px
+    /*text-transform: uppercase;*/
+    /*letter-spacing: 2px*/
 }
 
 .nav.upper.nav-tabs .nav-link.active:after,
@@ -11182,7 +11182,7 @@ legend:before {
     background-color: #047bf8;
     position: absolute;
     bottom: -2px;
-    right: 50%;
+    left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     -webkit-transition: all 0.2s ease;

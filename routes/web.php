@@ -40,4 +40,7 @@ Route::namespace('User\\')->name('user.')->middleware('auth:user')->group(functi
     });
 
     Route::resource('payment', 'PaymentController' , ['only' => ['index' , 'show']]);
+
+    Route::resource('team' , 'TeamController') ;
+
 });

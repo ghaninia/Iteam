@@ -138,15 +138,14 @@ return [
 
     'sidebar' => [
         'payments' => 'پرداخت ها' ,
+        'teams' => 'تیم ها'
     ],
-
 
     'payment' => [
         'message' => [
             'succeed' => 'تراکنش با موفقیت انجام گردید .' ,
             'failed' => 'تراکنش انجام نگردید .' ,
         ] ,
-
         'table' => [
             'status' => 'وضعیت پرداخت' ,
             'date' => 'تاریخ فاکتور' ,
@@ -174,7 +173,12 @@ return [
         'result_message' => 'توضیحات بانک' ,
         'sum' => 'جمع کل' ,
         'price' => 'قیمت' ,
-        ''
+    ] ,
+
+    'team' => [
+        'active' => 'فعال' ,
+        'closed' => 'بسته شده' ,
+        'overview' => 'مشاهده همه'
     ] ,
 
     'status' => [
