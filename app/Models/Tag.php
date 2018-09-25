@@ -36,5 +36,9 @@ class Tag extends Model
         return $this->belongsTo(Tag::class) ;
     }
 
+    public function scopeParents()
+    {
+        return $this->whereNull('tag_id') ;
+    }
 
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -13,7 +14,6 @@ class TeamController extends Controller
     public function index()
     {
         $teams = me()->teams ;
-
         return view('dash.user.team.index' , compact('teams') );
     }
 
@@ -24,7 +24,14 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        $information = [
+            'title' => trans('dash.team.make') ,
+            'breadcrumb' => [
+                trans('dash.team.make') => null
+            ]
+        ] ;
+
+        return view('dash.user.team.create' , compact('information') ) ;
     }
 
     /**
