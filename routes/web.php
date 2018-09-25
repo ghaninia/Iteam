@@ -1,7 +1,7 @@
 <?php
 Auth::routes() ;
 
-Route::namespace('User\\')->name('user.')->middleware('auth:user')->group(function (){
+Route::namespace('User')->name('user.')->middleware('auth:user')->group(function (){
 
     Route::name('api.')->namespace('Api\\')->prefix('api')->group(function (){
         Route::get( "skills/{token}" , 'ApiController@skills' )->name("skill")->middleware("token:skill") ;

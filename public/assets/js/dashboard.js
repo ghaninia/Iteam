@@ -5,7 +5,6 @@ var data = {
 
 (function ($) {
     $.fn.serializeFormJSON = function () {
-
         var o = {};
         var a = this.serializeArray();
         $.each(a, function () {
@@ -21,7 +20,6 @@ var data = {
         return o;
     };
 })(jQuery);
-
 
 //set coockie
 function setCookie(cname, cvalue, exdays) {
@@ -216,7 +214,7 @@ function cities(item , id) {
     }
     NProgress.done() ;
 }
-function  printSelect(name , select) {
+function printSelect(name , select) {
     var items = JSON.parse(getCookie(name)) ;
     select.animate({opacity : "0.5" }) ;
 
@@ -227,10 +225,7 @@ function  printSelect(name , select) {
         {
             select.append("<option value='"+items[i]['id']+"'>"+items[i]['name']+"</option>") ;
         }
-
-
     }
-
     select.animate({opacity : "1" }) ;
 }
 

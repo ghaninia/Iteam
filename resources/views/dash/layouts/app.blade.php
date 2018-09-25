@@ -8,10 +8,6 @@
     <meta type="description" content="{{ isset($information['desc']) ? $information['desc'] : options('desc')  }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/js/library.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 
 </head>
 <body class="with-content-panel menu-position-side menu-side-right">
@@ -49,6 +45,11 @@
         </div>
     </div>
 
+
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/library.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     @if(session()->has(['status' , 'message']))
     <script>
         Snackbar.show({
