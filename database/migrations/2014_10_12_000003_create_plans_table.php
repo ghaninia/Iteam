@@ -14,6 +14,8 @@ class CreatePlansTable extends Migration
             $table->string('name') ;
             $table->text('description')->nullable() ;
             $table->float("price")->default(0) ;
+            $table->integer("max_life")->default(1) ; // chand roz bad bemirad barhasb roooz
+
             $table->integer("max_create_team")->default(0) ;
             $table->integer("max_create_offer")->default(0) ;
             $table->integer('count_skill')->default(0) ;

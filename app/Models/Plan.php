@@ -12,6 +12,7 @@ class Plan extends Model
         'price' ,
         'max_create_team' ,
         'max_create_offer' ,
+        'die_day' ,
         'count_skill' ,
         'sms_notification'
     ];

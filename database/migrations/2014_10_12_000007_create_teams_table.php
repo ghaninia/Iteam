@@ -15,11 +15,13 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->tinyInteger("status")->default(0)->comment("0 => not confirmed , 1 => confirmed , 2 => expired ") ;
+            $table->integer('expired_at') ; // zamani ke karbar plan dash in barasas plan taeed mishe
+
             $table->unsignedInteger("user_id") ; // maker team user id
-            $table->unsignedInteger("plan_id")->nullable() ; // maker team user id
-            $table->boolean('default_plan')->default(true) ; // agar plan ma default boot hatman in ra true kon ;
-            $table->integer('expire_day') ;
-            $table->boolean('expired')->default(false) ;
+            $table->unsignedInteger("plan_id") ; // maker team user id
+            $table->boolean('default_plan') ; // agar plan ma default boot hatman in ra true kon ;
 
             $table->string("name") ;
 

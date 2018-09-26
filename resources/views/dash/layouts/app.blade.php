@@ -44,7 +44,6 @@
         </div>
     </div>
 
-
     @if(session()->has(['status' , 'message']))
     <script>
         Snackbar.show({

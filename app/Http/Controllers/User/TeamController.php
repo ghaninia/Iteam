@@ -2,18 +2,43 @@
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        $teams = me()->teams ;
+
+        if ($request->ajax())
+            return $request->input("state") ;
+
+        $status = $request->input("expired") ;
+        $create_time = $request->input("create_time") ;
+
+        $teams = Team::where( "user_id" , me()->id )
+            // filter status
+            ->when($status , function ($query) use ($status){
+                switch ($status)
+                {
+                    case "init" :
+                        $query->where( "status" , 0 ) ;
+                    case "confirmed" :
+                        $query->where( "status" , 1 ) ;
+                        break ;
+                    case "expired" :
+                        $query->where( "status" , 2 ) ;
+                    default :
+                        break ;
+                }
+            })
+            // filter created at
+            ->when("create_time" , function ($query) use ($create_time){
+
+            })
+            ->paginate(10);
+
         return view('dash.user.team.index' , compact('teams') );
     }
 

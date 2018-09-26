@@ -336,4 +336,96 @@ $(function () {
     });
 });
 
-// team page
+//create serialize
+function http_build_query(obj) {
+    var str = [];
+    for (var p in obj)
+        if (obj.hasOwnProperty(p)) {
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        }
+    return str.join("&");
+} ;
+
+//location query to obj
+function queryString(queryStr = "") {
+    var result = {};
+    var qs ;
+
+    if(queryStr == "")
+    {
+        if (!window.location.search.length) return {};
+        qs = window.location.search.slice(1);
+    }else {
+        qs = queryStr.split("?")[1] ;
+    }
+
+    var parts = qs.split("&");
+    for (var i = 0, len = parts.length; i < len; i++) {
+        var tokens = parts[i].split("=");
+        if (jQuery.trim(tokens[1]) != "") {
+            result[tokens[0]] = decodeURIComponent(tokens[1]);
+        }
+    }
+    return result;
+}
+
+// HttpCache
+HttpCaches = [] ;
+function HttpCache(url , options = {} ){
+
+    if(HttpCaches[url] != undefined ){
+        options.success(HttpCaches[url]) ;
+    }else {
+        options.url = url ;
+        options.dataType = options.dataType || "json" ;
+        options.type = options.type || "get" ;
+        options.header = options.header || {} ;
+        options.data = options.data || {} ;
+        var JQxhr = $.ajax(options).done( (response) => {
+            HttpCaches[url] = response ;
+        });
+    }
+}
+
+// ajax tab
+$(function () {
+
+    $(".nav-tabs.ajax").each(function () {
+        let warper = $(this) ; // warper object
+        let action = $(this).data("action") ; // action name
+        let push = $(this).data("push") ;
+
+        $("li a" , warper).click(function(e){
+
+            if (! $(this).hasClass("active") )
+            {
+                e.preventDefault() ;
+                let a = $(this) ;
+
+                warper.find(".active").removeClass("active") ;
+                a.addClass("active") ;
+
+                NProgress.start() ;
+
+                var query = queryString() ;
+                query[ action ] = a.data(action) ;
+                query = http_build_query(query) ;
+
+                var url = window.location.href.split("?")[0] ;
+                url += "?" + query ;
+                window.history.pushState("" , "" , url ) ;
+                HttpCache(url , {
+                    "dataType" : "text" ,
+                    "success"  : function (response) {
+                        $(push).html(response) ;
+                    }
+                }) ;
+                NProgress.done() ;
+            }
+        });
+    });
+
+}) ;
+
+
+

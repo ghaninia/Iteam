@@ -47,6 +47,7 @@
                         <li>{{ trans("dash.profile.plan.features.max_create_team" , ['attribute' => $plan->max_create_team ]) }}</li>
                         <li>{{ trans("dash.profile.plan.features.max_create_offer" , ['attribute' => $plan->max_create_offer ]) }}</li>
                         <li>{{ trans("dash.profile.plan.features.count_skill" , ['attribute' => $plan->count_skill ]) }}</li>
+                        <li>{{ trans("dash.profile.plan.features.max_life" , ['attribute' => $plan->max_life ]) }}</li>
                         @if($plan->sms_notification)
                             <li>{{ trans("dash.profile.plan.features.sms_notification") }}</li>
                         @endif

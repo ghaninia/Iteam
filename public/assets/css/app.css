@@ -21081,11 +21081,11 @@ a.with-avatar span {
 }
 
 .projects-list .project-head .project-title {
-    text-transform: uppercase;
-    letter-spacing: 2px
+    /*text-transform: uppercase;*/
+    /*letter-spacing: 2px*/
 }
 
-.projects-list .project-head .project-title h5 {
+.projects-list .project-head .project-title h4 {
     margin-bottom: 0
 }
 

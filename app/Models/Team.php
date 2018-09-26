@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Models;
-
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
@@ -10,6 +9,8 @@ class Team extends Model
         'user_id' ,
         'plan_id' ,
         'name' ,
+        'expire_day' ,
+        'status' ,
 
         // etelaate tamas
         'phone' ,
@@ -30,7 +31,6 @@ class Team extends Model
         'province_id' ,
         'city_id'
     ];
-
 
     protected $hidden = [
         'phone' ,
@@ -61,6 +61,12 @@ class Team extends Model
         return $this->hasMany(Offer::class) ;
     }
 
-    
-
+    public static function userCreate(array $data)
+    {
+        $data['plan_id'] = me()->plan->id ;
+        $data['expired_at'] = Carbon::now()->subDay( me()->plan->max_life ) ;
+        $data['user_id'] = me()->id ;
+        $data['default_plan'] = config("timo.panel_default") != me()->plan->id ? : true ;
+        return static::create($data) ;
+    }
 }

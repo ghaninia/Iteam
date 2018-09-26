@@ -51,7 +51,8 @@ return [
                 'max_create_team' => 'حداکثر :attribute تیم ' ,
                 'max_create_offer' => 'حداکثر :attribute پیشنهاد ' ,
                 'count_skill' => 'حداکثر :attribute مهارت ' ,
-                'sms_notification' => 'اطلاعیه های پیامکی'
+                'sms_notification' => 'اطلاعیه های پیامکی' ,
+                'max_life' => 'حداکثر زندگی : :attribute روز' ,
             ]
         ]
     ] ,
@@ -176,9 +177,10 @@ return [
     ] ,
 
     'team' => [
-        'active' => 'فعال' ,
-        'closed' => 'بسته شده' ,
-        'overview' => 'مشاهده همه' ,
+        'confirmed' => 'تایید شده' ,
+        'init' => 'در انتظار تایید' ,
+        'expired' => 'منقضی شده' ,
+        'all' => 'تیم های من' ,
         'make' => 'تیم جدید' ,
 
     ] ,

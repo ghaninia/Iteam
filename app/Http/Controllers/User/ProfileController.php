@@ -200,7 +200,6 @@ class ProfileController extends Controller
         return ResMessage($message , false , 'user.payment.index') ;
     }
 
-
     //*  logout profile edit  *//
     public function logout(Request $request)
     {
