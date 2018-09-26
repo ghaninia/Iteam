@@ -17,7 +17,7 @@ class CreateTeamsTable extends Migration
             $table->increments('id');
 
             $table->tinyInteger("status")->default(0)->comment("0 => not confirmed , 1 => confirmed , 2 => expired ") ;
-            $table->integer('expired_at') ; // zamani ke karbar plan dash in barasas plan taeed mishe
+            $table->timestamp('expired_at') ; // zamani ke karbar plan dash in barasas plan taeed mishe
 
             $table->unsignedInteger("user_id") ; // maker team user id
             $table->unsignedInteger("plan_id") ; // maker team user id

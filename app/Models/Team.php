@@ -9,7 +9,7 @@ class Team extends Model
         'user_id' ,
         'plan_id' ,
         'name' ,
-        'expire_day' ,
+        'expired_at' ,
         'status' ,
 
         // etelaate tamas
@@ -39,6 +39,10 @@ class Team extends Model
         'email',
         'website' ,
     ] ;
+
+    protected $dates = [
+        'expired_at'
+    ];
 
     public function tags()
     {
