@@ -6,9 +6,8 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>{{ isset($information['title']) ? $information['title'] : options('title')  }}</title>
     <meta type="description" content="{{ isset($information['desc']) ? $information['desc'] : options('desc')  }}">
-
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-
+    <link rel="stylesheet" href="{{ mix("assets/css/app.css") }}">
+    <script src="{{ mix("assets/js/app.js") }}"></script>
 </head>
 <body class="with-content-panel menu-position-side menu-side-right">
     <div class="all-wrapper with-side-panel solid-bg-all">
@@ -46,10 +45,6 @@
     </div>
 
 
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/js/library.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     @if(session()->has(['status' , 'message']))
     <script>
         Snackbar.show({

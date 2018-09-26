@@ -101,12 +101,13 @@ $(function () {
                     {
                         Snackbar.show({
                             text: jqXHR.responseJSON.message  ,
-                            pos: 'bottom-right',
+                            pos: 'bottom-center',
                             showAction: false ,
                             actionText: "Dismiss",
                             duration: 3000,
                             textColor: '#fff',
-                            backgroundColor: '#383838'
+                            backgroundColor: '#383838' ,
+                            showAction: false
                         });
                     }
                     if(status == 422) // validate error
@@ -120,12 +121,13 @@ $(function () {
                             setTimeout(function () {
                                 Snackbar.show({
                                     text: response[i] ,
-                                    pos: 'bottom-right',
+                                    pos: 'bottom-center',
                                     showAction: false ,
                                     actionText: "Dismiss",
                                     duration: 3000,
                                     textColor: '#fff',
-                                    backgroundColor: '#383838'
+                                    backgroundColor: '#383838',
+                                    showAction: false
                                 });
                             },100) ;
                         }
@@ -135,12 +137,13 @@ $(function () {
                     if(response.status == true)
                         Snackbar.show({
                             text: response.message ,
-                            pos: 'bottom-right',
+                            pos: 'bottom-center',
                             showAction: false ,
                             actionText: "Dismiss",
                             duration: 3000,
                             textColor: '#fff',
-                            backgroundColor: '#383838'
+                            backgroundColor: '#383838',
+                            showAction: false
                         });
                     setTimeout(function () {
                         location.reload() ;
@@ -168,10 +171,11 @@ $(function () {
             success : function (response) {
                 Snackbar.show({
                     text: response.message ,
-                    pos: 'bottom-right',
+                    pos: 'bottom-center',
                     showAction: false ,
                     actionText: "Dismiss",
                     duration: 3000,
+                    showAction: false
                 });
                 if (response.status)
                 {
@@ -230,89 +234,104 @@ function printSelect(name , select) {
 }
 
 //upload
-$(".avatar-wrapper").each(function () {
-    var wrapper = $(this) ;
-    $(".upload-button" , this ).click(function () {
-        $( "input[type='file']" , wrapper ).click() ;
+$(function () {
+    $(".avatar-wrapper").each(function () {
+        var wrapper = $(this) ;
+        $(".upload-button" , this ).click(function () {
+            $( "input[type='file']" , wrapper ).click() ;
+        });
+        $( "input[type='file']" , wrapper ).on('change', function(event) {
+            var input =  event.target ;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('img' , wrapper).attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
     });
-    $( "input[type='file']" , wrapper ).on('change', function(event) {
-        var input =  event.target ;
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('img' , wrapper).attr('src', e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    });
-});
+}) ;
 
 //keyword container
-$(".keywords-container").each(function() {
-    var maxitem = $(this).data("max") ;
-    var keywordInput = $(this).find(".keyword-input");
-    var keywordsList = $(this).find(".keywords-list");
-    var Button = $(this).find('.keyword-input-button') ;
+$(function () {
+    $(".keywords-container").each(function() {
+        var maxitem = $(this).data("max") ;
+        var keywordInput = $(this).find(".keyword-input");
+        var keywordsList = $(this).find(".keywords-list");
+        var Button = $(this).find('.keyword-input-button') ;
 
-    // add keyword
-    function addKeyword(Input , response) {
-        var isValid = [] ;
-        $(".keywords-list .keyword").each(function () {
-            isValid.push( $(".keyword-text" , this ).text() == Input )
-        });
+        // add keyword
+        function addKeyword(Input , response) {
+            var isValid = [] ;
+            $(".keywords-list .keyword").each(function () {
+                isValid.push( $(".keyword-text" , this ).text() == Input )
+            });
 
-        if ( $.inArray(true , isValid) != -1 )
-            Snackbar.show({text: "شما قبلا این آیتم را انتخاب نموده اید." });
-        else
-        {
-            if( $.inArray(Input , response) >= 0 )
+            if ( $.inArray(true , isValid) != -1 )
+                Snackbar.show({
+                    pos: 'bottom-center',
+                    text: "شما قبلا این آیتم را انتخاب نموده اید.",
+                    showAction: false
+                });
+            else
             {
-                var keywordCount = $("span.keyword" , keywordsList ).length ;
-                if( maxitem-1 < keywordCount)
+                if( $.inArray(Input , response) >= 0 )
                 {
-                    Snackbar.show({text: "شما حداکثر میتوانید "+maxitem+" آیتم انتخاب نمایید." });
-                }else{
-                    var item = keywordInput.val() ;
-                    var $newKeyword = $(
-                        "<span class='keyword'>" +
+                    var keywordCount = $("span.keyword" , keywordsList ).length ;
+                    if( maxitem-1 < keywordCount)
+                    {
+                        Snackbar.show({
+                            pos: 'bottom-center',
+                            text: "شما حداکثر میتوانید "+maxitem+" آیتم انتخاب نمایید.",
+                            showAction: false
+                        });
+                    }else{
+                        var item = keywordInput.val() ;
+                        var $newKeyword = $(
+                            "<span class='keyword'>" +
                             "<span class='keyword-remove'>" +
                             "</span>" +
                             "<span class='keyword-text'>"+
                             keywordInput.val() +
                             "</span>" +
-                        "</span>"
-                    );
-                    keywordsList.append($newKeyword).trigger('resizeContainer');
+                            "</span>"
+                        );
+                        keywordsList.append($newKeyword).trigger('resizeContainer');
+                    }
                 }
+                else
+                    Snackbar.show({
+                        pos: 'bottom-center',
+                        text: "شما باید از لیست پیشنهادی انتخاب نمایید .",
+                        showAction: false
+                    });
             }
-            else
-                Snackbar.show({text: "شما باید از لیست پیشنهادی انتخاب نمایید ." });
+            keywordInput.val("");
         }
-        keywordInput.val("");
-    }
 
-    // json and autocomplete
-    $.getJSON( $(this).data('url') ).done( function (response) {
-        keywordInput.autocomplete({
-            source: response
-        });
-        Button.on('click', function() {
-            var Input = $.trim(keywordInput.val());
-            addKeyword(Input , response );
-        });
-        keywordInput.on('keyup', function(e) {
-            var Input = $.trim(keywordInput.val());
-            if ( e.keyCode == 13 )
+        // json and autocomplete
+        $.getJSON( $(this).data('url') ).done( function (response) {
+            keywordInput.autocomplete({
+                source: response
+            });
+            Button.on('click', function() {
+                var Input = $.trim(keywordInput.val());
                 addKeyword(Input , response );
+            });
+            keywordInput.on('keyup', function(e) {
+                var Input = $.trim(keywordInput.val());
+                if ( e.keyCode == 13 )
+                    addKeyword(Input , response );
+            });
         });
-    });
 
-    $(document).on("click", ".keyword-remove", function() {
-        $(this).parent().addClass('keyword-removed');
-        function removeFromMarkup() {
-            $(".keyword-removed").remove();
-        }
-        setTimeout(removeFromMarkup, 500);
+        $(document).on("click", ".keyword-remove", function() {
+            $(this).parent().addClass('keyword-removed');
+            function removeFromMarkup() {
+                $(".keyword-removed").remove();
+            }
+            setTimeout(removeFromMarkup, 500);
+        });
     });
 });
-
