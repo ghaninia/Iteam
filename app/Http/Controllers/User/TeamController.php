@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Visit;
 use Faker\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TeamController extends Controller
 {
@@ -47,13 +48,25 @@ class TeamController extends Controller
         if ( $request->ajax() )
             return $view ;
 
+        $visits =
+        User::select([
+            DB::raw("teams.name AS team_name") ,
+            DB::raw('visits.created_at AS visit_created_at') ,
+            'users.*' ,
+        ])
+        ->leftJoin("visits" , "visits.user_id" , "=" , "users.id" )
+        ->leftJoin("teams"  , "visits.team_id" , "=" , "teams.id" )
+        ->where("teams.user_id" , me()->id ) ;
 
-        return me()->visitis->groupBy("user_id","team_id") ;
+        $visits_count = $visits->count()  ;
+        $visits = $visits->take(5)->get() ;
 
-        // $visitis = [] ;
+        $information = [
+            'title' => trans("dash.team.all.text")
+        ] ;
 
 
-        return view('dash.user.team.index' , compact('teams' , 'view', 'appends' , 'visitis') );
+        return view('dash.user.team.index' , compact( 'information' , 'teams' , 'view', 'appends' , 'visits' , 'visits_count') );
     }
 
     /**

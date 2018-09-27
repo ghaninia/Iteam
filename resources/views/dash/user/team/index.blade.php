@@ -5,7 +5,7 @@
     <div class="os-tabs-w mx-4">
         <div class="os-tabs-controls">
             <ul class="nav nav-tabs ajax upper" data-push="#teams" data-action="state">
-                @foreach(['all','confirmed','init','expired'] as $key)
+                @foreach(['every','confirmed','init','expired'] as $key)
                     <li class="nav-item">
                         <a class="nav-link @if(request()->has("state")) {{request("state")!=$key ?:"active"}} @else {{ $loop->index != 0 ?:"active"}} @endif" href="" data-state="{{ $key }}">{{ trans("dash.team.{$key}") }}</a>
                     </li>
@@ -40,7 +40,14 @@
         <!---------------->
         <!--- col-lg-2 --->
         <!---------------->
-        <div class="col-lg-2"></div>
+        <div class="col-lg-2">
+            <a class="element-box el-tablo centered trend-in-corner smaller">
+                <div class="label">{{ trans("dash.team.view.count") }}</div>
+                <div class="value">{{ $visits_count }}</div>
+            </a>
+
+        </div>
+
         <!---------------->
         <!--- col-lg-3 --->
         <!---------------->
@@ -51,21 +58,22 @@
                 <div class="element-box-tp">
                     <div class="activity-boxes-w">
 
-                        @foreach($visitis as $visit )
-                            <div class="activity-box-w">
-                                <div class="activity-time">10 Min</div>
+                        @if( $visits->isNotEmpty() )
+                            @foreach($visits as $visit )
+                                <div class="activity-box-w">
+                                    <div class="activity-time">{{ verta( $visit->visit_created_at )->formatDifference() }}</div>
                                     <div class="activity-box">
                                         <div class="activity-avatar">
-                                            <img alt="" src="img/avatar1.jpg">
+                                            <img alt="" src="{{ userPicture( 'avatar' , 'thumbnail' , 'user' , $visit ) }}">
                                         </div>
                                         <div class="activity-info">
-                                            <div class="activity-role">John Mayers</div>
-                                            <strong class="activity-title">Opened New Account</strong>
+                                            <div class="activity-role">{{ $visit->username }}</div>
+                                            <strong class="activity-title">{{ str_slice( $visit->team_name , 50 ) }}</strong>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @endif
 
                     </div>
                 </div>

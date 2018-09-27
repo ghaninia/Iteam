@@ -15,6 +15,7 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean("viewed")->default(false) ; //* زمانی که کاربر میبینه درخواست رو *//
             $table->boolean('status')->default(false) ;
             $table->boolean('default_plan')->default(true) ; // agar plan ma default boot hatman in ra true kon ;
             $table->unsignedInteger("user_id") ;

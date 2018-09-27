@@ -16508,7 +16508,7 @@ body.menu-side-left .layout-w {
 
 .el-tablo.smaller .label {
     font-size: .63rem;
-    letter-spacing: 2px
+    padding-bottom: 5px;
 }
 
 .el-tablo.smaller.trend-in-corner .trending {
@@ -21089,10 +21089,10 @@ b{
 }
 
 .projects-list .project-head .project-users {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 220px;
-    flex: 0 0 220px;
-    text-align: left
+    /*-webkit-box-flex: 0;*/
+    /*-ms-flex: 0 0 220px;*/
+    /*flex: 0 0 220px;*/
+    /*text-align: left*/
 }
 
 .projects-list .project-head .project-users .avatar {
@@ -21115,7 +21115,7 @@ b{
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    right: -10px;
+    left: -10px;
     padding: 2px 7px;
     border-radius: 12px;
     color: #fff;

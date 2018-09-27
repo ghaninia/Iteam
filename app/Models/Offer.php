@@ -12,7 +12,8 @@ class Offer extends Model
         'user_id' ,
         'user_ip' ,
         'team_id' ,
-        'content'
+        'content' ,
+        'viewed'
     ];
 
     public function user()

@@ -6,17 +6,17 @@
                 @if(!! $team->offers )
                     <div class="project-users">
 
-                        @foreach($team->offers as $offer)
+                        @if($team->offers_count > 5 )
+                            <div class="more">{{ trans("dash.team.offer.offer_max_5") }}</div>
+                        @endif
+
+                        @foreach($team->offers->take(5) as $offer)
                             @if( $offer->user )
                                 <div class="avatar" title="{{ $offer->user->fullname }}">
                                     <img alt="" src="{{ userPicture( "avatar" , "thumbnail" , NULL , $offer->user ) }}">
                                 </div>
                             @endif
                         @endforeach
-
-                        @if($team->offers->count() > 5 )
-                            <div class="more">{{ trans("dash.team.offer.offer_max_5") }}</div>
-                        @endif
 
                     </div>
                 @endif

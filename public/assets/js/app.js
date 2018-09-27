@@ -30948,13 +30948,13 @@ $(function () {
     });
 });
 
-// $(function () {
-//     var offerHeight = document.body.offsetHeight ;
-//     var height = window.innerHeight ;
-//
-//     if ( offerHeight <= height )
-//         $(".menu-w").css({ 'height': (height-40) +'px' });
-// }) ;
+// jquery height
+$(function () {
+    var offerHeight = document.body.offsetHeight;
+    var height = window.innerHeight;
+
+    if (offerHeight <= height) $(".menu-w").css({ 'height': height - 40 + 'px' });
+});
 
 /***/ })
 /******/ ]);
