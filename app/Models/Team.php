@@ -79,4 +79,9 @@ class Team extends Model
         return static::insert($data) ;
     }
 
+    public function visits()
+    {
+        return $this->hasMany(Visit::class) ;
+    }
+
 }

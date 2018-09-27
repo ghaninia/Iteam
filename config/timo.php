@@ -23,7 +23,7 @@ return [
     ],
 
     'panel_default' => 1 ,
-
     'currency' => 'toman' ,
+    'paginate' => 10 ,
 
 ];

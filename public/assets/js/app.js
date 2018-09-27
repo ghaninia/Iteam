@@ -30926,5 +30926,35 @@ $(function () {
     });
 });
 
+// ajax paginate
+$(function () {
+
+    var content = $(".pagination_push");
+
+    content.on("click", ".pagination a:not(.disabled)", function (e) {
+
+        NProgress.start();
+        e.preventDefault();
+
+        var url = $(this).attr('href');
+        HttpCache(url, {
+            "dataType": "text",
+            "success": function success(response) {
+                $(content).html(response);
+            }
+        });
+
+        NProgress.done();
+    });
+});
+
+// $(function () {
+//     var offerHeight = document.body.offsetHeight ;
+//     var height = window.innerHeight ;
+//
+//     if ( offerHeight <= height )
+//         $(".menu-w").css({ 'height': (height-40) +'px' });
+// }) ;
+
 /***/ })
 /******/ ]);

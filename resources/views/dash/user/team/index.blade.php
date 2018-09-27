@@ -22,72 +22,58 @@
     </div>
 
     <div class="row">
+
+        <!---------------->
+        <!--- col-lg-7 --->
+        <!---------------->
         <div class="col-lg-7">
             <div class="padded-lg">
 
                 <!--START - Projects list-->
-                <div class="projects-list active" id="teams">
-                    @foreach($teams as $team)
-                        <div class="project-box">
-                            <div class="project-head">
-                                <div class="project-title">
-                                    <h4>{{ $team->name }}</h4>
-                                </div>
-                                <div class="project-users">
-                                    <div class="avatar">
-                                        <img alt="" src="img/avatar3.jpg">
-                                    </div>
-                                    <div class="more">+ 5 More</div>
-                                </div>
-                            </div>
-
-                            <div class="project-info">
-                                <div class="row align-items-center">
-
-                                    <div class="col-sm-5">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="el-tablo highlight">
-                                                    <div class="label">{{ trans("dash.team.offer.text") }}</div>
-                                                    <div class="value">{{ $team->offers_count }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="el-tablo highlight">
-                                                    <div class="label">{{ trans("dash.team.offer.remain") }}</div>
-                                                    <div class="value">{{ $team->plan->max_create_offer - $team->offers_count }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-5 offset-sm-2">
-                                        <div class="os-progress-bar primary">
-                                            <div class="bar-labels">
-                                                <div class="bar-label-left"><span>Progress</span><span class="positive">+10</span></div>
-                                                <div class="bar-label-right"><span class="info">72/100</span></div>
-                                            </div>
-
-                                            @php( $offerProgress = round(  $team->offers_count * 100 / $team->plan->max_create_offer ) )
-                                            <div class="bar-level-1" style="width: 100%">
-                                                <div class="bar-level-2" style="width:%{{ $offerProgress }}">
-                                                    <div class="bar-level-3" style="width: 36%"></div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    @endforeach
+                <div class="projects-list active pagination_push" id="teams">
+                    {!! $view !!}
                 </div>
 
             </div>
         </div>
-    </div>
 
+        <!---------------->
+        <!--- col-lg-2 --->
+        <!---------------->
+        <div class="col-lg-2"></div>
+        <!---------------->
+        <!--- col-lg-3 --->
+        <!---------------->
+        <div class="col-lg-3">
+            <div class="element-wrapper">
+                <h6 class="element-header">{{ trans("dash.team.view.text") }}</h6>
+
+                <div class="element-box-tp">
+                    <div class="activity-boxes-w">
+
+                        @foreach($visitis as $visit )
+                            <div class="activity-box-w">
+                                <div class="activity-time">10 Min</div>
+                                    <div class="activity-box">
+                                        <div class="activity-avatar">
+                                            <img alt="" src="img/avatar1.jpg">
+                                        </div>
+                                        <div class="activity-info">
+                                            <div class="activity-role">John Mayers</div>
+                                            <strong class="activity-title">Opened New Account</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
 </div>
 @stop

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -120,7 +119,6 @@ class User extends Authenticatable
         return $information ;
     }
 
-
     public function porfileNotification()
     {
         return $this->hasOne(PorfileNotification::class) ;
@@ -134,5 +132,10 @@ class User extends Authenticatable
 
         parent::boot() ;
     }
-    
+
+    public function visitis()
+    {
+        return $this->hasMany(Visit::class) ;
+    }
+
 }

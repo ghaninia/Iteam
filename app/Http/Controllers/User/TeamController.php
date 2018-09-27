@@ -1,7 +1,10 @@
 <?php
 namespace App\Http\Controllers\User;
+use App\Events\VisitorEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Team;
+use App\Models\User;
+use App\Models\Visit;
 use Faker\Factory;
 use Illuminate\Http\Request;
 
@@ -11,10 +14,7 @@ class TeamController extends Controller
     public function index(Request $request)
     {
 
-        if ($request->ajax())
-            return $request->input("state") ;
-
-        $status = $request->input("expired") ;
+        $status = $request->input("state") ;
         $create_time = $request->input("create_time") ;
 
         $teams = Team::where( "user_id" , me()->id )
@@ -24,12 +24,12 @@ class TeamController extends Controller
                 {
                     case "init" :
                         $query->where( "status" , 0 ) ;
+                        break ;
                     case "confirmed" :
                         $query->where( "status" , 1 ) ;
                         break ;
                     case "expired" :
                         $query->where( "status" , 2 ) ;
-                    default :
                         break ;
                 }
             })
@@ -38,10 +38,22 @@ class TeamController extends Controller
                 $query->where( userSearchRangeTime(false) ) ;
             })
             ->withCount("offers")
-            ->with("offers" , "plan")
-            ->paginate(10);
+            ->with("offers.user" , "plan")
+            ->paginate( config("timo.paginate") ) ;
 
-        return view('dash.user.team.index' , compact('teams') );
+        $appends = $request->all() ;
+        $view = view( "dash.user.team.ajax.index" , compact('teams' , 'appends') )->render() ;
+
+        if ( $request->ajax() )
+            return $view ;
+
+
+        return me()->visitis->groupBy("user_id","team_id") ;
+
+        // $visitis = [] ;
+
+
+        return view('dash.user.team.index' , compact('teams' , 'view', 'appends' , 'visitis') );
     }
 
     /**
@@ -51,6 +63,9 @@ class TeamController extends Controller
      */
     public function create()
     {
+
+        //event( new VisitorEvent($team) ) ;
+
         $information = [
             'title' => trans('dash.team.make') ,
             'breadcrumb' => [
@@ -66,6 +81,7 @@ class TeamController extends Controller
         ]) ;
 
         return view('dash.user.team.create' , compact('information') ) ;
+
     }
 
     /**

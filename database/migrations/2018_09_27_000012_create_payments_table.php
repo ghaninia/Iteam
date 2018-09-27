@@ -23,6 +23,10 @@ class CreatePaymentsTable extends Migration
             $table->string('transaction_id')->nullable() ;
             $table->enum('status', [Enum::TRANSACTION_INIT, Enum::TRANSACTION_SUCCEED, Enum::TRANSACTION_FAILED])->default(Enum::TRANSACTION_INIT);
             $table->timestamps();
+
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade") ;
+            $table->foreign("plan_id")->references("id")->on("plans")->onDelete("cascade")->onUpdate("cascade") ;
+
         });
     }
 

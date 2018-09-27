@@ -16,27 +16,28 @@ function picture( $type , $size = 'thumbnail' )
     }
 }
 
-function userPicture( $type , $size = 'full' , $guard = 'user' , $user = null ){
+function userPicture( $type = 'avatar' , $size = 'full' , $guard = 'user' , $user = null )
+{
     if ( auth()->guard($guard)->check() && is_null($user))
-    {
         $user = auth()->guard($guard)->user() ;
-        $picture = File::show( $user , $type , $size)->first() ;
-        if (!! $picture)
-            return $picture ;
-        else{
-            switch ($type) {
-                case "avatar" : {
-                    switch ($user->gender)
-                    {
-                        case "male" :
-                            return asset(config('timo.profile.avatar.male')) ;
-                        case "female" :
-                            return asset(config('timo.profile.avatar.female')) ;
-                    }
+
+    $picture = File::show( $user , $type , $size)->first() ;
+
+    if (!! $picture)
+        return $picture ;
+    else{
+        switch ($type) {
+            case "avatar" : {
+                switch ($user->gender)
+                {
+                    case "male" :
+                        return asset(config('timo.profile.avatar.male')) ;
+                    case "female" :
+                        return asset(config('timo.profile.avatar.female')) ;
                 }
-                case "cover" : {
-                    return asset( config("timo.profile.cover") ) ;
-                }
+            }
+            case "cover" : {
+                return asset( config("timo.profile.cover") ) ;
             }
         }
     }
@@ -81,7 +82,10 @@ function str_slice($text , $length = 200 )
 {
     $text = strip_tags($text) ;
     if ( strlen($text) > $length )
-        return mb_substr($text , 0 , $length ) . "..." ;
+        if (mb_strlen($text) > $length )
+            return mb_substr($text , 0 , $length ) . "..." ;
+        else
+            return mb_substr($text , 0 , $length ) ;
     return $text ;
 }
 
@@ -185,4 +189,16 @@ function userSearchRangeTime($justKey = true , $createColumn = 'created_at' , $r
         }
         return [] ;
     }
+}
+
+/*** mac address ***/
+function macAddress(){
+    ob_start();
+    system('ipconfig /all');
+    $mycom=ob_get_contents();
+    ob_clean();
+    $findme = "Physical";
+    $pmac = strpos($mycom, $findme);
+    $mac=substr($mycom,($pmac+36),17);
+    return $mac;
 }

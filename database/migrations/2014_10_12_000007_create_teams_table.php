@@ -15,7 +15,6 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
-
             $table->tinyInteger("status")->default(0)->comment("0 => not confirmed , 1 => confirmed , 2 => expired ") ;
             $table->timestamp('expired_at') ; // zamani ke karbar plan dash in barasas plan taeed mishe
 
@@ -24,6 +23,7 @@ class CreateTeamsTable extends Migration
             $table->boolean('default_plan') ; // agar plan ma default boot hatman in ra true kon ;
 
             $table->string("name") ;
+            $table->string("slug")->nullable() ;
 
             // dar sorate pardaljt ghabel namayesh ast !
             $table->string("phone")->nullable() ;
@@ -42,8 +42,6 @@ class CreateTeamsTable extends Migration
             $table->text("interplay_fiscal")->nullable() ; //نوع تعامل مالی : هم بنیان گذار / شراکتی حقوق ثابت
             $table->string("min_salary")->default(0) ;
             $table->string("max_salary")->default(0) ;
-
-
 
             $table->unsignedInteger("province_id")->nullable();
             $table->unsignedInteger("city_id")->nullable();

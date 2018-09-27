@@ -17,3 +17,4 @@ return [
     'next' => 'بعدی  &raquo;',
 
 ];
+
