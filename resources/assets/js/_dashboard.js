@@ -390,16 +390,15 @@ function HttpCache(url , options = {} ){
 // ajax tab
 $(function () {
 
-    $(".nav-tabs.ajax").each(function () {
+    $(".nav-tabs.ajax , .nav-pills.ajax").each(function () {
         let warper = $(this) ; // warper object
         let action = $(this).data("action") ; // action name
         let push = $(this).data("push") ;
 
         $("li a" , warper).click(function(e){
-
+            e.preventDefault() ;
             if (! $(this).hasClass("active") )
             {
-                e.preventDefault() ;
                 let a = $(this) ;
 
                 warper.find(".active").removeClass("active") ;

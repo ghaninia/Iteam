@@ -30892,15 +30892,14 @@ function HttpCache(url) {
 // ajax tab
 $(function () {
 
-    $(".nav-tabs.ajax").each(function () {
+    $(".nav-tabs.ajax , .nav-pills.ajax").each(function () {
         var warper = $(this); // warper object
         var action = $(this).data("action"); // action name
         var push = $(this).data("push");
 
         $("li a", warper).click(function (e) {
-
+            e.preventDefault();
             if (!$(this).hasClass("active")) {
-                e.preventDefault();
                 var a = $(this);
 
                 warper.find(".active").removeClass("active");

@@ -150,3 +150,39 @@ function statusTransaction($status)
             return trans('dash.status.init') ;
     }
 }
+
+/*****************/
+/*** rangeTime ***/
+/*****************/
+
+function userSearchRangeTime($justKey = true , $createColumn = 'created_at' , $requestName = "created_at" ){
+    $dates =  [
+        'all' => [] ,
+        'today' => [
+            [ $createColumn , ">=" , today() ] ,
+        ] ,
+        '1week' => [
+            [ $createColumn , ">=" , today()->subWeek(1)]
+        ],
+        '2week' => [
+            [ $createColumn , "<=" , today()->subWeek(1) ] ,
+            [ $createColumn , ">=" , today()->subWeek(2) ]
+        ],
+        '1month' => [
+            [ $createColumn , "<=" , today() ] ,
+            [ $createColumn , ">=" , today()->subMonth(1) ]
+        ],
+    ];
+    if ($justKey){
+        return array_keys($dates) ;
+    }else{
+        if (request()->has($requestName))
+        {
+            if(array_key_exists( request()->input($requestName) , $dates ))
+            {
+                return $dates[ request()->input($requestName) ] ;
+            }
+        }
+        return [] ;
+    }
+}

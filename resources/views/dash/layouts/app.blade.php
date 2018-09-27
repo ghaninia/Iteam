@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="{{ mix("assets/css/app.css") }}">
     <script src="{{ mix("assets/js/app.js") }}"></script>
 </head>
-<body class="with-content-panel menu-position-side menu-side-right">
+{{--color-scheme-dark--}}
+<body class="with-content-panel menu-position-side menu-side-right ">
     <div class="all-wrapper with-side-panel solid-bg-all">
         <div class="layout-w">
             <!--------------------

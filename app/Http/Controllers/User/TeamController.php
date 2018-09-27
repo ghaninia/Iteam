@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
-use App\Models\Tag;
 use App\Models\Team;
+use Faker\Factory;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -35,8 +35,10 @@ class TeamController extends Controller
             })
             // filter created at
             ->when("create_time" , function ($query) use ($create_time){
-
+                $query->where( userSearchRangeTime(false) ) ;
             })
+            ->withCount("offers")
+            ->with("offers" , "plan")
             ->paginate(10);
 
         return view('dash.user.team.index' , compact('teams') );
@@ -55,6 +57,13 @@ class TeamController extends Controller
                 trans('dash.team.make') => null
             ]
         ] ;
+
+        $faker = Factory::create() ;
+        Team::userCreate([
+            'name' => $faker->domainName ,
+            'content' => $faker->realText("100") ,
+            'excerpt' => $faker->realText("50")
+        ]) ;
 
         return view('dash.user.team.create' , compact('information') ) ;
     }

@@ -65,12 +65,18 @@ class Team extends Model
         return $this->hasMany(Offer::class) ;
     }
 
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class) ;
+    }
+
     public static function userCreate(array $data)
     {
         $data['plan_id'] = me()->plan->id ;
         $data['expired_at'] = Carbon::now()->subDay( me()->plan->max_life ) ;
         $data['user_id'] = me()->id ;
-        $data['default_plan'] = config("timo.panel_default") != me()->plan->id ? : true ;
-        return static::create($data) ;
+        $data['default_plan'] = config("timo.panel_default") != me()->plan->id ? false : true ;
+        return static::insert($data) ;
     }
+
 }
