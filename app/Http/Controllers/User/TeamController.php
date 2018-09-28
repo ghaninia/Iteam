@@ -1,10 +1,9 @@
 <?php
 namespace App\Http\Controllers\User;
-use App\Events\VisitorEvent;
 use App\Http\Controllers\Controller;
+use App\Models\Offer;
 use App\Models\Team;
 use App\Models\User;
-use App\Models\Visit;
 use Faker\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,12 +11,16 @@ use Illuminate\Support\Facades\DB;
 class TeamController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('can:isMyTeam,App\Models\Post' , [ 'only' => ['edit' , 'update' , 'destroy'] ]);
+    }
+
     public function index(Request $request)
     {
 
         $status = $request->input("state") ;
         $create_time = $request->input("create_time") ;
-
         $teams = Team::where( "user_id" , me()->id )
             // filter status
             ->when($status , function ($query) use ($status){
@@ -35,12 +38,12 @@ class TeamController extends Controller
                 }
             })
             // filter created at
-            ->when("create_time" , function ($query) use ($create_time){
-                $query->where( userSearchRangeTime(false) ) ;
+            ->when($create_time , function ($query) use ($create_time){
+                $query->where( userSearchRangeTime(false , "create_time") ) ;
             })
             ->withCount("offers")
             ->with("offers.user" , "plan")
-            ->paginate( config("timo.paginate") ) ;
+            ->paginate( 3 );
 
         $appends = $request->all() ;
         $view = view( "dash.user.team.ajax.index" , compact('teams' , 'appends') )->render() ;
@@ -61,19 +64,29 @@ class TeamController extends Controller
         $visits_count = $visits->count()  ;
         $visits = $visits->take(5)->get() ;
 
+        $offers_count = Offer::join("teams" , "offers.team_id" , "=" , "teams.id")
+        ->where("teams.user_id" , me()->id )
+        ->count() ;
+
+        $teams_count = me()->teams()->count() ;
+
         $information = [
             'title' => trans("dash.team.all.text")
         ] ;
 
 
-        return view('dash.user.team.index' , compact( 'information' , 'teams' , 'view', 'appends' , 'visits' , 'visits_count') );
+        return view('dash.user.team.index' , compact(
+            'information' ,
+            'teams' ,
+            'view',
+            'appends' ,
+            'visits' ,
+            'visits_count' ,
+            'offers_count' ,
+            'teams_count'
+        ));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
 
@@ -88,35 +101,31 @@ class TeamController extends Controller
 
         $faker = Factory::create() ;
         Team::userCreate([
-            'name' => $faker->domainName ,
-            'content' => $faker->realText("100") ,
-            'excerpt' => $faker->realText("50")
+            'name' => $faker->realText(35) ,
+            'content' => $faker->realText(200) ,
+            'excerpt' => $faker->realText(100) ,
+            'slug' => $faker->slug()
         ]) ;
 
         return view('dash.user.team.create' , compact('information') ) ;
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Team $team)
     {
-        //
+        $team = $team->load("offers" , "visits" , "user" , 'plan' , 'tags' , 'skills') ;
+
+        $information = [
+            'title' => trans("dash.team.show.title" , ['attribute' => $team->title ]) ,
+            'desc'  => str_slice($team->excerpt , 30) ?? str_slice(strip_tags($team->content) , 30 )
+        ] ;
+
+        return view("dash.user.team.show" , compact('team' , 'information') );
     }
 
     /**

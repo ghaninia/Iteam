@@ -14,7 +14,7 @@
             <ul class="nav nav-pills ajax smaller d-none d-lg-flex" data-push="#teams" data-action="create_time">
                 @foreach(userSearchRangeTime() as $key)
                     <li class="nav-item">
-                        <a class="nav-link @if(request()->has("state")) {{request("state")!=$key ?:"active"}} @else {{ $loop->index != 0 ?:"active"}} @endif" data-create_time="{{ $key }}" href="">{{ trans("dash.data_range.{$key}") }}</a>
+                        <a class="nav-link @if(request()->has("create_time")) {{request("create_time")!=$key ?:"active"}} @else {{ $loop->index != 0 ?:"active"}} @endif" data-create_time="{{ $key }}" href="">{{ trans("dash.data_range.{$key}") }}</a>
                     </li>
                 @endforeach
             </ul>
@@ -42,10 +42,17 @@
         <!---------------->
         <div class="col-lg-2">
             <a class="element-box el-tablo centered trend-in-corner smaller">
+                <div class="label">{{ trans("dash.team.every") }}</div>
+                <div class="value">{{ $teams_count }}</div>
+            </a>
+            <a disabled="" class="element-box el-tablo centered trend-in-corner smaller">
                 <div class="label">{{ trans("dash.team.view.count") }}</div>
                 <div class="value">{{ $visits_count }}</div>
             </a>
-
+            <a class="element-box el-tablo centered trend-in-corner smaller">
+                <div class="label">{{ trans("dash.team.offer.count") }}</div>
+                <div class="value">{{ $offers_count }}</div>
+            </a>
         </div>
 
         <!---------------->

@@ -2,7 +2,9 @@
     @foreach($teams as $team)
         <div class="project-box">
             <div class="project-head">
-                <div class="project-title" title="{{ $team->name }}">{{ str_slice($team->name , 30) }}</div>
+                <div class="project-title" title="{{ $team->name }}">
+                    <a href="{{ route("user.team.show" , $team->slug) }}">{{ str_slice($team->name , 30) }}</a>
+                </div>
                 @if(!! $team->offers )
                     <div class="project-users">
 

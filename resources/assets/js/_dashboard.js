@@ -3,6 +3,7 @@ var data = {
     ajax  : $("meta[name='ajax-url']").attr('content')
 };
 
+
 (function ($) {
     $.fn.serializeFormJSON = function () {
         var o = {};
@@ -458,3 +459,4 @@ $(function () {
     if ( offerHeight <= height )
         $(".menu-w").css({ 'height': (height-40) +'px' });
 }) ;
+/////////////

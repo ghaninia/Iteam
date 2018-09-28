@@ -46,12 +46,12 @@ class Team extends Model
 
     public function tags()
     {
-        return $this->morphToMany(Tag::class , "tagable" );
+        return $this->morphToMany( Tag::class , "tagable" );
     }
 
-    public function skill()
+    public function skills()
     {
-        return $this->morphedByMany(Skill::class , "skillable") ;
+        return $this->morphedByMany( Skill::class , "skillables") ;
     }
 
     // creator
@@ -83,5 +83,11 @@ class Team extends Model
     {
         return $this->hasMany(Visit::class) ;
     }
+
+    public function getRouteKeyName()
+    {
+        return "slug" ;
+    }
+
 
 }

@@ -159,12 +159,16 @@ function statusTransaction($status)
 /*** rangeTime ***/
 /*****************/
 
-function userSearchRangeTime($justKey = true , $createColumn = 'created_at' , $requestName = "created_at" ){
+function userSearchRangeTime($justKey = true , $requestName = "created_at" , $createColumn = 'created_at'  ){
     $dates =  [
         'all' => [] ,
         'today' => [
             [ $createColumn , ">=" , today() ] ,
         ] ,
+        'yesterday' => [
+            [ $createColumn , "<" , today() ] ,
+            [ $createColumn , ">=" , today()->subDay(1) ]
+        ],
         '1week' => [
             [ $createColumn , ">=" , today()->subWeek(1)]
         ],
@@ -201,4 +205,17 @@ function macAddress(){
     $pmac = strpos($mycom, $findme);
     $mac=substr($mycom,($pmac+36),17);
     return $mac;
+}
+
+/*** create slug ***/
+function slug($name){
+    $lettersNumbersSpacesHyphens = '/[^\-\s\pN\pL]+/u';
+    $spacesDuplicateHypens = '/[\-\s]+/';
+    $slug = preg_replace($lettersNumbersSpacesHyphens, null , $name );
+    $slug = preg_replace($spacesDuplicateHypens, '-', $slug);
+    $slug = trim($slug, '+');
+    if($slug[strlen($slug)-1] == "-"){
+        $slug = substr($slug , 0 , strlen($slug)-1) ;
+    }
+    return $slug ;
 }

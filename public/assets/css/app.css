@@ -13545,34 +13545,33 @@ body.menu-side-left .layout-w {
     background-color: #5e00da
 }
 
-.menu-w .side-menu-magic {
+.side-menu-magic {
     background-image: linear-gradient(-154deg, #1643A3 8%, #2E1170 90%);
     border-radius: 6px;
-    padding: 40px;
+    padding:20px;
     text-align: center;
-    margin: 20px
+    margin: 20px 0
 }
 
-.menu-w .side-menu-magic h1,
-.menu-w .side-menu-magic h2,
-.menu-w .side-menu-magic h3,
-.menu-w .side-menu-magic h4,
-.menu-w .side-menu-magic h5 {
+.side-menu-magic h1,
+.side-menu-magic h2,
+.side-menu-magic h3,
+.side-menu-magic h4,
+.side-menu-magic h5,
+.side-menu-magic h6{
     color: #fff;
     margin-bottom: 5px
 }
-
-.menu-w .side-menu-magic p {
+.side-menu-magic p {
     color: rgba(255, 255, 255, 0.6)
 }
-
-.menu-w .side-menu-magic .btn-w {
+.side-menu-magic .btn-w {
     margin-top: 15px
 }
 
-.menu-w .side-menu-magic .btn-white,
-.menu-w .side-menu-magic .all-wrapper .fc-button,
-.all-wrapper .menu-w .side-menu-magic .fc-button {
+.side-menu-magic .btn-white,
+.side-menu-magic .all-wrapper .fc-button,
+.side-menu-magic .fc-button {
     border: none;
     -webkit-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3)
@@ -21080,8 +21079,15 @@ a.with-avatar span {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1)
 }
 
-.projects-list .project-head .project-title {
+.projects-list .project-head .project-title , .projects-list .project-head .project-title a{
     font-size : 15px;
+}
+
+.projects-list .project-head a{
+    font-weight: 400;
+    line-height: 1.5;
+    color: #3E4B5B;
+    text-decoration : none ; 
 }
 
 b{

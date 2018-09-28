@@ -82,7 +82,7 @@
         <li>
             <a href="{{ route('user.team.index') }}">
                 <div class="icon-w">
-                    <div class="os-icon os-icon-window-content"></div>
+                    <div class="os-icon os-icon-ui-55"></div>
                 </div>
                 <span>{{ trans('dash.sidebar.teams') }}</span>
             </a>

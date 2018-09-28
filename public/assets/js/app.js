@@ -30955,6 +30955,7 @@ $(function () {
 
     if (offerHeight <= height) $(".menu-w").css({ 'height': height - 40 + 'px' });
 });
+/////////////
 
 /***/ })
 /******/ ]);
