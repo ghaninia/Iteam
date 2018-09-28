@@ -13,7 +13,11 @@ class TeamController extends Controller
 
     public function __construct()
     {
-        $this->middleware('can:isMyTeam,App\Models\Post' , [ 'only' => ['edit' , 'update' , 'destroy'] ]);
+        $this->middleware('can:isMyTeam,App\Models\Post' , [
+            'except' => [
+                'index','create','store','show'
+            ]
+        ]);
     }
 
     public function index(Request $request)
@@ -118,11 +122,15 @@ class TeamController extends Controller
 
     public function show(Team $team)
     {
-        $team = $team->load("offers" , "visits" , "user" , 'plan' , 'tags' , 'skills') ;
 
+        $team = $team->load("offers" , "visits" , "user" , 'plan' , 'tags' ,'skills') ;
         $information = [
-            'title' => trans("dash.team.show.title" , ['attribute' => $team->title ]) ,
-            'desc'  => str_slice($team->excerpt , 30) ?? str_slice(strip_tags($team->content) , 30 )
+            'title' => trans("dash.team.show.title" , ['attribute' => $team->name ]) ,
+            'desc'  => str_slice($team->excerpt , 30) ?? str_slice(strip_tags($team->content) , 30 ) ,
+            'breadcrumb' => [
+                trans("dash.team.all.text") => route("user.team.index") ,
+                trans("dash.team.show.title" , ['attribute' => $team->name ]) => null
+            ]
         ] ;
 
         return view("dash.user.team.show" , compact('team' , 'information') );

@@ -51,7 +51,7 @@ class Team extends Model
 
     public function skills()
     {
-        return $this->morphedByMany( Skill::class , "skillables") ;
+        return $this->morphToMany( Skill::class, 'skillable' );
     }
 
     // creator

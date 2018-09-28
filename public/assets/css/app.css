@@ -21087,7 +21087,7 @@ a.with-avatar span {
     font-weight: 400;
     line-height: 1.5;
     color: #3E4B5B;
-    text-decoration : none ; 
+    text-decoration : none ;
 }
 
 b{
@@ -25041,7 +25041,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: absolute;
-    right: 10px;
+    left: 10px;
     top: 48%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -25206,7 +25206,7 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 
 .support-index .st-body .avatar img {
     width: 50px;
-    height: auto;
+    height:  50px;
     border-radius: 50px
 }
 
