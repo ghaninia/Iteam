@@ -30948,14 +30948,33 @@ $(function () {
     });
 });
 
-// jquery height
-$(function () {
-    var offerHeight = document.body.offsetHeight;
-    var height = window.innerHeight;
+// // jquery height
+// $(function () {
+//     var offerHeight = document.body.offsetHeight ;
+//     var height = window.innerHeight ;
+//
+//     if ( offerHeight <= height )
+//         $(".menu-w").css({ 'height': (height-40) +'px' });
+// }) ;
 
-    if (offerHeight <= height) $(".menu-w").css({ 'height': height - 40 + 'px' });
+$(function () {
+    var content = $(".offers_push");
+    content.on("click", ".load-more-tickets a", function (e) {
+        e.preventDefault();
+        NProgress.start();
+        var url = $(this).attr('href');
+        window.history.pushState("", "", url);
+        HttpCache(url, {
+            "dataType": "json",
+            "success": function success(response) {
+                $(response.content).appendTo($("#content", content));
+                $(".load-more-tickets", content).html(response.appends);
+            }
+        });
+
+        NProgress.done();
+    });
 });
-/////////////
 
 /***/ })
 /******/ ]);

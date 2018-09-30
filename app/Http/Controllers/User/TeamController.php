@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Offer;
 use App\Models\Team;
 use App\Models\User;
+use App\Repositories\OfferRepository;
 use Faker\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -120,8 +121,9 @@ class TeamController extends Controller
 
     }
 
-    public function show(Team $team)
+    public function show(Team $team ,Request $request)
     {
+
 
         $team = $team->load("offers" , "visits" , "user" , 'plan' , 'tags' ,'skills') ;
         $information = [
@@ -133,7 +135,25 @@ class TeamController extends Controller
             ]
         ] ;
 
-        return view("dash.user.team.show" , compact('team' , 'information') );
+        $offersObj = new OfferRepository() ;
+        $offers    = $offersObj::paginate($team , 4);
+        $appends   = $offersObj->appends() ;
+        $view = view( 'dash.user.team.ajax.show' , compact('offers') )->render();
+
+        if ( isset($appends['more']) )
+            $appends = sprintf("<a href='?%s'><span>%s</span></a>" ,
+                            http_build_query($appends) ,
+                            trans('dash.team.show.loadmore')) ;
+        else
+            $appends = null ;
+
+        if ($request->ajax())
+            return [
+                'content' => $view ,
+                'appends' => $appends
+            ] ;
+
+        return view("dash.user.team.show" , compact('team' , 'information' , 'view' , 'appends') );
     }
 
     /**

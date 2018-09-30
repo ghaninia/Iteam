@@ -25231,11 +25231,11 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .support-index .st-foot .label+.value {
-    margin-right: 10px
+    margin-right: 0
 }
 
 .support-index .st-foot .value+.label {
-    margin-right: 20px
+    margin-right: 0
 }
 
 .support-index .support-ticket-content-w {
@@ -28715,7 +28715,7 @@ body.color-scheme-dark .page-item.disabled .page-link,
         font-size: .72rem
     }
     .support-index .st-foot .value+.label {
-        margin-right: 10px
+        margin-right: 0
     }
     .support-index .support-tickets {
         margin-left: 15px;

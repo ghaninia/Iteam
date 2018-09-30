@@ -383,7 +383,7 @@
     <!------------------->
 
     <div class="content-panel">
-        <div class="element-wrapper side-menu-magic">
+        <div class="element-wrapper">
             <h6 class="element-header">{{ trans('dash.panel.user.skills') }}</h6>
             <div class="element-box-tp">
                 <div data-url="{{ route("user.api.skill" , \App\Repositories\Token::Generate('skill') ) }}" class="keywords-container" data-max="{{ $count_skill }}">
