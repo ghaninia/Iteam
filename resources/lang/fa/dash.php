@@ -195,6 +195,7 @@ return [
             'expired'=> 'منقضی شده' ,
             "offer_max_5" => 'بیشتراز 5+' ,
             'created_at' => 'زمان' ,
+            'val' => ':attribute پیشنهاد'
         ] ,
         'view' => [
             'text' => 'تیم هام رو کی دیده ؟' ,
@@ -203,6 +204,12 @@ return [
         'show' => [
             'title' => "تیم :attribute" ,
             'loadmore' => 'بیشتر نمایش بده ...'
+        ] ,
+        'details' => [
+            'text' => 'جزئیات تیم' ,
+            'created_at' => 'زمان ساخت' ,
+            'categories' => 'دسته بندی' ,
+            'skills' => 'مهارت مورد نیاز'
         ]
     ] ,
 

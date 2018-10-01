@@ -89,5 +89,14 @@ class Team extends Model
         return "slug" ;
     }
 
+    public function getCreatedAtAttribute($value)
+    {
+        return verta($value) ;
+    }
 
+
+    public function isExpire()
+    {
+        return ($this->status == 2 && $this->expired_at < now()) ? true : false ;
+    }
 }

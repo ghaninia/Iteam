@@ -1,7 +1,7 @@
 @if($offers->isNotEmpty())
     @foreach($offers as $offer)
         {{--animated fadeInDown delay-{{ $loop->index + 1 }}s--}}
-        <div class="support-ticket">
+        <div class="support-ticket animated fadeInDown">
             <div class="st-body">
                 <div class="avatar">
                     @if( !!$offer->user)
@@ -10,7 +10,7 @@
                 </div>
                 <div class="ticket-content">
                     <h6 class="ticket-title">{{ $offer->user->fullname ?? $offer->user->username }}</h6>
-                    <div class="ticket-description">{{ $offer->content }}</div>
+                    <div class="ticket-description">{{ str_slice($offer->content , 40) }}</div>
                 </div>
             </div>
             <div class="st-foot">

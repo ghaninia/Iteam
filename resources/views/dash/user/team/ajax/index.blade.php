@@ -51,11 +51,9 @@
 
                             <div class="bar-labels">
                                 <div class="bar-label-left">
-                                    @if($team->status != 2)
+                                    @if($team->isExpire())
                                         <b>{{ trans("dash.team.offer.expired_at") }}:</b>
                                         <small class="positive">{{ verta($team->expired_at)->formatDifference() }}</small>
-                                    @else
-
                                     @endif
                                 </div>
                                 <div class="bar-label-right"><span class="info">{{ sprintf("%s/%s" , $team->offers_count , $team->plan->max_create_offer ) }}</span></div>

@@ -5134,13 +5134,14 @@ input[type="button"].btn-block {
 .badge {
     display: inline-block;
     padding: .25em .4em;
-    font-size: 75%;
+    font-size: 50%;
     font-weight: 500;
     line-height: 1;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    border-radius: 4px
+    border-radius: 4px ;
+    margin-bottom : 2px
 }
 
 .badge:empty {
@@ -11676,7 +11677,7 @@ legend:before {
 }
 
 .badge {
-    font-size: .81rem
+    font-size: 10px
 }
 
 .badge-default-inverted {
@@ -30318,3 +30319,9 @@ input.keyword-input {
     margin: 0 0 15px
 }
 /** attachment **/
+.hidden {
+    display : none ;
+}
+.pointer {
+    cursor : pointer;
+}

@@ -30958,7 +30958,10 @@ $(function () {
 // }) ;
 
 $(function () {
+
     var content = $(".offers_push");
+    var warpper = $("#offers");
+
     content.on("click", ".load-more-tickets a", function (e) {
         e.preventDefault();
         NProgress.start();
@@ -30971,8 +30974,43 @@ $(function () {
                 $(".load-more-tickets", content).html(response.appends);
             }
         });
-
         NProgress.done();
+    });
+
+    $(".support-tickets-header form", warpper).submit(function (e) {
+        e.preventDefault();
+        NProgress.start();
+        var forms = $(this).serialize();
+        var url = window.location.href.split("?")[0] + "?" + forms;
+        window.history.pushState("", "", url);
+        HttpCache(url, {
+            "dataType": "json",
+            "success": function success(response) {
+                $("#content", content).html(response.content);
+                $(".load-more-tickets", content).html(response.appends);
+            }
+        });
+        NProgress.done();
+    });
+});
+
+$(function () {
+    $(".support-ticket-info").each(function () {
+        var warrper = $(this);
+        $(".close-ticket-info", this).click(function (e) {
+            e.preventDefault();
+            warrper.hide();
+        });
+    });
+});
+
+$(function () {
+    $(".tags").each(function () {
+        var warrper = $(this);
+        $(".more", this).click(function () {
+            warrper.find(".hidden").removeClass("hidden");
+            $(this).remove();
+        });
     });
 });
 

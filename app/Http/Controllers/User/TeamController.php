@@ -131,12 +131,13 @@ class TeamController extends Controller
             'desc'  => str_slice($team->excerpt , 30) ?? str_slice(strip_tags($team->content) , 30 ) ,
             'breadcrumb' => [
                 trans("dash.team.all.text") => route("user.team.index") ,
-                trans("dash.team.show.title" , ['attribute' => $team->name ]) => null
+                trans("dash.team.show.title" , ['attribute' => $team->name ]) => route("user.team.show" , $team->slug )
             ]
         ] ;
 
+        $search    = $request->input("s") ;
         $offersObj = new OfferRepository() ;
-        $offers    = $offersObj::paginate($team , 4);
+        $offers    = $offersObj::paginate($team , 4 , $search );
         $appends   = $offersObj->appends() ;
         $view = view( 'dash.user.team.ajax.show' , compact('offers') )->render();
 
