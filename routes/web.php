@@ -41,6 +41,13 @@ Route::namespace('User')->name('user.')->middleware('auth:user')->group(function
 
     Route::resource('payment', 'PaymentController' , ['only' => ['index' , 'show']]);
 
-    Route::resource('team' , 'TeamController') ;
+    Route::resource('team' , 'TeamController' , ['except' => ['destroy'] ]);
+
+    Route::prefix('team')->name("team.")->group(function (){
+        Route::get("{team}/offers/{offer?}" , "TeamController@offer")->name("offer");
+    });
+
+
+//    Route::Resource("offer" , "OfferController" , [ 'except' => ['index',"destroy"] ] );
 
 });

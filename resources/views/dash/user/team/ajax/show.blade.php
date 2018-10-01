@@ -1,7 +1,7 @@
 @if($offers->isNotEmpty())
     @foreach($offers as $offer)
         {{--animated fadeInDown delay-{{ $loop->index + 1 }}s--}}
-        <div class="support-ticket animated fadeInDown">
+        <div class="support-ticket">
             <div class="st-body">
                 <div class="avatar">
                     @if( !!$offer->user)

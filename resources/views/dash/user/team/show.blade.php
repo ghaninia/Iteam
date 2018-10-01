@@ -31,8 +31,11 @@
                 </div>
 
                 <div class="support-ticket-content-w">
+
                     <div class="support-ticket-content">
+
                     </div>
+
                     <div class="support-ticket-info">
 
                         <a class="close-ticket-info" href="">
@@ -82,8 +85,38 @@
 
                         </div>
 
+                        <h6 class="info-header">{{ trans("dash.team.details.members") }}</h6>
+
+                        <div class="info-section">
+                            <ul class="users-list as-tiles">
+
+                                @php($accepteds = $team->offers()->accepted()->get() )
+
+                                @if($accepteds->isNotEmpty())
+                                    @foreach($accepteds as $offer)
+                                        <li>
+                                            <a class="author with-avatar" href="{{ route("user.team.offer" , ['team' => $team->slug ,'offer' => $offer->id] ) }}">
+                                                <div class="avatar" style="background-image: url('{{ userPicture( 'avatar' , 'thumbnail' , 'user' , $offer->user ) }}')"></div>
+                                                <span>{{ $offer->user->fullname ?? $offer->user->username }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+
+                                @if( $team->plan->max_create_offer > $accepteds->count() )
+                                    <li>
+                                        <a class="add-agent-btn" href="apps_support_index.html#">
+                                            <i class="os-icon os-icon-ui-22"></i>
+                                            <span>Add Agent</span>
+                                        </a>
+                                    </li>
+                                @endif
+
+                            </ul>
+                        </div>
 
                     </div>
+
                 </div>
 
             </div>

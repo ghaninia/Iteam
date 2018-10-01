@@ -10,14 +10,9 @@ class TeamPolicy
 {
     use HandlesAuthorization;
 
-    public function __construct($team)
+    public function show(User $user , Team $team)
     {
-
-    }
-
-    public function isMyTeam(User $user , Team $team)
-    {
-        return $user->id == $team->user_id ;
+        return $team->user_id == $user->id ;
     }
 
 }

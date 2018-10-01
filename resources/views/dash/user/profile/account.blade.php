@@ -144,7 +144,7 @@
                                                 </div>
                                                 <div class="bar-label-left">
                                                     <span>{{ trans('dash.panel.user.activated_offer') }}</span>
-                                                    <span class="info">{{ sprintf('%s/%s' , $log['offers']['max'] , $log['offers']['current_usage'] ) }}</span>
+                                                    <span class="info">{{ sprintf('%s/%s' , $log['offers']['current_usage'] , $log['offers']['max'] ) }}</span>
                                                 </div>
                                             </div>
 

@@ -56,7 +56,9 @@
                                         <small class="positive">{{ verta($team->expired_at)->formatDifference() }}</small>
                                     @endif
                                 </div>
-                                <div class="bar-label-right"><span class="info">{{ sprintf("%s/%s" , $team->offers_count , $team->plan->max_create_offer ) }}</span></div>
+                                <div class="bar-label-right">
+                                    <span class="info">{{ sprintf("%s/%s" , $team->offers_count , $team->plan->max_create_offer ) }}</span>
+                                </div>
                             </div>
 
                             <div class="bar-level-1" style="width: 100%">

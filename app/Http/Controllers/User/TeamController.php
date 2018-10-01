@@ -14,11 +14,7 @@ class TeamController extends Controller
 
     public function __construct()
     {
-        $this->middleware('can:isMyTeam,App\Models\Post' , [
-            'except' => [
-                'index','create','store','show'
-            ]
-        ]);
+        $this->middleware("can:show,team" , ['except' => ['index' , 'create' , 'store'] ]) ;
     }
 
     public function index(Request $request)
@@ -124,8 +120,8 @@ class TeamController extends Controller
     public function show(Team $team ,Request $request)
     {
 
-
         $team = $team->load("offers" , "visits" , "user" , 'plan' , 'tags' ,'skills') ;
+
         $information = [
             'title' => trans("dash.team.show.title" , ['attribute' => $team->name ]) ,
             'desc'  => str_slice($team->excerpt , 30) ?? str_slice(strip_tags($team->content) , 30 ) ,
@@ -157,37 +153,18 @@ class TeamController extends Controller
         return view("dash.user.team.show" , compact('team' , 'information' , 'view' , 'appends') );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function offer(Team $team ,Offer $offer)
     {
-        //
+
     }
 }

@@ -26,4 +26,15 @@ class Offer extends Model
         return $this->belongsTo(Team::class) ;
     }
 
+    public function scopeAccepted($query)
+    {
+        return $query->where("status" , TRUE ) ;
+    }
+
+    public function scopeRejected($query)
+    {
+        return $query->where("status" , FALSE )->where("viewed" , TRUE ) ;
+        //* زمانی که وضعیت غیرفعال بود و تماشا داده شده بود *//
+    }
+
 }
