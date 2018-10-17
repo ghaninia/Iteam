@@ -3,7 +3,7 @@ var data = {
     ajax  : $("meta[name='ajax-url']").attr('content')
 };
 
-
+// serializeArray
 (function ($) {
     $.fn.serializeFormJSON = function () {
         var o = {};
@@ -77,7 +77,7 @@ function base64_decode(str) {
 
 // login , profileUpdate
 $(function () {
-    $("form#login , form#profileUpdate , form#passwordUpdate , form#notificationUpdate").validator().submit(function (e) {
+    $("form#login , form#register ,form#passwordUpdate , form#profileUpdate , form#passwordUpdate , form#notificationUpdate").validator().submit(function (e) {
         var form = $(this) ;
         var formData = new FormData($(this)[0]);
         if (!e.isDefaultPrevented()) {
@@ -102,7 +102,7 @@ $(function () {
                     {
                         Snackbar.show({
                             text: jqXHR.responseJSON.message  ,
-                            pos: 'bottom-center',
+                            pos: 'bottom-right',
                             showAction: false ,
                             actionText: "Dismiss",
                             duration: 3000,
@@ -122,7 +122,7 @@ $(function () {
                             setTimeout(function () {
                                 Snackbar.show({
                                     text: response[i] ,
-                                    pos: 'bottom-center',
+                                    pos: 'bottom-right',
                                     showAction: false ,
                                     actionText: "Dismiss",
                                     duration: 3000,
@@ -132,6 +132,7 @@ $(function () {
                                 });
                             },100) ;
                         }
+                        $("#captcha #refresh").click() ;
                     }
                 } ,
                 success : function (response) {
@@ -147,13 +148,55 @@ $(function () {
                             showAction: false
                         });
                     setTimeout(function () {
-                        location.reload() ;
+                       if( response.url == undefined )
+                            window.location.reload() ;
+                        else
+                            window.location.href = response.url ;
+
                     },1000);
                 }
             });
             NProgress.done() ;
+
         }
     });
+});
+
+
+$(function() {
+    $('form#resetpassword').validator().submit(function (e) {
+        e.preventDefault() ;
+        NProgress.start() ;
+        var sendUrl = $(this).attr("action") ;
+        var datas = $(this).serialize() ;
+        $.ajax({
+            url : sendUrl,
+            dataType : "JSON" ,
+            type : "POST" ,
+            data : datas ,
+            headers : {
+                "X-CSRF-TOKEN" : data.token
+            },
+            success : function (response) {
+                if ( response.ok )
+                {
+                    $('.form-items' , '.form-content' ).addClass('hide-it');
+                    $(".form-sent" , '.form-content' ).addClass('show-it');
+                }
+                NProgress.done() ;
+            },
+            error: function(response) {
+                // email.warp('.form-group').addClass("has-error has-danger") ;
+                let code = response.status ;
+                if ( code == 422 )
+                {
+                    let msgs = response.responseJSON  ;
+                }
+                // console.log(jq.responseJSON) ;
+                NProgress.done() ;
+            }
+        })
+    })
 });
 
 //logout
@@ -191,12 +234,28 @@ $(function () {
 });
 
 //province && city
-function cities(item , id) {
-    NProgress.start() ;
-    var select = $("#" + id ) ;
-    var name = 'province_'+item.value ;
+$("#province").change(function () {
 
-    if (!checkCookie(name))
+    HttpSelect( $(this) , "city"  , {
+        name : 'province_id' ,
+        province_id : $(this).val() ,
+        action : "myCities"
+    }) ;
+
+});
+
+/*
+* item : $(this) ,
+* pushStateId = place holder id
+* datas ajax data
+*/
+function HttpSelect( item , pushStateID , datas  ) {
+    NProgress.start() ;
+    var select = $("#" + pushStateID ) ;
+    var itemVal = item.val() ;
+    var cook_name = datas.name + "_" + itemVal ;
+
+    if (!checkCookie(cook_name))
     {
         $.ajax({
             url : data.ajax ,
@@ -205,33 +264,33 @@ function cities(item , id) {
             headers : {
                 "X-CSRF-TOKEN" : data.token
             },
-            data : {
-                action : "myCities" ,
-                province_id : item.value
-            } ,
+            data : datas ,
             success : function (response) {
-                setCookie(name , JSON.stringify(response.msg) , 10 ) ;
-                printSelect(name , select ) ;
+                var success = JSON.stringify(response.msg) ;
+                setCookie(cook_name , success , 10 ) ;
+                selectPrint(select , cook_name ) ;
             }
         });
     }else{
-        printSelect(name , select ) ;
+        selectPrint(select , cook_name ) ;
     }
-    NProgress.done() ;
-}
-function printSelect(name , select) {
-    var items = JSON.parse(getCookie(name)) ;
-    select.animate({opacity : "0.5" }) ;
 
-    if (items.length > 0)
-    {
-        $("option" , select ).not(":first").remove() ;
-        for(i in items)
+    NProgress.done() ;
+
+    function selectPrint(select , name ) {
+        var items = JSON.parse(getCookie(name)) ;
+        select.animate({opacity : "0.5" }) ;
+        if (items.length > 0)
         {
-            select.append("<option value='"+items[i]['id']+"'>"+items[i]['name']+"</option>") ;
+            $("option" , select ).not(":first").remove() ;
+            for(i in items)
+            {
+                select.append("<option value='"+items[i]['id']+"'>"+items[i]['name']+"</option>") ;
+            }
         }
+        select.animate({opacity : "1" }) ;
     }
-    select.animate({opacity : "1" }) ;
+
 }
 
 //upload
@@ -450,15 +509,16 @@ $(function () {
 
 }) ;
 
-// // jquery height
-// $(function () {
-//     var offerHeight = document.body.offsetHeight ;
-//     var height = window.innerHeight ;
-//
-//     if ( offerHeight <= height )
-//         $(".menu-w").css({ 'height': (height-40) +'px' });
-// }) ;
+// jquery height
+$(function () {
+    var offerHeight = document.body.offsetHeight ;
+    var height = window.innerHeight ;
 
+    if ( offerHeight <= height )
+        $(".menu-w").css({ 'height': (height-40) +'px' });
+}) ;
+
+// offers_push page
 $(function () {
 
     var content = $(".offers_push") ;
@@ -497,19 +557,18 @@ $(function () {
 
 });
 
-
-
+// team show delites
 $(function () {
     $(".support-ticket-info").each(function () {
         var warrper = $(this) ;
         $(".close-ticket-info" , this ).click(function (e) {
             e.preventDefault() ;
             warrper.hide() ;
-
         });
     });
 });
 
+// tags
 $(function () {
    $(".tags").each(function () {
        var warrper = $(this) ;
@@ -518,4 +577,156 @@ $(function () {
            $(this).remove() ;
        });
    }) ;
+});
+
+// captcha
+$(function () {
+   $("#captcha").each(function () {
+       var img = $("img" , this ) ;
+       $("#refresh" , this ).click(function () {
+            $(this).closest('.form-group').find("input").val("") ;
+            NProgress.start() ;
+            img.attr( "src" , img.attr("src") + "?" + Math.random() ) ;
+            NProgress.done() ;
+       }) ;
+   });
+});
+
+// content
+$(function () {
+    $('#content').richText({
+        // text formatting
+        bold: true,
+        italic: true,
+        underline: false,
+
+        // text alignment
+        leftAlign: true,
+        centerAlign: true,
+        rightAlign: true,
+
+        // lists
+        ol: true ,
+        ul: true,
+
+        // title
+        heading: false ,
+
+        // fonts
+        fonts: false,
+        fontList: [],
+        fontColor: false,
+        fontSize: false,
+
+        // uploads
+        imageUpload: false,
+        fileUpload: false ,
+
+        // link
+        urls: false ,
+
+        video : false,
+
+        // tables
+        table: false,
+
+        // code
+        removeStyles: false,
+        code: false ,
+
+        // colors
+        colors: [],
+
+        // dropdowns
+        fileHTML: '',
+        imageHTML: '',
+        // dev settings
+        useSingleQuotes: false,
+        height: 150 ,
+        heightPercentage: 0,
+        id: "",
+        class: "",
+        useParagraph: false
+    });
+});
+
+// team create
+$(function () {
+    $(".steps-w").each(function () {
+        var next = $("button.next" , this ) ;
+        var prev = $("button.prev" , this ) ;
+        var submit = $("button.submit" , this ) ;
+
+        var contents = $(".step-contents" , this ) ;
+        var triggers = $(".step-triggers" , this ) ;
+        var warrper = $(this) ;
+
+        next.click(function () {
+            $(".step-content.active" , contents).removeClass("active")
+                .next(".step-content")
+                .addClass("active") ;
+
+            $(".step-trigger.active" , triggers).removeClass("active")
+                .next(".step-trigger")
+                .addClass("active") ;
+
+            var stepContentActive = $(".step-content.active") ;
+
+            if ( stepContentActive.next(".step-content").length == 0 )
+            {
+                next.addClass("hidden") ;
+                submit.removeClass("hidden") ;
+            }
+
+            if( stepContentActive.prev(".step-content").length >= 0  )
+                prev.removeClass("hidden") ;
+        });
+
+        prev.click(function () {
+            submit.addClass("hidden") ;
+            $(".step-content.active").removeClass("active")
+                .prev(".step-content")
+                .addClass("active") ;
+
+            $(".step-trigger.active" , triggers).removeClass("active")
+                .prev(".step-trigger")
+                .addClass("active") ;
+
+            var stepContentActive = $(".step-content.active") ;
+            if ( stepContentActive.prev(".step-content").length == 0 )
+                prev.addClass("hidden") ;
+            if( stepContentActive.next(".step-content").length >= 0  )
+                next.removeClass("hidden") ;
+        });
+
+    });
+
+
+    $("#tags").change(function () {
+        HttpSelect( $(this) , "child_tag"  , {
+            name : 'tag_id' ,
+            tag_id : $(this).val() ,
+            action : "ChildTag"
+        }) ;
+    });
+
+    $("#child_tag").change(function () {
+        HttpSelect( $(this) , "skills"  , {
+            name : 'child_tag' ,
+            child_tag_id : $(this).val() ,
+            action : "Skills"
+        }) ;
+    });
+
+    $("select#interplay_fiscal").change(function () {
+        if ($(this).val() === 'fixedsalary')
+        {
+            $(".salaries").removeClass('hidden') ;
+            $(".salaries input").removeAttr('disabled') ;
+        }else {
+            $(".salaries").addClass('hidden') ;
+            $(".salaries input").prop('disabled' , 'disabled') ;
+        }
+    });
+
 });

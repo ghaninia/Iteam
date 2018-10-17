@@ -1,9 +1,7 @@
 @extends("dash.layouts.app")
 @section("main")
     <div class="content-i">
-
         <div class="content-box">
-
             <div class="support-index">
 
                 <div class="support-tickets" id="offers">
@@ -33,7 +31,25 @@
                 <div class="support-ticket-content-w">
 
                     <div class="support-ticket-content">
-
+                        <div class="ticket-thread">
+                            <div class="ticket-reply">
+                                <div class="ticket-reply-info">
+                                    <a class="author with-avatar" href="apps_support_index.html#"><img alt="" src="img/avatar1.jpg"><span>John Mayers</span></a><span class="info-data"><span class="label">replied on</span><span class="value">May 27th, 2017 at 7:42am</span></span>
+                                    <div class="actions" href="#"><i class="os-icon os-icon-ui-46"></i>
+                                        <div class="actions-list">
+                                            <a href="apps_support_index.html#"><i class="os-icon os-icon-ui-49"></i><span>Edit</span></a>
+                                            <a href="apps_support_index.html#"><i class="os-icon os-icon-ui-09"></i><span>Mark Private</span></a>
+                                            <a href="apps_support_index.html#"><i class="os-icon os-icon-ui-03"></i><span>Favorite</span></a>
+                                            <a class="danger" href="apps_support_index.html#"><i class="os-icon os-icon-ui-15"></i><span>Delete</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ticket-reply-content">
+                                    {{ $team->excerpt }}
+                                </div>
+                                <div class="ticket-attachments"><a class="attachment" href="apps_support_index.html#"><i class="os-icon os-icon-ui-51"></i><span>Bug Report.xml</span></a><a class="attachment" href="apps_support_index.html#"><i class="os-icon os-icon-documents-07"></i><span>Sytem Information.txt</span></a></div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="support-ticket-info">
@@ -120,8 +136,6 @@
                 </div>
 
             </div>
-
         </div>
-
     </div>
 @stop

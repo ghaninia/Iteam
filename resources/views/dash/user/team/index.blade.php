@@ -20,7 +20,6 @@
             </ul>
         </div>
     </div>
-
     <div class="row">
 
         <!---------------->
@@ -60,6 +59,16 @@
         <!---------------->
         <div class="col-lg-3">
             <div class="element-wrapper">
+                <h6 class="element-header">{{ trans('dash.team.quick_link') }}</h6>
+                <div class="element-box-tp">
+                    <div class="el-buttons-list full-width">
+                        <a class="btn btn-white btn-sm" href="{{ route("user.team.create") }}">
+                            <span>{{ trans('dash.team.create.label') }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="element-wrapper">
                 <h6 class="element-header">{{ trans("dash.team.view.text") }}</h6>
 
                 <div class="element-box-tp">
@@ -90,5 +99,6 @@
 
 
     </div>
+
 </div>
 @stop

@@ -27,7 +27,8 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/" ,
+            "GhaniniaIR\\Captcha\\" : "Package/GhaniniaIR/Captcha/src/"
         },
         "files": [
             "app/Repositories/Functions/functions.php"

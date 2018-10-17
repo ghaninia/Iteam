@@ -1,5 +1,14 @@
 <?php
+
 Auth::routes() ;
+
+
+Route::namespace("Site")->name("site.")->middleware("web")->group(function (){
+    Route::get("contactus" , "SiteController@contactUs")->name("contactus") ;
+    Route::get("privacy" , "SiteController@privacy")->name("privacy") ;
+});
+
+
 
 Route::namespace('User')->name('user.')->middleware('auth:user')->group(function (){
 
@@ -9,6 +18,7 @@ Route::namespace('User')->name('user.')->middleware('auth:user')->group(function
 
     // Route access if Guard user
     Route::get('main', 'MainController@index')->name('main') ;
+
     Route::post('ajax', 'AjaxController@ajaxHandle')->name('ajax') ;
 
     //* روت های پروفایل کاربری  *//
@@ -47,7 +57,6 @@ Route::namespace('User')->name('user.')->middleware('auth:user')->group(function
         Route::get("{team}/offers/{offer?}" , "TeamController@offer")->name("offer");
     });
 
-
-//    Route::Resource("offer" , "OfferController" , [ 'except' => ['index',"destroy"] ] );
+    Route::Resource("offer" , "OfferController" , [ 'except' => ['index',"destroy"] ] );
 
 });

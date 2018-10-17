@@ -7,7 +7,7 @@
     <title>{{ isset($information['title']) ? $information['title'] : options('title')  }}</title>
     <meta type="description" content="{{ isset($information['desc']) ? $information['desc'] : options('desc')  }}">
     <link rel="stylesheet" href="{{ mix("assets/css/app.css") }}">
-    <script src="{{ mix("assets/js/app.js") }}"></script>
+
 </head>
 {{--color-scheme-dark--}}
 <body class="with-content-panel menu-position-side menu-side-right ">
@@ -45,6 +45,9 @@
         </div>
     </div>
 
+
+    <script src="{{ mix("assets/js/app.js") }}"></script>
+    @yield('plugins')
     @if(session()->has(['status' , 'message']))
     <script>
         Snackbar.show({
@@ -58,5 +61,6 @@
         });
     </script>
     @endif
+
 </body>
 </html>

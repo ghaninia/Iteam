@@ -130,6 +130,46 @@ function currency ($currency , $numberFormat = false )
             'type' => trans('dash.currency.milliontoman')
         ];
 }
+/***********************/
+/*** change currency ***/
+/***********************/
+function changeCurrency($currency , $changeTo = 'rial')
+{
+    $format = strtolower( config('timo.currency') ) ;
+    $changing   =
+        [
+            //*  *//
+            'rial' => [
+                'rial'   => 1 ,
+                'toman'  => .1 ,
+                'thousandtoman' => .0001 ,
+                'thousandrial'  => .001 ,
+            ],
+
+            'toman' => [
+                'rial'   => 10 ,
+                'toman'  => 1 ,
+                'thousandtoman' => .001 ,
+                'thousandrial'  => .01 ,
+            ],
+
+            'thousandtoman' => [
+                'rial'   => 10000 ,
+                'toman'  => 1000 ,
+                'thousandtoman' => 1 ,
+                'thousandrial'  => 10 ,
+            ],
+
+            'thousandrial' => [
+                'rial'   => 1000 ,
+                'toman'  => 100 ,
+                'thousandtoman' => .1 ,
+                'thousandrial'  => 1 ,
+            ],
+        ];
+
+    return $changing[$format][$changeTo] * $currency ;
+}
 
 function me()
 {
@@ -218,4 +258,22 @@ function slug($name){
         $slug = substr($slug , 0 , strlen($slug)-1) ;
     }
     return $slug ;
+}
+
+/**typeAssists**/
+function typeAssists(){
+    return [
+        'telework' ,
+        'fulltime' ,
+        'parttime' ,
+        'internship'
+    ] ;
+}
+
+function interplayFiscals(){
+    return [
+        'bothfounder' ,
+        'partnership' ,
+        'fixedsalary'
+    ];
 }

@@ -149,6 +149,7 @@ return [
         /*
          * Package Service Providers...
          */
+        GhaniniaIR\Captcha\CaptchaServiceProvider::class ,
         Intervention\Image\ImageServiceProvider::class,
         /* Application Service Providers...
         */

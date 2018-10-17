@@ -26,4 +26,23 @@ return [
     'currency' => 'toman' ,
     'paginate' => 10 ,
 
+    'information'  => [
+        'logo'     => 'assets/img/logo.svg' ,
+        'title'    => 'timo اپلیکیشن تیم سازی' ,
+        'desc'     => 'با تیمو شما میتوانید تیم بسازید یا هم تیمی کسی بشوید.' ,
+        'copyright'=> '© <b>کپی رایت</b> همه حقوق محفوظ است' ,
+        'keywords' => [
+            'تیم سازی' ,
+            'timo' ,
+            'timo group' ,
+            'iteam' ,
+            'تیم من'
+        ] ,
+        'socials' => [
+            'facebook'  => '#' ,
+            'instagram' => '#' ,
+            'linkedin'  => '#' ,
+            'twitter'   => '#' ,
+        ] ,
+    ]
 ];

@@ -330,10 +330,11 @@
                                     </div>
                                     <div class="row">
 
+
                                         <div class="col-sm-6">
                                             <div class="form-group  {{ $errors->has("province_id") ? 'has-error has-danger' : "" }}">
                                                 <label for="province">{{ trans('dash.panel.user.province_id')  }}</label>
-                                                <select onchange="cities(this,'city');" name="province_id" id="province" class="form-control">
+                                                <select name="province_id" id="province" class="form-control">
                                                     <option value="" selected>{{ trans('dash.profile.please_select_item') }}</option>
                                                     @foreach($provinces as $province)
                                                         <option @if($account->province_id == $province->id) selected @endif value="{{ $province->id }}">
@@ -361,7 +362,6 @@
                                                 <div class="form-control-feedback help-block with-errors form-text">@if($errors->has("city_id")) {{ $errors->first('city_id') }} @endif</div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </fieldset>
                             </div>
