@@ -1,6 +1,7 @@
 <div class="menu-w
-    color-scheme-light
     menu-layout-mini
+    color-style-bright
+    color-scheme-dark
     sub-menu-style-over">
 
     <div class="logo-w">

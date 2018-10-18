@@ -509,14 +509,6 @@ $(function () {
 
 }) ;
 
-// jquery height
-$(function () {
-    var offerHeight = document.body.offsetHeight ;
-    var height = window.innerHeight ;
-
-    if ( offerHeight <= height )
-        $(".menu-w").css({ 'height': (height-40) +'px' });
-}) ;
 
 // offers_push page
 $(function () {
@@ -594,7 +586,7 @@ $(function () {
 
 // content
 $(function () {
-    $('#content').richText({
+    $('textarea#content').richText({
         // text formatting
         bold: true,
         italic: true,

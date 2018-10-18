@@ -4,6 +4,16 @@
 
         <div class="content-box">
             <div class="row">
+                @if($errors->count() > 0 )
+                    <div class="col-lg-12">
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <b>{{ trans("dash.items.danger") }}</b>{{ $error }}
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
                 <div class="col-lg-8">
                     <div class="element-wrapper">
                         <div class="element-box">
@@ -102,6 +112,7 @@
                                         <div class="step-content ">
 
                                             <div class="alert alert-warning borderless">
+                                                <h5 class="alert-heading">{{ trans("dash.items.readmore") }}</h5>
                                                 <p>{{ trans("dash.team.create.label_geo") }}</p>
                                             </div>
 
@@ -228,6 +239,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 

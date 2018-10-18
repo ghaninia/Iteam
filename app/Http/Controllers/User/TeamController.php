@@ -1,15 +1,14 @@
 <?php
+
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamStore;
-use App\Models\City;
 use App\Models\Offer;
 use App\Models\Province;
 use App\Models\Tag;
 use App\Models\Team;
 use App\Models\User;
 use App\Repositories\OfferRepository;
-use Faker\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -95,9 +94,6 @@ class TeamController extends Controller
 
     public function create()
     {
-        return
-        User::canAddTeam() ;
-
         $information = [
             'title' => trans('dash.team.make') ,
             'breadcrumb' => [
@@ -117,15 +113,16 @@ class TeamController extends Controller
 
     public function store(TeamStore $request)
     {
-        $validate = Validator::make($request->all());
-        $validate->after(function ($v){
-
-        }) ;
+        $validate = Validator::make($request->all() , []);
+        $validate->after(function ($validate){
+            if (false) //!User::canAddTeam()
+                $validate->errors()->add( "add_team_fail" , trans("dash.messages.error.add_team_fail") ) ;
+        })->validate() ;
 
         $team =
         Team::userCreate([
+            'name'     => $request->input('name') ,
             'phone'    => $request->input('phone') ,
-            'slug'     => time() ,
             'fax'      => $request->input('fax') ,
             'mobile'   => $request->input('mobile') ,
             'email'    => $request->input('email') ,
@@ -133,9 +130,9 @@ class TeamController extends Controller
             'excerpt'  => strip_tags($request->input('excerpt')) ,
             'content'  => htmlspecialchars($request->input('content')) ,
             'address'  => $request->input('address') ,
-            'required_gender' => $request->input('required_gender') ,
+            'required_gender' => json_encode( $request->input('required_gender') ) ,
             'count_member' => $request->input('count_member') ,
-            'type_assist' => $request->input('type_assist') ,
+            'type_assist' => json_encode( $request->input('type_assist') ) ,
             'interplay_fiscal' => $request->input('interplay_fiscal') ,
             'min_salary' => changeCurrency($request->input('min_salary') , 'rial') ,
             'max_salary' => changeCurrency($request->input('max_salary') , 'rial') ,
@@ -143,20 +140,27 @@ class TeamController extends Controller
             'city_id' => $request->input('city_id') ,
         ]);
 
-        $team->skills()->attach($request->input('skills' , [])) ;
+        $team->skills()->attach( $request->input('skills') ) ;
+
         $tags = [] ;
-        if ($request->has('tag'))
-            $tags[] = $request->input('tag') ;
-        if ($request->input('child_tag'))
-            $tags[] = $request->input('child_tag') ;
+        if ($request->has('tag')) $tags[] = $request->input('tag') ;
+        if ($request->input('child_tag')) $tags[] = $request->input('child_tag') ;
+
         $team->tags()->attach( $tags ) ;
 
-        return redirect()
-            ->route("user.team.show" , $team->slug )
-            ->with([
+        if ( $request->ajax() )
+            return response()->json([
                 'message' => trans("dash.panel.messages.success.team.create") ,
-                'status'  => true
+                'status'  => true ,
+                'url'     => route("user.team.show" , $team->slug )
             ]);
+        else
+            return redirect()
+                ->route("user.team.show" , $team->slug )
+                ->with([
+                    'message' => trans("dash.panel.messages.success.team.create") ,
+                    'status'  => true ,
+                ]);
     }
 
     public function show(Team $team ,Request $request)

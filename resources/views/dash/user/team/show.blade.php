@@ -34,7 +34,6 @@
                         <div class="ticket-thread">
                             <div class="ticket-reply">
                                 <div class="ticket-reply-info">
-                                    <a class="author with-avatar" href="apps_support_index.html#"><img alt="" src="img/avatar1.jpg"><span>John Mayers</span></a><span class="info-data"><span class="label">replied on</span><span class="value">May 27th, 2017 at 7:42am</span></span>
                                     <div class="actions" href="#"><i class="os-icon os-icon-ui-46"></i>
                                         <div class="actions-list">
                                             <a href="apps_support_index.html#"><i class="os-icon os-icon-ui-49"></i><span>Edit</span></a>
@@ -44,10 +43,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ticket-reply-content">
+
+                                <div>
                                     {{ $team->excerpt }}
                                 </div>
-                                <div class="ticket-attachments"><a class="attachment" href="apps_support_index.html#"><i class="os-icon os-icon-ui-51"></i><span>Bug Report.xml</span></a><a class="attachment" href="apps_support_index.html#"><i class="os-icon os-icon-documents-07"></i><span>Sytem Information.txt</span></a></div>
+
+                                <div class="border-bottom mb-2 mt-2"></div>
+                                <div class="balance-table">
+                                    <table class="table table-lightborder table-bordered table-v-compact mb-0">
+                                        <tbody>
+                                        <tr>
+                                            <td><strong>2.34</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">Bitcoins BTC</div>
+                                            </td>
+                                            <td><strong>1.74</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">Ripple RPX</div>
+                                            </td>
+                                            <td class="d-sm-none d-xxxxl-table-cell d-md-table-cell d-xxl-none"><strong>4.82</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">Newcoin NCN</div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

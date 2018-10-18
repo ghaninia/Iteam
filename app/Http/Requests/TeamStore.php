@@ -33,11 +33,11 @@ class TeamStore extends FormRequest
             'name' => ['required' , 'max:255' , 'min:4' ] ,
             'excerpt' => ['required'] ,
             'content' => ['required'] ,
-            'mobile'  =>  ['required' , new MobileRule() ] ,
+            'mobile'  =>  ['nullable' , new MobileRule() ] ,
             'email'   => ['nullable' , 'email'] ,
             'website' => ['nullable' , 'url'] ,
-            'province_id' => ['required' , Rule::in(Province::pluck('id')->toArray()) ] ,
-            'city_id' => ['required' , Rule::in( City::pluck('id')->toArray() )] ,
+            'province_id' => [ 'nullable' , Rule::in(Province::pluck('id')->toArray()) ] ,
+            'city_id' => [ 'nullable' , Rule::in( City::pluck('id')->toArray() )] ,
             'address' => ['nullable'] ,
 
 

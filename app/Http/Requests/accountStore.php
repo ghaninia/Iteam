@@ -20,6 +20,8 @@ class accountStore extends FormRequest
 
     public function rules()
     {
+
+
         $user = $this->user() ;
 
         $count_skill = 0 ;

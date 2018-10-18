@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Providers;
-
-use App\Models\Payment;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+use App\Models\Payment;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,9 +16,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(GateContract $gate)
     {
-        Schema::defaultStringLength(191) ;
+		Schema::defaultStringLength(191) ;
 
         //* فقط فاکتور های خودت رو ببین *//
+
         $gate->define("payment" , function ( $user , Payment $payment){
             return $payment->user_id == $user->id ;
         });
