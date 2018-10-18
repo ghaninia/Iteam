@@ -6,6 +6,9 @@ Auth::routes() ;
 Route::namespace("Site")->name("site.")->middleware("web")->group(function (){
     Route::get("contactus" , "SiteController@contactUs")->name("contactus") ;
     Route::get("privacy" , "SiteController@privacy")->name("privacy") ;
+    Route::get("/" , function (){
+        return redirect()->route("user.main") ;
+    });
 });
 
 

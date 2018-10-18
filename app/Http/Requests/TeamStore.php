@@ -40,7 +40,6 @@ class TeamStore extends FormRequest
             'city_id' => [ 'nullable' , Rule::in( City::pluck('id')->toArray() )] ,
             'address' => ['nullable'] ,
 
-
             'type_assist' => ['required' , 'array'] ,
             'type_assist.*' => [ 'required' , Rule::in( typeAssists() ) ] ,
 
@@ -48,7 +47,7 @@ class TeamStore extends FormRequest
             'required_gender.*' => [ 'required' , Rule::in(genders()) ] ,
 
 
-            'count_member' => ['required' , 'numeric'] ,
+            'count_member' => ['required' , 'numeric' , 'max:'.me()->plan->max_create_offer , 'min:1' ] ,
             'interplay_fiscal' => ['required' , Rule::in(interplayFiscals())] ,
 
             'min_salary' => [ 'required_if:interplay_fiscal,==,fixedsalary' , 'numeric' ] ,

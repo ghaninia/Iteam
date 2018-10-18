@@ -196,7 +196,15 @@ class TeamController extends Controller
                 'appends' => $appends
             ] ;
 
-        return view("dash.user.team.show" , compact('team' , 'information' , 'view' , 'appends') );
+        $genders = array_map(function($v){
+            return trans("dash.genders.{$v}") ;
+        } ,  $team->required_gender  );
+
+        $typeAssists = array_map(function($v){
+            return trans("dash.type_assists.{$v}") ;
+        } ,  $team->type_assist  );
+
+        return view("dash.user.team.show" , compact( 'genders' , 'typeAssists' , 'team' , 'information' , 'view' , 'appends') );
     }
 
     public function edit($id)

@@ -53,19 +53,26 @@
                                     <table class="table table-lightborder table-bordered table-v-compact mb-0">
                                         <tbody>
                                         <tr>
-                                            <td><strong>2.34</strong>
-                                                <div class="balance-label smaller lighter text-nowrap">Bitcoins BTC</div>
+                                            <td><strong>{{ $team->count_member }}</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">
+                                                    {{ trans("dash.team.create.count_member") }}
+                                                </div>
                                             </td>
-                                            <td><strong>1.74</strong>
-                                                <div class="balance-label smaller lighter text-nowrap">Ripple RPX</div>
+                                            <td><strong>{{ implode("," , $genders) }}</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">
+                                                    {{ trans("dash.team.create.required_gender") }}
+                                                </div>
                                             </td>
-                                            <td class="d-sm-none d-xxxxl-table-cell d-md-table-cell d-xxl-none"><strong>4.82</strong>
-                                                <div class="balance-label smaller lighter text-nowrap">Newcoin NCN</div>
+                                            <td><strong>{{ implode("," , $typeAssists) }}</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">
+                                                    {{ trans("dash.team.create.type_assist") }}
+                                                </div>
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
+
                             </div>
                         </div>
                     </div>

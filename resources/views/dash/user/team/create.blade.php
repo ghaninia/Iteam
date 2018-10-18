@@ -62,7 +62,7 @@
 
                                             <div class="form-group">
                                                 <label for="count_member">{{ trans("dash.team.create.count_member") }}</label>
-                                                <input min="0" max="100" value="{{ old('count_member') }}" type="number" autocomplete="off" required class="form-control" placeholder="{{ trans("dash.team.create.count_member") }}" name="count_member">
+                                                <input min="1" max="{{ me()->plan->max_create_offer }}" value="{{ old('count_member',1) }}" type="number" autocomplete="off" required class="form-control" placeholder="{{ trans("dash.team.create.count_member") }}" name="count_member">
                                                 <small class="gray">{{ trans("dash.team.create.label_count_member") }}</small>
                                             </div>
 
