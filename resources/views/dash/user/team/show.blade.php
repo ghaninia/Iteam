@@ -3,9 +3,7 @@
     <div class="content-i">
         <div class="content-box">
             <div class="support-index">
-
                 <div class="support-tickets" id="offers">
-
                     <div class="support-tickets-header">
                         <form action="{{ route('user.team.show' , $team->slug ) }}" id="search">
                             <div class="tickets-control">
@@ -16,7 +14,6 @@
                             </div>
                         </form>
                     </div>
-
                     <div class="offers_push">
                         <div id="content">
                             {!! $view !!}
@@ -25,11 +22,8 @@
                             {!! $appends !!}
                         </div>
                     </div>
-
                 </div>
-
                 <div class="support-ticket-content-w">
-
                     <div class="support-ticket-content">
                         <div class="ticket-thread">
                             <div class="ticket-reply">
@@ -38,20 +32,19 @@
                                         <div class="actions-list">
                                             <a href="apps_support_index.html#"><i class="os-icon os-icon-ui-49"></i><span>Edit</span></a>
                                             <a href="apps_support_index.html#"><i class="os-icon os-icon-ui-09"></i><span>Mark Private</span></a>
-                                            <a href="apps_support_index.html#"><i class="os-icon os-icon-ui-03"></i><span>Favorite</span></a>
-                                            <a class="danger" href="apps_support_index.html#"><i class="os-icon os-icon-ui-15"></i><span>Delete</span></a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div>
-                                    {{ $team->excerpt }}
-                                </div>
-
-                                <div class="border-bottom mb-2 mt-2"></div>
-                                <div class="balance-table">
+                                <div class="balance-table mt-3">
                                     <table class="table table-lightborder table-bordered table-v-compact mb-0">
                                         <tbody>
+                                        <tr class="bg-light">
+                                            <td colspan="3">
+                                                <b>{{ trans("dash.team.create.info") }}</b>
+                                            </td>
+                                        </tr>
+
                                         <tr>
                                             <td><strong>{{ $team->count_member }}</strong>
                                                 <div class="balance-label smaller lighter text-nowrap">
@@ -69,14 +62,64 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="{{ $team->interplay_fiscal == 'fixedsalary' ? '1' : '3' }}" >
+                                                <strong>{{ trans("dash.interplay_fiscals.".$team->interplay_fiscal) }}</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">
+                                                    {{ trans("dash.team.create.interplay_fiscal") }}
+                                                </div>
+                                            </td>
+                                            @if( $team->min_salary )
+                                                @php($min = currency($team->min_salary) )
+                                                <td><b>{{ number_format($min['currency']) }}</b> <strong class="text-danger">{{ $min['type'] }}</strong>
+                                                    <div class="balance-label smaller lighter text-nowrap">
+                                                        {{ trans("dash.team.create.min_salary") }}
+                                                    </div>
+                                                </td>
+                                            @endif
+                                            @if( $team->max_salary )
+                                                @php($max = currency($team->max_salary) )
+                                                <td><b>{{ number_format($max['currency']) }}</b> <strong class="text-success">{{ $max['type'] }}</strong>
+                                                    <div class="balance-label smaller lighter text-nowrap">
+                                                        {{ trans("dash.team.create.max_salary") }}
+                                                    </div>
+                                                </td>
+                                            @endif
+                                        </tr>
+
+                                        <tr class="bg-light">
+                                            <td colspan="3">
+                                                <b>{{ trans("dash.team.create.geo") }}</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong dir="ltr">{{ $team->phone }}</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">
+                                                    {{ trans("dash.team.create.phone") }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <strong dir="ltr">{{ $team->fax }}</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">
+                                                    {{ trans("dash.team.create.fax") }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <strong dir="ltr">{{ $team->mobile }}</strong>
+                                                <div class="balance-label smaller lighter text-nowrap">
+                                                    {{ trans("dash.team.create.mobile") }}
+                                                </div>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
 
+
                             </div>
                         </div>
                     </div>
-
                     <div class="support-ticket-info">
 
                         <a class="close-ticket-info" href="">
@@ -131,10 +174,8 @@
                         <div class="info-section">
                             <ul class="users-list as-tiles">
 
-                                @php($accepteds = $team->offers()->accepted()->get() )
-
-                                @if($accepteds->isNotEmpty())
-                                    @foreach($accepteds as $offer)
+                                @if($acceptedOffers->isNotEmpty())
+                                    @foreach($acceptedOffers as $offer)
                                         <li>
                                             <a class="author with-avatar" href="{{ route("user.team.offer" , ['team' => $team->slug ,'offer' => $offer->id] ) }}">
                                                 <div class="avatar" style="background-image: url('{{ userPicture( 'avatar' , 'thumbnail' , 'user' , $offer->user ) }}')"></div>
@@ -144,11 +185,11 @@
                                     @endforeach
                                 @endif
 
-                                @if( $team->plan->max_create_offer > $accepteds->count() )
+                                @if( $team->canAddOffer() )
                                     <li>
-                                        <a class="add-agent-btn" href="apps_support_index.html#">
+                                        <a class="add-agent-btn pointer" data-target="#addMemberModal" data-toggle="modal" >
                                             <i class="os-icon os-icon-ui-22"></i>
-                                            <span>Add Agent</span>
+                                            <span>{{ trans('dash.items.addItem') }}</span>
                                         </a>
                                     </li>
                                 @endif
@@ -157,10 +198,9 @@
                         </div>
 
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
+    @include("dash.modals.add_member" , ['offers' => $notAcceptedOffers ] )
 @stop

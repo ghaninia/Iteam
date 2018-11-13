@@ -11,7 +11,6 @@
                         <div class="company-name">{{ $payment->plan->name }}</div>
                         <div class="company-extra" dir="ltr">{{ $payment->created_at->format("Y/m/d H:i:s") }}</div>
                     </div>
-
                 </div>
 
                 <div class="invoice-heading">

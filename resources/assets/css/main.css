@@ -12858,7 +12858,6 @@ html {
 body {
     min-height: 100%;
     position: relative;
-    padding: 50px;
     overflow-x: hidden
 }
 
@@ -12866,12 +12865,11 @@ body:before {
     content: "";
     position: absolute;
     z-index: -1;
-    background: -webkit-gradient(linear, left top, right bottom, from(#D7BBEA), to(#65A8F1));
-    background: linear-gradient(to bottom right, #D7BBEA, #65A8F1);
     top: 0px;
     right: 0px;
     bottom: 0px;
-    left: 0px
+    left: 0px ;
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
 
 body.full-screen {
@@ -12880,7 +12878,8 @@ body.full-screen {
 
 body.full-screen .all-wrapper {
     max-width: initial;
-    border-radius: 0px
+    border-radius: 0px ;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 body.full-screen .all-wrapper>.top-bar {
@@ -12904,8 +12903,8 @@ strong {
 }
 
 .all-wrapper {
-    -webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+    /*-webkit-box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);*/
+    /*box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);*/
     border-radius: 6px;
     max-width: 1600px;
     margin: 0px auto;
@@ -16680,7 +16679,6 @@ a.el-tablo:hover .label {
     align-items: center;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
 }
 
 .profile-tile .profile-tile-box {
@@ -16812,11 +16810,18 @@ a.el-tablo:hover .label {
     border-top: none;
     padding-top: 0px;
     text-transform: none;
-    font-size: .9rem;
+    font-size: .7rem;
     line-height: 1.2;
-    margin-top: 5px
+    margin-top: 5px ;
 }
 
+.btn-xs{
+    padding :0 2px !important;
+    margin-top : 10px!important;
+}
+.btn-xs i {
+    font-size: 9px !important
+}
 .status-pill {
     width: 12px;
     height: 12px;
@@ -25869,12 +25874,12 @@ body.rentals-wrapper .select2-container--default .select2-results__option[aria-s
 }
 
 .onboarding-modal .onboarding-content {
-    padding: 40px 50px
+    padding: 40px 50px ;
+    direction : rtl
 }
 
 .onboarding-modal .onboarding-content.with-gradient {
     padding: 70px 50px 40px;
-    background-image: url(../img/onboarding-gradient-hor.png);
     background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat

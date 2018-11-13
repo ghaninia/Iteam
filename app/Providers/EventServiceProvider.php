@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\VisitorEvent' => [
             'App\Listeners\VisitorListener',
         ],
+        'App\Events\AcceptOfferEvent' => [
+            'App\Listeners\AcceptOfferListener'
+        ]
     ];
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
+use App\Events\AcceptOfferEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamStore;
 use App\Models\Offer;
@@ -10,12 +11,13 @@ use App\Models\Team;
 use App\Models\User;
 use App\Repositories\OfferRepository;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
-
+    use Notifiable ;
     public function __construct()
     {
         $this->middleware("can:show,team" , ['except' => ['index' , 'create' , 'store'] ]) ;
@@ -167,7 +169,6 @@ class TeamController extends Controller
     {
 
         $team = $team->load("offers" , "visits" , "user" , 'plan' , 'tags' ,'skills') ;
-
         $information = [
             'title' => trans("dash.team.show.title" , ['attribute' => $team->name ]) ,
             'desc'  => str_slice($team->excerpt , 30) ?? str_slice(strip_tags($team->content) , 30 ) ,
@@ -203,8 +204,10 @@ class TeamController extends Controller
         $typeAssists = array_map(function($v){
             return trans("dash.type_assists.{$v}") ;
         } ,  $team->type_assist  );
+        $acceptedOffers = $team->offers()->accepted()->get() ;
+        $notAcceptedOffers = $team->offers()->notAccepted()->get() ;
 
-        return view("dash.user.team.show" , compact( 'genders' , 'typeAssists' , 'team' , 'information' , 'view' , 'appends') );
+        return view("dash.user.team.show" , compact( 'genders' , 'notAcceptedOffers' ,'acceptedOffers' , 'typeAssists' , 'team' , 'information' , 'view' , 'appends') );
     }
 
     public function edit($id)
@@ -221,4 +224,33 @@ class TeamController extends Controller
     {
 
     }
+
+    public function rejectOffer(Team $team , Offer $offer)
+    {
+        $offer = $team->offers()->where("id" , $offer->id )->first() ;
+        $result = $offer->update([
+            'status' => 2
+        ]) ;
+        return response()->json([
+            'ok'  => true ,
+            'msg' => trans("dash.messages.success.team.offer.rejected")
+        ]);
+    }
+
+    public function acceptOffer(Team $team , Offer $offer , Request $request)
+    {
+        $offer = $team->offers()->where("id" , $offer->id )->first() ;
+        $offer->update([
+            'status' => 1
+        ]) ;
+        $user = $offer->user ;
+
+        event( new AcceptOfferEvent( $user , $team , $offer ) ) ;
+
+        return response()->json([
+            'ok'  => true ,
+            'msg' => trans("dash.messages.success.team.offer.accepted")
+        ]);
+    }
+
 }

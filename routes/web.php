@@ -57,6 +57,8 @@ Route::namespace('User')->name('user.')->middleware('auth:user')->group(function
     Route::resource('team' , 'TeamController' , ['except' => ['destroy'] ]);
 
     Route::prefix('team')->name("team.")->group(function (){
+        Route::post('{team}/offers/{offer?}/reject', 'TeamController@rejectOffer')->name("reject_offer") ;
+        Route::post('{team}/offers/{offer?}/accept', 'TeamController@acceptOffer')->name("accept_offer") ;
         Route::get("{team}/offers/{offer?}" , "TeamController@offer")->name("offer");
     });
 

@@ -2,6 +2,14 @@ var data = {
     token : $("meta[name='csrf-token']").attr('content') ,
     ajax  : $("meta[name='ajax-url']").attr('content')
 };
+var messages = {
+    team : {
+    } ,
+    question : {
+        iSureRejectOffer : "آیا از ریجکت پیشنهاد مطمئن هستید ؟" ,
+        iSureAcceptOffer : "میخواهید این کاربر هم تیمی شما شود ؟"
+    }
+} ;
 
 // serializeArray
 (function ($) {
@@ -148,7 +156,7 @@ $(function () {
                             showAction: false
                         });
                     setTimeout(function () {
-                       if( response.url == undefined )
+                        if( response.url == undefined )
                             window.location.reload() ;
                         else
                             window.location.href = response.url ;
@@ -245,10 +253,10 @@ $("#province").change(function () {
 });
 
 /*
-* item : $(this) ,
-* pushStateId = place holder id
-* datas ajax data
-*/
+ * item : $(this) ,
+ * pushStateId = place holder id
+ * datas ajax data
+ */
 function HttpSelect( item , pushStateID , datas  ) {
     NProgress.start() ;
     var select = $("#" + pushStateID ) ;
@@ -442,8 +450,8 @@ function HttpCache(url , options = {} ){
         options.header = options.header || {} ;
         options.data = options.data || {} ;
         var JQxhr = $.ajax(options).done( (response) => {
-            HttpCaches[url] = response ;
-        });
+                HttpCaches[url] = response ;
+    });
     }
 }
 
@@ -562,26 +570,26 @@ $(function () {
 
 // tags
 $(function () {
-   $(".tags").each(function () {
-       var warrper = $(this) ;
-       $(".more" , this ).click(function () {
-           warrper.find(".hidden").removeClass("hidden") ;
-           $(this).remove() ;
-       });
-   }) ;
+    $(".tags").each(function () {
+        var warrper = $(this) ;
+        $(".more" , this ).click(function () {
+            warrper.find(".hidden").removeClass("hidden") ;
+            $(this).remove() ;
+        });
+    }) ;
 });
 
 // captcha
 $(function () {
-   $("#captcha").each(function () {
-       var img = $("img" , this ) ;
-       $("#refresh" , this ).click(function () {
+    $("#captcha").each(function () {
+        var img = $("img" , this ) ;
+        $("#refresh" , this ).click(function () {
             $(this).closest('.form-group').find("input").val("") ;
             NProgress.start() ;
             img.attr( "src" , img.attr("src") + "?" + Math.random() ) ;
             NProgress.done() ;
-       }) ;
-   });
+        }) ;
+    });
 });
 
 // content
@@ -722,3 +730,90 @@ $(function () {
     });
 
 });
+
+// menu
+$(function () {
+    $(".main-menu li.has-sub-menu").hover(function () {
+        $(this).toggleClass('active')
+    })
+});
+// modal slick
+$(function () {
+    $('.onboarding-modal.show-on-load').modal('show') ;
+    if ($('.onboarding-modal .onboarding-slider-w').length) {
+        $('.onboarding-modal .onboarding-slider-w').slick({
+            dots: true,
+            infinite: false,
+            adaptiveHeight: true,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        });
+        $('.onboarding-modal').on('shown.bs.modal', function (e) {
+            $('.onboarding-modal .onboarding-slider-w').slick('setPosition');
+        });
+    }
+});
+
+//reject and add offer
+$(function () {
+
+    $(".rejectOffer").each(function () {
+        $(this).click(function (e) {
+            e.preventDefault();
+            var status = confirm(messages.question.iSureRejectOffer);
+            if (status)
+            {
+                e.preventDefault() ;
+                NProgress.start() ;
+                axios.post( $(this).data('url') ).then(function (response) {
+                    Snackbar.show({
+                        text: response.data.msg  ,
+                        pos: 'bottom-right',
+                        actionText: "Dismiss",
+                        duration: 4000,
+                        textColor: '#fff',
+                        backgroundColor: '#383838' ,
+                        showAction: false
+                    });
+                    NProgress.done() ;
+                    setTimeout(function(){
+                        window.location.reload()
+                    } , 4000 )
+                })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        });
+    });
+
+    $(".addOffer").each(function () {
+        $(this).click(function (e) {
+            e.preventDefault() ;
+            var status = confirm(messages.question.iSureAcceptOffer);
+            if (status){
+                e.preventDefault() ;
+                NProgress.start() ;
+                axios.post( $(this).data('url') ).then(function (response) {
+                    Snackbar.show({
+                        text: response.data.msg  ,
+                        pos: 'bottom-right',
+                        actionText: "Dismiss",
+                        duration: 4000,
+                        textColor: '#fff',
+                        backgroundColor: '#383838' ,
+                        showAction: false
+                    });
+                    setTimeout(function(){
+                        window.location.reload()
+                    } , 4000 )
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
+            NProgress.done() ;
+        })
+    });
+
+}) ;

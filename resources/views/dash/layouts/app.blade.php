@@ -7,6 +7,8 @@
     <title>{{ isset($information['title']) ? $information['title'] : options('title')  }}</title>
     <meta type="description" content="{{ isset($information['desc']) ? $information['desc'] : options('desc')  }}">
     <link rel="stylesheet" href="{{ mix("assets/css/app.css") }}">
+    <link rel="stylesheet" href="{{ mix("assets/css/plugins.css") }}">
+    <link rel="stylesheet" href="{{ mix("assets/css/fonts.css") }}">
 
 </head>
 {{--color-scheme-dark--}}

@@ -1,7 +1,21 @@
+@if ($offers->isEmpty())
+    <div class="alert alert-warning borderless mt-5">
+        <span>{{ trans("dash.messages.error.not_found_offer") }}</span>
+    </div>
+@endif
 @if($offers->isNotEmpty())
     @foreach($offers as $offer)
         {{--animated fadeInDown delay-{{ $loop->index + 1 }}s--}}
         <div class="support-ticket">
+            <div class="st-meta">
+                @if ($offer->isRejected())
+                    <div class="status-pill red"></div>
+                @elseif($offer->isAccepted())
+                    <div class="status-pill green"></div>
+                @elseif($offer->isNotAccepted())
+                    <div class="status-pill yellow"></div>
+                @endif
+            </div>
             <div class="st-body">
                 <div class="avatar">
                     @if( !!$offer->user)

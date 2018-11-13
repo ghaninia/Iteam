@@ -26,7 +26,6 @@ class OfferRepository
         if ( $offers_count > $prepage + $offest )
             $appends['more'] = $prepage + 1 ;
 
-
         static::$appends = $appends ;
         return $offers ;
     }
