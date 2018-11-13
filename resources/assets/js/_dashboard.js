@@ -804,15 +804,17 @@ $(function () {
                         backgroundColor: '#383838' ,
                         showAction: false
                     });
+                    NProgress.done() ;
                     setTimeout(function(){
                         window.location.reload()
                     } , 4000 )
                 })
                 .catch(function (error) {
                     console.log(error);
+                    NProgress.done() ;
                 });
             }
-            NProgress.done() ;
+
         })
     });
 

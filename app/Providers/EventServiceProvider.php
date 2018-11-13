@@ -23,7 +23,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\AcceptOfferEvent' => [
             'App\Listeners\AcceptOfferListener'
-        ]
+        ] ,
+        'App\Events\whenBuyPlanEvent' => [
+            'App\Listeners\whenBuyPlanListener'
+        ] ,
     ];
 
     /**

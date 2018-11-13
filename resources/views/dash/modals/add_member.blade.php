@@ -20,7 +20,7 @@
                                         <div class="pt-user-name">{{ $offer->user->username }}</div>
                                         <div class="btn-group-sm">
                                             <a class="addOffer btn btn-primary btn-xs text-white" data-url="{{ route("user.team.accept_offer" , [ 'team' => $offer->team->slug , 'offer' => $offer->id ]) }}">
-                                                <i class="os-icon os-icon-ui-92"></i>
+                                                <i class="os-icon os-icon-mail-18"></i>
                                             </a>
                                             <a class="rejectOffer btn btn-grey btn-xs" data-url="{{ route("user.team.reject_offer" , [ 'team' => $offer->team->slug , 'offer' => $offer->id ]) }}">
                                                 <i class="os-icon os-icon-close"></i>

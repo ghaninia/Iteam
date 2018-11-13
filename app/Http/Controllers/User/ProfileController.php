@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\User;
+use App\Events\whenBuyPlanEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\accountStore;
 use App\Http\Requests\passwordStore;
@@ -181,6 +182,15 @@ class ProfileController extends Controller
                     'tracking_code' => $trackingCode ,
                     'status' => Enum::TRANSACTION_SUCCEED
                 ]) ;
+
+            /** update user profile plan **/
+            $user = me() ;
+            $user->update([
+                'plan_id' => $payment->plan->id ,
+                'plan_created_at' => now() ,
+                'plan_expired_at' => now()->addDays( $payment->plan->max_life )
+            ]);
+            event( new whenBuyPlanEvent($user , $payment->plan ) ) ;
 
             $message = trans('dash.payment.message.succeed');
             return redirect()->route('user.payment.show' , $payment->id )->with([
