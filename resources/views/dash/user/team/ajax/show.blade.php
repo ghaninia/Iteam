@@ -23,7 +23,9 @@
                     @endif
                 </div>
                 <div class="ticket-content">
-                    <h6 class="ticket-title">{{ $offer->user->fullname ?? $offer->user->username }}</h6>
+                    <a href="{{ route("user.team.offer" , ['team' => $offer->team->slug ,'offer' => $offer->id] ) }}">
+                        <h6 class="ticket-title">{{ $offer->user->fullname ?? $offer->user->username }}</h6>
+                    </a>
                     <div class="ticket-description">{{ str_slice($offer->content , 40) }}</div>
                 </div>
             </div>

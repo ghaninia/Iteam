@@ -222,7 +222,17 @@ class TeamController extends Controller
 
     public function offer(Team $team ,Offer $offer)
     {
+        $offer->load("user") ;
+        $information = [
+            'title' => trans("dash.team.show.title" , ['attribute' => $team->name ]) ,
+            'desc'  => str_slice($team->excerpt , 30) ?? str_slice(strip_tags($team->content) , 30 ) ,
+            'breadcrumb' => [
+                trans("dash.team.show.title" , ['attribute' => $team->name ]) => route("user.team.show" , $team->slug ) ,
+                trans("dash.team.offers.show.title" , ['attributes' => $offer->user->fullname ]) => null
+            ]
+        ] ;
 
+        return view("dash.user.offer.show" , compact( "information" ,"offer" , "team") );
     }
 
     public function rejectOffer(Team $team , Offer $offer)
@@ -244,7 +254,6 @@ class TeamController extends Controller
             'status' => 1
         ]) ;
         $user = $offer->user ;
-
         event( new AcceptOfferEvent( $user , $team , $offer ) ) ;
 
         return response()->json([

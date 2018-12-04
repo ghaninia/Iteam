@@ -12,7 +12,7 @@
 
 </head>
 {{--color-scheme-dark--}}
-<body class="with-content-panel menu-position-side menu-side-right ">
+<body class="with-content-panel menu-position-side menu-side-right">
     <div class="all-wrapper with-side-panel solid-bg-all">
         <div class="layout-w">
             <!--------------------
