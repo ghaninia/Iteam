@@ -47,7 +47,6 @@
         </div>
     </div>
 
-
     <script src="{{ mix("assets/js/app.js") }}"></script>
     @yield('plugins')
     @if(session()->has(['status' , 'message']))
@@ -63,6 +62,5 @@
         });
     </script>
     @endif
-
 </body>
 </html>
