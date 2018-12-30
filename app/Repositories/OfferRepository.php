@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories;
+
 class OfferRepository
 {
     public static $appends = null ;

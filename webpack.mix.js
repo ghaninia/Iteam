@@ -1,20 +1,19 @@
 const mix = require('laravel-mix');
 
-mix.js('resources/assets/js/app.js' , 'public/assets/js/app.js');
+// / start css
 
-mix.styles([
-        'resources/assets/css/main.css' ,
-    ], 'public/assets/css/app.css');
+// mix.combine( [
+//     "resources/assets/css/font/*.css" ,
+//     "resources/assets/css/vendor/*.css" ,
+// ] , "public/assets/css/vendor.css") ;
 
-mix.styles([
-    'resources/assets/css/plugins.css' ,
-    'resources/assets/css/animate.css'
-], 'public/assets/css/plugins.css');
+mix.combine( [
+    "resources/assets/css/main.css"
+] , "public/assets/css/main.css") ;
 
-mix.styles(['resources/assets/css/fonts.css' ,], 'public/assets/css/fonts.css');
+// mix.copy('resources/assets/css/font/fonts', 'public/assets/css/fonts', false) ;
+// mix.copy('resources/assets/css/color', 'public/assets/css/color', false) ;
+// mix.copy('resources/assets/img', 'public/assets/img', false) ;
 
-mix.styles([
-    'resources/assets/css/fonts.css' ,
-    'resources/assets/css/plugins.css' ,
-    'resources/assets/css/auth.css' ,
-], 'public/assets/css/auth.css');
+// start javascript
+mix.react('resources/assets/js/component' , 'public/assets/js/component.js') ;

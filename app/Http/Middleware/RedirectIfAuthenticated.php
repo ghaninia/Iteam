@@ -18,6 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request , Closure $next , $guard = null)
     {
         $guards = array_keys(config('auth.guards')) ;
+        Auth::logout() ;
         // if select guard
         if (!! $guard)
             if (Auth::guard($guard)->check())

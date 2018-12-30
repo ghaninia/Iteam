@@ -16,16 +16,11 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         $information = [
-            'title' => trans('auth.login.text') ,
-            'desc'  => trans('auth.login.desc') ,
-            'keywords' => [
-                'ثبت نام' ,
-                'ورود به حساب کاربری' ,
-                'ورود به تیمو'
-            ]
+            'title' => "اکانت من" ,
+            'desc'  => "وارد حساب کاربریم میخوام بشم"
         ];
 
-        return view('auth.login' , compact('information') );
+        return view('dashboard.auth.login' , compact('information') );
     }
 
     public function __construct()
@@ -44,7 +39,6 @@ class LoginController extends Controller
             $this->username() => 'required|string',
             'password' => 'required|string',
             'captcha' => 'required|captcha' ,
-//            'guard' => 'required|in:user,admin'
         ]);
     }
 
@@ -56,6 +50,6 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        return ResMessage(trans('dash.messages.success.profile.enter' , ['attribute' => $user->username ])) ;
+        return ResponseMsg(sprintf("سلام %s , شما با موفقیت وارد حساب خودتون شدید.😎" , $user->fullname )) ;
     }
 }

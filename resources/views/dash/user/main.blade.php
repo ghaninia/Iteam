@@ -1,1 +1,0 @@
-@extends('dash.layouts.app')

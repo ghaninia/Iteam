@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Rules\MobileRule;
 use App\Rules\UserNameRule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -24,13 +25,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'family' => 'required|string|max:255',
             'email' => ['required','email' ,'max:255','unique:users'],
-            'mobile' => ['required',new MobileRule(),'size:11','unique:users'],
             'username' => ['required',new UserNameRule(),'max:255','unique:users'],
             'captcha' => 'required|captcha' ,
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
             'privacy' => 'accepted'
         ]);
     }
@@ -38,33 +36,27 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' =>  $data['name'],
-            'family' =>  $data['family'],
-            'mobile' =>  $data['mobile'],
-            'email' =>  $data['email'],
-            'username' =>  $data['username'],
+            'username' =>  $data['username'] ,
+            'email' =>  $data['email'] ,
             'password' => Hash::make($data['password']) ,
-            'plan_id' => config('timo.panel_default')
+            'plan_id' => options("plan_default" , 1 )
         ]);
     }
 
     public function showRegistrationForm()
     {
         $information = [
-            'title' => trans('auth.register.text') ,
-            'desc'  => trans('auth.register.desc') ,
+            'title' => "ثبت نام" ,
+            'desc'  => "همین الان عضو سایت ما شوید و از امکانات ما بهره مند شوید" ,
         ] ;
 
-        return view('auth.register' , compact('information'));
+        return view('dashboard.auth.register' , compact('information'));
     }
 
     protected function registered(Request $request, $user)
     {
-        return request()->json([
-            'status'=> true ,
-            'message' => trans('auth.register.success') ,
-            'url' => route("user.profile.account.index")
-        ]);
+        Auth::login($user) ;
+        return ResponseMsg("حساب شما ثبت گردید ایمیل جهت فعال سازی پست الکترونیک شما برای شما ارسال گردید .") ;
     }
 
 }

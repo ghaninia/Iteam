@@ -28,7 +28,7 @@ class Captcha
     {
         $faker = Factory::create() ;
         $text_colors = isset($vendors['text_colors']) ? $vendors['text_colors'] : [ $faker->hexColor ] ;
-        $background  = isset($vendors['background']) ? $vendors['background'] : "#fff" ;
+        $background  = isset($vendors['background']) ? $vendors['background'] : "" ;
         $randomString = isset($vendors['text_size']) ? self::randomString($vendors['text_size']) : self::randomString(5) ;
         $pic_width  = isset($vendors['pic_width'])  ?  $vendors['pic_width']  : config("captcha.pic_width") ;
         $pic_height = isset($vendors['pic_height']) ?  $vendors['pic_height'] : config("captcha.pic_height") ;

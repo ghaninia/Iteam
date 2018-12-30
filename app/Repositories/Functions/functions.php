@@ -66,16 +66,11 @@ function planname($user = null)
 
 }
 
-function ResMessage( $string , $status = true , $routeName = null )
+function ResponseMsg( $msg , $code = 200 )
 {
-    $request = request() ;
-    $message["status"] = $status ;
-    $message['message'] = $string ;
-    if ($request->ajax())
-        return response()->json($message) ;
-    if(is_null($routeName))
-        return back()->with($message) ;
-    return redirect()->route($routeName)->with($message) ;
+    return response()->json([
+        "msg" => $msg
+    ] , $code );
 }
 
 function str_slice($text , $length = 200 )
