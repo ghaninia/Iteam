@@ -2,6 +2,8 @@ import React from  "react" ;
 import ReactDOM from "react-dom" ;
 import Captcha from "../components/Captcha";
 import Spinner from "../components/Spinner";
+import Profile from "../functions/profile" ;
+import { showMessage } from "../functions/core" ;
 
 const fields = {
     username : {
@@ -34,7 +36,7 @@ const fields = {
         label : "مرا به خاطر بسپار" ,
         rule : "boolean"
     },
-    role : {
+    privacy : {
         type : "checkbox" ,
         label : "قوانین را می پذیرم" ,
         rule : "accepted"
@@ -84,29 +86,27 @@ export default class Auth extends React.Component{
         const { action : propACTION } = this.props ;
 
         if ( this.state.loading ) return null ;
+
         /* begin works */
         if( this.validator.allValid() ){
-            this.setState({
-                loading : true
-            });
-
+            this.setState({ loading : true });
             axios.post( propACTION , this.state.fields ).then( response => {
                 let result =  response.data ;
-                this.setState({
-                    loading : false
-                });
-                Snackbar.show({
-                    text: result.msg ,
-                    pos: 'top-center' ,
-                    showAction: false ,
-                });
-                setTimeout( () => {
-                    location.reload();
-                } , 2000 );
-            }).catch(function (error) {
-                console.log(error);
-            });
+                if ( result.authunticate && result.msg ){
 
+                    this.setState({ loading : false });
+                    // set authunticate key
+                    Profile.set( result.authunticate ) ;
+                    showMessage( result.msg , function () {
+                        location.reload() ;
+                    });
+                }
+            }).catch( error => {
+                if ( error.response.data.message ){
+                    let message = error.response.data.message ;
+                    showMessage( message , () => this.setState({ loading : false }) );
+                }
+            });
         } else {
             this.validator.showMessages();
             this.forceUpdate();
@@ -186,7 +186,7 @@ export default class Auth extends React.Component{
         */
         return (
             <label key={key} className="form-group has-float-label mb-4">
-                <input autoComplete="off" name={ key } className="form-control" onChange={ this.setFieldInput } />
+                <input type={field.type} autoComplete="off" name={ key } className="form-control" onChange={ this.setFieldInput } />
                 <span>{ field.label }</span>
                 {this.validator.message( key , value , field.rule )}
             </label>
@@ -207,7 +207,7 @@ if ( document.getElementById("_auth") ){
             fields = ['username' , 'password' , 'captcha' , 'remember'] ;
             break ;
         case "register" :
-            fields = [ 'name' , 'family' , 'email' , 'username' , 'password' , 'captcha'] ;
+            fields = [ 'email' , 'username' , 'password' , 'captcha' , 'privacy' ] ;
             break ;
     }
 

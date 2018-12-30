@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\User\Dashboard;
 use App\Events\AcceptOfferEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamStore;

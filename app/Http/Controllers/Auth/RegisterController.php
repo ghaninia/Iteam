@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
-use App\Rules\MobileRule;
 use App\Rules\UserNameRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -38,7 +35,8 @@ class RegisterController extends Controller
         return User::create([
             'username' =>  $data['username'] ,
             'email' =>  $data['email'] ,
-            'password' => Hash::make($data['password']) ,
+            'password' => bcrypt( $data['password'] ) ,
+            'remember_token' => str_random(100) ,
             'plan_id' => options("plan_default" , 1 )
         ]);
     }
@@ -46,8 +44,8 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $information = [
-            'title' => "ثبت نام" ,
-            'desc'  => "همین الان عضو سایت ما شوید و از امکانات ما بهره مند شوید" ,
+            'title' => trans("dash.message.success.register.title") ,
+            'desc'  => trans("dash.message.success.register.desc") ,
         ] ;
 
         return view('dashboard.auth.register' , compact('information'));
@@ -56,7 +54,10 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         Auth::login($user) ;
-        return ResponseMsg("حساب شما ثبت گردید ایمیل جهت فعال سازی پست الکترونیک شما برای شما ارسال گردید .") ;
+        return response()->json([
+            "authunticate" => $user->remember_token ,
+            "msg" => trans("dash.message.success.register.create") ,
+        ] , 200 ) ;
     }
 
 }

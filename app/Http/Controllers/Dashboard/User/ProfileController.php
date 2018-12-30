@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\User\Dashboard;
 use App\Events\whenBuyPlanEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\accountStore;

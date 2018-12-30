@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use App\Notifications\ResetPassword;
+use App\Notifications\VerfiedEmailUser;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -35,6 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'plan_expired_at' ,
         'plan_created_at' ,
         'email_verified_at' ,
+        "remember_token"
     ];
 
     protected $hidden = [
@@ -147,6 +149,11 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new ResetPassword($token)) ;
     }
 
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerfiedEmailUser );
+    }
+
     public static function canAddTeam($user = null)
     {
         $user = !! $user ? $user : me() ;
@@ -162,6 +169,5 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return false ;
     }
-
 
 }

@@ -20,9 +20,9 @@
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0" ,
-	"hekmatinasser/verta": "^1.8",
+        "hekmatinasser/verta": "^1.8",
         "intervention/image" : "dev-master" ,
-	"larabook/gateway": "^3.3"
+        "larabook/gateway": "^3.3"
     },
     "config": {
         "optimize-autoloader": true,

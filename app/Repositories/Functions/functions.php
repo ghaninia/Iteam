@@ -16,7 +16,7 @@ function picture( $type , $size = 'thumbnail' )
     }
 }
 
-function userPicture( $type = 'avatar' , $size = 'full' , $guard = 'user' , $user = null )
+function userPicture( $type = 'avatar' , $size = 'thumbnail' , $guard = 'user' , $user = null )
 {
     if ( auth()->guard($guard)->check() && is_null($user))
         $user = auth()->guard($guard)->user() ;
@@ -64,13 +64,6 @@ function planname($user = null)
             return $user->plan->name ;
     }
 
-}
-
-function ResponseMsg( $msg , $code = 200 )
-{
-    return response()->json([
-        "msg" => $msg
-    ] , $code );
 }
 
 function str_slice($text , $length = 200 )
@@ -125,6 +118,7 @@ function currency ($currency , $numberFormat = false )
             'type' => trans('dash.currency.milliontoman')
         ];
 }
+
 /***********************/
 /*** change currency ***/
 /***********************/

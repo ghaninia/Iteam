@@ -13,7 +13,7 @@ class CreateFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fonts', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
             $table->string("fileable_id")->nullable() ;
             $table->string("fileable_type")->nullable() ;

@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\User\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\Plan;

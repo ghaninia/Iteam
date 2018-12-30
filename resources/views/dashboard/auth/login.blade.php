@@ -12,8 +12,7 @@
                                 {{--<span class="logo-single"></span>--}}
                             {{--</a>--}}
                             <h6 class="mb-4">{{ isset($information['title']) ? $information['title'] : options('title')  }}</h6>
-                            <form id="_auth" data-type="login"  action="{{ route('login') }}" method="POST" >
-                            </form>
+                            <form id="_auth" data-type="login"  action="{{ route('login') }}" method="POST"></form>
                         </div>
 
                         <div class="position-relative image-side">

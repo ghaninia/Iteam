@@ -1,5 +1,6 @@
 <?php
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\User;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request ;
 
@@ -9,10 +10,7 @@ class MainController extends Controller
     {
         $information = [
             'title' => trans('dash.panel.user.main') ,
-//            'breadcrumb' => [
-//                trans('dash.panel.sidebar.profile.edit') => null
-//            ]
         ] ;
-        return view( 'dash.user.main' , compact('information') ) ;
+        return view( 'dashboard.user.main' , compact('information') ) ;
     }
 }

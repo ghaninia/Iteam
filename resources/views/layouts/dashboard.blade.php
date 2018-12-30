@@ -9,13 +9,20 @@
 
     <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/vendor.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/color/dark.orange.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/color/light.orange.css") }}">
 
 </head>
-<body @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] )) class="background" @else id="app-container" class="menu-default" @endif>
+<body
+    @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] ))
+        class="background"
+    @else
+        id="app-container"
+        class="menu-default"
+    @endif>
+
     @auth
         <nav class="navbar fixed-top">
-            <div class="d-flex align-items-center navbar-left">
+            <div class="d-flex align-items-center navbar-right">
                 <a href="#" class="menu-button d-none d-md-block">
                     <svg class="main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 17">
                         <rect x="0.48" y="0.5" width="7" height="1" />
@@ -44,13 +51,11 @@
                     </span>
                 </div>
             </div>
-
             <a class="navbar-logo" href="Dashboard.Default.html">
                 <span class="logo d-none d-xs-block"></span>
                 <span class="logo-mobile d-block d-xs-none"></span>
             </a>
-
-            <div class="navbar-right">
+            <div class="navbar-left">
                 <div class="header-icons d-inline-block align-middle">
 
                     <div class="position-relative d-none d-sm-inline-block">
@@ -155,26 +160,24 @@
                     </button>
 
                 </div>
-
                 <div class="user d-inline-block">
                     <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="name">Sarah Kortney</span>
+                        <span class="name">{{ me()->fullname ?? me()->username }}</span>
                         <span>
-                            <img alt="Profile Picture" src="img/profile-pic-l.jpg">
+                            <img alt="Profile Picture" src="{{ userPicture() }}">
                         </span>
                     </button>
-
                     <div class="dropdown-menu dropdown-menu-right mt-3">
-                        <a class="dropdown-item" href="#">Account</a>
-                        <a class="dropdown-item" href="#">Features</a>
-                        <a class="dropdown-item" href="#">History</a>
-                        <a class="dropdown-item" href="#">Support</a>
-                        <a class="dropdown-item" href="#">Sign out</a>
+                        <a class="dropdown-item" href="#">{{ trans("dash.profile.account.label") }}</a>
+                        <a class="dropdown-item" href="#">{{ trans("dash.profile.password.label") }}</a>
+                        <a class="dropdown-item" href="#">{{ trans("dash.profile.plan.label") }}</a>
+                        <a class="dropdown-item" href="#">{{ trans("dash.profile.logout.label") }}</a>
                     </div>
                 </div>
             </div>
         </nav>
     @endauth
+
     @yield("main")
 
     <script src="{{ asset("assets/js/component.js") }}"></script>

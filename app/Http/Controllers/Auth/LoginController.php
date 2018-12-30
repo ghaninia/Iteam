@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -50,6 +51,9 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        return ResponseMsg(sprintf("سلام %s , شما با موفقیت وارد حساب خودتون شدید.😎" , $user->fullname )) ;
+        return response()->json([
+            "authunticate" => $user->remember_token ,
+            "msg" => sprintf("سلام %s , شما با موفقیت وارد حساب خودتون شدید.😎" , $user->fullname ) ,
+        ] , 200 ) ;
     }
 }

@@ -7,15 +7,13 @@
                 <div class="col-12 col-md-10 mx-auto my-auto">
                     <div class="card auth-card">
 
-                        <div class="position-relative image-side">
+                        <div class="form-side">
+                            <h6 class="mb-4">{{ isset($information['title']) ? $information['title'] : options('title')  }}</h6>
+                            <form id="_auth" data-type="register" action="{{ route('register') }}" method="POST"></form>
                         </div>
 
-                        <div class="form-side">
+                        <div class="position-relative image-side">
 
-                            <h6 class="mb-4">{{ isset($information['title']) ? $information['title'] : options('title')  }}</h6>
-                            <form id="_register" action="{{ route('register') }}" method="POST">
-
-                            </form>
                         </div>
 
                     </div>
