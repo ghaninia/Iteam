@@ -95,3 +95,16 @@ body.show-spinner:before {
 
 .auth-card .image-side {
 }
+.progressbar-text{
+    right: inherit !important;
+}
+
+/*@media (max-width: 1439px){*/
+    /*main {*/
+        /*margin: 130px 380px 30px 50px ;*/
+    /*}*/
+/*}*/
+
+/*main {*/
+    /*margin: 165px 410px 40px 60px ;*/
+/*}*/

@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\User\Dashboard;
+namespace App\Http\Controllers\Dashboard\User;
 use App\Events\whenBuyPlanEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\accountStore;
@@ -10,10 +10,8 @@ use App\Models\Payment;
 use App\Models\Plan;
 use App\Models\Province;
 use App\Models\User;
-use App\Repositories\Skill\Skill as apiSkill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Larabookir\Gateway\Enum;
 use Larabookir\Gateway\Exceptions\RetryException;
 use Larabookir\Gateway\Gateway;

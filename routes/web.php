@@ -4,14 +4,8 @@ Auth::routes(['verify' => true]);
 
 Route::namespace('Dashboard\User')->name('user.')->middleware('auth:user')->group(function (){
 
-    Route::name('api.')->namespace('Api\\')->prefix('api')->group(function (){
-        Route::get( "skills/{token}" , 'ApiController@skills' )->name("skill")->middleware("token:skill") ;
-    });
-
     // Route access if Guard user
     Route::get('main', 'MainController@index')->name('main') ;
-
-    Route::post('ajax', 'AjaxController@ajaxHandle')->name('ajax') ;
 
     //* روت های پروفایل کاربری  *//
     Route::name("profile.")->prefix("profile")->group(function (){
@@ -40,17 +34,5 @@ Route::namespace('Dashboard\User')->name('user.')->middleware('auth:user')->grou
 
         Route::post( "logout"  , "ProfileController@logout")->name("logout") ;
     });
-
-    Route::resource('payment', 'PaymentController' , ['only' => ['index' , 'show']]);
-
-    Route::resource('team' , 'TeamController' , ['except' => ['destroy'] ]);
-
-    Route::prefix('team')->name("team.")->group(function (){
-        Route::post('{team}/offers/{offer?}/reject', 'TeamController@rejectOffer')->name("reject_offer") ;
-        Route::post('{team}/offers/{offer?}/accept', 'TeamController@acceptOffer')->name("accept_offer") ;
-        Route::get("{team}/offers/{offer?}" , "TeamController@offer")->name("offer");
-    });
-
-    Route::Resource("offer" , "OfferController" , [ 'except' => ['index',"destroy"] ] );
 
 });

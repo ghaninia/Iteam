@@ -16,4 +16,5 @@ mix.copy('resources/assets/css/color', 'public/assets/css/color', false) ;
 mix.copy('resources/assets/img', 'public/assets/img', false) ;
 
 // start javascript
-mix.react('resources/assets/js/component' , 'public/assets/js/component.js') ;
+mix.react('resources/assets/js/component.js' , 'public/assets/js/component.js') ;
+mix.js("resources/assets/js/core" , 'public/assets/js/core.js') ;

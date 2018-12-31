@@ -13,12 +13,7 @@
 
 </head>
 <body
-    @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] ))
-        class="background"
-    @else
-        id="app-container"
-        class="menu-default"
-    @endif>
+    @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] )) class="background" @else id="app-container" class="menu-default" @endif>
 
     @auth
         <nav class="navbar fixed-top">
@@ -51,10 +46,12 @@
                     </span>
                 </div>
             </div>
+
             <a class="navbar-logo" href="Dashboard.Default.html">
                 <span class="logo d-none d-xs-block"></span>
                 <span class="logo-mobile d-block d-xs-none"></span>
             </a>
+
             <div class="navbar-left">
                 <div class="header-icons d-inline-block align-middle">
 
@@ -96,63 +93,6 @@
                         </div>
                     </div>
 
-                    <div class="position-relative d-inline-block">
-                        <button class="header-icon btn btn-empty" type="button" id="notificationButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="simple-icon-bell"></i>
-                            <span class="count">3</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right mt-3 scroll position-absolute" id="notificationDropdown">
-
-                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                <a href="#">
-                                    <img src="img/profile-pic-l-2.jpg" alt="Notification Image" class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
-                                </a>
-                                <div class="pl-3 pr-2">
-                                    <a href="#">
-                                        <p class="font-weight-medium mb-1">Joisse Kaycee just sent a new comment!</p>
-                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                <a href="#">
-                                    <img src="img/notification-thumb.jpg" alt="Notification Image" class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
-                                </a>
-                                <div class="pl-3 pr-2">
-                                    <a href="#">
-                                        <p class="font-weight-medium mb-1">1 item is out of stock!</p>
-                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                <a href="#">
-                                    <img src="img/notification-thumb-2.jpg" alt="Notification Image" class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
-                                </a>
-                                <div class="pl-3 pr-2">
-                                    <a href="#">
-                                        <p class="font-weight-medium mb-1">New order received! It is total $147,20.</p>
-                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-row mb-3 pb-3">
-                                <a href="#">
-                                    <img src="img/notification-thumb-3.jpg" alt="Notification Image" class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
-                                </a>
-                                <div class="pl-3 pr-2">
-                                    <a href="#">
-                                        <p class="font-weight-medium mb-1">3 items just added to wish list by a user!</p>
-                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
 
                     <button class="header-icon btn btn-empty d-none d-sm-inline-block" type="button" id="fullScreenButton">
                         <i class="simple-icon-size-fullscreen"></i>
@@ -176,10 +116,58 @@
                 </div>
             </div>
         </nav>
+        <div class="sidebar">
+            <div class="main-menu">
+                <div class="scroll">
+                    <ul class="list-unstyled">
+                        <li class="active">
+                            <a href="#dashboard">
+                                <i class="iconsmind-Shop-4"></i>
+                                <span>Dashboards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#layouts">
+                                <i class="iconsmind-Digital-Drawing"></i> Layouts
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#applications">
+                                <i class="iconsmind-Air-Balloon"></i> Applications
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ui">
+                                <i class="iconsmind-Pantone"></i> UI
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#landingPage">
+                                <i class="iconsmind-Space-Needle"></i> Landing Page
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#menu">
+                                <i class="iconsmind-Three-ArrowFork"></i> Menu
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    @yield("main")
+                </div>
+            </div>
+        </main>
+    @else
+        @yield("main")
     @endauth
 
-    @yield("main")
-
     <script src="{{ asset("assets/js/component.js") }}"></script>
+    <script src="{{ asset("assets/js/core.js") }}"></script>
+
 </body>
 </html>
