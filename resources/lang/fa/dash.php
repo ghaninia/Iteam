@@ -31,5 +31,15 @@ return [
 
             ]
         ]
+    ],
+    "pages" => [
+        "dashboard" => [
+            "label" => "داشبورد" ,
+        ],
+        "payment" => [
+            "label" => "فاکتور"
+        ]
     ]
 ];
+
+

@@ -35,4 +35,7 @@ Route::namespace('Dashboard\User')->name('user.')->middleware('auth:user')->grou
         Route::post( "logout"  , "ProfileController@logout")->name("logout") ;
     });
 
+    Route::resource('payment', 'PaymentController' , ['only' => ['index' , 'show']]);
+    Route::resource('team' , 'TeamController' , ['except' => ['destroy'] ]);
+
 });
