@@ -9,8 +9,7 @@
 
     <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/vendor.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/color/light.orange.css") }}">
-
+    <link rel="stylesheet" href="{{ asset("assets/css/color/dark.orange.css") }}">
 </head>
 <body
     @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] )) class="background" @else id="app-container" class="menu-default show-spinner" @endif>
@@ -116,7 +115,6 @@
                 </div>
             </div>
         </nav>
-
         <div class="sidebar">
 
             <div class="main-menu">
@@ -245,6 +243,5 @@
 
     <script src="{{ asset("assets/js/component.js") }}"></script>
     <script src="{{ asset("assets/js/core.js") }}"></script>
-
 </body>
 </html>

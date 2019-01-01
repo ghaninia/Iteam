@@ -1,7 +1,5 @@
-window.$ = window.jQuery = require('jquery');
-const ProgressBar = require('progressbar.js') ;
 
-
+/* 01. Add Comas Util */
 $.fn.addCommas = function(nStr) {
     nStr += "";
     var x = nStr.split(".");
@@ -151,10 +149,8 @@ $.fn.shiftSelectable = function(options) {
     });
 };
 
-
-$(function () {
-
 /* 03. Dore Main Plugin */
+$.dore = function(element, options) {
     var defaults = {};
     var plugin = this;
     plugin.settings = {};
@@ -3815,4 +3811,13 @@ $(function () {
         }
     }
     init();
-});
+};
+
+$.fn.dore = function(options) {
+    return this.each(function() {
+        if (undefined == $(this).data("dore")) {
+            var plugin = new $.dore(this, options);
+            $(this).data("dore", plugin);
+        }
+    });
+};
