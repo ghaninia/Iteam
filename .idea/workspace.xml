@@ -2,59 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9b406d3-450e-4b38-89ad-7fb02ccbd3b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/core.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/AjaxController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/OfferController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/PaymentController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/TeamController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/dark.green.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/dark.orange.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/dark.red.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.blue.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.green.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.orange.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.purple.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.red.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Sahel.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Sahel.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Simple-Line-Icons.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Simple-Line-Icons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Simple-Line-Icons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Simple-Line-Icons.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Yekan.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Yekan.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Yekan.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Yekan.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/icomoon.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/icomoon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/icomoon.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/icomoon.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/vendor.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/coworking.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/gender/female.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/gender/male.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/graphic3.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/happiness.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/lost.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/scale.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/color/dark.green.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/color/dark.green.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/color/dark.orange.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/color/dark.orange.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/color/dark.red.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/color/dark.red.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.blue.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/color/light.blue.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.green.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/color/light.green.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.orange.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/color/light.orange.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.purple.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/color/light.purple.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.red.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/color/light.red.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/core.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/dark.green.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/color/dark.green.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/dark.orange.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/color/dark.orange.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/dark.red.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/color/dark.red.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/light.blue.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/color/light.blue.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/light.green.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/color/light.green.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/css/color/light.orange.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/color/light.orange.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/font/fonts/Yekan.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/font/fonts/Yekan.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/light.purple.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/color/light.purple.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/light.red.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/color/light.red.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/vendor/nprogress.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/vendor/nprogress.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/img/happiness.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/img/happiness.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/img/scale.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/img/scale.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/core.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,29 +53,55 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.red.css">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret column="31811" selection-start-column="31790" selection-end-column="31811" />
+            <state relative-caret-position="96">
+              <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
               <folding>
-                <element signature="e#42473#42625#2" expanded="true" />
-                <element signature="e#42718#42921#2" expanded="true" />
-                <element signature="e#43011#43160#2" expanded="true" />
+                <element signature="n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#svg#0;n#a#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#svg#1;n#a#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#svg#0;n#a#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#span#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#1;n#div#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#2;n#div#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#3;n#div#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#4;n#div#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#5;n#div#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#1;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#span#1;n#button#0;n#div#1;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.orange.css">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret column="32021" lean-forward="true" selection-start-column="32021" selection-end-column="32021" />
-              <folding>
-                <element signature="e#42479#42631#2" expanded="true" />
-                <element signature="e#42724#42927#2" expanded="true" />
-                <element signature="e#43017#43166#2" expanded="true" />
-              </folding>
+            <state relative-caret-position="1014">
+              <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/core.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="134" column="3" lean-forward="true" selection-start-line="134" selection-start-column="3" selection-end-line="134" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -122,16 +118,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.captcha img</find>
-      <find>.input-group</find>
-      <find>form</find>
-      <find>props.form</find>
-      <find>this.props</find>
-      <find>remember_token</find>
       <find>QUEUE_CONNECTION</find>
       <find>user d-inline-block</find>
       <find>.dropdown-menu</find>
-      <find>fullScreenButton</find>
       <find>we</find>
       <find>.banner-1-bg</find>
       <find>rigght</find>
@@ -143,14 +132,33 @@
       <find>165px 60px 40px 410px</find>
       <find>ProgressBar</find>
       <find>130px 50px 30px 380px</find>
+      <find>sidebar</find>
+      <find>fullScreenButton</find>
+      <find>we()</find>
+      <find>menu-button</find>
+      <find>function B</find>
+      <find>translateX(-220px)</find>
+      <find>translateX(-110px)</find>
+      <find>translateX(-330px)</find>
+      <find>show-spinner</find>
+      <find>default-transition</find>
+      <find>menu-sub-hidden</find>
+      <find>x()</find>
+      <find>u =</find>
+      <find>en</find>
+      <find>v</find>
+      <find>en =</find>
     </findStrings>
     <replaceStrings>
       <replace>rigght</replace>
       <replace>lefft</replace>
       <replace>right</replace>
       <replace>left</replace>
-      <replace>130px 380px 30px 50px</replace>
       <replace>165px 410px 40px 60px</replace>
+      <replace>130px 380px 30px 50px</replace>
+      <replace>translateX(110px)</replace>
+      <replace>translateX(220px)</replace>
+      <replace>translateX(330px)</replace>
     </replaceStrings>
     <dirStrings>
       <dir>E:\current_projects\Timo\resources\assets\css\vendor</dir>
@@ -163,13 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/assets/js/components/Login.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/pages/Login.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/config/bootstrap.js" />
-        <option value="$PROJECT_DIR$/resources/views/dashboard/auth/login.blade.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/resources/assets/js/functions/funcs.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/functions/auh.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/functions/auth.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/functions/profile.js" />
@@ -209,11 +210,18 @@
         <option value="$PROJECT_DIR$/resources/assets/js/component.js" />
         <option value="$PROJECT_DIR$/webpack.mix.js" />
         <option value="$PROJECT_DIR$/test" />
-        <option value="$PROJECT_DIR$/resources/assets/js/core.js" />
         <option value="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/resources/assets/css/color/dark.green.css" />
+        <option value="$PROJECT_DIR$/resources/assets/css/color/dark.orange.css" />
+        <option value="$PROJECT_DIR$/resources/assets/css/color/dark.red.css" />
+        <option value="$PROJECT_DIR$/resources/assets/css/color/light.blue.css" />
+        <option value="$PROJECT_DIR$/resources/assets/css/color/light.green.css" />
         <option value="$PROJECT_DIR$/resources/assets/css/color/light.orange.css" />
+        <option value="$PROJECT_DIR$/resources/assets/css/color/light.purple.css" />
+        <option value="$PROJECT_DIR$/resources/assets/css/color/light.red.css" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/core.js" />
       </list>
     </option>
   </component>
@@ -313,7 +321,7 @@
       <path value="$PROJECT_DIR$/vendor/larabook/gateway" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-110" />
     <option name="y" value="172" />
     <option name="width" value="1079" />
@@ -347,15 +355,7 @@
               <item name="Timo" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Timo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Timo" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="color" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -370,7 +370,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -428,18 +428,19 @@
       <workItem from="1546276456211" duration="4761000" />
       <workItem from="1546281359864" duration="3404000" />
       <workItem from="1546284902606" duration="574000" />
-      <workItem from="1546285611372" duration="2446000" />
+      <workItem from="1546285611372" duration="4334000" />
+      <workItem from="1546328094695" duration="3267000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67809000" />
+    <option name="totallyTimeSpent" value="72964000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23786408" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23786408" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -453,7 +454,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3295838" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.29471317" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.29471317" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -476,47 +477,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/mails/verify.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/mail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4544">
-          <caret line="284" column="25" selection-start-line="284" selection-start-column="25" selection-end-line="284" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#center#0;n#div#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Notifications/VerfiedEmailUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="66" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="66" />
-          <folding>
-            <element signature="e#37#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RedirectsUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/VerifiesEmails.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -723,32 +683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/dark.green.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret column="2649" selection-start-column="2645" selection-end-column="2649" />
-          <folding>
-            <element signature="e#42686#42838#2" expanded="true" />
-            <element signature="e#42931#43134#2" expanded="true" />
-            <element signature="e#43224#43373#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="2235" column="14" selection-start-line="2215" selection-start-column="53" selection-end-line="2235" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpack.mix.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -763,26 +697,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/css/main.css">
+    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="109" column="5" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="736">
+          <caret line="111" column="1" selection-start-line="111" selection-start-column="1" selection-end-line="111" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/dark.orange.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret column="27496" selection-start-column="27496" selection-end-column="27496" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/dark.red.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret column="27494" selection-start-column="27494" selection-end-column="27494" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.blue.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret column="27315" selection-start-column="27315" selection-end-column="27315" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.green.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret column="27311" selection-start-column="27311" selection-end-column="27311" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.orange.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret column="27316" selection-start-column="27316" selection-end-column="27316" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.purple.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret column="27314" selection-start-column="27314" selection-end-column="27314" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.red.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret column="27313" selection-start-column="27313" selection-end-column="27313" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/dark.green.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret column="27492" selection-start-column="27492" selection-end-column="27492" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="157" column="13" selection-start-line="157" selection-start-column="13" selection-end-line="157" selection-end-column="13" />
+        <state relative-caret-position="96">
+          <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#a#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#svg#0;n#a#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
@@ -806,58 +795,23 @@
             <element signature="n#button#0;n#div#0;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#1;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#button#0;n#div#1;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#0#5#0" />
             <element signature="n#span#1;n#button#0;n#div#1;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#0#5#0" />
             <element signature="n#div#0;n#div#1;n#div#1;n#nav#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#0#5#0" />
-            <element signature="e#0#5#0" />
-            <element signature="e#0#5#0" />
-            <element signature="e#0#5#0" />
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#a#0;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#li#4;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#a#0;n#li#4;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#li#5;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#a#0;n#li#5;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#0#5#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.red.css">
+    <entry file="file://$PROJECT_DIR$/test">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret column="31811" selection-start-column="31790" selection-end-column="31811" />
-          <folding>
-            <element signature="e#42473#42625#2" expanded="true" />
-            <element signature="e#42718#42921#2" expanded="true" />
-            <element signature="e#43011#43160#2" expanded="true" />
-          </folding>
+        <state relative-caret-position="1014">
+          <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.orange.css">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret column="32021" lean-forward="true" selection-start-column="32021" selection-end-column="32021" />
-          <folding>
-            <element signature="e#42479#42631#2" expanded="true" />
-            <element signature="e#42724#42927#2" expanded="true" />
-            <element signature="e#43017#43166#2" expanded="true" />
-          </folding>
+        <state relative-caret-position="276">
+          <caret line="134" column="3" lean-forward="true" selection-start-line="134" selection-start-column="3" selection-end-line="134" selection-end-column="3" />
         </state>
       </provider>
     </entry>

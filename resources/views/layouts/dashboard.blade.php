@@ -13,7 +13,7 @@
 
 </head>
 <body
-    @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] )) class="background" @else id="app-container" class="menu-default" @endif>
+    @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] )) class="background" @else id="app-container" class="menu-default show-spinner" @endif>
 
     @auth
         <nav class="navbar fixed-top">
@@ -116,7 +116,9 @@
                 </div>
             </div>
         </nav>
+
         <div class="sidebar">
+
             <div class="main-menu">
                 <div class="scroll">
                     <ul class="list-unstyled">
@@ -149,6 +151,81 @@
                         <li>
                             <a href="#menu">
                                 <i class="iconsmind-Three-ArrowFork"></i> Menu
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sub-menu">
+                <div class="scroll">
+                    <ul class="list-unstyled" data-link="dashboard">
+                        <li class="active">
+                            <a href="Dashboard.Default.html">
+                                <i class="simple-icon-rocket"></i> Default
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Dashboard.Analytics.html">
+                                <i class="simple-icon-pie-chart"></i>Analytics
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Dashboard.Ecommerce.html">
+                                <i class="simple-icon-basket-loaded"></i> Ecommerce
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Dashboard.Content.html">
+                                <i class="simple-icon-doc"></i> Content
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="list-unstyled" data-link="layouts">
+                        <li>
+                            <a href="Layouts.List.html">
+                                <i class="simple-icon-credit-card"></i> Data List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Layouts.Thumbs.html">
+                                <i class="simple-icon-list"></i> Thumb List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Layouts.Images.html">
+                                <i class="simple-icon-grid"></i> Image List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Layouts.Details.html">
+                                <i class="simple-icon-book-open"></i> Details
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Layouts.Search.html">
+                                <i class="simple-icon-magnifier"></i> Search
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Layouts.Login.html">
+                                <i class="simple-icon-user-following"></i> Login
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Layouts.Register.html">
+                                <i class="simple-icon-user-follow"></i> Register
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Layouts.ForgotPassword.html">
+                                <i class="simple-icon-user-unfollow"></i> Forgot Password
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Layouts.Error.html">
+                                <i class="simple-icon-exclamation"></i> Error
                             </a>
                         </li>
                     </ul>

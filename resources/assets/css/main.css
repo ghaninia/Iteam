@@ -108,3 +108,7 @@ body.show-spinner:before {
 /*main {*/
     /*margin: 165px 410px 40px 60px ;*/
 /*}*/
+
+.sidebar{
+    box-shadow: 0 3px 30px rgba(0,0,0,.3), 0 3px 24px rgba(0,0,0,.3);
+}
