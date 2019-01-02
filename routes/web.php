@@ -4,6 +4,8 @@ Auth::routes(['verify' => true]);
 
 Route::namespace('Dashboard\User')->name('user.')->middleware('auth:user')->group(function (){
 
+    Route::post("ajax" , 'AjaxController@ajaxHandle' )->name("ajax") ;
+
     // Route access if Guard user
     Route::get('main', 'MainController@index')->name('main') ;
 

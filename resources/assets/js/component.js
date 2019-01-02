@@ -1,5 +1,5 @@
-
 window._ = require('lodash');
+const options = options ;
 
 try {
     window.Popper = require('popper.js').default;
@@ -26,5 +26,3 @@ SimpleReactValidator  = require("simple-react-validator") ;
 
 // components list
 require('./pages/Auth');
-require('./components/Register');
-require('./components/Particle');

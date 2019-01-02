@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/vendor.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/color/light.orange.css") }}">
+    <script>
+        const options = {
+            ajax : "{{ route("user.ajax") }}"
+        }
+    </script>
 </head>
 <body
     @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] )) class="background" @else id="app-container" class="menu-default show-spinner" @endif>

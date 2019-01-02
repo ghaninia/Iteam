@@ -2,68 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9b406d3-450e-4b38-89ad-7fb02ccbd3b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/dark.green.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/dark.orange.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/dark.red.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.blue.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.green.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.orange.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.purple.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/color/light.red.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Sahel.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Sahel.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Simple-Line-Icons.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Simple-Line-Icons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Simple-Line-Icons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Simple-Line-Icons.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Yekan.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Yekan.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Yekan.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/Yekan.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/icomoon.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/icomoon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/icomoon.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/fonts/icomoon.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/vendor.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/coworking.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/gender/female.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/gender/male.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/graphic3.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/happiness.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/lost.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/scale.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/core.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/dsa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/dark.green.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/dark.red.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/light.blue.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/light.green.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/light.purple.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/color/light.red.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/font/fonts/Sahel.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/font/fonts/Sahel.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/font/fonts/Yekan.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/font/fonts/Yekan.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/font/fonts/Yekan.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/font/fonts/Yekan.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/font/sahel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/font/yekan.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/img/gender/female.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/img/gender/female.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/img/gender/male.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/img/gender/male.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fa/dash.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/dash.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/component.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/component.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/components/Register.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,106 +39,43 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/MainController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="26" column="105" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="105" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="182" column="43" selection-start-line="182" selection-start-column="20" selection-end-line="182" selection-end-column="43" />
-              <folding>
-                <element signature="e#977#1030#0#PHP" />
-                <element signature="e#1183#1259#0#PHP" />
-                <element signature="e#1265#1357#0#PHP" />
-                <element signature="e#1363#1465#0#PHP" />
-                <element signature="e#1471#1572#0#PHP" />
-                <element signature="e#1578#1678#0#PHP" />
-                <element signature="e#1684#1770#0#PHP" />
-                <element signature="e#1776#1877#0#PHP" />
-                <element signature="e#1887#1967#0#PHP" />
-                <element signature="e#2002#2085#0#PHP" />
-                <element signature="e#2095#2203#0#PHP" />
-                <element signature="e#2031#2205#0#PHP" />
-                <element signature="e#2075#2172#0#PHP" />
-                <element signature="e#2091#2171#2#PHP" />
-                <element signature="e#2317#2390#0#PHP" />
-                <element signature="e#2525#2641#0#PHP" />
-                <element signature="e#2647#2756#0#PHP" />
-                <element signature="e#2669#2808#0#PHP" />
-                <element signature="e#1962#3350#0#PHP" />
-                <element signature="e#2187#2727#0#PHP" />
-                <element signature="e#2454#2534#0#PHP" />
-                <element signature="e#2454#2632#0#PHP" />
-                <element signature="e#2763#3312#0#PHP" />
-                <element signature="e#3038#3118#0#PHP" />
-                <element signature="e#3038#3216#0#PHP" />
-                <element signature="e#3976#4512#0#PHP" />
-                <element signature="e#4088#4377#0#PHP" />
-                <element signature="e#4138#4376#1#PHP" />
-                <element signature="e#4163#4366#2#PHP" />
-                <element signature="e#4211#4350#0#PHP" />
-                <element signature="e#5459#5507#0#PHP" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/lang/fa/dash.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-start-column="2" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
+            <state relative-caret-position="96">
+              <caret line="104" selection-start-line="104" selection-end-line="104" />
               <folding>
-                <element signature="e#2475#2509#0#HTML" />
-                <element signature="e#96#2562#0#HTML" />
-                <element signature="e#130#1332#0#HTML" />
-                <element signature="e#200#1320#0#HTML" />
-                <element signature="e#252#1305#0#HTML" />
-                <element signature="e#352#771#0#HTML" />
-                <element signature="e#482#748#0#HTML" />
                 <element signature="e#0#5#0" />
-                <element signature="e#0#5#0" />
-                <element signature="e#789#1285#0#HTML" />
-                <element signature="e#815#1262#0#HTML" />
-                <element signature="e#0#5#0" />
-                <element signature="e#0#5#0" />
-                <element signature="e#1337#2547#0#HTML" />
-                <element signature="e#1408#2535#0#HTML" />
-                <element signature="e#1460#2520#0#HTML" />
-                <element signature="e#1560#1984#0#HTML" />
-                <element signature="e#1691#1961#0#HTML" />
-                <element signature="e#0#5#0" />
-                <element signature="e#0#5#0" />
-                <element signature="e#2002#2500#0#HTML" />
-                <element signature="e#2028#2477#0#HTML" />
-                <element signature="e#0#5#0" />
-                <element signature="e#0#5#0" />
-                <element signature="e#2722#2968#0#HTML" />
-                <element signature="e#3003#3703#0#HTML" />
-                <element signature="e#3030#3688#0#HTML" />
-                <element signature="e#3134#3673#0#HTML" />
-                <element signature="e#3178#3658#0#HTML" />
-                <element signature="e#3234#3641#0#HTML" />
-                <element signature="e#0#3725#0#Blade" />
-                <element signature="e#3282#3604#0#HTML" />
-                <element signature="e#3295#3385#0#HTML" />
-                <element signature="e#3394#3478#0#HTML" />
-                <element signature="e#3487#3590#0#HTML" />
+                <element signature="e#3149#4839#0#HTML" />
+                <element signature="e#3190#3701#0#HTML" />
+                <element signature="e#3226#3686#0#HTML" />
+                <element signature="e#3400#3667#0#HTML" />
+                <element signature="e#3732#4828#0#HTML" />
+                <element signature="e#3763#4813#0#HTML" />
+                <element signature="e#3883#4794#0#HTML" />
+                <element signature="e#3939#4771#0#HTML" />
+                <element signature="e#4011#4742#0#HTML" />
+                <element signature="e#0#4846#0#Blade" />
+                <element signature="e#4099#4669#0#HTML" />
+                <element signature="e#4136#4278#0#HTML" />
+                <element signature="e#4311#4447#0#HTML" />
+                <element signature="e#4480#4635#0#HTML" />
+                <element signature="e#1748#4727#0#HTML" />
+                <element signature="e#1789#4675#0#HTML" />
+                <element signature="e#1819#3229#0#HTML" />
+                <element signature="e#1905#3209#0#HTML" />
+                <element signature="e#1965#3186#0#HTML" />
+                <element signature="e#2073#2540#0#HTML" />
+                <element signature="e#2219#2509#0#HTML" />
+                <element signature="e#2566#3158#0#HTML" />
+                <element signature="e#2600#3127#0#HTML" />
+                <element signature="e#3242#4660#0#HTML" />
+                <element signature="e#3329#4640#0#HTML" />
+                <element signature="e#3389#4617#0#HTML" />
+                <element signature="e#3497#3969#0#HTML" />
+                <element signature="e#3644#3938#0#HTML" />
+                <element signature="e#3995#4589#0#HTML" />
+                <element signature="e#4029#4558#0#HTML" />
+                <element signature="e#4684#4716#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -202,8 +86,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="blade" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -265,12 +149,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/timo.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/User/Dashboard/MainController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/User/Dashboard/AjaxController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/User/Dashboard/OfferController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/User/Dashboard/PaymentController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/User/Dashboard/ProfileController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/User/Dashboard/TeamController.php" />
         <option value="$PROJECT_DIR$/app/Repositories/Functions/functions.php" />
@@ -282,12 +160,10 @@
         <option value="$PROJECT_DIR$/resources/assets/js/app.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/vendor/dore.script.js" />
         <option value="$PROJECT_DIR$/public/assets/css/main.css" />
-        <option value="$PROJECT_DIR$/resources/assets/js/component.js" />
         <option value="$PROJECT_DIR$/webpack.mix.js" />
         <option value="$PROJECT_DIR$/test" />
         <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/public/assets/js/dsa.js" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/core.js" />
         <option value="$PROJECT_DIR$/resources/assets/css/color/dark.green.css" />
         <option value="$PROJECT_DIR$/resources/assets/css/color/dark.orange.css" />
@@ -309,13 +185,21 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" />
         <option value="$PROJECT_DIR$/resources/assets/css/font/iransans.css" />
         <option value="$PROJECT_DIR$/resources/assets/css/font/agoogle.css" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/css/main.css" />
-        <option value="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/fa/dash.php" />
         <option value="$PROJECT_DIR$/app/Models/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/MainController.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/OfferController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/PaymentController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/TeamController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/AjaxController.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/pages/MainTeam.js" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/Team.js" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/component.js" />
       </list>
     </option>
   </component>
@@ -434,6 +318,24 @@
               <item name="Timo" type="b2602c69:ProjectViewProjectNode" />
               <item name="Timo" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Timo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Timo" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Timo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Timo" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Timo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Timo" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -508,18 +410,18 @@
       <workItem from="1546328094695" duration="3346000" />
       <workItem from="1546349452465" duration="6700000" />
       <workItem from="1546432102558" duration="6029000" />
-      <workItem from="1546444044188" duration="4687000" />
+      <workItem from="1546444044188" duration="12882000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90459000" />
+    <option name="totallyTimeSpent" value="98654000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2435275" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23058252" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -556,39 +458,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/ProfileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding>
-            <element signature="e#53#85#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/css/vendor/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="5" column="52109" selection-start-line="5" selection-start-column="52095" selection-end-line="5" selection-end-column="52109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/jquery/dist/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/vendor.js" />
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/functions/script.js" />
-    <entry file="file://$PROJECT_DIR$/public/assets/js/vendor.js" />
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/vendor/mousetrap.min.js" />
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/vendor/scripts.js" />
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/vendor/dore.script.js" />
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/app.js" />
     <entry file="file://$PROJECT_DIR$/public/mix-manifest.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -606,13 +475,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="18" column="74" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -1357,23 +1219,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/dsa.js" />
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="3687" selection-start-line="3687" selection-end-line="3687" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/css/color/dark.green.css" />
     <entry file="file://$PROJECT_DIR$/resources/assets/css/color/dark.red.css" />
     <entry file="file://$PROJECT_DIR$/resources/assets/css/color/light.blue.css" />
@@ -1517,10 +1362,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php">
+    <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap-grid.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        <state relative-caret-position="80">
+          <caret line="5" column="936" selection-start-line="5" selection-start-column="936" selection-end-line="5" selection-end-column="936" />
         </state>
       </provider>
     </entry>
@@ -1531,54 +1376,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
-          <folding>
-            <element signature="e#2475#2509#0#HTML" />
-            <element signature="e#96#2562#0#HTML" />
-            <element signature="e#130#1332#0#HTML" />
-            <element signature="e#200#1320#0#HTML" />
-            <element signature="e#252#1305#0#HTML" />
-            <element signature="e#352#771#0#HTML" />
-            <element signature="e#482#748#0#HTML" />
-            <element signature="e#0#5#0" />
-            <element signature="e#0#5#0" />
-            <element signature="e#789#1285#0#HTML" />
-            <element signature="e#815#1262#0#HTML" />
-            <element signature="e#0#5#0" />
-            <element signature="e#0#5#0" />
-            <element signature="e#1337#2547#0#HTML" />
-            <element signature="e#1408#2535#0#HTML" />
-            <element signature="e#1460#2520#0#HTML" />
-            <element signature="e#1560#1984#0#HTML" />
-            <element signature="e#1691#1961#0#HTML" />
-            <element signature="e#0#5#0" />
-            <element signature="e#0#5#0" />
-            <element signature="e#2002#2500#0#HTML" />
-            <element signature="e#2028#2477#0#HTML" />
-            <element signature="e#0#5#0" />
-            <element signature="e#0#5#0" />
-            <element signature="e#2722#2968#0#HTML" />
-            <element signature="e#3003#3703#0#HTML" />
-            <element signature="e#3030#3688#0#HTML" />
-            <element signature="e#3134#3673#0#HTML" />
-            <element signature="e#3178#3658#0#HTML" />
-            <element signature="e#3234#3641#0#HTML" />
-            <element signature="e#0#3725#0#Blade" />
-            <element signature="e#3282#3604#0#HTML" />
-            <element signature="e#3295#3385#0#HTML" />
-            <element signature="e#3394#3478#0#HTML" />
-            <element signature="e#3487#3590#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="182" column="43" selection-start-line="182" selection-start-column="20" selection-end-line="182" selection-end-column="43" />
+        <state>
+          <caret line="105" column="35" lean-forward="true" selection-start-line="105" selection-start-column="35" selection-end-line="105" selection-end-column="35" />
           <folding>
             <element signature="e#977#1030#0#PHP" />
             <element signature="e#1183#1259#0#PHP" />
@@ -1615,10 +1416,166 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/pages/Auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="198" selection-start-line="198" selection-end-line="199" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-251">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1358">
+          <caret line="3687" selection-start-line="3687" selection-end-line="3687" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Team.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+          <folding>
+            <element signature="e#697#775#0#PHP" />
+            <element signature="e#803#900#0#PHP" />
+            <element signature="e#927#955#0#PHP" />
+            <element signature="e#963#1058#0#PHP" />
+            <element signature="e#1064#1183#0#PHP" />
+            <element signature="e#1204#1285#0#PHP" />
+            <element signature="e#1291#1373#0#PHP" />
+            <element signature="e#1379#1460#0#PHP" />
+            <element signature="e#1467#1549#0#PHP" />
+            <element signature="e#1555#1624#0#PHP" />
+            <element signature="e#1630#1718#0#PHP" />
+            <element signature="e#1724#1844#0#PHP" />
+            <element signature="e#1870#2257#0#PHP" />
+            <element signature="e#2263#2365#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/MainController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="26" column="105" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="105" />
+        <state relative-caret-position="16">
+          <caret line="1" selection-start-line="1" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/OfferController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/PaymentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/TeamController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Team.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/pages/MainTeam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/AjaxController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+          <folding>
+            <element signature="e#0#5#0" />
+            <element signature="e#3149#4839#0#HTML" />
+            <element signature="e#3190#3701#0#HTML" />
+            <element signature="e#3226#3686#0#HTML" />
+            <element signature="e#3400#3667#0#HTML" />
+            <element signature="e#3732#4828#0#HTML" />
+            <element signature="e#3763#4813#0#HTML" />
+            <element signature="e#3883#4794#0#HTML" />
+            <element signature="e#3939#4771#0#HTML" />
+            <element signature="e#4011#4742#0#HTML" />
+            <element signature="e#0#4846#0#Blade" />
+            <element signature="e#4099#4669#0#HTML" />
+            <element signature="e#4136#4278#0#HTML" />
+            <element signature="e#4311#4447#0#HTML" />
+            <element signature="e#4480#4635#0#HTML" />
+            <element signature="e#1748#4727#0#HTML" />
+            <element signature="e#1789#4675#0#HTML" />
+            <element signature="e#1819#3229#0#HTML" />
+            <element signature="e#1905#3209#0#HTML" />
+            <element signature="e#1965#3186#0#HTML" />
+            <element signature="e#2073#2540#0#HTML" />
+            <element signature="e#2219#2509#0#HTML" />
+            <element signature="e#2566#3158#0#HTML" />
+            <element signature="e#2600#3127#0#HTML" />
+            <element signature="e#3242#4660#0#HTML" />
+            <element signature="e#3329#4640#0#HTML" />
+            <element signature="e#3389#4617#0#HTML" />
+            <element signature="e#3497#3969#0#HTML" />
+            <element signature="e#3644#3938#0#HTML" />
+            <element signature="e#3995#4589#0#HTML" />
+            <element signature="e#4029#4558#0#HTML" />
+            <element signature="e#4684#4716#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>

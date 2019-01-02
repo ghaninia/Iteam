@@ -1,6 +1,43 @@
 @extends("layouts.dashboard")
 @section("main")
 
+    <div class="col-xl-4 col-sm-12">
+        <div class="card mb-4">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <h6 class="mb-0">{{ trans("dash.profile.account.completed") }}</h6>
+                <div role="progressbar" class="progress-bar-circle position-relative"
+                     data-color="#922c88" data-trailColor="#d7d7d7" aria-valuemax="100"
+                     aria-valuenow="{{ $precentCompleted }}" data-show-percent="true">
+                </div>
+            </div>
+        </div>
+        <!-- logs -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ trans("dash.pages.log.label") }}</h5>
+                <div class="scroll dashboard-logs">
+                    <table class="table table-sm table-borderless">
+                        <tbody>
+                            @foreach($logs as $log)
+                            <tr>
+                                <td>
+                                    <span class="log-indicator border-theme-1 align-middle"></span>
+                                </td>
+                                <td>
+                                    <span class="font-weight-medium">{{ $log->title }}</span>
+                                </td>
+                                <td class="text-left ltr">
+                                    <span class="text-muted">{{ $log->created_at }}</span>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="col-xl-8 col-sm-12">
         <div class="row">
             <div class="col-xl-6 col-sm-6">
@@ -62,42 +99,7 @@
 
             </div>
         </div>
-    </div>
-
-    <div class="col-xl-4 col-sm-12">
-        <div class="card mb-4">
-            <div class="card-body d-flex justify-content-between align-items-center">
-                <h6 class="mb-0">{{ trans("dash.profile.account.completed") }}</h6>
-                <div role="progressbar" class="progress-bar-circle position-relative"
-                     data-color="#922c88" data-trailColor="#d7d7d7" aria-valuemax="100"
-                     aria-valuenow="{{ $precentCompleted }}" data-show-percent="true">
-                </div>
-            </div>
-        </div>
-        <!-- logs -->
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ trans("dash.pages.log.label") }}</h5>
-                <div class="scroll dashboard-logs">
-                    <table class="table table-sm table-borderless">
-                        <tbody>
-                            @foreach($logs as $log)
-                            <tr>
-                                <td>
-                                    <span class="log-indicator border-theme-1 align-middle"></span>
-                                </td>
-                                <td>
-                                    <span class="font-weight-medium">{{ $log->title }}</span>
-                                </td>
-                                <td class="text-left ltr">
-                                    <span class="text-muted">{{ $log->created_at }}</span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="row">
         </div>
     </div>
 

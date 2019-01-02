@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Dashboard\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Log;
+use App\Models\Team;
 use Illuminate\Http\Request ;
 
 class MainController extends Controller
