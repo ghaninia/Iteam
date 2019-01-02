@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'agoogle';
+    font-style:normal;
+    font-weight:normal;
+    src:url('fonts/agoogle.eot');
+    src:
+            url('fonts/agoogle.woff') format('woff'),
+            url('fonts/agoogle.ttf') format('truetype')
+}

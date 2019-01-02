@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\Events\LogEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -51,9 +52,13 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+
+        event( new LogEvent($user , "login") ) ;
+
         return response()->json([
             "authunticate" => $user->remember_token ,
             "msg" => sprintf("سلام %s , شما با موفقیت وارد حساب خودتون شدید.😎" , $user->fullname ) ,
         ] , 200 ) ;
+
     }
 }

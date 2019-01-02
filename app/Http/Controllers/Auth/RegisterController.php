@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\Auth;
+use App\Events\LogEvent;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Rules\UserNameRule;
@@ -54,6 +55,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         Auth::login($user) ;
+        event(new LogEvent($user , "register")) ;
         return response()->json([
             "authunticate" => $user->remember_token ,
             "msg" => trans("dash.message.success.register.create") ,

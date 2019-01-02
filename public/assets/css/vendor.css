@@ -1,4 +1,14 @@
 @font-face {
+    font-family: 'agoogle';
+    font-style:normal;
+    font-weight:normal;
+    src:url('fonts/agoogle.eot');
+    src:
+            url('fonts/agoogle.woff') format('woff'),
+            url('fonts/agoogle.ttf') format('truetype')
+}
+
+@font-face {
 	font-family: 'icomoon';
 	src:url('fonts/icomoon.eot?-rdmvgc');
 	src:url('fonts/icomoon.eot?#iefix-rdmvgc') format('embedded-opentype'),
@@ -6282,15 +6292,16 @@
 	content: "\ee25";
 }
 
-@font-face {
-    font-family: 'Sahel';
-    font-style: normal;
-    src:url('fonts/Sahel.eot?-rdmvgc');
-    src:url('fonts/Sahel.eot?#iefix-rdmvgc') format('embedded-opentype'),
-    url('fonts/Sahel.woff?-rdmvgc') format('woff');
-    font-weight: normal;
+@font-face{
+	font-family:IRANSans;
+	font-style:normal;
+	font-weight:normal;
+	src:url('fonts/iransans.eot');
+	src:
+			url('fonts/iransans.woff2') format('woff2'),
+			url('fonts/iransans.woff') format('woff'),
+			url('fonts/iransans.ttf') format('truetype');
 }
-
 @font-face {
   font-family: 'simple-line-icons';
   src: url('fonts/Simple-Line-Icons.eot?v=2.4.0');
@@ -7070,17 +7081,6 @@
 }
 .simple-icon-social-steam:before {
   content: "\e620";
-}
-
-@font-face {
-	font-family: 'yekan';
-	src:url(fonts/Yekan.eot);
-	src:url(fonts/Yekan.eot?#iefix) format("embedded-opentype"),
-	url(fonts/Yekan.woff) format("woff"),
-	url(fonts/Yekan.ttf) format("truetype"),
-	url(fonts/Yekan.svg#BYekan) format("svg");
-	font-weight: normal;
-	font-style: normal
 }
 
 /*!

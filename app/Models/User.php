@@ -13,7 +13,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'plan_id' ,
         'is_active',
-        'confirmed_email' ,
         'name',
         'family' ,
         'username' ,
@@ -44,11 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ] ;
 
-    public function getFullnameAttribute()
-    {
-        return sprintf("%s %s", $this->attributes['name'], $this->attributes['family']);
-    }
-
+    //* relation complex *//
     public function plan(){
         return $this->belongsTo(Plan::class) ;
     }
@@ -82,11 +77,55 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->morphMany(Ticket::class , "ticketable") ;
     }
 
+    public function logs()
+    {
+        return $this->hasMany( Log::class ) ;
+    }
+
+    public function visitis()
+    {
+        return $this->hasMany(Visit::class) ;
+    }
+
+    public function porfileNotification()
+    {
+        return $this->hasOne(PorfileNotification::class) ;
+    }
+
+    //* boot model event *//
+    public static function boot()
+    {
+        static::created(function ($user){
+            $user->porfileNotification()->create() ;
+        });
+
+        parent::boot() ;
+    }
+
+    //* slug *//
     public function getRouteKeyName()
     {
         return 'username' ;
     }
 
+    //* notification *//
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token)) ;
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerfiedEmailUser );
+    }
+
+    //* accessor *//
+    public function getFullnameAttribute()
+    {
+        return sprintf("%s %s", $this->attributes['name'], $this->attributes['family']);
+    }
+
+    //* scope and funcs *//
     public function information()
     {
 
@@ -125,35 +164,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $information ;
     }
 
-    public function porfileNotification()
-    {
-        return $this->hasOne(PorfileNotification::class) ;
-    }
-
-    public static function boot()
-    {
-        static::created(function ($user){
-            $user->porfileNotification()->create() ;
-        });
-
-        parent::boot() ;
-    }
-
-    public function visitis()
-    {
-        return $this->hasMany(Visit::class) ;
-    }
-
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new ResetPassword($token)) ;
-    }
-
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new VerfiedEmailUser );
-    }
-
     public static function canAddTeam($user = null)
     {
         $user = !! $user ? $user : me() ;
@@ -168,6 +178,43 @@ class User extends Authenticatable implements MustVerifyEmail
             return $user->teams_count < $user->plan->max_create_team ;
 
         return false ;
+    }
+
+    public function completedProfilePrecent()
+    {
+        $items = User::select([
+            'id' ,
+            'name',
+            'family' ,
+            'username' ,
+            'email',
+            'phone' ,
+            'fax' ,
+            'mobile' ,
+            'gender' ,
+            'website' ,
+            'bio',
+            'instagram_account' ,
+            'linkedin_account' ,
+            'password' ,
+            'type_assist' ,
+            'interplay_fiscal' ,
+            'province_id',
+            'city_id' ,
+        ])
+        ->withCount("skills")
+        ->where("id" , me()->id )
+        ->first()->toArray() ;
+
+        $len = count($items) ;
+        $counter = 0 ;
+        foreach ($items as $key => $value ){
+            if ( !! $value ){
+                $counter++ ;
+            }
+        }
+
+        return @ceil( ($counter * 100) / $len ) ;
     }
 
 }

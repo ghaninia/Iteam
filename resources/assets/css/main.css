@@ -7,9 +7,12 @@ body {
 }
 
 html , body , p , span , input , textarea {
-    font-family: "yekan" , SansSerif , Tahoma !important ;
+    font-family: "IRANSans" , SansSerif , Tahoma !important ;
     direction:  rtl ;
+}
 
+.lead , h1 , h2 , h3 , h4 , h5 , h6 {
+    font-family: "agoogle" , SansSerif , Tahoma !important ;
 }
 
 body.show-spinner>* {
@@ -117,4 +120,22 @@ body.show-spinner:before {
 }
 .sidebar .main-menu ul li.active:after{
     width: 4px !important;
+}
+.ltr{
+    direction: ltr!important;
+}
+.rtl{
+    direction: rtl!important;
+}
+
+.scroll {
+    overflow-y: auto;
+}
+.dashboard-donut-chart, .dashboard-list-with-user, .dashboard-logs{
+    height : auto !important;
+    max-height: 270px !important;
+}
+.log-indicator {
+    width: 10px !important ;
+    height: 10px !important ;
 }

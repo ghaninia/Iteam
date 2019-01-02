@@ -27,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\whenBuyPlanEvent' => [
             'App\Listeners\whenBuyPlanListener'
         ] ,
+        "App\Events\LogEvent" => [
+            "App\Listeners\LogListener"
+        ]
     ];
 
     /**

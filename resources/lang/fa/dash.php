@@ -3,7 +3,8 @@
 return [
     "profile" => [
         "account" => [
-            "label" => "حساب کاربری"
+            "label" => "حساب کاربری" ,
+            "completed" => "درصد تکمیل پروفایل"
         ] ,
         "password" => [
             "label" => "گذرواژه"
@@ -13,7 +14,7 @@ return [
         ],
         "logout" => [
             "label" => "خروج از حساب"
-        ]
+        ] ,
     ] ,
     "message" => [
         "success" => [
@@ -35,10 +36,28 @@ return [
     "pages" => [
         "dashboard" => [
             "label" => "داشبورد" ,
+            "desc"  => "به حساب کاربری خود خوش آمده اید"
         ],
         "payment" => [
             "label" => "فاکتور"
-        ]
+        ] ,
+        "log" => [
+            "label" => "لاگ هـای کاربری" ,
+        ],
+        "team" => [
+            "my_team" => ":attribute تیم" ,
+            "desc" => "کلیه تیم های ساخته شده"
+        ],
+        "offer" => [
+            "my_offer" => ":attribute پیشنهاد" ,
+            "desc" => "کلیه پیشنهادات داده شده"
+        ],
+
+    ],
+    "logs" => [
+        "login" => "ورود به حساب کاربری" ,
+        "register" => "ثبت نام" ,
+        "confirm_email" => "تایید پست الکترونیکی"
     ]
 ];
 
