@@ -12,6 +12,9 @@ return [
         "plan" => [
             "label" => "پلن کاربری"
         ],
+        "notification" => [
+            "label" => "اعلان ها"
+        ],
         "logout" => [
             "label" => "خروج از حساب"
         ] ,
@@ -52,12 +55,17 @@ return [
             "my_offer" => ":attribute پیشنهاد" ,
             "desc" => "کلیه پیشنهادات داده شده"
         ],
-
+        "profile" => [
+            "label" => "کاربری"
+        ]
     ],
     "logs" => [
         "login" => "ورود به حساب کاربری" ,
         "register" => "ثبت نام" ,
         "confirm_email" => "تایید پست الکترونیکی"
+    ] ,
+    "items" => [
+        "new" => "جدید"
     ]
 ];
 

@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9b406d3-450e-4b38-89ad-7fb02ccbd3b5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/user/profile/account.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/breadcrumb.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/component.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/component.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/components/Register.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/Functions/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Functions/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fa/dash.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/dash.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,44 +41,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/assets/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="104" selection-start-line="104" selection-end-line="104" />
-              <folding>
-                <element signature="e#0#5#0" />
-                <element signature="e#3149#4839#0#HTML" />
-                <element signature="e#3190#3701#0#HTML" />
-                <element signature="e#3226#3686#0#HTML" />
-                <element signature="e#3400#3667#0#HTML" />
-                <element signature="e#3732#4828#0#HTML" />
-                <element signature="e#3763#4813#0#HTML" />
-                <element signature="e#3883#4794#0#HTML" />
-                <element signature="e#3939#4771#0#HTML" />
-                <element signature="e#4011#4742#0#HTML" />
-                <element signature="e#0#4846#0#Blade" />
-                <element signature="e#4099#4669#0#HTML" />
-                <element signature="e#4136#4278#0#HTML" />
-                <element signature="e#4311#4447#0#HTML" />
-                <element signature="e#4480#4635#0#HTML" />
-                <element signature="e#1748#4727#0#HTML" />
-                <element signature="e#1789#4675#0#HTML" />
-                <element signature="e#1819#3229#0#HTML" />
-                <element signature="e#1905#3209#0#HTML" />
-                <element signature="e#1965#3186#0#HTML" />
-                <element signature="e#2073#2540#0#HTML" />
-                <element signature="e#2219#2509#0#HTML" />
-                <element signature="e#2566#3158#0#HTML" />
-                <element signature="e#2600#3127#0#HTML" />
-                <element signature="e#3242#4660#0#HTML" />
-                <element signature="e#3329#4640#0#HTML" />
-                <element signature="e#3389#4617#0#HTML" />
-                <element signature="e#3497#3969#0#HTML" />
-                <element signature="e#3644#3938#0#HTML" />
-                <element signature="e#3995#4589#0#HTML" />
-                <element signature="e#4029#4558#0#HTML" />
-                <element signature="e#4684#4716#0#HTML" />
-              </folding>
+            <state relative-caret-position="1">
+              <caret line="143" column="1" selection-start-line="143" selection-start-column="1" selection-end-line="143" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/breadcrumb.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="16">
+              <caret line="1" column="7" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -86,8 +63,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="blade" />
         <option value="JavaScript File" />
+        <option value="blade" />
       </list>
     </option>
   </component>
@@ -149,11 +126,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/User/Dashboard/ProfileController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/User/Dashboard/TeamController.php" />
-        <option value="$PROJECT_DIR$/app/Repositories/Functions/functions.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_07_15_042523_create_files_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/ProfileController.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/vendor.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/functions/script.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/vendor/scripts.js" />
@@ -174,7 +147,6 @@
         <option value="$PROJECT_DIR$/resources/assets/css/color/light.red.css" />
         <option value="$PROJECT_DIR$/resources/assets/css/color/light.purple.css" />
         <option value="$PROJECT_DIR$/resources/views/layouts/nab.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_01_02_123443_create_logs_table.php" />
         <option value="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Events/LogEvent.php" />
@@ -186,11 +158,9 @@
         <option value="$PROJECT_DIR$/resources/assets/css/font/iransans.css" />
         <option value="$PROJECT_DIR$/resources/assets/css/font/agoogle.css" />
         <option value="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/css/main.css" />
         <option value="$PROJECT_DIR$/resources/lang/fa/dash.php" />
         <option value="$PROJECT_DIR$/app/Models/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/MainController.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/OfferController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/PaymentController.php" />
@@ -200,6 +170,13 @@
         <option value="$PROJECT_DIR$/resources/assets/js/components/Team.js" />
         <option value="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/component.js" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard/user/profile/account.blade.php" />
+        <option value="$PROJECT_DIR$/app/Repositories/Functions/functions.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/ProfileController.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/breadcrumb.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/css/main.css" />
       </list>
     </option>
   </component>
@@ -311,35 +288,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Timo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Timo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Timo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Timo" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Timo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Timo" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Timo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Timo" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -411,17 +360,17 @@
       <workItem from="1546349452465" duration="6700000" />
       <workItem from="1546432102558" duration="6029000" />
       <workItem from="1546444044188" duration="12882000" />
+      <workItem from="1546484063145" duration="2718000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98654000" />
+    <option name="totallyTimeSpent" value="101372000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23058252" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23462783" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -435,7 +384,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3295838" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.29471317" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.96625423" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -458,19 +407,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/mix-manifest.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/css/شسلشسلش.css" />
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/core/jquery.ajaxchimp.min.js" />
-    <entry file="file://$PROJECT_DIR$/public/assets/js/app.js" />
-    <entry file="file://$PROJECT_DIR$/public/assets/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpack.mix.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -1256,13 +1192,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="59" selection-start-line="7" selection-start-column="59" selection-end-line="7" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Listeners/LogListener.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -1348,13 +1277,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="752">
-          <caret line="139" column="29" selection-start-line="139" selection-start-column="29" selection-end-line="139" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -1366,13 +1288,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="5" column="936" selection-start-line="5" selection-start-column="936" selection-end-line="5" selection-end-column="936" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/fa/dash.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="2" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1426,15 +1341,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-251">
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Register.js" />
     <entry file="file://$PROJECT_DIR$/resources/assets/js/core.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1358">
@@ -1472,13 +1379,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="656">
@@ -1507,23 +1407,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Team.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/pages/MainTeam.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Team.js" />
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/pages/MainTeam.js" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/AjaxController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -1540,42 +1425,129 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        <state>
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Http/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="201" column="40" selection-start-line="201" selection-start-column="31" selection-end-line="201" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/Functions/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="281" column="8" lean-forward="true" selection-start-line="281" selection-start-column="8" selection-end-line="281" selection-end-column="8" />
           <folding>
-            <element signature="e#0#5#0" />
-            <element signature="e#3149#4839#0#HTML" />
-            <element signature="e#3190#3701#0#HTML" />
-            <element signature="e#3226#3686#0#HTML" />
-            <element signature="e#3400#3667#0#HTML" />
-            <element signature="e#3732#4828#0#HTML" />
-            <element signature="e#3763#4813#0#HTML" />
-            <element signature="e#3883#4794#0#HTML" />
-            <element signature="e#3939#4771#0#HTML" />
-            <element signature="e#4011#4742#0#HTML" />
-            <element signature="e#0#4846#0#Blade" />
-            <element signature="e#4099#4669#0#HTML" />
-            <element signature="e#4136#4278#0#HTML" />
-            <element signature="e#4311#4447#0#HTML" />
-            <element signature="e#4480#4635#0#HTML" />
-            <element signature="e#1748#4727#0#HTML" />
-            <element signature="e#1789#4675#0#HTML" />
-            <element signature="e#1819#3229#0#HTML" />
-            <element signature="e#1905#3209#0#HTML" />
-            <element signature="e#1965#3186#0#HTML" />
-            <element signature="e#2073#2540#0#HTML" />
-            <element signature="e#2219#2509#0#HTML" />
-            <element signature="e#2566#3158#0#HTML" />
-            <element signature="e#2600#3127#0#HTML" />
-            <element signature="e#3242#4660#0#HTML" />
-            <element signature="e#3329#4640#0#HTML" />
-            <element signature="e#3389#4617#0#HTML" />
-            <element signature="e#3497#3969#0#HTML" />
-            <element signature="e#3644#3938#0#HTML" />
-            <element signature="e#3995#4589#0#HTML" />
-            <element signature="e#4029#4558#0#HTML" />
-            <element signature="e#4684#4716#0#HTML" />
+            <element signature="e#6#27#0#PHP" expanded="true" />
+            <element signature="n#options#0;n#!!top" />
+            <element signature="n#picture#0;n#!!top" />
+            <element signature="n#userPicture#0;n#!!top" />
+            <element signature="n#username#0;n#!!top" />
+            <element signature="n#planname#0;n#!!top" />
+            <element signature="n#str_slice#0;n#!!top" />
+            <element signature="n#genders#0;n#!!top" />
+            <element signature="n#currency#0;n#!!top" />
+            <element signature="n#changeCurrency#0;n#!!top" />
+            <element signature="n#me#0;n#!!top" />
+            <element signature="n#statusTransaction#0;n#!!top" />
+            <element signature="n#userSearchRangeTime#0;n#!!top" />
+            <element signature="n#macAddress#0;n#!!top" />
+            <element signature="n#slug#0;n#!!top" />
+            <element signature="n#typeAssists#0;n#!!top" />
+            <element signature="n#interplayFiscals#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1072">
+          <caret line="67" column="21" lean-forward="true" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+          <folding>
+            <element signature="e#1479#2557#0#PHP" />
+            <element signature="e#1676#2473#0#PHP" />
+            <element signature="e#1693#2472#1#PHP" />
+            <element signature="e#2599#2951#0#PHP" />
+            <element signature="e#2671#2865#0#PHP" />
+            <element signature="e#2771#2855#1#PHP" />
+            <element signature="e#2957#3194#0#PHP" />
+            <element signature="e#3025#3114#0#PHP" />
+            <element signature="e#3038#3113#1#PHP" />
+            <element signature="e#3240#3641#0#PHP" />
+            <element signature="e#3316#3518#0#PHP" />
+            <element signature="e#3420#3508#1#PHP" />
+            <element signature="e#3647#4458#0#PHP" />
+            <element signature="e#3737#4367#0#PHP" />
+            <element signature="e#3774#4366#1#PHP" />
+            <element signature="e#4495#4949#0#PHP" />
+            <element signature="e#4563#4761#0#PHP" />
+            <element signature="e#4665#4751#1#PHP" />
+            <element signature="e#4955#5044#0#PHP" />
+            <element signature="e#5050#5625#0#PHP" />
+            <element signature="e#5239#5283#0#PHP" />
+            <element signature="e#5342#5547#0#PHP" />
+            <element signature="e#5358#5546#1#PHP" />
+            <element signature="e#5631#7220#0#PHP" />
+            <element signature="e#5691#7145#0#PHP" />
+            <element signature="e#5912#6075#0#PHP" />
+            <element signature="e#5954#6074#1#PHP" />
+            <element signature="e#6163#6368#0#PHP" />
+            <element signature="e#6177#6367#1#PHP" />
+            <element signature="e#6521#6671#0#PHP" />
+            <element signature="e#6582#6670#1#PHP" />
+            <element signature="e#6691#6817#0#PHP" />
+            <element signature="e#6826#7145#0#PHP" />
+            <element signature="e#6940#7067#0#PHP" />
+            <element signature="e#6940#7133#0#PHP" />
+            <element signature="e#7260#7666#0#PHP" />
+            <element signature="e#7409#7594#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/fa/dash.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="57" column="16" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/user/profile/account.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/breadcrumb.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="143" column="1" selection-start-line="143" selection-start-column="1" selection-end-line="143" selection-end-column="1" />
         </state>
       </provider>
     </entry>

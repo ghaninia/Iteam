@@ -25,6 +25,11 @@
         <main>
             <div class="container-fluid">
                 <div class="row">
+
+                    @if(isset($information['breadcrumb']))
+                        @include("layouts.breadcrumb" , compact("information") )
+                    @endif
+
                     @yield("main")
                 </div>
             </div>

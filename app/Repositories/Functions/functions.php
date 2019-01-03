@@ -1,5 +1,6 @@
 <?php
 use App\Models\File ;
+use Illuminate\Support\Facades\Route;
 
 function options($key , $default = null )
 {
@@ -265,4 +266,20 @@ function interplayFiscals(){
         'partnership' ,
         'fixedsalary'
     ];
+}
+
+function activeSidebar ($route , $routeName = false , $classDefault = "active") {
+   if ($routeName){
+       $routeNamed =  Route::currentRouteName()  ;
+       if( is_string($route) ){
+           return $routeNamed == $route ? "class={$classDefault}" : null ;
+       }elseif ( is_array($route) ){
+           return in_array( $routeNamed , $route ) ? "class={$classDefault}" : null ;
+       }
+   }else{
+       if ( request()->is("{$route}/*") ){
+           return "class={$classDefault}";
+       }
+       return null;
+   }
 }

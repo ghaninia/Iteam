@@ -93,6 +93,7 @@
                 <a class="dropdown-item" href="">{{ trans("dash.profile.account.label") }}</a>
                 <a class="dropdown-item" href="#">{{ trans("dash.profile.password.label") }}</a>
                 <a class="dropdown-item" href="#">{{ trans("dash.profile.plan.label") }}</a>
+                <a class="dropdown-item" href="#">{{ trans("dash.profile.notification.label") }}</a>
                 <a class="dropdown-item" href="#">{{ trans("dash.profile.logout.label") }}</a>
             </div>
         </div>

@@ -22,14 +22,15 @@ class ProfileController extends Controller
     //*  account profile edit  *//
     public function account(Request $request)
     {
+
         $information = [
-            'title' => trans('dash.panel.sidebar.profile.edit') ,
+            'title' => trans('dash.profile.account.label') ,
             'breadcrumb' => [
-                trans('dash.panel.sidebar.profile.edit') => null
+                trans('dash.pages.profile.label') => null
             ]
         ] ;
 
-        $account = User::withCount( 'plan' , 'teams' ,'offers')->find( me()->id ) ;
+        $account = me()->load( 'plan' , 'teams' ,'offers');
 
         $cities  = City::whereHas("province" ,function ($q) use ($account) {
             $q->where("id" , $account->province_id);
@@ -37,13 +38,9 @@ class ProfileController extends Controller
 
         $provinces = Province::select(['id','name'])->get() ;
 
-        $log = $account->information() ;
 
-        $count_skill = 0 ;
-        if(!! $account->plan)
-            $count_skill = $account->plan->count_skill ;
+        return view('dashboard.user.profile.account' , compact('account' , 'information', 'provinces' , 'cities') ) ;
 
-        return view('dash.user.profile.account' , compact('account' , 'count_skill' , 'information', 'log' , 'provinces' , 'cities') ) ;
     }
 
     public function accountStore(accountStore $request)
@@ -177,9 +174,9 @@ class ProfileController extends Controller
             $refId = $gateway->refId();
             $payment = Payment::where('ref_id' , $refId)->first() ;
             Payment::where('ref_id' , $refId)->update([
-                    'tracking_code' => $trackingCode ,
-                    'status' => Enum::TRANSACTION_SUCCEED
-                ]) ;
+                'tracking_code' => $trackingCode ,
+                'status' => Enum::TRANSACTION_SUCCEED
+            ]) ;
 
             /** update user profile plan **/
             $user = me() ;

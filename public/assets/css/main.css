@@ -139,3 +139,6 @@ body.show-spinner:before {
     width: 10px !important ;
     height: 10px !important ;
 }
+.logo-single, h1, h3 {
+    display: inline-block;
+}
