@@ -41,7 +41,19 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at' ,
+        'email_verified_at' ,
+        'plan_created_at' ,
+        'plan_expired_at' ,
+        'plan_id' ,
+        'updated_at' ,
+        "is_active" ,
+        "id"
     ] ;
+
+    protected $guarded = [
+        "id"
+    ];
 
     //* relation complex *//
     public function plan(){

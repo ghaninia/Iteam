@@ -26,3 +26,4 @@ SimpleReactValidator  = require("simple-react-validator") ;
 
 // components list
 require('./pages/Auth');
+require("./pages/profile/Account") ;

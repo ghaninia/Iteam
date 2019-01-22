@@ -59792,6 +59792,8 @@ SimpleReactValidator = __webpack_require__(/*! simple-react-validator */ "./node
 
 __webpack_require__(/*! ./pages/Auth */ "./resources/assets/js/pages/Auth.js");
 
+__webpack_require__(/*! ./pages/profile/Account */ "./resources/assets/js/pages/profile/Account.js");
+
 /***/ }),
 
 /***/ "./resources/assets/js/components/Captcha.js":
@@ -60622,6 +60624,404 @@ if (document.getElementById("_auth")) {
     action: action,
     fields: _fields
   }), authForm);
+}
+
+/***/ }),
+
+/***/ "./resources/assets/js/pages/profile/Account.js":
+/*!******************************************************!*\
+  !*** ./resources/assets/js/pages/profile/Account.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ProfileAccount; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Spinner */ "./resources/assets/js/components/Spinner.js");
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+
+
+
+var allowImageExtension = ['image/jpeg', 'image/jpg', 'image/png'];
+
+var ProfileAccount =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProfileAccount, _React$Component);
+
+  function ProfileAccount(props) {
+    var _this;
+
+    _classCallCheck(this, ProfileAccount);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProfileAccount).call(this, props));
+    _this.state = {
+      user: {},
+      step: 0,
+      wizard: null
+    };
+    _this.next = _this.next.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.prev = _this.next.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.validator = new SimpleReactValidator({
+      element: function element(message, className) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "text-small text-danger btn-block mt-2"
+        }, message);
+      }
+    });
+    _this.setFieldInput = _this.setFieldInput.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.setCover = _this.setCover.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.setPic = _this.setPic.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(ProfileAccount, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios.post(options.ajax, {
+        action: "profile-account"
+      }).then(function (response) {
+        var user = response.data;
+
+        _this2.setState({
+          user: user,
+          wizard: [{
+            name: "مشخصات شخصی",
+            component: _this2._renderPersonal(user)
+          }, {
+            name: "مشخصات تماس",
+            component: _this2._renderContact(user)
+          }, {
+            name: "شبکه های اجتماعی",
+            component: null
+          }, {
+            name: "محل سکونت",
+            component: null
+          }][_this2.state.step]
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var wizard = this.state.wizard;
+
+      if (wizard == null) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Spinner__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, wizard.name), wizard.component, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.next,
+        className: "btn btn-primary mt-3 pl-5 pr-5 float-left"
+      }, " \u0645\u0631\u062D\u0644\u0647 \u0628\u0639\u062F\u06CC "));
+    }
+  }, {
+    key: "setFieldInput",
+    value: function setFieldInput(event) {
+      var obj = {};
+      obj[event.target.name] = event.target.value;
+      this.setState({
+        user: _objectSpread({}, this.state.user, obj)
+      });
+    }
+  }, {
+    key: "next",
+    value: function next(event) {
+      event.preventDefault();
+      var step = this.state.step;
+
+      if (this.validator.allValid()) {
+        if (4 > step) {
+          this.setState({
+            step: step + 1
+          });
+        }
+      } else {
+        this.validator.showMessages();
+        this.forceUpdate();
+      }
+    }
+  }, {
+    key: "prev",
+    value: function prev(event) {}
+  }, {
+    key: "setCover",
+    value: function setCover() {
+      var coverINPUT = document.querySelector("#profile__cover input[name=cover]");
+      var cover = document.getElementById("profile__cover");
+      coverINPUT.click();
+      coverINPUT.addEventListener("change", function (response) {
+        if (response.target.files.length) {
+          var reader = new FileReader();
+          var file = response.target.files[0];
+
+          if (!allowImageExtension.includes(file.type)) {
+            Snackbar.show({
+              text: "فرمت تصویر ارسالی معتبر نمیباشد !",
+              showAction: false
+            });
+            coverINPUT.value = "";
+            return false;
+          }
+
+          reader.onload = function (e) {
+            cover.style.backgroundImage = "url(".concat(e.target.result, ")");
+          };
+
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+  }, {
+    key: "setPic",
+    value: function setPic() {
+      var picINPUT = document.querySelector("#profile__cover input[name=picture]");
+      var pic = document.getElementById("profile__pic");
+      picINPUT.click();
+      picINPUT.addEventListener("change", function (response) {
+        if (response.target.files.length) {
+          var reader = new FileReader();
+          var file = response.target.files[0];
+
+          reader.onload = function (e) {
+            pic.src = e.target.result;
+          };
+
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+  }, {
+    key: "_renderPersonal",
+    value: function _renderPersonal(user) {
+      var style = {
+        backgroundImage: user.cover != null ? "url(".concat(user.cover, ")") : null
+      };
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cover",
+        id: "profile__cover",
+        style: style
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        accept: "image/*",
+        type: "file",
+        name: "cover",
+        className: "hidden"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        accept: "image/*",
+        type: "file",
+        name: "picture",
+        className: "hidden"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        alt: user.username,
+        id: "profile__pic",
+        src: user.avatar,
+        className: "img-thumbnail border-0 mb-4 list-thumbnail"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.setPic,
+        id: "profile__change-pic",
+        className: "profile__change-pic"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "glyph-icon simple-icon-camera"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.setCover,
+        id: "profile__change-cover",
+        className: "profile__change-cover"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "glyph-icon simple-icon-camera"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-group has-top-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "name",
+        className: "form-control",
+        value: user.name,
+        autoComplete: "off",
+        onChange: this.setFieldInput
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u0646\u0627\u0645")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-group has-top-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "family",
+        className: "form-control",
+        value: user.family,
+        autoComplete: "off",
+        onChange: this.setFieldInput
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u0627\u062F\u06AF\u06CC")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-group has-top-label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "username",
+        className: "form-control",
+        value: user.username,
+        autoComplete: "off",
+        onChange: this.setFieldInput
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC")));
+    }
+  }, {
+    key: "_renderContact",
+    value: function _renderContact(user) {
+      return null; // return (
+      //     <div>
+      //         <label className="form-group has-top-label">
+      //             <input name="email" className="form-control" value={ user.email } onChange={ this.setFieldInput }/>
+      //             <span>پست الکترونیکی</span>
+      //             {this.validator.message( 'email' , this.state.user.email ,"required|email"  )}
+      //         </label>
+      //         <label className="form-group has-top-label">
+      //             <input name="mobile" className="form-control" value={ user.mobile } onChange={ this.setFieldInput }/>
+      //             <span>موبایل</span>
+      //         </label>
+      //         <label className="form-group has-top-label">
+      //             <input name="website" className="form-control" value={ user.website } onChange={ this.setFieldInput }/>
+      //             {this.validator.message( 'website' , this.state.user.website ,"url"  )}
+      //             <span>وب سایت</span>
+      //         </label>
+      //         <label className="form-group has-top-label">
+      //             <input name="phone" className="form-control" value={ user.phone } onChange={ this.setFieldInput }/>
+      //             <span>تلفن</span>
+      //         </label>
+      //         <label className="form-group has-top-label">
+      //             <input name="fax" className="form-control" value={ user.fax } onChange={ this.setFieldInput }/>
+      //             <span>فکس</span>
+      //         </label>
+      //     </div>
+      // );
+    }
+  }]);
+
+  return ProfileAccount;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+if (document.getElementById("_profile-account")) {
+  var element = document.getElementById("_profile-account");
+  var action = element.action;
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProfileAccount, {
+    action: action
+  }), element);
 }
 
 /***/ }),

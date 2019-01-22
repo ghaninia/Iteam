@@ -34,6 +34,11 @@ Route::namespace('Dashboard\User')->name('user.')->middleware('auth:user')->grou
             Route::post( "{plan}"  , "ProfileController@planStore")->name("store") ;
         });
 
+        Route::prefix("skill")->name("skill.")->group(function (){
+            Route::get("/"  , "ProfileController@skill")->name("index") ;
+            Route::post( "/"  , "ProfileController@skillStore")->name("store") ;
+        });
+
         Route::post( "logout"  , "ProfileController@logout")->name("logout") ;
     });
 

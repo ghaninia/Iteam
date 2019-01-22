@@ -57,6 +57,13 @@
                     </a>
                 </li>
 
+                <li {{ activeSidebar("user.profile.skill.index" , true ) }}>
+                    <a href="">
+                        <i class="iconsmind-Box-Open"></i>
+                        {{ trans("dash.profile.skill.label") }}
+                    </a>
+                </li>
+
                 <li {{ activeSidebar("user.profile.password.index" , true ) }}>
                     <a href="">
                         <i class="iconsmind-Alarm-Clock"></i>

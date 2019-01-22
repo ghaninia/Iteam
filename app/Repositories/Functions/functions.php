@@ -38,7 +38,7 @@ function userPicture( $type = 'avatar' , $size = 'thumbnail' , $guard = 'user' ,
                 }
             }
             case "cover" : {
-                return asset( config("timo.profile.cover") ) ;
+                return null ;
             }
         }
     }

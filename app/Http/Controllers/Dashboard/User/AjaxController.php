@@ -35,4 +35,12 @@ class AjaxController extends Controller
         return $items ;
     }
 
+    public function profileAccount()
+    {
+        $me = me() ;
+        $me["cover"]  = userPicture('cover') ;
+        $me["avatar"] = userPicture("avatar") ;
+        return $me ;
+    }
+
 }

@@ -43,12 +43,14 @@ body.show-spinner:before {
 .spinner {
     display : block ;
     margin : 2px 0 ;
-    border: 2px solid #fff ;
+    border: 2px solid #eee ;
     border-top-color: transparent ;
     border-radius: 50%;
     animation: spin .5s linear infinite;
 }
-
+.btn .spinner{
+    border: 2px solid #fff ;
+}
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -141,4 +143,84 @@ body.show-spinner:before {
 }
 .logo-single, h1, h3 {
     display: inline-block;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+::-moz-selection {
+    background: rgba(255,193,7, .5 ) ;
+    color :#332702 ;
+}
+::selection {
+    background: rgba(255,193,7, .5 ) ;
+    color :#332702 ;
+}
+
+.has-top-label>span:last-of-type, .has-top-label label{
+    font-size: 85% !important; ;
+}
+
+.cover{
+    height : 150px ;
+    background-color : rgba(0,0,0,.2) ;
+    box-shadow : 0 0 10px rgba(0,0,0,.1) inset ;
+    margin : 10px 0 20px;
+    display : flex ;
+    flex-direction : row ;
+    align-items: center ;
+    justify-content: center;
+    background-size: cover;
+    background-position: center center;
+}
+.hidden {
+    display : none !important
+}
+.profile__change-cover{
+    display : block ;
+    background-color : #c0702f ;
+    position : absolute ;
+    top : 10px ;
+    left : 10px ;
+    padding : 4px 10px ;
+    box-shadow : 0 0 5px rgba(0,0,0,.1);
+}
+.profile__change-cover i{
+    display: block ;
+    color : #fff ;
+    font-size : 20px
+}
+.cover#profile__cover{
+    position : relative;
+}
+
+.profile__change-pic{
+    display : block ;
+    background-color : #fff ;
+    position : absolute ;
+    top : 10px ;
+    left : calc(50% + 30px);
+    padding : 4px 10px ;
+    box-shadow : 0 0 5px rgba(0,0,0,.1);
+}
+.profile__change-pic i{
+    display: block ;
+    color : #000 ;
+    font-size : 20px
 }

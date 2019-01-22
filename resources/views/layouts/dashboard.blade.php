@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/vendor.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/color/light.orange.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/color/dark.orange.css") }}">
     <script>
         const options = {
             ajax : "{{ route("user.ajax") }}"
@@ -25,11 +25,9 @@
         <main>
             <div class="container-fluid">
                 <div class="row">
-
                     @if(isset($information['breadcrumb']))
                         @include("layouts.breadcrumb" , compact("information") )
                     @endif
-
                     @yield("main")
                 </div>
             </div>

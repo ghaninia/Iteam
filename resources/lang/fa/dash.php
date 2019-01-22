@@ -15,6 +15,9 @@ return [
         "notification" => [
             "label" => "اعلان ها"
         ],
+        "skill" => [
+            "label" => "مهارت ها"
+        ],
         "logout" => [
             "label" => "خروج از حساب"
         ] ,

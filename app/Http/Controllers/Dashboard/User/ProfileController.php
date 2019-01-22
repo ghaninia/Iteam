@@ -218,4 +218,16 @@ class ProfileController extends Controller
         return ResMessage( trans('dash.messages.error.logout') );
     }
 
+
+    //*  skill profile  *//
+    public function skill(Request $request)
+    {
+
+    }
+
+    public function skillStore(Request $request)
+    {
+
+    }
+
 }
