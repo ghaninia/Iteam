@@ -24,31 +24,28 @@ class ProfileController extends Controller
     {
 
         $information = [
-            'title' => trans('dash.profile.account.label') ,
+            'title' => trans('dashboard.profile.account.label') ,
             'breadcrumb' => [
-                trans('dash.pages.profile.label') => null
+                trans('dashboard.pages.profile.label') => null
             ]
         ] ;
 
-        $account = me()->load( 'plan' , 'teams' ,'offers');
+        $user  = me()->load( 'plan' , 'teams' ,'offers');
 
-        $cities  = City::whereHas("province" ,function ($q) use ($account) {
-            $q->where("id" , $account->province_id);
+        $cities  = City::whereHas("province" ,function ($q) use ($user) {
+            $q->where("id" , $user->province_id);
         })->select(['id','name'])->get();
 
         $provinces = Province::select(['id','name'])->get() ;
 
-
-        return view('dashboard.user.profile.account' , compact('account' , 'information', 'provinces' , 'cities') ) ;
+        return view('dashboard.user.profile.account' , compact('user' , 'information', 'provinces' , 'cities') ) ;
 
     }
 
     public function accountStore(accountStore $request)
     {
         $account = me() ;
-
-        File::pull($account , 'avatar', 'avatar' );
-
+        File::pull($account , 'picture', 'picture' );
         File::pull($account , 'cover', 'cover' );
 
         $account->update([
@@ -68,20 +65,23 @@ class ProfileController extends Controller
             'city_id' => $request->input('city_id') ,
         ]);
 
-        return ResMessage( trans('dash.messages.success.profile.update') );
+        return response()->json([
+            "msg" => trans('dashboard.message.success.profile.update') ,
+            "ok"  => true
+        ]);
     }
 
     //*  password profile edit  *//
     public function password(Request $request)
     {
         $information = [
-            'title' => trans('dash.panel.sidebar.profile.password') ,
+            'title' => trans("dashboard.profile.password.label") ,
             'breadcrumb' => [
-                trans('dash.panel.sidebar.profile.password') => null
+                trans("dashboard.profile.password.label") => null
             ]
         ] ;
 
-        return view("dash.user.profile.password" , compact('information')) ;
+        return view("dashboard.user.profile.password" , compact('information') ) ;
     }
 
     public function passwordStore(passwordStore $request)
@@ -90,21 +90,25 @@ class ProfileController extends Controller
             'password' => bcrypt( $request->input('password') )
         ]);
 
-        return ResMessage(trans('dash.messages.success.profile.pass'));
+        return response()->json([
+            "msg" => trans('dashboard.message.success.profile.pass') ,
+            "ok"  => true
+        ]);
+
     }
 
     //*  notification profile edit  *//
     public function notification(Request $request)
     {
         $information = [
-            'title' => trans('dash.panel.sidebar.profile.notification') ,
+            'title' => trans('dashboard.profile.notification.label') ,
             'breadcrumb' => [
-                trans('dash.panel.sidebar.profile.notification') => null
+                trans('dashboard.profile.notification.label') => null
             ]
         ] ;
         $user = me() ;
 
-        return view("dash.user.profile.notification" , compact('information' , 'user') ) ;
+        return view("dashboard.user.profile.notification" , compact('information' , 'user') ) ;
     }
 
     public function notificationStore(Request $request)
@@ -121,22 +125,27 @@ class ProfileController extends Controller
             'when_offer_confirmed' => $request->input('when_offer_confirmed' , false ) ,
         ]);
 
-        return ResMessage( trans('dash.messages.success.profile.notification') );
-
+        return response()->json([
+            "msg" => trans('dashboard.message.success.profile.notification') ,
+            "ok"  => true
+        ]);
     }
 
     //* panel profile edit *//
     public function plan(Request $request)
     {
         $information = [
-            'title' => trans('dash.panel.sidebar.profile.changeplan') ,
+            'title' => trans("dashboard.profile.plan.label") ,
             'breadcrumb' => [
-                trans('dash.panel.sidebar.profile.changeplan') => null
+                trans("dashboard.profile.plan.label") => null
             ]
         ] ;
-        $plans = Plan::where('price' , '<>' , 0 )->orderBy("price" , 'desc')->take(4)->get() ;
 
-        return view("dash.user.profile.plan" , compact('information' , 'plans') ) ;
+        $plans = Plan::with("files")->where('price' , '<>' , 0 )
+            ->orderBy("price" , 'desc')
+            ->get() ;
+
+        return view("dashboard.user.profile.plan" , compact('information' , 'plans') ) ;
     }
 
     public function planShow(Plan $plan)
@@ -187,7 +196,7 @@ class ProfileController extends Controller
             ]);
             event( new whenBuyPlanEvent($user , $payment->plan ) ) ;
 
-            $message = trans('dash.payment.message.succeed');
+            $message = trans('dashboard.payment.message.succeed');
             return redirect()->route('user.payment.show' , $payment->id )->with([
                 'message' => $message ,
                 'status' => true
@@ -211,13 +220,13 @@ class ProfileController extends Controller
         $guards = array_keys(config('auth.guards')) ;
         foreach ($guards as $guard)
             if (Auth::guard($guard)->check())
-            {
                 Auth::guard($guard)->logout() ;
-                return ResMessage( trans('dash.messages.success.logout') );
-            }
-        return ResMessage( trans('dash.messages.error.logout') );
-    }
 
+        return response()->json([
+            "msg" => trans('dashboard.message.success.logout') ,
+            "ok" => true
+        ]);
+    }
 
     //*  skill profile  *//
     public function skill(Request $request)

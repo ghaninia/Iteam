@@ -27,11 +27,14 @@
         "vue-template-compiler": "^2.5.21"
     },
     "dependencies": {
+        "@popperjs/core": "^2.0.6",
+        "alertifyjs": "^1.13.1",
         "node-snackbar": "^0.1.15",
         "nprogress": "^0.2.0",
         "progressbar.js": "^1.0.1",
         "react-particles-js": "^2.4.2",
         "redux": "^4.0.1",
-        "simple-react-validator": "^1.0.2"
+        "simple-react-validator": "^1.0.2",
+        "tooltip-js": "^3.0.0"
     }
 }

@@ -11,14 +11,14 @@ class MainController extends Controller
     public function index(Request $request)
     {
         $information = [
-            'title' => trans('dash.pages.dashboard.label') ,
-            'desc'  => trans('dash.pages.dashboard.desc')
+            'title' => trans('dashboard.pages.dashboard.label') ,
+            'desc'  => trans('dashboard.pages.dashboard.desc')
         ] ;
 
         // logs widget
         $logs = $request->user()->logs()->select("key" , "created_at" )->take(10)->orderBy("created_at" , "DESC")->get() ;
         $logs->map(function ( $log ){
-                $log["title"]  = trans("dash.logs.{$log->key}") ;
+                $log["title"]  = trans("dashboard.logs.{$log->key}") ;
         }) ;
 
         // usage team and offer

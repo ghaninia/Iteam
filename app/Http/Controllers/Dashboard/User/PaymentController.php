@@ -11,9 +11,9 @@ class PaymentController extends Controller
     public function index(Request $request)
     {
         $information = [
-            'title' => trans('dash.sidebar.payments') ,
+            'title' => trans('dashboard.sidebar.payments') ,
             'breadcrumb' => [
-                trans('dash.sidebar.payments') => null
+                trans('dashboard.sidebar.payments') => null
             ]
         ] ;
 
@@ -37,7 +37,7 @@ class PaymentController extends Controller
 
         $payments = me()->load('payments.transaction')->payments->sortByDesc('created_at');
 
-        return view('dash.user.payment.index' , compact('information' , 'payments_log' , 'payments') ) ;
+        return view('dashboard.user.payment.index' , compact('information' , 'payments_log' , 'payments') ) ;
     }
 
     public function show(Request $request , Payment $payment )
@@ -46,13 +46,13 @@ class PaymentController extends Controller
         $this->authorize("payment" , $payment ) ;
 
         $information = [
-            'title' => trans('dash.payment.show_factor' , [ 'attribute' => $payment->tracking_code ] ) ,
+            'title' => trans('dashboard.payment.show_factor' , [ 'attribute' => $payment->tracking_code ] ) ,
             'breadcrumb' => [
-                trans('dash.sidebar.payments') => route('user.payment.index') ,
-                trans('dash.payment.show_factor' , [ 'attribute' => $payment->tracking_code ] ) => null
+                trans('dashboard.sidebar.payments') => route('user.payment.index') ,
+                trans('dashboard.payment.show_factor' , [ 'attribute' => $payment->tracking_code ] ) => null
             ]
         ] ;
 
-        return view('dash.user.payment.show' , compact('information' , 'payment') ) ;
+        return view('dashboard.user.payment.show' , compact('information' , 'payment') ) ;
     }
 }

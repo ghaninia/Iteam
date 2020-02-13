@@ -53,7 +53,7 @@ class TeamController extends Controller
             ->paginate( 3 );
 
         $appends = $request->all() ;
-        $view = view( "dash.user.team.ajax.index" , compact('teams' , 'appends') )->render() ;
+        $view = view( "dashboard.user.team.ajax.index" , compact('teams' , 'appends') )->render() ;
 
         if ( $request->ajax() )
             return $view ;
@@ -78,11 +78,11 @@ class TeamController extends Controller
         $teams_count = me()->teams()->count() ;
 
         $information = [
-            'title' => trans("dash.team.all.text")
+            'title' => trans("dashboard.team.all.text")
         ] ;
 
 
-        return view('dash.user.team.index' , compact(
+        return view('dashboard.user.team.index' , compact(
             'information' ,
             'teams' ,
             'view',
@@ -97,10 +97,10 @@ class TeamController extends Controller
     public function create()
     {
         $information = [
-            'title' => trans('dash.team.make') ,
+            'title' => trans('dashboard.team.make') ,
             'breadcrumb' => [
-                trans('dash.team.all.text') => route('user.team.index') ,
-                trans('dash.team.make') => null
+                trans('dashboard.team.all.text') => route('user.team.index') ,
+                trans('dashboard.team.make') => null
             ]
         ] ;
 
@@ -109,7 +109,7 @@ class TeamController extends Controller
 
         $tags = Tag::orphan()->get() ;
 
-        return view('dash.user.team.create' , compact('information','provinces','cities' ,'tags') ) ;
+        return view('dashboard.user.team.create' , compact('information','provinces','cities' ,'tags') ) ;
 
     }
 
@@ -118,7 +118,7 @@ class TeamController extends Controller
         $validate = Validator::make($request->all() , []);
         $validate->after(function ($validate){
             if (false) //!User::canAddTeam()
-                $validate->errors()->add( "add_team_fail" , trans("dash.messages.error.add_team_fail") ) ;
+                $validate->errors()->add( "add_team_fail" , trans("dashboard.messages.error.add_team_fail") ) ;
         })->validate() ;
 
         $team =
@@ -152,7 +152,7 @@ class TeamController extends Controller
 
         if ( $request->ajax() )
             return response()->json([
-                'message' => trans("dash.panel.messages.success.team.create") ,
+                'message' => trans("dashboard.panel.messages.success.team.create") ,
                 'status'  => true ,
                 'url'     => route("user.team.show" , $team->slug )
             ]);
@@ -160,7 +160,7 @@ class TeamController extends Controller
             return redirect()
                 ->route("user.team.show" , $team->slug )
                 ->with([
-                    'message' => trans("dash.panel.messages.success.team.create") ,
+                    'message' => trans("dashboard.panel.messages.success.team.create") ,
                     'status'  => true ,
                 ]);
     }
@@ -170,11 +170,11 @@ class TeamController extends Controller
 
         $team = $team->load("offers" , "visits" , "user" , 'plan' , 'tags' ,'skills') ;
         $information = [
-            'title' => trans("dash.team.show.title" , ['attribute' => $team->name ]) ,
+            'title' => trans("dashboard.team.show.title" , ['attribute' => $team->name ]) ,
             'desc'  => str_slice($team->excerpt , 30) ?? str_slice(strip_tags($team->content) , 30 ) ,
             'breadcrumb' => [
-                trans("dash.team.all.text") => route("user.team.index") ,
-                trans("dash.team.show.title" , ['attribute' => $team->name ]) => route("user.team.show" , $team->slug )
+                trans("dashboard.team.all.text") => route("user.team.index") ,
+                trans("dashboard.team.show.title" , ['attribute' => $team->name ]) => route("user.team.show" , $team->slug )
             ]
         ] ;
 
@@ -182,12 +182,12 @@ class TeamController extends Controller
         $offersObj = new OfferRepository() ;
         $offers    = $offersObj::paginate($team , 4 , $search );
         $appends   = $offersObj->appends() ;
-        $view = view( 'dash.user.team.ajax.show' , compact('offers') )->render();
+        $view = view( 'dashboard.user.team.ajax.show' , compact('offers') )->render();
 
         if ( isset($appends['more']) )
             $appends = sprintf("<a href='?%s'><span>%s</span></a>" ,
                             http_build_query($appends) ,
-                            trans('dash.team.show.loadmore')) ;
+                            trans('dashboard.team.show.loadmore')) ;
         else
             $appends = null ;
 
@@ -198,16 +198,16 @@ class TeamController extends Controller
             ] ;
 
         $genders = array_map(function($v){
-            return trans("dash.genders.{$v}") ;
+            return trans("dashboard.genders.{$v}") ;
         } ,  $team->required_gender  );
 
         $typeAssists = array_map(function($v){
-            return trans("dash.type_assists.{$v}") ;
+            return trans("dashboard.type_assists.{$v}") ;
         } ,  $team->type_assist  );
         $acceptedOffers = $team->offers()->accepted()->get() ;
         $notAcceptedOffers = $team->offers()->notAccepted()->get() ;
 
-        return view("dash.user.team.show" , compact( 'genders' , 'notAcceptedOffers' ,'acceptedOffers' , 'typeAssists' , 'team' , 'information' , 'view' , 'appends') );
+        return view("dashboard.user.team.show" , compact( 'genders' , 'notAcceptedOffers' ,'acceptedOffers' , 'typeAssists' , 'team' , 'information' , 'view' , 'appends') );
     }
 
     public function edit($id)
@@ -224,15 +224,15 @@ class TeamController extends Controller
     {
         $offer->load("user") ;
         $information = [
-            'title' => trans("dash.team.show.title" , ['attribute' => $team->name ]) ,
+            'title' => trans("dashboard.team.show.title" , ['attribute' => $team->name ]) ,
             'desc'  => str_slice($team->excerpt , 30) ?? str_slice(strip_tags($team->content) , 30 ) ,
             'breadcrumb' => [
-                trans("dash.team.show.title" , ['attribute' => $team->name ]) => route("user.team.show" , $team->slug ) ,
-                trans("dash.team.offers.show.title" , ['attributes' => $offer->user->fullname ]) => null
+                trans("dashboard.team.show.title" , ['attribute' => $team->name ]) => route("user.team.show" , $team->slug ) ,
+                trans("dashboard.team.offers.show.title" , ['attributes' => $offer->user->fullname ]) => null
             ]
         ] ;
 
-        return view("dash.user.offer.show" , compact( "information" ,"offer" , "team") );
+        return view("dashboard.user.offer.show" , compact( "information" ,"offer" , "team") );
     }
 
     public function rejectOffer(Team $team , Offer $offer)
@@ -243,7 +243,7 @@ class TeamController extends Controller
         ]) ;
         return response()->json([
             'ok'  => true ,
-            'msg' => trans("dash.messages.success.team.offer.rejected")
+            'msg' => trans("dashboard.messages.success.team.offer.rejected")
         ]);
     }
 
@@ -258,7 +258,7 @@ class TeamController extends Controller
 
         return response()->json([
             'ok'  => true ,
-            'msg' => trans("dash.messages.success.team.offer.accepted")
+            'msg' => trans("dashboard.messages.success.team.offer.accepted")
         ]);
     }
 

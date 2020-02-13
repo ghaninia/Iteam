@@ -16,7 +16,6 @@ class passwordStore extends FormRequest
     public function rules()
     {
         return [
-            'current_password' => [ 'required' , new equalCurrentPassRule() ] ,
             'password' => 'required|confirmed|min:6',
         ];
     }

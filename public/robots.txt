@@ -1,2 +1,2 @@
-Dashboard-agent: *
+User-agent: *
 Disallow:

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\User;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request ;
+use Illuminate\Validation\Rule;
 
 class AjaxController extends Controller
 {
@@ -35,12 +37,19 @@ class AjaxController extends Controller
         return $items ;
     }
 
-    public function profileAccount()
+    public function checkUserExists(Request $request)
     {
-        $me = me() ;
-        $me["cover"]  = userPicture('cover') ;
-        $me["avatar"] = userPicture("avatar") ;
-        return $me ;
+        $this->validate($request , [
+            "column" => "required|in:mobile,email,username" ,
+            "value" => [
+                "required" , Rule::unique("users" , \request("column" , "username") )->ignore( me() )
+            ]
+        ]) ;
+
+        return response()->json([
+            "ok" => true
+        ]) ;
+
     }
 
 }

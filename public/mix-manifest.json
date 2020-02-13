@@ -1,6 +1,6 @@
 {
-    "/assets/js/component.js": "/assets/js/component.js",
-    "/assets/js/core.js": "/assets/js/core.js",
-    "/assets/css/vendor.css": "/assets/css/vendor.css",
-    "/assets/css/main.css": "/assets/css/main.css"
+    "/assets/auth/js/app.js": "/assets/auth/js/app.js",
+    "/assets/dashboard/js/app.js": "/assets/dashboard/js/app.js",
+    "/assets/librarys/css/vendor/app.css": "/assets/librarys/css/vendor/app.css",
+    "/assets/librarys/css/app.css": "/assets/librarys/css/app.css"
 }

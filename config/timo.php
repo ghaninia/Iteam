@@ -5,10 +5,10 @@ return [
 
     'profile' => [
         'avatar' => [
-            'male' => 'assets/img/gender/male.svg' ,
-            'female' => 'assets/img/gender/female.svg'
+            'male' => 'assets/librarys/img/gender/male.svg' ,
+            'female' => 'assets/librarys/img/gender/female.svg'
         ],
-        'cover' => 'assets/img/cover.svg'
+        'cover' => 'assets/librarys/img/cover.svg'
     ],
 
     'size' => [
@@ -25,11 +25,10 @@ return [
     'panel_default' => 1 ,
     'currency' => 'toman' ,
     'paginate' => 10 ,
-
-
+    'max_bio_length' => 300 ,
 
     'information'  => [
-        'logo'     => 'assets/img/logo.svg' ,
+        'logo'     => 'assets/librarys/img/logo.svg' ,
         'title'    => 'timo اپلیکیشن تیم سازی' ,
         'desc'     => 'با تیمو شما میتوانید تیم بسازید یا هم تیمی کسی بشوید.' ,
         'copyright'=> '© <b>تیمو</b> آینده ای بهتر با تیمی بهتر' ,
@@ -46,5 +45,6 @@ return [
             'linkedin'  => '#' ,
             'twitter'   => '#' ,
         ] ,
+
     ]
 ];

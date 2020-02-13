@@ -18,7 +18,6 @@ class DefaultSeeder extends Seeder
 
         \App\Models\User::create([
 			'plan_id' => 1 ,
-			
             'name' => "محمدامین",
             'family' => "غنی نیا",
             'username' => 'aminghaninia' ,

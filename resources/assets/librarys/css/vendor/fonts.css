@@ -1,0 +1,93 @@
+@font-face{
+    font-family: 'iransans';
+    font-style:normal;
+    font-weight:normal;
+    src:url('../../fonts/Iransans/iransans.eot');
+    src:
+        url('../../fonts/Iransans/iransans.woff2') format('woff2'),
+        url('../../fonts/Iransans/iransans.woff') format('woff'),
+        url('../../fonts/Iransans/iransans.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'agoogle';
+    font-style:normal;
+    font-weight:normal;
+    src:url('../../fonts/agoogle/agoogle.eot');
+    src:
+        url('../../fonts/agoogle/agoogle.woff') format('woff'),
+        url('../../fonts/agoogle/agoogle.ttf') format('truetype')
+}
+@font-face{
+    font-family:brand-icons;
+    src:url('../../fonts/Brand-Icons/Brand-Icons.eot');
+    src:
+    url("../../fonts/Brand-Icons/Brand-Icons.ttf") format('truetype'),
+    url("../../fonts/Brand-Icons/Brand-Icons.woff") format('woff'),
+    url("../../fonts/Brand-Icons/Brand-Icons.svg") format('svg');
+    font-weight:400;
+    font-style:normal
+}
+
+@font-face{
+    font-family:feather-icons;
+    src:url("../../fonts/Feather-Icons/Feather-Icons.ttf") format('truetype'),
+    url("../../fonts/Feather-Icons/Feather-Icons.woff") format('woff'),
+    url("../../fonts/Feather-Icons/Feather-Icons.svg") format('svg');
+    font-weight:400;
+    font-style:normal
+}
+
+@font-face{
+    font-family:"material-icons";
+    src:
+            url("../../fonts/Material-Icons/Material-Icons.ttf") format('truetype'),
+            url("../../fonts/Material-Icons/Material-Icons.woff") format('woff'),
+            url("../../fonts/Material-Icons/Material-Icons.woff2") format('woff2'),
+            url("../../fonts/Material-Icons/Material-Icons.svg") format('svg');
+    font-weight:400;
+    font-style:normal
+}
+
+@font-face{
+    font-family:"line-awesome";
+    src:url('../../fonts/Line-Awesome/line-awesome.eot');
+    src:
+        url("../../fonts/Line-Awesome/line-awesome.ttf") format('truetype'),
+        url("../../fonts/Line-Awesome/line-awesome.woff") format('woff'),
+        url("../../fonts/Line-Awesome/line-awesome.svg") format('svg');
+    font-weight:400;
+    font-style:normal
+}
+
+@font-face{
+    font-family:"Socicon";
+    src:url("../../fonts/Socicon/Socicon.eot") format('embedded-opentype'),
+    url("../../fonts/Socicon/Socicon.woff2") format('woff2'),
+    url("../../fonts/Socicon/Socicon.ttf") format('truetype'),
+    url("../../fonts/Socicon/Socicon.woff") format('woff'),
+    url("../../fonts/Socicon/Socicon.svg") format('svg');
+    font-weight:400;
+    font-style:normal
+}
+
+@font-face {
+    font-family: "icomoon";
+    src:url("../../fonts/icomoon/icomoon.eot") format('embedded-opentype'),
+    url("../../fonts/icomoon/icomoon.ttf") format('truetype'),
+    url("../../fonts/icomoon/icomoon.woff") format('woff'),
+    url("../../fonts/icomoon/icomoon.svg") format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'simple-line-icons';
+    src: url('../../fonts/Simple-Line-Icons/Simple-Line-Icons.eot');
+    src: url('../../fonts/Simple-Line-Icons/Simple-Line-Icons.eot') format('embedded-opentype'),
+    url('../../fonts/Simple-Line-Icons/Simple-Line-Icons.woff2') format('woff2'),
+    url('../../fonts/Simple-Line-Icons/Simple-Line-Icons.ttf') format('truetype'),
+    url('../../fonts/Simple-Line-Icons/Simple-Line-Icons.woff') format('woff') ;
+    font-weight: normal;
+    font-style: normal;
+}

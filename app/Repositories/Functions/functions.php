@@ -7,14 +7,10 @@ function options($key , $default = null )
     return \App\Models\Option::get($key , $default ) ;
 }
 
-function picture( $type , $size = 'thumbnail' )
+function picture( $type , $cover = null , $size = 'thumbnail' )
 {
-    $picture = File::show( $type , null , $size)->first() ;
-    if (!! $picture)
-        return $picture ;
-    else{
-        return null ;
-    }
+    $picture = File::show( $type , $cover , $size)->first() ;
+    return !! $picture ? $picture : null ;
 }
 
 function userPicture( $type = 'avatar' , $size = 'thumbnail' , $guard = 'user' , $user = null )
@@ -91,32 +87,32 @@ function currency ($currency , $numberFormat = false )
     if ( $format == 'rial' )
         return [
             'currency' => $numberFormat ?  number_format($currency) : $currency  ,
-            'type' => trans('dash.currency.rial')
+            'type' => trans('dashboard.currency.rial')
         ] ;
     elseif ($format == 'toman')
         return [
             'currency' => $numberFormat ?  number_format( round($currency / 10 , 2) ) : round($currency / 10 , 2) ,
-            'type' => trans('dash.currency.toman')
+            'type' => trans('dashboard.currency.toman')
         ];
     elseif ($format == 'thousandtoman')
         return [
             'currency' => $numberFormat ?  number_format( round($currency / 1000 , 2) ) : round($currency / 1000 , 2),
-            'type' => trans('dash.currency.thousandtoman')
+            'type' => trans('dashboard.currency.thousandtoman')
         ];
     elseif ($format == 'thousandrial')
         return [
             'currency' => $numberFormat ? number_format( round($currency / 10000 , 2) ) :round($currency / 10000 , 2),
-            'type' => trans('dash.currency.thousandrial')
+            'type' => trans('dashboard.currency.thousandrial')
         ];
     elseif ($format == 'millionrial')
         return [
             'currency' => $numberFormat ? number_format( round($currency / 10000000 , 2) ) : round($currency / 10000000 , 2)  ,
-            'type' => trans('dash.currency.millionrial')
+            'type' => trans('dashboard.currency.millionrial')
         ];
     elseif ($format == 'milliontoman')
         return [
             'currency' => $numberFormat ? number_format( round($currency / 1000000 , 2) ) :  round($currency / 1000000 , 2) ,
-            'type' => trans('dash.currency.milliontoman')
+            'type' => trans('dashboard.currency.milliontoman')
         ];
 }
 

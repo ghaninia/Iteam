@@ -22,7 +22,7 @@ class LoginController extends Controller
             'desc'  => "وارد حساب کاربریم میخوام بشم"
         ];
 
-        return view('dashboard.auth.login' , compact('information') );
+        return view('auth.login' , compact('information') );
     }
 
     public function __construct()

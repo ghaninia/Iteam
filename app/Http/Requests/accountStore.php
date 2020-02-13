@@ -20,34 +20,30 @@ class accountStore extends FormRequest
 
     public function rules()
     {
-
-
         $user = $this->user() ;
-
         $count_skill = 0 ;
         if(!! $user->plan)
             $count_skill = $user->plan->count_skill ;
-
         return [
             'name'     => ['nullable' , "max:191" , new PersianCharRule() ] ,
             'family'   => ['nullable' , "max:191" , new PersianCharRule() ] ,
-            'username' => ['required' , "max:191" , new UserNameRule() , Rule::unique('users')->ignore(Auth::guard('user')->id()) ] ,
-            'email'    => ['required' , "max:191" , 'email' , Rule::unique('users')->ignore(Auth::guard('user')->id()) ] ,
-            'mobile'   => ['required' , "size:11" , 'min:11' , new MobileRule() , Rule::unique('users')->ignore(Auth::guard('user')->id()) ] ,
+            'username' => ['required' , "max:191" , new UserNameRule() , Rule::unique('users')->ignore( $user->id ) ] ,
+            'email'    => ['required' , "max:191" , 'email' , Rule::unique('users')->ignore( $user->id ) ] ,
+            'mobile'   => ['required' , "size:11" , 'min:11' , new MobileRule() , Rule::unique('users')->ignore( $user->id ) ] ,
             'phone'    => ['nullable' , 'numeric' ] ,
             'fax'      => ['nullable' , 'numeric' ] ,
             'website'  => ['nullable' , 'max:191' , 'url'] ,
             'instagram_account' => ['nullable','max:191'] ,
             'linkedin_account' => ['nullable','max:191'] ,
             'gender' => ['required' , "in:male,female"] ,
-            'bio' => ['nullable' , 'max:200'] ,
+            'bio' => ['nullable' , 'max:'.config("timo.max_bio_length") ] ,
             'province_id' => ['nullable' , Rule::in( Province::pluck('id')->toArray() )] ,
             'city_id' => [
                 'nullable' ,
                 Rule::in( City::where('province_id',$this->request->get('province_id'))->pluck('id')->toArray() )
             ] ,
-            'avatar' => ['nullable' , "max:512" , "mimes:jpeg,jpg,png"] ,
-            'cover'  => ['nullable' , "max:512" , "mimes:jpeg,jpg,png"] ,
+            'avatar' => ['nullable' , "max:1024" , "mimes:jpeg,jpg,png"] ,
+            'cover'  => ['nullable' , "max:3086" , "mimes:jpeg,jpg,png"] ,
             'skill'  => ['nullable' , 'array' , 'size:'.$count_skill] ,
             'skill.*'=> ['required' , 'string' , Rule::in(Skill::pluck('name')->toArray()) ]
         ];
