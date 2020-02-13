@@ -16,7 +16,9 @@
                             </label>
                         </div>
                     @endforeach
-                    <button class="btn products btn-block mt-3" >{{ trans('dashboard.profile.notification.submit') }}</button>
+                    <button class="products btn-block pointer mt-4 font-weight-bold">
+                     {{ trans('dashboard.profile.notification.submit') }}
+                    </button>
                 </form>
             </div>
         </div>

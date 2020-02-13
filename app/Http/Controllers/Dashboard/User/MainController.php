@@ -16,7 +16,13 @@ class MainController extends Controller
         ] ;
 
         // logs widget
-        $logs = $request->user()->logs()->select("key" , "created_at" )->take(10)->orderBy("created_at" , "DESC")->get() ;
+        $logs = me()
+            ->logs()
+            ->select("key" , "created_at" )
+            ->orderBy("created_at" , "DESC")
+            ->take(10)
+            ->get() ;
+
         $logs->map(function ( $log ){
                 $log["title"]  = trans("dashboard.logs.{$log->key}") ;
         }) ;

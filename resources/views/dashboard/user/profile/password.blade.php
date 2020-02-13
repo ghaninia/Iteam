@@ -37,7 +37,9 @@
                             @endif
                         </div>
                     </div>
-                    <button class="products btn-block">ویرایش</button>
+                    <button class="products btn-block pointer mt-4 font-weight-bold">
+                        {{ trans("dashboard.profile.password.submit") }}
+                    </button>
                 </form>
             </div>
     </div>

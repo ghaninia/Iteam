@@ -28,7 +28,7 @@
                                         <span class="font-weight-medium">{{ $log->title }}</span>
                                     </td>
                                     <td class="text-left ltr">
-                                        <span class="text-muted">{{ $log->created_at->format("Y/m/d H:i") }}</span>
+                                        <span class="text-muted font-en text-small">{{ $log->created_at->format("Y/m/d H:i") }}</span>
                                     </td>
                                 </tr>
                             @endforeach

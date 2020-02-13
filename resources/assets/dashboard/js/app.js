@@ -1,10 +1,13 @@
 window._ = require('lodash');
 Snackbar = require("node-snackbar") ;
 NProgress = require("nprogress") ;
+
 window.$ = window.jQuery = require('jquery');
+
 const ProgressBar = require('progressbar.js') ;
 window.axios = require('axios');
 window.alertify = require("alertifyjs") ;
+
 
 try {
     window.Popper = require('popper.js').default;
@@ -17,6 +20,7 @@ if (options.token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
 /* 03.16. Tooltip */
 if ($().tooltip) {
     $('[data-toggle="tooltip"]').tooltip();
@@ -4083,5 +4087,72 @@ $(function () {
                 }
             })
         }
+    });
+});
+
+function random_int( min , max ){
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+
+$(".counter").each(function () {
+    var wrapper = $(this) ;
+    var number = parseInt( $(this).text() ) ,
+        i = 0 ;
+    if( number > 0 ){
+        var rand = random_int(0,100) ;
+        var a = setInterval( counter , rand );
+        function counter(){
+            wrapper.text( i ) ;
+            if ( number > i ){
+                i++
+            }else {
+                clearInterval( a ) ;
+            }
+        }
+    }
+});
+
+function localSetItem(key = null , value = null){
+    if ( key ){
+        if ( typeof key == "string"){
+            window.localStorage.setItem(key , value) ;
+        } else if ( typeof key == "array"){
+            key.map( (key , value) => window.localStorage.setItem(key , value) ) ;
+        }
+        return true ;
+    }
+    return false ;
+}
+
+function localGetItem( key ){
+    return window.localStorage.getItem(key) ;
+}
+
+function localHasItem( key ){
+    return localGetItem( key ) ? true : false ;
+}
+
+function localRemoveItem( key ){
+    return window.localStorage.removeItem( key ) ;
+}
+
+$("input[type=checkbox]#switchDark").each(function () {
+    const key = "dark__theme" ;
+    const mode = ( ok ) => {
+        var tag = $("[name='color'][rel='stylesheet']") ,
+            href = tag.attr("href") ;
+        if( ok ){
+            href = href.replace("light" , "dark") ;
+        }
+        else {
+            href = href.replace("dark" , "light") ;
+        }
+        tag.attr("href" , href ) ;
+    } ;
+    $(this).change(function () {
+        var ok = $(this).prop("checked") ;
+        localSetItem( key , ok ) ;
+        mode( ok ) ;
     });
 });

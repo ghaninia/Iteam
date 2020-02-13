@@ -45,12 +45,10 @@ class PaymentController extends Controller
 
         $this->authorize("payment" , $payment ) ;
 
+        $payment = $payment->load("plan") ;
+
         $information = [
-            'title' => trans('dashboard.payment.show_factor' , [ 'attribute' => $payment->tracking_code ] ) ,
-            'breadcrumb' => [
-                trans('dashboard.sidebar.payments') => route('user.payment.index') ,
-                trans('dashboard.payment.show_factor' , [ 'attribute' => $payment->tracking_code ] ) => null
-            ]
+            'title' => trans('dashboard.pages.payment.label')
         ] ;
 
         return view('dashboard.user.payment.show' , compact('information' , 'payment') ) ;

@@ -14,7 +14,7 @@
                             "max_life" ,
                             "sms_notification" ,
                         ] as $key )
-                            <p class="mb-0 text-dark font-weight-bold w-20 w-xs-100 text-center">
+                            <p class="mb-0 font-weight-bold w-20 w-xs-100 text-center">
                                 {!! trans("dashboard.profile.plan.features.{$key}" ) !!}
                             </p>
                         @endforeach
@@ -28,14 +28,14 @@
                         <div class="position-relative card-body">
                             <div class="cover__side" style="background-image: url('{{ picture( $plan ) }}');" ></div>
                             <div class="position-relative align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center" style="z-index: 2">
-                                <div class="list-item-heading mb-0 truncate w-30 w-xs-100">
+                                <div class="list-item-heading mb-0 truncate w-30 w-xs-100 h4">
                                     {{ $plan->name }}
                                 </div>
                                 <div class="price list-item-heading mb-0 w-20 text-center">
                                     @php( $currency = currency( $plan->price , true ) )
                                     <div class="price__value font-weight-bold">
                                         {{ $currency['currency']  }}
-                                        <span class="price__currency font-weight-light text-small text-dark">{{ $currency['type']  }}</span>
+                                        <span class="price__currency font-weight-light text-small">{{ $currency['type']  }}</span>
                                     </div>
                                 </div>
                                 @foreach([
@@ -45,7 +45,7 @@
                                         "max_life" ,
                                         "sms_notification"
                                     ] as $key )
-                                    <p class="mb-0 w-20 w-xs-100 text-center">
+                                    <p class="mb-0 w-20 w-xs-100 text-center font-en h2 counter">
                                         @if ( $key == "sms_notification" )
                                             @if ( $plan->{ $key } )
                                                 <i class="simple-icon-check text-primary"></i>

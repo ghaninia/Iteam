@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="{{ asset("assets/librarys/css/app.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/librarys/css/vendor/app.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/librarys/css/color/light.orange.css") }}">
+    <link name="color" rel="stylesheet"  href="{{ asset("assets/librarys/css/color/light.orange.css") }}">
     <script>
         const options = {
             ajax  : "{{ route("user.ajax") }}" ,
@@ -37,11 +37,12 @@
         @yield("main")
     @endauth
 
-
-    @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] ))
-    <script src="{{ asset("assets/auth/js/app.js") }}"></script>
-    @else
-        <script src="{{ asset("assets/dashboard/js/app.js") }}"></script>
-    @endif
+    <script
+        src="{{
+            in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] ) ?
+            asset("assets/auth/js/app.js") :
+            asset("assets/dashboard/js/app.js")
+        }}"
+    ></script>
 </body>
 </html>

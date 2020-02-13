@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\Dashboard\User;
+use App\Events\LogEvent;
 use App\Events\whenBuyPlanEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\accountStore;
@@ -64,6 +65,7 @@ class ProfileController extends Controller
             'province_id' => $request->input('province_id') ,
             'city_id' => $request->input('city_id') ,
         ]);
+        event( new LogEvent( $account , "account_edit") );
 
         return response()->json([
             "msg" => trans('dashboard.message.success.profile.update') ,
@@ -89,6 +91,8 @@ class ProfileController extends Controller
         me()->update([
             'password' => bcrypt( $request->input('password') )
         ]);
+
+        event( new LogEvent( me() , "account_pass") );
 
         return response()->json([
             "msg" => trans('dashboard.message.success.profile.pass') ,
@@ -177,6 +181,7 @@ class ProfileController extends Controller
 
     public function planPayment(Request $request)
     {
+        $status = false  ;
         try{
             $gateway = Gateway::verify();
             $trackingCode = $gateway->trackingCode();
@@ -194,24 +199,27 @@ class ProfileController extends Controller
                 'plan_created_at' => now() ,
                 'plan_expired_at' => now()->addDays( $payment->plan->max_life )
             ]);
+
             event( new whenBuyPlanEvent($user , $payment->plan ) ) ;
 
-            $message = trans('dashboard.payment.message.succeed');
-            return redirect()->route('user.payment.show' , $payment->id )->with([
-                'message' => $message ,
-                'status' => true
-            ]);
+            event( new LogEvent($user , "succesed_payment") );
+
+            $message = trans('dashboard.message.success.payment.confirm');
+            $status = true ;
         }
         catch (RetryException $e){ // کاربر دوباره صفحه فاکتور را رفرش کرده است !
+            $payment = Payment::where('transaction_id' , $request->input('transaction_id'))->first() ;
             $message =  $e->getMessage() ;
         }
         catch (\Exception $e) { // کاربر از پرداخت منصرف شده است .
             $message =  $e->getMessage() ;
-            Payment::where('status' , Enum::TRANSACTION_INIT)
-                ->where('transaction_id' , $request->input('transaction_id'))
-                ->update(['status' => Enum::TRANSACTION_FAILED ]) ;
+            $payment = Payment::where('transaction_id' , $request->input('transaction_id'))->first() ;
+            $payment->update(['status' => Enum::TRANSACTION_FAILED ]) ;
         }
-        return ResMessage($message , false , 'user.payment.index') ;
+        return redirect()->route('user.payment.show' , $payment->id )->with([
+            'message' => $message ,
+            'status' => $status
+        ]);
     }
 
     //*  logout profile edit  *//
@@ -219,8 +227,10 @@ class ProfileController extends Controller
     {
         $guards = array_keys(config('auth.guards')) ;
         foreach ($guards as $guard)
-            if (Auth::guard($guard)->check())
+            if (Auth::guard($guard)->check()){
+                event( new LogEvent( Auth::guard($guard)->user() , "logout") );
                 Auth::guard($guard)->logout() ;
+            }
 
         return response()->json([
             "msg" => trans('dashboard.message.success.logout') ,

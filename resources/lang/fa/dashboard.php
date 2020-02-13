@@ -5,12 +5,14 @@ return [
         "account" => [
             "label" => "حساب کاربری" ,
             "completed" => "درصد تکمیل پروفایل" ,
-            "submit" => "ویرایش حساب من"
+            "submit" => "ویرایش حساب من" ,
+            "color_dark" => "مُـد&zwnj;شب"
         ] ,
         "password" => [
             "label" => "گذرواژه" ,
             "new" => "گذرواژه جدید" ,
-            "repeat" => "تکرار گذرواژه جدید"
+            "repeat" => "تکرار گذرواژه جدید" ,
+            "submit" => "ویرایش گذرواژه"
         ] ,
         "plan" => [
             "label" => "پلن کاربری" ,
@@ -67,7 +69,10 @@ return [
                 'pass' => 'رمز عبور با موفقیت بروزرسانی گردید .' ,
                 'notification' => 'نوتیفیکیشن های ارسالی حساب شما ویرایش گردید .'
             ],
-            'logout' => "شما با موفقیت از حساب کاربری خود خارج شده اید."
+            'logout' => "شما با موفقیت از حساب کاربری خود خارج شده اید." ,
+            "payment" => [
+                "confirm" => "پرداخت شما با موفقیت انجام گردید."
+            ]
         ]
     ],
     "pages" => [
@@ -76,7 +81,19 @@ return [
             "desc"  => "به حساب کاربری خود خوش آمده اید"
         ],
         "payment" => [
-            "label" => "فاکتور"
+            "factor" => "صورتحساب" ,
+            "label" => "فاکتور" ,
+            "transaction_id" => "تراکنش بانکی" ,
+            "tracking_code" => "کدرهگیری" ,
+            "ip" => "آی&zwnj;پی" ,
+            "price" => "قیمت" ,
+            "sum" => "جمع&zwnj;کل" ,
+            "status" => "وضعیت" ,
+            "ok" => [
+                \Larabookir\Gateway\Enum::TRANSACTION_SUCCEED => "موفق" ,
+                \Larabookir\Gateway\Enum::TRANSACTION_FAILED  => "ناموفق" ,
+                \Larabookir\Gateway\Enum::TRANSACTION_INIT    => "انتظار" ,
+            ]
         ] ,
         "log" => [
             "label" => "لاگ هـای کاربری" ,
@@ -96,7 +113,12 @@ return [
     "logs" => [
         "login" => "ورود به حساب کاربری" ,
         "register" => "ثبت نام" ,
-        "confirm_email" => "تایید پست الکترونیکی"
+        "logout" => "خارج شده اید." ,
+        "confirm_email" => "تایید پست الکترونیکی" ,
+        "succesed_payment" => "تراکنش موفق" ,
+        "faild_payment" => "تراکنش ناموفق" ,
+        "account_edit" => "ویرایش حساب کاربری" ,
+        "account_pass" => "ویرایش پسورد" ,
     ] ,
     "items" => [
         "new" => "جدید"

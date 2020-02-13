@@ -11,9 +11,8 @@ html , body , p , span , input , textarea {
     direction:  rtl ;
 }
 
-.lead , h1 , h2 , h3 , h4 , h5 , h6 , .head{
+.lead , h1 , h2 , h3 , h4 , h5 , h6 , .head , .h1 , .h2 , .h3 , .h4 , .h5 , .h6 , .sidebar .main-menu ul li span{
     font-family: "agoogle" , SansSerif , Tahoma !important ;
-    font-weight: bold ;
 }
 
 body.show-spinner>* {
@@ -599,4 +598,36 @@ i.large-icon{
 }
 .overflow_hidden {
     overflow: hidden;
+}
+.font-en{
+    font-family: 'Roboto', sans-serif !important;
+}
+.card{
+    border-radius: 10px!important;
+}
+.tooltip-inner {
+    border-radius: 15px !important;
+    padding: 4px 15px!important;
+    font-size : 12px !important;
+}
+
+.alert {
+    border-radius: 5px!important;
+    color: #fff!important;
+    border: none!important;
+    outline: none!important;
+    font-size: 17px!important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0,0,0,0.1)!important;
+}
+
+.alert-success{
+    background: linear-gradient( 80deg , #9ad468 , #31bd51)!important;
+}
+.alert-danger{
+    background: linear-gradient(80deg, #ff6f76, #ef4848db)!important;
+}
+
+.alert-dismissible .close {
+    top: 10px !important;
+    color : #fff !important;
 }

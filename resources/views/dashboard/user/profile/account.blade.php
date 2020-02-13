@@ -143,7 +143,9 @@
                         </div>
                     </div>
 
-                    <button class="products btn-block pointer mt-4 font-weight-bold"> {{ trans("dashboard.profile.account.submit") }} </button>
+                    <button class="products btn-block pointer mt-4 font-weight-bold">
+                        {{ trans("dashboard.profile.account.submit") }}
+                    </button>
                 </form>
             </div>
         </div>

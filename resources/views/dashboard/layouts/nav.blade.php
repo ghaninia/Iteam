@@ -38,8 +38,8 @@
         <div class="header-icons d-inline-block align-middle">
 
             <div class="d-none d-md-inline-block align-text-bottom">
-                <div class="custom-switch custom-switch-primary-inverse custom-switch-small pr-5" data-toggle="tooltip" data-placement="right" title="رنگ تیره">
-                    <input class="custom-switch-input" id="switchDark" type="checkbox" checked="checked">
+                <div class="custom-switch custom-switch-primary-inverse custom-switch-small pr-5" data-toggle="tooltip" data-placement="right" title="{!! trans("dashboard.profile.account.color_dark") !!}">
+                    <input class="custom-switch-input" id="switchDark" type="checkbox" >
                     <label class="custom-switch-btn" for="switchDark"></label>
                 </div>
             </div>

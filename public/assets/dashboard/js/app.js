@@ -46594,6 +46594,85 @@ $(function () {
   });
 });
 
+function random_int(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+$(".counter").each(function () {
+  var wrapper = $(this);
+  var number = parseInt($(this).text()),
+      i = 0;
+
+  if (number > 0) {
+    var counter = function counter() {
+      wrapper.text(i);
+
+      if (number > i) {
+        i++;
+      } else {
+        clearInterval(a);
+      }
+    };
+
+    var rand = random_int(0, 100);
+    var a = setInterval(counter, rand);
+  }
+});
+
+function localSetItem() {
+  var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (key) {
+    if (typeof key == "string") {
+      window.localStorage.setItem(key, value);
+    } else if (typeof key == "array") {
+      key.map(function (key, value) {
+        return window.localStorage.setItem(key, value);
+      });
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+function localGetItem(key) {
+  return window.localStorage.getItem(key);
+}
+
+function localHasItem(key) {
+  return localGetItem(key) ? true : false;
+}
+
+function localRemoveItem(key) {
+  return window.localStorage.removeItem(key);
+}
+
+$("input[type=checkbox]#switchDark").each(function () {
+  var key = "dark__theme";
+
+  var mode = function mode(ok) {
+    var tag = $("[name='color'][rel='stylesheet']"),
+        href = tag.attr("href");
+
+    if (ok) {
+      href = href.replace("light", "dark");
+    } else {
+      href = href.replace("dark", "light");
+    }
+
+    tag.attr("href", href);
+  };
+
+  $(this).change(function () {
+    var ok = $(this).prop("checked");
+    localSetItem(key, ok);
+    mode(ok);
+  });
+});
+
 /***/ }),
 
 /***/ 0:
