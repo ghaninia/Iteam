@@ -631,3 +631,7 @@ i.large-icon{
     top: 10px !important;
     color : #fff !important;
 }
+
+.navbar .user img {
+    border-radius: 10px !important;
+}

@@ -12,7 +12,7 @@
                                 <div class="cover" id="profile__cover" @if(!!userPicture("cover")) style="background-image:url('{{ userPicture("cover" , "full") }}')" @endif >
                                     <input accept="image/*" type="file" name="cover" class="hidden"/>
                                     <input accept="image/*" type="file" name="picture" class="hidden"/>
-                                    <img alt="{{ $user->fullname }}" id="profile__pic" src="{{ userPicture("avatar") }}" class="img-thumbnail border-0 mb-4 list-thumbnail rounded"/>
+                                    <img alt="{{ $user->fullname }}" id="profile__pic" src="{{ userPicture("avatar") }}" class="img-thumbnail border-0 mb-4 list-thumbnail "/>
                                     <div onClick="window.setPic(this);" id="profile__change-pic" class="profile__change-pic">
                                         <i class="glyph-icon simple-icon-camera"></i>
                                     </div>
