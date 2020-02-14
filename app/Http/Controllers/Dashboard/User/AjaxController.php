@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard\User;
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request ;
 use Illuminate\Validation\Rule;
@@ -52,4 +54,18 @@ class AjaxController extends Controller
 
     }
 
+    public function totalTeam(Request $request)
+    {
+        $this->validate($request , [
+            "skill"   =>   ["required" , "array"] ,
+            "skill.*" => ["required" , Rule::in(Skill::pluck("id")->toArray()) ] ,
+        ]);
+        $skills = $request->input("skill" , []) ;
+        return response()->json([
+            "ok"    => true ,
+            "count" => Team::whereHas("skills" , function ($query) use ($skills) {
+                return $query->whereIn("skillables.skill_id" , $skills );
+            })->count()
+        ]) ;
+    }
 }

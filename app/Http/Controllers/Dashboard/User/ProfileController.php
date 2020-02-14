@@ -5,11 +5,15 @@ use App\Events\whenBuyPlanEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\accountStore;
 use App\Http\Requests\passwordStore;
+use App\Http\Requests\SkillStore;
 use App\Models\City;
 use App\Models\File;
 use App\Models\Payment;
 use App\Models\Plan;
 use App\Models\Province;
+use App\Models\Skill;
+use App\Models\Tag;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -241,12 +245,31 @@ class ProfileController extends Controller
     //*  skill profile  *//
     public function skill(Request $request)
     {
+        $information = [
+            'title' => trans("dashboard.profile.skill.label") ,
+            'breadcrumb' => [
+                trans("dashboard.profile.skill.label") => null
+            ]
+        ] ;
 
+        $user = me() ;
+        $CountSkill = 0 ;
+        if ( $user->plan )
+            $CountSkill = $user->plan->count_skill ;
+
+        $skills = $user->skills()->select(["id" , "name"])->get() ;
+
+        return view("dashboard.user.profile.skill" , compact("skills" , "CountSkill" , "information") ) ;
     }
 
-    public function skillStore(Request $request)
+    public function skillStore(SkillStore $request)
     {
-
+        $skills = $request->input("skill" , []) ;
+        me()->skills()->sync( $skills ) ;
+        return response()->json([
+            "msg" => trans('dashboard.message.success.profile.skill') ,
+            "ok"  => true
+        ]);
     }
 
 }

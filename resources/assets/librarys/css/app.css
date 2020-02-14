@@ -6,12 +6,12 @@ body {
     overflow-x: hidden!important;
 }
 
-html , body , p , span , input , textarea {
+html , body , p , span , input , textarea , .ui-menu .ui-menu-item{
     font-family: "IRANSans" , SansSerif , Tahoma !important ;
     direction:  rtl ;
 }
 
-.lead , h1 , h2 , h3 , h4 , h5 , h6 , .head , .h1 , .h2 , .h3 , .h4 , .h5 , .h6 , .sidebar .main-menu ul li span{
+.skills__list .counter , .lead , h1 , h2 , h3 , h4 , h5 , h6 , .head , .h1 , .h2 , .h3 , .h4 , .h5 , .h6 , .sidebar .main-menu ul li span{
     font-family: "agoogle" , SansSerif , Tahoma !important ;
 }
 
@@ -634,4 +634,267 @@ i.large-icon{
 
 .navbar .user img {
     border-radius: 10px !important;
+}
+
+
+/*** skills ***/
+/**************/
+
+#skills{
+    display: block;
+    height: auto ;
+    background: #fff ;
+    overflow: hidden ;
+    box-shadow : 0 2px 4px rgba(0,0,0,.1)
+}
+
+#skills .head{
+    background: #ddd ;
+    padding: 15px ;
+    position: relative ;
+}
+
+#skills .head input{
+    background: #fff ;
+    border-radius: 0 ;
+    border : 1px solid #ddd ;
+    outline: none ;
+    width: 100% ;
+    padding: 10px ;
+}
+
+#skills .head:after {
+    content : "\e090" ;
+    font-family: 'simple-line-icons';
+    position: absolute ;
+    top : 22px ;
+    left : 30px ;
+    font-size : 15px ;
+    color : #777;
+}
+
+#skills .body {
+    display: block ;
+    overflow: hidden ;
+    height: 390px ;
+    max-height: 390px ;
+    min-height: 130px ;
+    position: relative ;
+    overflow-y : auto;
+}
+
+#skills .body .top + .import{
+    border-top : 1px #ddd solid ;
+    padding: 10px 0 0 0 ;
+}
+#skills .body .top.hidden + .import {
+    border-top : none !important; ;
+    padding: 0 !important;
+}
+
+
+#skills .body .loading{
+    position: absolute !important;
+}
+
+
+.skills .body ul.tags , .skills .body ul.tags li{
+    list-style: none ;
+    margin: 0 ;
+    padding: 0 ;
+}
+
+.skills .body ul.tags li{
+    width: 33.333% ;
+    height: 130px ;
+    outline: 1px solid #f7f7f7 ;
+    float : right;
+    text-align: center ;
+    overflow: hidden ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column ;
+    color : #777 ;
+    transition: all .3s ease ;
+}
+
+.skills .body ul.tags li i {
+    font-size : 2.5em !important ;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+}
+
+.skills .body ul.tags li span{
+    padding-top: 12px !important;
+}
+
+.skills .body ul.tags li:hover ,.skills .body ul.tags li.active {
+    background: #e2863b ;
+    color : #fff ;
+    cursor: pointer ;
+    box-shadow :inset 0 0 10px rgba(0,0,0,.05)
+}
+
+.btn-default {
+    color: #777;
+    background-color: transparent !important ;
+    border-color: #ddd !important;
+    transition : all .3s ease
+}
+
+.btn-default:hover{
+    background : #ddd !important
+}
+
+.skills .body ul.skills , .skills .body ul.skills li{
+    margin : 0 ;
+    padding : 0 ;
+    list-style: none ;
+}
+
+.skills .body ul.skills{
+    margin: 0 !important;
+}
+
+.skills .body ul.skills li {
+    display: block;
+    position: relative;
+    width: calc(50% - 15px);
+    margin: 0 10px 10px 0 !important;
+    float: right;
+    overflow: hidden;
+    font-size: 13px;
+    color : #777
+}
+
+.skills .body ul.skills li:nth-last-child(2n){
+    margin-left : 0 !important;
+}
+
+.skills .body ul.skills li input{
+    display : none ;
+}
+
+.skills .body ul.skills li label{
+    display: block ;
+    padding: 6px 10px ;
+    line-height: 16px;
+    margin: 0 !important;
+    position: relative ;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.skills .body ul.skills li label:after{
+    content: "\e095";
+    font-family: 'simple-line-icons';
+    position: absolute;
+    color: #fff;
+    font-size: 15px;
+    top: 6px;
+    left: 10px;
+}
+
+.skills .body ul.skills li label:hover {
+    background: #ce8f5ccf ;
+    color : #fff ;
+}
+
+.skills .body ul.skills li input:checked + label:after{
+    content : "×" ;
+    font-size: 18px;
+    top: 4px;
+    left: 10px;
+}
+
+.skills .body ul.skills li input:checked + label{
+    background: #e2863b ;
+    color : #fff ;
+}
+
+.skills__list{
+    display: block;
+    height: auto ;
+    background: #fff ;
+    overflow: hidden ;
+    box-shadow : 0 2px 4px rgba(0,0,0,.1) ;
+}
+
+.skills__list .head{
+    background: #ddd ;
+    padding: 15px ;
+    position: relative ;
+    text-align: center ;
+    height: 125px;
+    overflow: hidden ;
+    font-size : 10px ;
+    color : #777
+}
+
+.skills__list .counter{
+    padding : 10px ;
+    color : #777 ;
+    border-bottom: 1px #ddd solid ;
+}
+
+.skills__list ul.list , .skills__list ul.list li{
+    margin : 0 ;
+    padding : 0 ;
+    list-style: none ;
+}
+
+.skills__list ul.list{
+    margin: 10px !important;
+    height: 235px;
+    overflow-y: auto ;
+}
+
+.skills__list ul.list li {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    font-size: 12px;
+    color : #777
+}
+
+.skills__list ul.list li input{
+    display : none ;
+}
+
+.skills__list ul.list li label{
+    display: block ;
+    padding: 6px 10px ;
+    line-height: 16px;
+    margin: 0 !important;
+    position: relative ;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.skills__list ul.list li label:after{
+    position: absolute;
+    color: #fff;
+    content : "×" ;
+    font-size: 18px;
+    top: 6px;
+    left: 10px;
+    visibility: hidden;
+}
+.skills__list ul.list li:hover label:after{
+    visibility: visible;
+}
+
+.skills__list ul.list li label:hover {
+    background: #e2863b ;
+    color : #fff ;
+}
+
+.skills__list .counter span {
+    margin: 0 0 0 4px;
+    font-weight: bold;
 }

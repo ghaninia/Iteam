@@ -1,8 +1,8 @@
 window._ = require('lodash');
 Snackbar = require("node-snackbar") ;
 NProgress = require("nprogress") ;
-
 window.$ = window.jQuery = require('jquery');
+require("./_jquery-ui.min") ;
 
 const ProgressBar = require('progressbar.js') ;
 window.axios = require('axios');
@@ -3960,7 +3960,6 @@ window.setCover = function(item){
     });
 };
 
-
 $("#_profile").submit(function (e) {
     e.preventDefault() ;
     var form = $(this) ;
@@ -4094,7 +4093,6 @@ function random_int( min , max ){
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-
 $(".counter").each(function () {
     var wrapper = $(this) ;
     var number = parseInt( $(this).text() ) ,
@@ -4137,7 +4135,6 @@ function localRemoveItem( key ){
     return window.localStorage.removeItem( key ) ;
 }
 
-
 $("input[type=checkbox]#switchDark").each(function () {
     const key = "dark__theme" ;
     const mode = ( ok ) => {
@@ -4156,4 +4153,222 @@ $("input[type=checkbox]#switchDark").each(function () {
         localSetItem( key , ok ) ;
         mode( ok ) ;
     });
+});
+
+$(function () {
+
+    $("#skills_list").each(function () {
+        var wrapper = $(this) ,
+            TIT = $(".head .h1" , wrapper) ,
+            IMP = $(".body .list" , wrapper) ,
+            COUNTER = $(".counter span", wrapper) ,
+            FORM = $("form" , wrapper ) ,
+            maxSkill = wrapper.data("maxSkill") ;
+
+        //when delete one item in list
+        IMP.on("click" , "li" , function (e) {
+            e.preventDefault()  ;
+            var value = $("input[type=checkbox]" , this ).val() ;
+                el = $(`#skills ul.skills li input[type=checkbox][value=${value}]`).prop("checked" , false ) ;
+
+            $(this).remove() ;
+            document.count() ;
+            document.TotalCanJoinTeam() ;
+        });
+
+        document.count = () => {
+            var c =  $("li" , IMP).length ;
+            COUNTER.text( c ) ;
+            return c ;
+        } ;
+
+        document.self = () => {
+            return $("li input[type=checkbox]" , IMP).map(function(_, el) {
+                return parseInt( $(el).val() );
+            }).get();
+        } ;
+
+        document.TotalCanJoinTeam = () => {
+            var c =  $("li" , IMP).length ;
+
+            if ( c > 0 ){
+                var data = new FormData(FORM[0]) ;
+                data.append("action" , "totalTeam") ;
+                var pr = new Promise(function (resolve, reject) {
+                    $.ajax({
+                        url : options.ajax ,
+                        dataType : "JSON" ,
+                        type : "POST" ,
+                        data : data ,
+                        cache: false,
+                        contentType: false,
+                        processData: false ,
+                        headers : {
+                            "X-CSRF-TOKEN" : options.token
+                        } ,
+                        success : function ( response ) {
+                            resolve( response ) ;
+                        }
+                    }) ;
+                }).then(function (response) {
+                    if ( response.ok ){
+                        var Count = response.count ;
+                        TIT.text( Count ) ;
+                    }
+                }) ;
+            }else {
+                var Count = 0 ;
+                TIT.text( Count ) ;
+            }
+        } ;
+        // when loading page
+        document.TotalCanJoinTeam() ;
+        document.count() ;
+    });
+
+    $("#skills").each(function () {
+        var wrapper = $(this) ,
+            urlTag  = wrapper.data("href") ,
+            form = $(".head form" , wrapper ) ,
+            urlSkill = form.attr("action") ,
+            body = $(".body" , wrapper) ,
+            top   = $(".top" , body ) ,
+            TIT = $(".h6" , top ) ,
+            IMP = $(".import" , body ) ; // IMPORT DATA
+
+        getTag() ;
+
+        form.submit(function (e) {
+            e.preventDefault() ;
+            getSkill({
+                s : $("[name=s]" , this ).val()
+            }) ;
+        });
+
+        $("button" , top).click(function () {
+            top.addClass("hidden") ;
+            getTag() ;
+        });
+
+        wrapper.on("click" , "ul.tags li" , function () {
+            var data = {
+                tag_id : $(this).data("id")
+            } ;
+            getSkill( data ) ;
+        });
+
+        IMP.on("change" , "input[type=checkbox]" , function () {
+            var checked = $(this).prop("checked") ;
+            var value = parseInt($(this).val()) ;
+            var t = $(this).closest("li") ;
+            t = $("label" , t ).text() ,
+            self = document.self() ;
+            
+            if ( checked && ( $.inArray( value , self ) < 0 ) ){
+
+                var maxSkill = $("#skills_list").data("maxskill") ;
+
+                if ( parseInt(maxSkill) > self.length ){
+                    $("#skills_list ul.list").append( $(`
+                        <li>
+                            <input type="checkbox" name="skill[]" multiple checked value="${ value }" >
+                            <label for="skills___${ value }">
+                                ${ t }
+                            </label>
+                        </li>                
+                    `)) ;
+                } else {
+                    $(this).prop("checked" , false ) ;
+                }
+
+
+            }else {
+                var el = $(`#skills_list ul.list input[type=checkbox][value=${value}]`) ;
+                el = el.closest("li") ;
+                el.remove() ;
+            }
+
+            document.count() ;
+            document.TotalCanJoinTeam() ;
+
+        });
+
+        function getTag() {
+            var pro = new Promise(function (resolve, reject) {
+                loadings() ;
+                top.addClass("hidden") ;
+                $.ajax({
+                    url : urlTag ,
+                    dataType : "JSON" ,
+                    type : "POST" ,
+                    headers : {
+                        "X-CSRF-TOKEN" : options.token
+                    } ,
+                    success : function (response) {
+                        resolve( response ) ;
+                    }
+                });
+            }).then(function (response) {
+                if ( response.ok ){
+                    var html = $(`<ul class="tags"></ul>`) ;
+                    if ( response.tags.length > 0 ){
+                        for ( tag in response.tags ){
+                            var { icon , slug , name } = response["tags"][tag] ;
+                            html.append(`
+                                <li data-id="${ slug }">
+                                    <i class="${ icon }"></i>
+                                    <span>${ name }</span>
+                                </li>
+                            `);
+                        }
+                    }
+                    IMP.html( html ) ;
+                }
+            })
+        }
+        function getSkill( data ) {
+            var pro = new Promise(function (resolve, reject) {
+                loadings() ;
+                $.ajax({
+                    url : urlSkill ,
+                    dataType : "JSON" ,
+                    type : "POST" ,
+                    data : {
+                        ...data
+                    } ,
+                    headers : {
+                        "X-CSRF-TOKEN" : options.token
+                    },
+                    success : function (response ) {
+                        resolve(  response ) ;
+                    }
+                });
+            }).then(function (response) {
+                if ( response.ok ){
+                    const { skills , title } = response ;
+                    var html = $(`<ul class="skills"></ul>`) ;
+                    for ( skill in skills ){
+                        const { name , id } = skills[skill] ;
+                        html.append(`
+                            <li>
+                                <input id="skill__${id}" ${ $.inArray( id , document.self() ) >= 0 ? "checked" : null } type="checkbox" multiple name="skills[]" value="${id}">
+                                <label for="skill__${id}">
+                                    ${ name }
+                                </label>
+                            </li>
+                        `)
+                    }
+                    top.removeClass("hidden") ;
+                    TIT.text( title ) ;
+                    IMP.html( html ) ;
+                }
+            })
+        }
+        function loadings() {
+            IMP.html(`
+                <div class="loading"></div>
+            `);
+        }
+    });
+
 });

@@ -4,6 +4,11 @@ Auth::routes(['verify' => true]);
 
 Route::namespace('Dashboard\User')->name('user.')->middleware('auth:user')->group(function (){
 
+    Route::name('api.')->namespace('Api\\')->prefix('api')->group(function (){
+        Route::post( "skills" , 'ApiController@skills' )->name("skill") ;
+        Route::post( "tags" , 'ApiController@tags' )->name("tag");
+    });
+
     Route::post("ajax" , 'AjaxController@ajaxHandle' )->name("ajax") ;
 
     // Route access if Guard user

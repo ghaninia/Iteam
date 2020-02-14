@@ -1,9 +1,6 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
-
 class Skill extends Model
 {
 
@@ -20,12 +17,12 @@ class Skill extends Model
 
     public function teams()
     {
-        return $this->morphToMany( Team::class , "skillable" ) ;
+        return $this->morphedByMany( Team::class , "skillable" ) ;
     }
 
     public function users()
     {
-        return $this->morphToMany( User::class , "skillable" ) ;
+        return $this->morphedByMany( User::class , "skillable" ) ;
     }
 
 }

@@ -16,7 +16,7 @@ class TokenMiddleware
         return response()
                 ->json([
                         'status' => false ,
-                        'message' => trans('dash.messages.error.token_expired'
+                        'message' => trans('dashboard.message.error.token_expired'
                     )]) ;
     }
 }

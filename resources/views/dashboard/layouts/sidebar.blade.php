@@ -58,7 +58,7 @@
                 </li>
 
                 <li {{ activeSidebar("user.profile.skill.index" , true ) }}>
-                    <a href="">
+                    <a href="{{ route("user.profile.skill.index") }}">
                         <i class="iconsmind-Box-Open"></i>
                         {{ trans("dashboard.profile.skill.label") }}
                     </a>

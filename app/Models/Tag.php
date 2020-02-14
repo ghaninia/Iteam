@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     protected $fillable = [
-        'tag_id' ,
         'name' ,
         'slug' ,
-        'description' ,
+        'icon' ,
     ];
 
     public function teams(){
@@ -26,28 +25,4 @@ class Tag extends Model
         return $this->hasMany(Skill::class) ;
     }
 
-    public function childerns()
-    {
-        return $this->hasMany(Tag::class) ;
-    }
-
-    public function parent()
-    {
-        return $this->belongsTo(Tag::class) ;
-    }
-
-    public function scopeParents()
-    {
-        return $this->whereNull('tag_id') ;
-    }
-
-    public function scopeOrphan($query)
-    {
-        $query->whereNull("tag_id") ;
-    }
-
-    public function scopeEmptyOrphan($query)
-    {
-        $query->whereNotNull("tag_id") ;
-    }
 }
