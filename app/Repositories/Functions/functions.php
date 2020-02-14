@@ -1,5 +1,6 @@
 <?php
 use App\Models\File ;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Support\Facades\Route;
 
 function options($key , $default = null )
@@ -278,4 +279,13 @@ function activeSidebar ($route , $routeName = false , $classDefault = "active") 
        }
        return null;
    }
+}
+
+function toDataTime($value){
+
+    if ( is_null($value) )
+        return null ;
+
+    $value = Verta::parseFormat("Y/m/d" , $value ) ;
+    return $value->DateTime()->format('Y-m-d') ;
 }

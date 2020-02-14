@@ -2,7 +2,9 @@ window._ = require('lodash');
 Snackbar = require("node-snackbar") ;
 NProgress = require("nprogress") ;
 window.$ = window.jQuery = require('jquery');
+
 require("./_jquery-ui.min") ;
+require("./persian-selector") ;
 
 const ProgressBar = require('progressbar.js') ;
 window.axios = require('axios');
@@ -4089,10 +4091,12 @@ $(function () {
     });
 });
 
+//random integer
 function random_int( min , max ){
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 
+//counter
 $(".counter").each(function () {
     var wrapper = $(this) ;
     var number = parseInt( $(this).text() ) ,
@@ -4110,6 +4114,8 @@ $(".counter").each(function () {
         }
     }
 });
+
+//storage moderator
 
 function localSetItem(key = null , value = null){
     if ( key ){
@@ -4135,6 +4141,8 @@ function localRemoveItem( key ){
     return window.localStorage.removeItem( key ) ;
 }
 
+
+//dark switch
 $("input[type=checkbox]#switchDark").each(function () {
     const key = "dark__theme" ;
     const mode = ( ok ) => {
@@ -4155,6 +4163,13 @@ $("input[type=checkbox]#switchDark").each(function () {
     });
 });
 
+
+
+//////////////
+//////////////
+//skill page
+//////////////
+//////////////
 $(function () {
 
     $("#skills_list").each(function () {
@@ -4371,4 +4386,17 @@ $(function () {
         }
     });
 
+});
+
+
+//////////////
+/// data
+//////////////
+$(function () {
+    $('.date').on('click', function(e) {
+        e.preventDefault();
+        $.dateSelect.show({
+            element: $(this)
+        });
+    });
 });

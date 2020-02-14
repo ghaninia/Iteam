@@ -132,7 +132,14 @@ return [
         "account_pass" => "ویرایش پسورد" ,
     ] ,
     "items" => [
-        "new" => "جدید"
+        "new" => "جدید" ,
+        "tracking_code" => "کد رهگیری" ,
+        "created_at_begin" => "از تاریخ" ,
+        "created_at_end" => "تا تاریخ" ,
+        "status" => "وضعیت" ,
+        "total" => "تعداد نمایش" ,
+        "orderBy" => "مرتب سازی بر اساس",
+        "order" => "چینش"
     ] ,
     'currency' => [
         'rial' => 'ریال' ,
