@@ -1,5 +1,6 @@
 <?php
 
+
 return [
     "profile" => [
         "account" => [
@@ -45,7 +46,8 @@ return [
             "search" => "مهارت های خود را جستجو نمایید" ,
             "index" => "ایندکس کن !!!" ,
             "count_team" => "تیم&zwnj;ها با مهارت شما موجود است" ,
-            "selected" => "<span class='font-en'></span>از :attribute مهارت انتخاب شده"
+            "selected" => "<span class='font-en'></span>از :attribute مهارت انتخاب شده" ,
+            "submit_back" => "بازگشت به دسته بندی"
         ],
         "logout" => [
             "label" => "خروج از حساب"

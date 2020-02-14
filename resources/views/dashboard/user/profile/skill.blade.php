@@ -16,7 +16,7 @@
                                 <div class="top overflow_hidden hidden">
                                     <div class="h6 float-right p-3 mt-1 mb-0"></div>
                                     <button class="btn float-left btn-default rounded-0 m-2 p-2 pr-4 pl-4">
-                                        بازگشت به دسته بندی
+                                        {{ trans("dashboard.profile.skill.submit_back") }}
                                     </button>
                                 </div>
                                 <div class="import">

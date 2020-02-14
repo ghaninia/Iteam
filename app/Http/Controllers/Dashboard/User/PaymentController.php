@@ -10,10 +10,11 @@ class PaymentController extends Controller
 {
     public function index(Request $request)
     {
+
         $information = [
-            'title' => trans('dashboard.sidebar.payments') ,
+            'title' => trans('dashboard.pages.payment.factor') ,
             'breadcrumb' => [
-                trans('dashboard.sidebar.payments') => null
+                trans('dashboard.pages.payment.factor') => null
             ]
         ] ;
 

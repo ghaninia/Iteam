@@ -9,7 +9,7 @@
                         <span>{{ trans("dashboard.pages.dashboard.label") }}</span>
                     </a>
                 </li>
-                <li {{ activeSidebar("payment") }}>
+                <li {{ activeSidebar(["user.payment.index" , "user.payment.show"] , true ) }}>
                     <a href="#payment">
                         <i class="iconsmind-Money-2"></i>
                         <span>{{ trans("dashboard.pages.payment.label") }}</span>
@@ -28,9 +28,10 @@
     <div class="sub-menu">
         <div class="scroll">
             <ul class="list-unstyled" data-link="payment">
-                <li>
+                <li {{ activeSidebar(["user.payment.index" , "user.payment.show"] , true ) }}>
                     <a href="{{ route("user.payment.index") }}">
-                        <i class="simple-icon-rocket"></i> Default
+                        <i class="iconsmind-Coins"></i>
+                        {{ trans("dashboard.pages.payment.factor") }}
                     </a>
                 </li>
             </ul>
