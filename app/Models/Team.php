@@ -16,7 +16,7 @@ class Team extends Model
         'expired_at' ,
         'status' ,
         'default_plan' ,
-
+        'plan_user_id' ,
         'phone' ,
         'fax' ,
         'mobile' ,
@@ -75,9 +75,10 @@ class Team extends Model
         return $this->hasMany(Offer::class) ;
     }
 
+
     public function plan()
     {
-        return $this->belongsTo(Plan::class) ;
+        return $this->belongsTo(PlanUser::class) ;
     }
 
     public function visits()

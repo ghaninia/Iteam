@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\checkPlanUserNotNull;
+use App\Http\Middleware\DefaultPlanCheck;
 use App\Http\Middleware\TokenMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -61,7 +63,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        "token" => TokenMiddleware::class
+        "token" => TokenMiddleware::class ,
+        "check.plan" => CheckPlanUserNotNull::class
     ];
 
     /**

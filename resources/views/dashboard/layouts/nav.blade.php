@@ -49,7 +49,6 @@
                 <i class="simple-icon-size-actual"></i>
             </button>
 
-
         </div>
         <div class="user d-inline-block">
             <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,6 +58,9 @@
                 </span>
             </button>
             <div class="dropdown-menu dropdown-menu-right mt-3">
+                <div class="plan__nav">
+                    {{ me()->plan->name }}
+                </div>
                 <a class="dropdown-item" href="{{ route("user.profile.account.index") }}">{{ trans("dashboard.profile.account.label") }}</a>
                 <a class="dropdown-item" href="{{ route("user.profile.password.index") }}">{{ trans("dashboard.profile.password.label") }}</a>
                 <a class="dropdown-item" href="{{ route("user.profile.plan.index") }}">{{ trans("dashboard.profile.plan.label") }}</a>

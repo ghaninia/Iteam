@@ -19,8 +19,7 @@ class CreateTeamsTable extends Migration
             $table->timestamp('expired_at') ; // zamani ke karbar plan dash in barasas plan taeed mishe
 
             $table->unsignedInteger("user_id") ; // maker team user id
-            $table->unsignedInteger("plan_id") ; // maker team user id
-            $table->boolean('default_plan') ; // agar plan ma default boot hatman in ra true kon ;
+            $table->unsignedInteger("plan_user_id")->nullable(); // maker team plan id
 
             $table->string("name") ;
             $table->string("slug")->nullable() ;
@@ -50,7 +49,7 @@ class CreateTeamsTable extends Migration
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate('cascade') ;
-            $table->foreign("plan_id")->references("id")->on("plans")->onDelete("cascade")->onUpdate('cascade') ;
+            $table->foreign("plan_user_id")->references("id")->on("plan_user")->onDelete("cascade")->onUpdate("cascade") ;
         });
     }
 

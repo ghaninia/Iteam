@@ -20,7 +20,5 @@ $factory->define(App\Models\Team::class, function (Faker $faker) {
 
         'interplay_fiscal' => array_random(interplayFiscals()) ,
         'user_id' => rand(1,5) ,
-        'plan_id' => 1 ,
-        'default_plan' => true
     ];
 });

@@ -14,16 +14,9 @@ class Plan extends Model
         'max_create_offer' ,
         'die_day' ,
         'count_skill' ,
-        'sms_notification'
+        'sms_notification' ,
+        'default'
     ];
-
-    public function users()
-    {
-        return $this
-            ->belongsToMany(User::class)
-            ->withPivot(['expired_at','status'])
-            ->withTimestamps()  ;
-    }
 
     public function files(){
         return $this->morphMany( File::class , 'fileable' ) ;

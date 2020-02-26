@@ -10,6 +10,7 @@ use App\Models\City;
 use App\Models\File;
 use App\Models\Payment;
 use App\Models\Plan;
+use App\Models\PlanUser;
 use App\Models\Province;
 use App\Models\Skill;
 use App\Models\Tag;
@@ -17,6 +18,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Larabookir\Gateway\Enum;
 use Larabookir\Gateway\Exceptions\RetryException;
 use Larabookir\Gateway\Gateway;
@@ -35,7 +37,7 @@ class ProfileController extends Controller
             ]
         ] ;
 
-        $user  = me()->load( 'plan' , 'teams' ,'offers');
+        $user  = me();
 
         $cities  = City::whereHas("province" ,function ($q) use ($user) {
             $q->where("id" , $user->province_id);
@@ -149,7 +151,7 @@ class ProfileController extends Controller
             ]
         ] ;
 
-        $plans = Plan::with("files")->where('price' , '<>' , 0 )
+        $plans = Plan::with("files")->where("default" , false )->where('price' , '<>' , 0 )
             ->orderBy("price" , 'desc')
             ->get() ;
 
@@ -198,11 +200,32 @@ class ProfileController extends Controller
 
             /** update user profile plan **/
             $user = me() ;
-            $user->update([
-                'plan_id' => $payment->plan->id ,
-                'plan_created_at' => now() ,
-                'plan_expired_at' => now()->addDays( $payment->plan->max_life )
+
+
+            PlanUser::whereDoesntHave("plan" , function ($Query){
+                return $Query
+                    ->where("default" , true  )
+                    ->whereId(config("timo.panel_default")) ;
+            })
+            ->update([
+                "status" => false
             ]);
+
+
+            $planUser = PlanUser::insertGetId([
+                "plan_id" => $payment->plan_id,
+                "expire_at" => now()->addDays( $payment->plan->max_life ),
+                "user_id" => $user->id ,
+                "status" => true ,
+                "created_at" => now() ,
+                "updated_at" => now() ,
+                "uid" => Str::random(30)
+            ]);
+
+            $user->update([
+                "plan_user_id" => $planUser ,
+                "plan_id" => $payment->plan->id
+            ]) ;
 
             event( new whenBuyPlanEvent($user , $payment->plan ) ) ;
 

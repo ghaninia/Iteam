@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +16,16 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
-		'plan_id' => 1 ,
         'name' => $faker->name,
         'family' => $faker->name,
         'username' => $faker->userName ,
         'mobile' => "0939027".random_int(1000,9999) ,
         'website' => $faker->domainName ,
         'phone' => $faker->phoneNumber ,
-        'gender' => array_random(['male' ,'female']) ,
+        'gender' => \Illuminate\Support\Arr::random(["male" , "female"]) ,
         'bio' => $faker->realText(100) ,
-
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => str_random(10),
+        'remember_token' => Str::random(20)
     ];
 });

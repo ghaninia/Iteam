@@ -965,3 +965,15 @@ i.large-icon{
     border-radius: 0px 4px 4px 0px;
     border-left: none
 }
+
+.plan__nav {
+    border-radius: 20px;
+    display: block;
+    background: rgba(4, 2, 2, 0.52);
+    padding: 6px 4px 4px;
+    text-align: center;
+    margin: 0 10px 7px;
+    color: #ffffff;
+    font-size: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}

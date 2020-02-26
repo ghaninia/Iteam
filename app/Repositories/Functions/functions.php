@@ -289,3 +289,20 @@ function toDataTime($value){
     $value = Verta::parseFormat("Y/m/d" , $value ) ;
     return $value->DateTime()->format('Y-m-d') ;
 }
+
+if( !function_exists("array_random") ){
+    function array_random( array $array ){
+        return \Illuminate\Support\Arr::random($array) ;
+    }
+}
+if (! function_exists('camel_case')) {
+    function camel_case($value)
+    {
+        return Str::camel($value);
+    }
+}
+if( !function_exists("str_random") ){
+    function str_random( int $length ) {
+        return \Illuminate\Support\Str::random( $length ) ;
+    }
+}

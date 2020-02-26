@@ -2,7 +2,7 @@
 
 Auth::routes(['verify' => true]);
 
-Route::namespace('Dashboard\User')->name('user.')->middleware('auth:user')->group(function (){
+Route::namespace('Dashboard\User')->name('user.')->middleware(['auth:user' , 'check.plan'])->group(function (){
 
     Route::name('api.')->namespace('Api\\')->prefix('api')->group(function (){
         Route::post( "skills" , 'ApiController@skills' )->name("skill") ;

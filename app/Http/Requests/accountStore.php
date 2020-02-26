@@ -21,9 +21,6 @@ class accountStore extends FormRequest
     public function rules()
     {
         $user = $this->user() ;
-        $count_skill = 0 ;
-        if(!! $user->plan)
-            $count_skill = $user->plan->count_skill ;
         return [
             'name'     => ['nullable' , "max:191" , new PersianCharRule() ] ,
             'family'   => ['nullable' , "max:191" , new PersianCharRule() ] ,
@@ -44,8 +41,6 @@ class accountStore extends FormRequest
             ] ,
             'avatar' => ['nullable' , "max:1024" , "mimes:jpeg,jpg,png"] ,
             'cover'  => ['nullable' , "max:3086" , "mimes:jpeg,jpg,png"] ,
-            'skill'  => ['nullable' , 'array' , 'size:'.$count_skill] ,
-            'skill.*'=> ['required' , 'string' , Rule::in(Skill::pluck('name')->toArray()) ]
         ];
     }
 }

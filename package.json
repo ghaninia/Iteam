@@ -1,41 +1,39 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "devDependencies": {
-        "@babel/preset-react": "^7.8.3",
-        "axios": "^0.18.1",
-        "babel-preset-react": "^6.23.0",
-        "bootstrap": "^4.4.1",
-        "cross-env": "^5.2.1",
-        "jquery": "^3.4.1",
-        "laravel-mix": "^4.1.4",
-        "lodash": "^4.17.5",
-        "persian-date": "^1.1.0",
-        "popper.js": "^1.16.1",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0",
-        "resolve-url-loader": "^2.3.2",
-        "sass": "^1.25.0",
-        "sass-loader": "^7.3.1",
-        "vue-template-compiler": "^2.6.11"
-    },
-    "dependencies": {
-        "@popperjs/core": "^2.0.6",
-        "alertifyjs": "^1.13.1",
-        "node-snackbar": "^0.1.16",
-        "nprogress": "^0.2.0",
-        "progressbar.js": "^1.1.0",
-        "react-particles-js": "^2.7.1",
-        "redux": "^4.0.5",
-        "simple-react-validator": "^1.4.4",
-        "tooltip-js": "^3.0.0"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.8.3",
+    "axios": "^0.19",
+    "bootstrap": "^4.4.1",
+    "cross-env": "^7.0",
+    "laravel-mix": "^5.0.1",
+    "lodash": "^4.17.13",
+    "popper.js": "^1.16.1",
+    "react": "^16.12.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.15.2",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {
+    "alertifyjs": "^1.13.1",
+    "jquery": "^3.4.1",
+    "node-snackbar": "^0.1.16",
+    "nprogress": "^0.2.0",
+    "persian-date": "^1.1.0",
+    "progressbar.js": "^1.1.0",
+    "react-dom": "^16.12.0",
+    "react-particles-js": "^2.7.1",
+    "redux": "^4.0.5",
+    "simple-react-validator": "^1.4.4",
+    "tooltip-js": "^3.0.0"
+  }
 }

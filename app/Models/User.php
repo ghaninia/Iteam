@@ -5,13 +5,16 @@ use App\Notifications\VerfiedEmailUser;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
     protected $fillable = [
-        'plan_id' ,
+        "plan_user_id" ,
+        "plan_id" ,
         'is_active',
         'name',
         'family' ,
@@ -32,8 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'max_salary' ,
         'province_id',
         'city_id' ,
-        'plan_expired_at' ,
-        'plan_created_at' ,
+        'plan_uid' ,
         'email_verified_at' ,
         "remember_token"
     ];
@@ -43,9 +45,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
         'created_at' ,
         'email_verified_at' ,
-        'plan_created_at' ,
-        'plan_expired_at' ,
-        'plan_id' ,
+        'plan_uid' ,
         'updated_at' ,
         "is_active" ,
         "id"
@@ -56,8 +56,27 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     //* relation complex *//
-    public function plan(){
-        return $this->belongsTo(Plan::class) ;
+    public function plans(){
+        return $this->belongsToMany(Plan::class)->withPivot([
+            "status" ,
+            "uid" ,
+            "expire_at"
+        ])->withTimestamps();
+    }
+
+    public function plansUser()
+    {
+        return $this->hasMany( PlanUser::class ) ;
+    }
+
+    public function planUser()
+    {
+        return $this->belongsTo( PlanUser::class ) ;
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo( Plan::class ) ;
     }
 
     public function files(){
@@ -107,11 +126,17 @@ class User extends Authenticatable implements MustVerifyEmail
     //* boot model event *//
     public static function boot()
     {
-        static::created(function ($user){
-            $user->porfileNotification()->create() ;
-        });
-
         parent::boot() ;
+
+        static::created(function ($user){
+
+            //create profile notification options
+            $user->porfileNotification()->create() ;
+            $user->plansUser()->create([
+                "plan_id" => config("timo.panel_default")
+            ]);
+
+        }) ;
     }
 
     //* slug *//
@@ -141,36 +166,40 @@ class User extends Authenticatable implements MustVerifyEmail
     public function information()
     {
 
-        $information = [] ;
-        $default = config('timo.panel_default') ;
-        $user = User::with(['plan' , 'offers' , 'teams'])->find($this->id) ;
+         $user = User::withCount([
+            "teams AS team_all" ,
+            "teams AS team_current_plan_usage" => function($Query){
+                return $Query->where([
+                    "teams.plan_user_id" => $this->plan_user_id
+                ]) ;
+            } ,
+            "offers AS offer_all" ,
+            "offers AS offer_current_plan_usage" => function($Query){
+                return $Query->where([
+                    "offers.plan_user_id" => $this->plan_user_id
+                ]) ;
+            } ,
+            "skills"
+        ])->find( $this->id );
 
-        $information['teams'] = [
-            'max'   => $user->plan->attributes['max_create_team'] , //* حداکثر استفاده در پنل فعلی *//
-            'current_usage' => (
-            $user->plan->id == $default
-                ? $user->teams->where('default_plan' , true )->count()
-                : $user
-                ->teams()
-                ->where('default_plan' , false )
-                ->whereBetween('created_at' , [$this->plan_created_at , $this->plan_expired_at] )
-                ->count()
-            ) ,
-            'all' => $user->teams->count()
-        ];
+        $plan = $this->plan ;
 
-        $information['offers'] = [
-            'max'   => $user->plan->attributes['max_create_offer'] , //* حداکثر تعداد پیشنهاد در پنل فعلی *//
-            'current_usage' => (
-            $user->plan->id == $default
-                ? $user->offers->where('default_plan' , true )->count()
-                : $user
-                ->teams()
-                ->where('default_plan' , false )
-                ->whereBetween('created_at' , [$this->plan_created_at , $this->plan_expired_at] )
-                ->count()
-            ) ,
-            'all' => $user->offers->count()
+        $information = [
+            "teams" => [
+                "current_name" => $plan->name ,
+                'max'   => $plan->max_create_team ,
+                'current_usage' => $user->team_current_plan_usage ,
+                'all' => $user->team_all
+            ] ,
+            "offers" => [
+                'max'   => $plan->max_create_offer , //* حداکثر تعداد پیشنهاد در پنل فعلی *//
+                'current_usage' => $user->offer_current_plan_usage ,
+                'all' => $user->offer_all
+            ] ,
+            "skill" => [
+                "max" => $plan->count_skill ,
+                "current_usage" => $user->skills_count
+            ]
         ];
 
         return $information ;

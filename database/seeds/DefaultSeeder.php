@@ -11,13 +11,13 @@ class DefaultSeeder extends Seeder
         \App\Models\Plan::create([
             'name' => "پنل رایگان" ,
             'price' => "0" ,
+            "default" => true ,
             'description' => "پنل رایگان را استفاده مینمایید" ,
             'max_create_team' => 1 ,
             'max_create_offer' => 5 ,
         ]);
 
         \App\Models\User::create([
-			'plan_id' => 1 ,
             'name' => "محمدامین",
             'family' => "غنی نیا",
             'username' => 'aminghaninia' ,

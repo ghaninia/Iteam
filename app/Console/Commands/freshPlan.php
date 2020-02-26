@@ -1,5 +1,6 @@
 <?php
 namespace App\Console\Commands;
+use App\Models\PlanUser;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -22,16 +23,20 @@ class freshPlan extends Command
 
         //@ وقتی که اکانتی منقضی میشود کامنت پایین کاربر را شناسایی میکند @//
         DB::transaction(function (){
-            $now = new Carbon() ;
-            $now = $now->toDateTimeString() ;
-            User::where( "plan_id" , "<>" , config('timo.default_plan_id') )
-                ->where('plan_expired_at' , '<' , $now)
-                ->update([
-                    'plan_created_at' => null ,
-                    'plan_expired_at' => null ,
-                    'plan_id' => config('timo.default_plan_id')
-                ]);
+            $now = ( new Carbon() )->toDateTimeString() ;
+            $planUsers = PlanUser::whereDoesntHave("plan" , function ($Query){
+                return $Query
+                    ->where("default" , true  )
+                    ->whereId(config("timo.panel_default")) ;
+            })
+            ->whereDate("expire_at" , "<" , $now)->pluck("id")->toArray() ;
+            User::whereIn("plan_user_id" , $planUsers )->update([
+                "plan_user_id" => null ,
+                "plan_id" => null
+            ]) ;
+            PlanUser::whereIn("id" , $planUsers )->update([
+                "status" => false ,
+            ]);
         });
-
     }
 }

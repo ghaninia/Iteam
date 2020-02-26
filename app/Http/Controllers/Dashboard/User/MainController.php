@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Dashboard\User;
 use App\Http\Controllers\Controller;
 use App\Models\Log;
 use App\Models\Team;
+use App\Models\User;
 use Illuminate\Http\Request ;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -14,6 +16,7 @@ class MainController extends Controller
             'title' => trans('dashboard.pages.dashboard.label') ,
             'desc'  => trans('dashboard.pages.dashboard.desc')
         ] ;
+
 
         // logs widget
         $logs = me()

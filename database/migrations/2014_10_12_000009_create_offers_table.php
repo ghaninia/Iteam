@@ -20,12 +20,15 @@ class CreateOffersTable extends Migration
             $table->boolean('default_plan')->default(true) ; // agar plan ma default boot hatman in ra true kon ;
             $table->unsignedInteger("user_id") ;
             $table->unsignedInteger("team_id") ;
+            $table->unsignedInteger("plan_user_id")->nullable() ;
+
             $table->ipAddress("user_ip")->nullable() ;
             $table->text("content")->nullable() ;            
             $table->timestamp("created_at")->default(\DB::raw("CURRENT_TIMESTAMP"));
 
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate('cascade') ;
             $table->foreign("team_id")->references("id")->on("teams")->onDelete("cascade")->onUpdate('cascade') ;
+            $table->foreign("plan_user_id")->references("id")->on("plan_user")->onDelete("cascade")->onUpdate("cascade") ;
         });
     }
 
