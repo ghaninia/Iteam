@@ -21,7 +21,7 @@
             </svg>
         </a>
 
-        <div class="search" data-search-path="Layouts.Search.html?q=">
+        <div class="search" >
             <input placeholder="Search...">
             <span class="search-icon">
                 <i class="simple-icon-magnifier"></i>
@@ -58,8 +58,9 @@
                 </span>
             </button>
             <div class="dropdown-menu dropdown-menu-right mt-3">
-                <div class="plan__nav">
+                <div class="plan__nav alert-success alert">
                     {{ me()->plan->name }}
+                    <div class="font-en ltr" data-toggle="tooltip" data-placement="bottom" title="{{ trans("dashboard.profile.plan.features.max_life") }}" style="font-size:10px!important;">{{ verta(me()->planUser->expire_at)->format("Y/m/d H:i") }}</div>
                 </div>
                 <a class="dropdown-item" href="{{ route("user.profile.account.index") }}">{{ trans("dashboard.profile.account.label") }}</a>
                 <a class="dropdown-item" href="{{ route("user.profile.password.index") }}">{{ trans("dashboard.profile.password.label") }}</a>

@@ -4141,25 +4141,46 @@ function localRemoveItem( key ){
     return window.localStorage.removeItem( key ) ;
 }
 
-
+function getBoolean(value){
+    switch(value){
+        case true:
+        case "true":
+        case 1:
+        case "1":
+        case "on":
+        case "yes":
+            return true;
+        default:
+            return false;
+    }
+}
 //dark switch
-$("input[type=checkbox]#switchDark").each(function () {
-    const key = "dark__theme" ;
-    const mode = ( ok ) => {
-        var tag = $("[name='color'][rel='stylesheet']") ,
-            href = tag.attr("href") ;
-        if( ok ){
-            href = href.replace("light" , "dark") ;
+$(document).ready(function () {
+    $("input[type=checkbox]#switchDark").each(function () {
+        const key = "dark__theme" ;
+        const mode = ( ok ) => {
+            var tag = $("[name='color'][rel='stylesheet']") ,
+                href = tag.attr("href") ;
+            if( ok ){
+                href = href.replace("light" , "dark") ;
+            }
+            else {
+                href = href.replace("dark" , "light") ;
+            }
+            tag.attr("href" , href ) ;
+        } ;
+        $(this).change(function () {
+            var ok = $(this).prop("checked") ;
+            localSetItem( key , ok ) ;
+            mode( ok ) ;
+        });
+
+        var jet = getBoolean(localGetItem( key )) ;
+        if ( jet ){
+            $(this).prop("checked" , true ) ;
+            mode(true) ;
         }
-        else {
-            href = href.replace("dark" , "light") ;
-        }
-        tag.attr("href" , href ) ;
-    } ;
-    $(this).change(function () {
-        var ok = $(this).prop("checked") ;
-        localSetItem( key , ok ) ;
-        mode( ok ) ;
+
     });
 });
 
@@ -4399,4 +4420,108 @@ $(function () {
             element: $(this)
         });
     });
+});
+
+/// payments
+////////////
+$("#payments").each(function () {
+    var wrapper = $(this) ;
+    var showPlace = $("#payments__body .table tbody" , this ) ;
+    var showPaginatePlace = $("#payments__paginate" , this ) ;
+    
+    var dataForm = new FormData();
+    dataForm.append("action" , "payments") ;
+    f(dataForm) ;
+    
+    $("form" , wrapper).submit(function (e) {
+        e.preventDefault() ;
+        var dataForm = new FormData( $(this)[0] );
+        dataForm.append("action" , "payments") ;
+        f(dataForm)
+    });
+
+    showPaginatePlace.on("click" , "a" , function (e) {
+        e.preventDefault() ;
+        var href = $(this).attr("href") ;
+        f(dataForm , href )
+    });
+
+    function f(dataForm , url = null) {
+        var interview = `` ;
+        var PRO = new Promise(function (resolve, reject) {
+            showPlace.animate({
+                "opacity" : "50%" ,
+            });
+            NProgress.start() ;
+            $.ajax({
+                url :  url || options.ajax ,
+                dataType : "JSON" ,
+                type : "POST" ,
+                data : dataForm ,
+                cache: false,
+                contentType: false,
+                processData: false ,
+                headers : {
+                    "X-CSRF-TOKEN" : options.token
+                } ,
+                success : function (response) {
+                    resolve( response ) ;
+                }
+            })
+        }).then(function (response) {
+            if ( response.ok ){
+                var items = response.items ;
+                if ( response.total > 0){
+                    items.map(function (item) {
+                        var price ;
+
+                        switch( item.status_en ){
+                            case "SUCCEED" : {
+                                price = `<span class="text-success">+${ item.price.currency + item.price.type }</span>`
+                                break
+                            }
+                            case "FAILED" : {
+                                price = `<span class="text-danger">-${ item.price.currency + item.price.type }</span>`
+                                break
+                            }
+                            default : {
+                                price = `<span class="text-warning">${ item.price.currency + item.price.type }</span>`
+                                break
+                            }
+                        }
+
+                        interview += `
+                            <tr>
+                                <td class="text-right font-2 font-weight-bold">
+                                    ${ item.name }
+                                </td>
+                                <td class="nowrap bolder">
+                                    <span class="status-pill"></span>
+                                    <span>${ item.status }</span>
+                                </td>
+                                <td>
+                                    <span style="font-size:17px">${ item.clock }</span>
+                                    <span class="smaller lighter font-weight-medium">${ item.date }</span>
+                                </td>
+                                <td style="font-size:17px" class="text-center font-en font-weight-medium">
+                                    <a href="${ item.link }">
+                                        ${ item.tracking_code }
+                                    </a>
+                                </td>
+                                <td style="font-size:17px" >
+                                    ${ price }
+                                </td>
+                            </tr>
+                        ` ;
+                    });
+                }
+
+                showPlace.html(interview).animate({
+                    "opacity" : "100%"
+                } , 100 );
+                showPaginatePlace.html( response.paginate ) ;
+            }
+            NProgress.done();
+        }) ;
+    }
 });

@@ -24,7 +24,7 @@ return [
 
     'panel_default' => 1 ,
     'currency' => 'toman' ,
-    'paginate' => 10 ,
+    'paginate' => 5 ,
     'max_bio_length' => 300 ,
 
     'information'  => [

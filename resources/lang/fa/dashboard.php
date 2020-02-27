@@ -92,6 +92,10 @@ return [
             "desc"  => "به حساب کاربری خود خوش آمده اید"
         ],
         "payment" => [
+            'date' => 'تاریخ فاکتور' ,
+            'planname' => 'نام پلن' ,
+            'trackingcode' => 'شماره رهگیری' ,
+            'created_at' => 'تاریخ ثبت',
             "factor" => "صورتحساب" ,
             "label" => "فاکتور" ,
             "transaction_id" => "تراکنش بانکی" ,

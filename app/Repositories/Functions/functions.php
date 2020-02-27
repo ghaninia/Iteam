@@ -2,6 +2,7 @@
 use App\Models\File ;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 function options($key , $default = null )
 {
@@ -174,11 +175,11 @@ function statusTransaction($status)
     switch ($status)
     {
         case "SUCCEED" :
-            return trans('dash.status.succeed') ;
+            return trans('dashboard.pages.payment.ok.SUCCEED') ;
         case "FAILED" :
-            return trans('dash.status.failed') ;
+            return trans('dashboard.pages.payment.ok.FAILED') ;
         case "INIT" :
-            return trans('dash.status.init') ;
+            return trans('dashboard.pages.payment.ok.INIT') ;
     }
 }
 
@@ -303,6 +304,11 @@ if (! function_exists('camel_case')) {
 }
 if( !function_exists("str_random") ){
     function str_random( int $length ) {
-        return \Illuminate\Support\Str::random( $length ) ;
+        return Str::random( $length ) ;
+    }
+}
+if( !function_exists("str_slug") ){
+    function str_slug( string $name ) {
+        return Str::slug( $name ) ;
     }
 }

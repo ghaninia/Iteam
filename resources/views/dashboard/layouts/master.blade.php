@@ -18,7 +18,7 @@
     </script>
 </head>
 <body
-    @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] )) class="background" @else id="app-container" class="menu-default show-spinner" @endif>
+    @if( in_array( Route::currentRouteName() , ["login" , "register" , "password.request"] )) class="background" @else id="app-container" class="menu-default  show-spinner" @endif>
 
     @auth
         @include("dashboard.layouts.nav")
