@@ -4299,7 +4299,7 @@ $(function () {
             var t = $(this).closest("li") ;
             t = $("label" , t ).text() ,
             self = document.self() ;
-            
+
             if ( checked && ( $.inArray( value , self ) < 0 ) ){
 
                 var maxSkill = $("#skills_list").data("maxskill") ;
@@ -4311,7 +4311,7 @@ $(function () {
                             <label for="skills___${ value }">
                                 ${ t }
                             </label>
-                        </li>                
+                        </li>
                     `)) ;
                 } else {
                     $(this).prop("checked" , false ) ;
@@ -4428,11 +4428,11 @@ $("#payments").each(function () {
     var wrapper = $(this) ;
     var showPlace = $("#payments__body .table tbody" , this ) ;
     var showPaginatePlace = $("#payments__paginate" , this ) ;
-    
+
     var dataForm = new FormData();
     dataForm.append("action" , "payments") ;
     f(dataForm) ;
-    
+
     $("form" , wrapper).submit(function (e) {
         e.preventDefault() ;
         var dataForm = new FormData( $(this)[0] );
@@ -4514,8 +4514,17 @@ $("#payments").each(function () {
                             </tr>
                         ` ;
                     });
+                }else{
+                    interview += `
+                        <tr class="not__color">
+                            <td colspan="5">
+                                <div class="alert alert-danger">
+                                    ${ response.items }
+                                </div>
+                            </td>
+                        </tr>
+                    `;
                 }
-
                 showPlace.html(interview).animate({
                     "opacity" : "100%"
                 } , 100 );

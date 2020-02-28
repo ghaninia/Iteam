@@ -921,6 +921,11 @@ i.large-icon{
     box-shadow: 0px 1px 0px 1px rgba(12, 5, 5, 0.1);
 }
 
+.table.table-padded tbody tr.not__color{
+    background: transparent ;
+    box-shadow: 0 0 0 transparent;
+}
+
 .table .user-with-avatar {
     white-space: nowrap
 }

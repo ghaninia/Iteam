@@ -12,7 +12,7 @@
             </div>
         </div>
         <!-- logs -->
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-body">
                 <h5 class="card-title">{{ trans("dashboard.pages.log.label") }}</h5>
                 <div class="scroll dashboardboard-logs">

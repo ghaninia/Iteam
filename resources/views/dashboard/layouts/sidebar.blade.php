@@ -21,6 +21,12 @@
                         <span>{{ trans("dashboard.pages.profile.label") }}</span>
                     </a>
                 </li>
+                <li {{ activeSidebar(["user.team.create" , "user.team.index"] , true ) }}>
+                    <a href="#team">
+                        <i class="iconsmind-Big-Data"></i>
+                        <span>{!! trans("dashboard.pages.team.label") !!}</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -47,14 +53,14 @@
                 <li {{ activeSidebar("user.profile.password.index" , true ) }}>
                     <a href="{{ route('user.profile.password.index') }}">
                         <i class="iconsmind-Lock-3"></i>
-                        {{ trans("dashboard.profile.password.label") }}                    
+                        {{ trans("dashboard.profile.password.label") }}
                     </a>
                 </li>
 
                 <li {{ activeSidebar("user.profile.plan.index" , true ) }}>
                     <a href="{{ route("user.profile.plan.index") }}">
                         <i class="iconsmind-Airship"></i>
-                        {{ trans("dashboard.profile.plan.label") }}                    
+                        {{ trans("dashboard.profile.plan.label") }}
                     </a>
                 </li>
 
@@ -68,13 +74,21 @@
                 <li {{ activeSidebar("user.profile.notification.index" , true ) }}>
                     <a href="{{ route("user.profile.notification.index") }}">
                         <i class="iconsmind-Alarm-Clock"></i>
-                        {{ trans("dashboard.profile.notification.label") }} 
+                        {{ trans("dashboard.profile.notification.label") }}
                         <span class="badge badge-pill badge-outline-primary float-left mr-4">
                             {{ trans("dashboard.items.new") }}
-                        </span>                   
+                        </span>
                     </a>
                 </li>
 
+            </ul>
+            <ul class="list-unstyled" data-link="team">
+                <li {{ activeSidebar(["user.team.create"] , true ) }}>
+                    <a href="{{ route("user.team.create") }}">
+                        <i class="iconsmind-Wolf"></i>
+                        {{ trans("dashboard.pages.team.new") }}
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

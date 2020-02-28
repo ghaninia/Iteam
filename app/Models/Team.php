@@ -9,7 +9,6 @@ class Team extends Model
     protected $table = "teams" ;
 
     protected $fillable = [
-
         'user_id' ,
         'plan_id' ,
         'name' ,
@@ -29,7 +28,7 @@ class Team extends Model
         'required_gender' ,
         'count_member' ,
         'type_assist' ,
-        'interplay_fiscal' , 
+        'interplay_fiscal' ,
         'min_salary' ,
         'max_salary' ,
         'province_id' ,

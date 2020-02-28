@@ -48,6 +48,5 @@ Route::namespace('Dashboard\User')->name('user.')->middleware(['auth:user' , 'ch
     });
 
     Route::resource('payment', 'PaymentController' , ['only' => ['index' , 'show']]);
-    Route::resource('team' , 'TeamController' , ['except' => ['destroy'] ]);
-
+    Route::resource('team' , 'TeamController');
 });

@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use App\Models\PlanUser;
 use Closure;
-use http\Client\Curl\User;
 
-class CheckPlanUserNotNull
+class checkPlanUserNotNull
 {
     /**
      * Handle an incoming request.

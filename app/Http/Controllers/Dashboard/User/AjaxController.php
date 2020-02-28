@@ -115,9 +115,10 @@ class AjaxController extends Controller
             $payment->price      = currency($payment->price , true ) ;
         });
 
+
         return response()->json([
             "ok" => true ,
-            "items" => $payments->items() ,
+            "items" => $payments->total() ? $payments->items() : trans("dashboard.message.success.payment.empty") ,
             "paginate" => view("dashboard.layouts.ajax.paginate" , ["items" => $payments])->render() ,
             "total" => $payments->total()
         ]);

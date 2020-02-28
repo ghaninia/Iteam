@@ -1,116 +1,35 @@
 <?php
-
 namespace App\Http\Controllers\Dashboard\User;
-use App\Events\AcceptOfferEvent;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\TeamStore;
-use App\Models\Offer;
-use App\Models\Province;
-use App\Models\Tag;
-use App\Models\Team;
-use App\Models\User;
-use App\Repositories\OfferRepository;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
     use Notifiable ;
     public function __construct()
     {
-        $this->middleware("can:show,team" , ['except' => ['index' , 'create' , 'store'] ]) ;
+//        $this->middleware("can:show,team" , ['except' => ['index' , 'create' , 'store'] ]) ;
     }
 
     public function index(Request $request)
     {
-
-        $status = $request->input("state") ;
-        $create_time = $request->input("create_time") ;
-        $teams = Team::where( "user_id" , me()->id )
-            // filter status
-            ->when($status , function ($query) use ($status){
-                switch ($status)
-                {
-                    case "init" :
-                        $query->where( "status" , 0 ) ;
-                        break ;
-                    case "confirmed" :
-                        $query->where( "status" , 1 ) ;
-                        break ;
-                    case "expired" :
-                        $query->where( "status" , 2 ) ;
-                        break ;
-                }
-            })
-            // filter created at
-            ->when($create_time , function ($query) use ($create_time){
-                $query->where( userSearchRangeTime(false , "create_time") ) ;
-            })
-            ->withCount("offers")
-            ->with("offers.user" , "plan")
-            ->paginate( 3 );
-
-        $appends = $request->all() ;
-        $view = view( "dashboard.user.team.ajax.index" , compact('teams' , 'appends') )->render() ;
-
-        if ( $request->ajax() )
-            return $view ;
-
-        $visits =
-        User::select([
-            DB::raw("teams.name AS team_name") ,
-            DB::raw('visits.created_at AS visit_created_at') ,
-            'users.*' ,
-        ])
-        ->leftJoin("visits" , "visits.user_id" , "=" , "users.id" )
-        ->leftJoin("teams"  , "visits.team_id" , "=" , "teams.id" )
-        ->where("teams.user_id" , me()->id ) ;
-
-        $visits_count = $visits->count()  ;
-        $visits = $visits->take(5)->get() ;
-
-        $offers_count = Offer::join("teams" , "offers.team_id" , "=" , "teams.id")
-        ->where("teams.user_id" , me()->id )
-        ->count() ;
-
-        $teams_count = me()->teams()->count() ;
-
         $information = [
-            'title' => trans("dashboard.team.all.text")
+            'title' => trans("dashboard.pages.team.create")
         ] ;
-
-
         return view('dashboard.user.team.index' , compact(
-            'information' ,
-            'teams' ,
-            'view',
-            'appends' ,
-            'visits' ,
-            'visits_count' ,
-            'offers_count' ,
-            'teams_count'
+            'information'
         ));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $information = [
-            'title' => trans('dashboard.team.make') ,
-            'breadcrumb' => [
-                trans('dashboard.team.all.text') => route('user.team.index') ,
-                trans('dashboard.team.make') => null
-            ]
+            'title' => trans("dashboard.pages.team.create") ,
         ] ;
 
-        $provinces = Province::select(['id','name'])->get() ;
-        $cities = collect() ;
-
-        $tags = Tag::orphan()->get() ;
-
-        return view('dashboard.user.team.create' , compact('information','provinces','cities' ,'tags') ) ;
-
+        return view('dashboard.user.team.create' , compact('information') ) ;
     }
 
     public function store(TeamStore $request)

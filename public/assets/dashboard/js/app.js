@@ -67330,7 +67330,7 @@ $(function () {
         var maxSkill = $("#skills_list").data("maxskill");
 
         if (parseInt(maxSkill) > self.length) {
-          $("#skills_list ul.list").append($("\n                        <li>\n                            <input type=\"checkbox\" name=\"skill[]\" multiple checked value=\"".concat(value, "\" >\n                            <label for=\"skills___").concat(value, "\">\n                                ").concat(t, "\n                            </label>\n                        </li>                \n                    ")));
+          $("#skills_list ul.list").append($("\n                        <li>\n                            <input type=\"checkbox\" name=\"skill[]\" multiple checked value=\"".concat(value, "\" >\n                            <label for=\"skills___").concat(value, "\">\n                                ").concat(t, "\n                            </label>\n                        </li>\n                    ")));
         } else {
           $(this).prop("checked", false);
         }
@@ -67503,6 +67503,8 @@ $("#payments").each(function () {
 
             interview += "\n                            <tr>\n                                <td class=\"text-right font-2 font-weight-bold\">\n                                    ".concat(item.name, "\n                                </td>\n                                <td class=\"nowrap bolder\">\n                                    <span class=\"status-pill\"></span>\n                                    <span>").concat(item.status, "</span>\n                                </td>\n                                <td>\n                                    <span style=\"font-size:17px\">").concat(item.clock, "</span>\n                                    <span class=\"smaller lighter font-weight-medium\">").concat(item.date, "</span>\n                                </td>\n                                <td style=\"font-size:17px\" class=\"text-center font-en font-weight-medium\">\n                                    <a href=\"").concat(item.link, "\">\n                                        ").concat(item.tracking_code, "\n                                    </a>\n                                </td>\n                                <td style=\"font-size:17px\" >\n                                    ").concat(price, "\n                                </td>\n                            </tr>\n                        ");
           });
+        } else {
+          interview += "\n                        <tr class=\"not__color\">\n                            <td colspan=\"5\">\n                                <div class=\"alert alert-danger\">\n                                    ".concat(response.items, "\n                                </div>\n                            </td>\n                        </tr>\n                    ");
         }
 
         showPlace.html(interview).animate({
@@ -67759,7 +67761,7 @@ persianDate = __webpack_require__(/*! persian-date */ "./node_modules/persian-da
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\Timo\resources\assets\dashboard\js\app */"./resources/assets/dashboard/js/app.js");
+module.exports = __webpack_require__(/*! /home/ghaniniair/Desktop/Timo/resources/assets/dashboard/js/app */"./resources/assets/dashboard/js/app.js");
 
 
 /***/ })
