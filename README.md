@@ -1,6 +1,6 @@
 <div align="right" dir="rtl" >
     
-![تیمو](http://ghaninia.ir/filemanager/uploads/photos/1/portfolio/timo/cover.jpg"تیمو")
+![تیمو](http://ghaninia.ir/filemanager/uploads/photos/1/portfolio/timo/cover.jpg "تیمو")
 
 # نرم افزار تیمو
 
