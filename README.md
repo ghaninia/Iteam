@@ -1,6 +1,8 @@
 <div align="right" dir="rtl" style="font-family:tahoma">
+    <div align="center">
+        ![تیمو](http://ghaninia.ir/filemanager/uploads/photos/1/portfolio/timo/cover.jpg "تیمو")
+    </div>
     
-![تیمو](http://ghaninia.ir/filemanager/uploads/photos/1/portfolio/timo/cover.jpg "تیمو")
 
 # نرم افزار تیمو
 
