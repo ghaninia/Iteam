@@ -253,8 +253,7 @@ button.close {
     color: #000;
     border-radius: 4px;
     padding: 4px 10px 3px;
-    box-shadow: 0 0 4px rgba(0,0,0,.2);
-    font-weight: bold;
+    border: 1px rgba(0,0,0,0.3) solid;
 }
 
 
@@ -1172,4 +1171,56 @@ i.large-icon{
 
 .pagination .pagination-arrow a {
     background-color: #f0f0f0
+}
+
+.compelete_step{
+    display : flex ;
+    flex-direction: column;
+    background : rgba(0,0,0,0.05) ;
+    padding : 20px ;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px ;
+}
+
+.compelete_step .proccess{
+    display: block ;
+    background: rgba( 0,0,0,0.05 );
+    border-radius: 15px ;
+    width: 100% ;
+    height: 10px ;
+    margin : 15px 0 0 0 ;
+    position: relative;
+    overflow: hidden;
+}
+.compelete_step .proccess .proccess_bar[data-width]{
+    display: block;
+    height: 100% ;
+    background-image: linear-gradient(-45deg, #e2863b, #e2d141);
+    position: absolute ;
+    right : 0 ;
+    top : 0 ;
+    border-radius: 15px ;
+}
+
+.content-box{
+    background: rgba(0,0,0,0.1) ;
+    padding: 1rem;
+    grid-area: box;
+    display: block ;
+    border-radius: 5px ;
+
+}
+.content-box h3{
+    font-weight: bold ;
+    font-size : 14px ;
+}
+
+.content-box h3:before{
+    content : "\e01c" ;
+    font-family: 'simple-line-icons';
+    display: block ;
+    float : right;
+    color : #e2863b ;
+    margin: 0 0 0 3px ;
 }

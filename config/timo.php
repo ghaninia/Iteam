@@ -26,7 +26,7 @@ return [
     'currency' => 'toman' ,
     'paginate' => 5 ,
     'max_bio_length' => 300 ,
-
+    'max_team_desc' => 500 ,
     'information'  => [
         'logo'     => 'assets/librarys/img/logo.svg' ,
         'title'    => 'timo اپلیکیشن تیم سازی' ,

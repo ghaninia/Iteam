@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Skill;
 use App\Models\Tag;
 use App\Models\Team;
+use App\Models\Province ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\Rule;
@@ -57,4 +58,17 @@ class ApiController extends Controller
         ]) ;
     }
 
+    public function provinces(Province $province = null)
+    {
+        if (is_null($province))
+            return response()->json([
+                "ok" => true ,
+                "items" => Province::select(["id" , "name"])->orderBy("name" , "ASC")->get()
+            ]) ;
+
+        return response()->json([
+            "ok" => true ,
+            "items" => $province->cities()->select(["id" , "name"])->orderBy("name" , "ASC")->get() ,
+        ]) ;
+    }
 }

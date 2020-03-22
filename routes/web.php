@@ -7,6 +7,7 @@ Route::namespace('Dashboard\User')->name('user.')->middleware(['auth:user' , 'ch
     Route::name('api.')->namespace('Api\\')->prefix('api')->group(function (){
         Route::post( "skills" , 'ApiController@skills' )->name("skill") ;
         Route::post( "tags" , 'ApiController@tags' )->name("tag");
+        Route::post("provinces/{province?}" , "ApiController@provinces")->name("province") ;
     });
 
     Route::post("ajax" , 'AjaxController@ajaxHandle' )->name("ajax") ;

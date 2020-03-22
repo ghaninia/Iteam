@@ -3,6 +3,8 @@ Snackbar = require("node-snackbar") ;
 NProgress = require("nprogress") ;
 window.$ = window.jQuery = require('jquery');
 
+SlimSelect = require('slim-select') ;
+
 require("./_jquery-ui.min") ;
 require("./persian-selector") ;
 
@@ -4533,4 +4535,55 @@ $("#payments").each(function () {
             NProgress.done();
         }) ;
     }
+});
+//city and provinces
+$(function () {
+    $("select#provinces").each(function () {
+
+        const cities = new SlimSelect({
+            select: '#cities' ,
+            searchingText: 'درحال بررسی نتیجه ...',
+            placeholder: 'شهر',
+        })
+
+        var url = $(this).data("url") ,
+            id  = $(this).attr('id') ;
+        let pro = new Promise(function (resolve, reject) {
+            axios.post( url ).then(function (response) {
+                resolve( response ) ;
+            });
+        }).then(function (response) {
+            let data = []
+            const {items} = response.data;
+            items.map(function (item) {
+                data.push({
+                    text : item.name ,
+                    value : item.id
+                })
+            })
+            new SlimSelect({
+                select: "#" + id,
+                searchingText: 'درحال بررسی نتیجه ...',
+                placeholder: 'استان',
+                data,
+                beforeOnChange: ( province ) => {
+                    var c = new Promise(function (resolve, reject) {
+                        axios.post(`${url}/${province.value}`).then(function (response) {
+                            resolve(response);
+                        })
+                    }).then(function (response) {
+                        let data = []
+                        const {items} = response.data;
+                        items.map(function (item) {
+                            data.push({
+                                text : item.name ,
+                                value : item.id
+                            })
+                        })
+                        cities.setData( data ) ;
+                    });
+                }
+            });
+        })
+    });
 });

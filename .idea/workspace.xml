@@ -2,25 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1356bed0-fb76-45ed-990f-43062d6e01c2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/user/team/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/das" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/librarys/css/vendor/slim-select.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Package/GhaniniaIR/Captcha/src/Classes/fonts/BAHVX3.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Package/GhaniniaIR/Captcha/src/Classes/fonts/BAHVX3.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/AjaxController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/AjaxController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/TeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/TeamController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckPlanUserNotNull.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckPlanUserNotNull.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Team.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/Api/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/User/Api/ApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/timo.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/timo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000007_create_teams_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000007_create_teams_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2018_07_15_042523_create_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2018_07_15_042523_create_files_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/auth/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/auth/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/dashboard/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/dashboard/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/librarys/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/librarys/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/dashboard/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/dashboard/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/librarys/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/librarys/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/fa/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/user/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/user/team/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/user/team/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +52,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="blade" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -172,10 +170,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="ReadonlyStatusHandler">
     <option name="SHOW_DIALOG" value="false" />
@@ -235,6 +234,14 @@
       <workItem from="1582831922169" duration="3707000" />
       <workItem from="1582861570384" duration="1231000" />
       <workItem from="1582863502476" duration="4705000" />
+      <workItem from="1582869546533" duration="600000" />
+      <workItem from="1584799313732" duration="92000" />
+      <workItem from="1584800498892" duration="1794000" />
+      <workItem from="1584802784179" duration="218000" />
+      <workItem from="1584803040274" duration="4153000" />
+      <workItem from="1584851573002" duration="4357000" />
+      <workItem from="1584866834399" duration="1172000" />
+      <workItem from="1584870832811" duration="10545000" />
     </task>
     <servers />
   </component>
@@ -273,10 +280,18 @@
       <screen x="0" y="27" width="1280" height="997" />
     </state>
     <state x="251" y="294" width="768" height="469" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.27.1280.997@0.27.1280.997" timestamp="1582834359636" />
-    <state x="0" y="134" width="1201" height="737" key="SettingsEditor" timestamp="1582869468988">
+    <state x="323" y="253" width="624" height="551" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1584804196271">
       <screen x="0" y="27" width="1280" height="997" />
     </state>
-    <state x="0" y="134" width="1201" height="737" key="SettingsEditor/0.27.1280.997@0.27.1280.997" timestamp="1582869468988" />
+    <state x="323" y="253" width="624" height="551" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.27.1280.997@0.27.1280.997" timestamp="1584804196271" />
+    <state x="187" y="34" width="895" height="989" key="CommitChangelistDialog2" timestamp="1584867038938">
+      <screen x="0" y="27" width="1280" height="997" />
+    </state>
+    <state x="187" y="34" width="895" height="989" key="CommitChangelistDialog2/0.27.1280.997@0.27.1280.997" timestamp="1584867038938" />
+    <state x="24" y="105" width="1201" height="737" key="SettingsEditor" timestamp="1584851606573">
+      <screen x="0" y="27" width="1280" height="997" />
+    </state>
+    <state x="24" y="105" width="1201" height="737" key="SettingsEditor/0.27.1280.997@0.27.1280.997" timestamp="1584851606573" />
     <state x="296" y="353" key="com.intellij.ide.util.TipDialog" timestamp="1582811217183">
       <screen x="0" y="27" width="1280" height="997" />
     </state>
@@ -285,9 +300,9 @@
       <screen x="0" y="27" width="1280" height="997" />
     </state>
     <state x="304" y="238" key="run.anything.popup/0.27.1280.997@0.27.1280.997" timestamp="1582833910244" />
-    <state x="303" y="245" width="672" height="678" key="search.everywhere.popup" timestamp="1582867042889">
+    <state x="303" y="245" width="672" height="678" key="search.everywhere.popup" timestamp="1584885831039">
       <screen x="0" y="27" width="1280" height="997" />
     </state>
-    <state x="303" y="245" width="672" height="678" key="search.everywhere.popup/0.27.1280.997@0.27.1280.997" timestamp="1582867042889" />
+    <state x="303" y="245" width="672" height="678" key="search.everywhere.popup/0.27.1280.997@0.27.1280.997" timestamp="1584885831039" />
   </component>
 </project>
