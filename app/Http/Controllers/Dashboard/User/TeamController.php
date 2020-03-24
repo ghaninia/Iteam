@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Dashboard\User;
 
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Notifications\Notifiable;
@@ -28,8 +29,9 @@ class TeamController extends Controller
         $information = [
             'title' => trans("dashboard.pages.team.create") ,
         ] ;
-
-        return view('dashboard.user.team.create' , compact('information') ) ;
+        $user = me() ;
+        $tags = Tag::withCount("skills")->orderBy("name" , "ASC")->get() ;
+        return view('dashboard.user.team.create' , compact('information' , "user" , "tags") ) ;
     }
 
     public function store(TeamStore $request)

@@ -26,6 +26,7 @@
   "dependencies": {
     "alertifyjs": "^1.13.1",
     "jquery": "^3.4.1",
+    "msk": "^1.0.5",
     "node-snackbar": "^0.1.16",
     "nprogress": "^0.2.0",
     "persian-date": "^1.1.0",
@@ -34,6 +35,7 @@
     "react-particles-js": "^2.7.1",
     "redux": "^4.0.5",
     "simple-react-validator": "^1.4.4",
+    "slick-carousel": "^1.8.1",
     "slim-select": "^1.25.0",
     "tooltip-js": "^3.0.0"
   }

@@ -11,7 +11,9 @@ require("./persian-selector") ;
 const ProgressBar = require('progressbar.js') ;
 window.axios = require('axios');
 window.alertify = require("alertifyjs") ;
+window.msk = require("msk");
 
+window.slick = require("slick-carousel") ;
 
 try {
     window.Popper = require('popper.js').default;
@@ -4185,14 +4187,7 @@ $(document).ready(function () {
 
     });
 });
-
-
-
-//////////////
-//////////////
 //skill page
-//////////////
-//////////////
 $(function () {
 
     $("#skills_list").each(function () {
@@ -4410,11 +4405,7 @@ $(function () {
     });
 
 });
-
-
-//////////////
-/// data
-//////////////
+///// data
 $(function () {
     $('.date').on('click', function(e) {
         e.preventDefault();
@@ -4423,7 +4414,6 @@ $(function () {
         });
     });
 });
-
 /// payments
 ////////////
 $("#payments").each(function () {
@@ -4545,7 +4535,6 @@ $(function () {
             searchingText: 'درحال بررسی نتیجه ...',
             placeholder: 'شهر',
         })
-
         var url = $(this).data("url") ,
             id  = $(this).attr('id') ;
         let pro = new Promise(function (resolve, reject) {
@@ -4560,7 +4549,7 @@ $(function () {
                     text : item.name ,
                     value : item.id
                 })
-            })
+            });
             new SlimSelect({
                 select: "#" + id,
                 searchingText: 'درحال بررسی نتیجه ...',
@@ -4586,4 +4575,110 @@ $(function () {
             });
         })
     });
+});
+//selections
+$(function () {
+    $(".selections").each(function () {
+        var wrapper = $(this) ;
+        var content = $(".content_selector" , wrapper ) ;
+        $(".selector input" , wrapper ).change(function () {
+            var value = $(this).val() ;
+            content.find("input").each(function () {
+                switch (value) {
+                    case "profile" :{
+                        $(this).prop("readonly" , true )
+                        $(this).val( $(this).data("default") );
+                        break ;
+                    }
+                    case "custom" : {
+                        $(this).prop("readonly" , false )
+                        $(this).val("") ;
+                        break ;
+                    }
+                    case "fixedsalary" : {
+                        $(this).prop("readonly" , false ).prop("disabled" , false );
+                        $(this).val("") ;
+                        break ;
+                    }
+                    default : {
+                        $(this).prop("readonly" , true ).prop("disabled" , false );
+                        break ;
+                    }
+                }
+            });
+        });
+    });
+});
+// amount input number
+jQuery('.amount').each(function() {
+
+    $('<div class="amount-nav"><div class="amount-button amount-up">+' +
+        '</div><div class="amount-button amount-down">-</div></div>').insertAfter( $('input' , this ) ) ;
+
+    var spinner = jQuery(this),
+        input = spinner.find('input[type="number"]'),
+        btnUp = spinner.find('.amount-up'),
+        btnDown = spinner.find('.amount-down'),
+        min  = input.attr('min'),
+        max  = input.attr('max');
+    step = ( input.attr('step') == undefined  ? 1 : input.attr('step') );
+
+    btnUp.click(function() {
+        var oldValue = parseFloat(input.val()) || 0;
+        if (oldValue >= max) {
+            var newVal = oldValue;
+        } else {
+            var newVal = oldValue + parseInt(step) ;
+        }
+        spinner.find("input").val(newVal);
+        spinner.find("input").trigger("change");
+    });
+
+    btnDown.click(function() {
+        var oldValue = parseFloat(input.val());
+        if (oldValue <= min) {
+            var newVal = oldValue;
+        } else {
+            var newVal = oldValue - parseInt(step) ;
+        }
+        spinner.find("input").val(newVal);
+        spinner.find("input").trigger("change");
+    });
+
+});
+
+$(".slider").slick({
+    rtl : true ,
+    arrow : true ,
+    infinite: false,
+    slidesToShow: 5 ,
+    slidesToScroll: 1 ,
+    nextArrow : `<button type="button" class="next"><i class="simple-icon-arrow-left"></i></button>` ,
+    prevArrow : `<button type="button" class="prev"><i class="simple-icon-arrow-right"></i></button>` ,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 2,
+            }
+        },
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3,
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+            }
+        }
+    ]
 });

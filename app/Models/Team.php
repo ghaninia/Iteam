@@ -74,7 +74,6 @@ class Team extends Model
         return $this->hasMany(Offer::class) ;
     }
 
-
     public function plan()
     {
         return $this->belongsTo(PlanUser::class) ;

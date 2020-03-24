@@ -12,7 +12,8 @@
     cursor: pointer;
     margin : 0!important;
     width: 100%;
-    padding: 15px;
+    padding: 10px;
+    height: 41px;
     border: 1px solid #d7d7d7 ;
     outline: 0;
     box-sizing: border-box;
@@ -360,7 +361,7 @@
 
 .ss-content .ss-list .ss-option.ss-disabled {
     cursor: not-allowed;
-    background-color: #e2b24c
+    background-color: rgba(255, 157, 64, 0.34)
 }
 
 .ss-content .ss-list .ss-option:not(.ss-disabled).ss-option-selected {

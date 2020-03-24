@@ -52,6 +52,11 @@ return [
         "logout" => [
             "label" => "خروج از حساب"
         ] ,
+        "gender" => [
+            "label" => "جنسیت" ,
+            "male" => "آقا" ,
+            "female" => "خانم"
+        ],
     ] ,
     "message" => [
         "log" => [
@@ -134,7 +139,26 @@ return [
                 "count_member" => "تعداد افراد مورد نیاز" ,
                 "type_assist" => "" ,
                 "description" => "توضیحات" ,
-                "content_desc" => "طبق آمار مشارکت کنندگان <b>سه برابر</b> بیشتر با آگهی با توضیحات کامل تماس می گیرند."
+                "content_desc" => "طبق آمار مشارکت کنندگان <b>سه برابر</b> بیشتر با آگهی با توضیحات کامل تماس می گیرند.",
+                "contact" => [
+                    "profile" => "تماس با من" ,
+                    "custom" => "شخصی سازی"
+                ] ,
+                "type_assists" => [
+                    "telework" => "ارتباط راه دور" ,
+                    "fulltime" => "تمام وقت" ,
+                    "parttime" => "پاره وقت" ,
+                    "internship" => "تعاملی" ,
+                ] ,
+                "interplay_fiscals" => [
+                    "bothfounder" => "هم بنیان&zwnj;گذار" ,
+                    "partnership" => "شراکت در مالکیت" ,
+                    "fixedsalary" => "حقوق ثابت" ,
+                ] ,
+                "salary" => [
+                    "max" => "حداکثر حقوق" ,
+                    "min" => "حداقل حقوق" ,
+                ]
             ]
         ],
         "offer" => [

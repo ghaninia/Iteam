@@ -169,7 +169,7 @@ input:-webkit-autofill:active {
 }
 
 .has-top-label>span:last-of-type, .has-top-label label{
-    font-size: 85% !important; ;
+    font-size: 110% !important; ;
 }
 
 .cover{
@@ -253,9 +253,8 @@ button.close {
     color: #000;
     border-radius: 4px;
     padding: 4px 10px 3px;
-    border: 1px rgba(0,0,0,0.3) solid;
+    border: 1px solid #d7d7d7
 }
-
 
 .accrodin{
     margin: 15px 0;
@@ -1204,12 +1203,12 @@ i.large-icon{
 }
 
 .content-box{
-    background: rgba(0,0,0,0.1) ;
+    background: linear-gradient(45deg, rgba(0,0,0,0.05), rgba(0,0,0,0.08));
     padding: 1rem;
     grid-area: box;
-    display: block ;
-    border-radius: 5px ;
-
+    display: block;
+    border-radius: 5px;
+    border: 1px rgba(175, 175, 175, 0.2) solid;
 }
 .content-box h3{
     font-weight: bold ;
@@ -1223,4 +1222,167 @@ i.large-icon{
     float : right;
     color : #e2863b ;
     margin: 0 0 0 3px ;
+}
+
+.g_checkbox{
+    display: flex ;
+    justify-content: flex-start;
+    align-items: center ;
+}
+
+.g_checkbox .checkbox{
+    display: block;
+    flex: 1;
+    position: relative ;
+}
+.g_checkbox .checkbox input{
+    display: none ;
+}
+.g_checkbox .checkbox input + span{
+    display: flex ;
+    height: 54.8px ;
+    align-items: center;
+    justify-content: center;
+    border : 1px solid #d7d7d7 ;
+    font-size : 15px ;
+    font-weight: 600 ;
+    color  : #777777 ;
+    cursor: pointer ;
+}
+.g_checkbox .checkbox:nth-of-type(2n) input + span{
+    border-right-color : transparent;
+}
+
+.g_checkbox .checkbox:nth-last-child(1) input + span{
+    border-radius: 4px 0 0 4px ;
+}
+.g_checkbox .checkbox:nth-of-type(1) input + span{
+    border-radius: 0 4px 4px 0 ;
+}
+.g_checkbox .checkbox input:checked + span{
+    border-color: #e2863b ;
+    color : #e2863b ;
+    background: rgba(255, 157, 64, 0.34);
+}
+
+
+@media (max-width: 900px ) {
+    .g_checkbox .checkbox input + span{
+        font-size : 12px !important;
+    }
+}
+
+/*** amount ***/
+.amount {
+   position: relative;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.amount-nav {
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.01) ;
+}
+.amount-button {
+    cursor: pointer;
+    font-size: 16px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease ;
+}
+.amount-button.amount-up,
+.amount-button.amount-down {
+    float: right;
+}
+.amount-button:hover{
+    background: rgba(255, 157, 64, 0.34) ;
+}
+
+.tags__team{
+    display : flex ;
+    align-items: center ;
+    justify-content: space-between ;
+}
+
+.tags__team label input {
+    display: none ;
+}
+.tags__team label {
+    display: block ;
+    flex : 1 ;
+    padding: 5px ;
+}
+.tags__team label input + div {
+    display: flex ;
+    padding: 15px ;
+    background: #eee ;
+    border-radius: 5px ;
+    align-items: center ;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer ;
+    border : 1px transparent solid ;
+    color : #777777
+}
+
+.tags__team label input:checked + div {
+    border-color: #e2863b ;
+    color: #e2863b ;
+    background: rgba(255, 157, 64, 0.34);
+}
+
+.tags__team label input + div span{
+    font-size: 15px;
+    font-weight: 600 ;
+    padding : 2px 10px ;
+}
+
+.tags__team label input + div i {
+    display : block ;
+    font-size : 30px;
+    margin-bottom: 15px ;
+}
+
+.tags__team .next , .tags__team .prev{
+    display : flex ;
+    align-items: center;
+    justify-content: center;
+    position : absolute;
+    top : calc(50% - 40px) ;
+    height : 30px ;
+    width: 30px ;
+    background: transparent ;
+    border-radius: 50%  ;
+    border: none ;
+    cursor: pointer ;
+    font-size: 30px ;
+    color : #c7c7c7;
+    text-align : center ;
+    border: 1px transparent solid ;
+}
+
+.tags__team .next {
+    right : -40px ;
+}
+.tags__team .prev {
+    left : -40px ;
+}
+
+.tags__team .slick-disabled{
+    opacity: 0.1 ;
+    cursor: not-allowed ;
 }
