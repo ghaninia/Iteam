@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>{{ isset($information['title']) ? $information['title'] : options('title')  }}</title>
     <meta type="description" content="{{ isset($information['desc']) ? $information['desc'] : options('desc')  }}">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset("assets/librarys/css/app.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/librarys/css/vendor/app.css") }}">
     <link name="color" rel="stylesheet"  href="{{ asset("assets/librarys/css/color/light.orange.css") }}">

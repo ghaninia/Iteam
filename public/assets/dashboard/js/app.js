@@ -70619,14 +70619,14 @@ $(function () {
         switch (value) {
           case "profile":
             {
-              $(this).prop("readonly", true);
+              $(this).prop("readonly", true).prop("disabled", true);
               $(this).val($(this).data("default"));
               break;
             }
 
           case "custom":
             {
-              $(this).prop("readonly", false);
+              $(this).prop("readonly", false).prop("disabled", false);
               $(this).val("");
               break;
             }
@@ -70640,7 +70640,7 @@ $(function () {
 
           default:
             {
-              $(this).prop("readonly", true).prop("disabled", false);
+              $(this).prop("readonly", true).prop("disabled", true);
               break;
             }
         }
@@ -70712,6 +70712,62 @@ $(".slider").slick({
       slidesToShow: 1
     }
   }]
+});
+$(function () {
+  var proccessBar = $(".proccess .proccess_bar");
+  inputs = $("input,textarea,select", $("#team__create")).change(function () {
+    precent();
+  });
+
+  function fields() {
+    var fields = [];
+    var values = {};
+    var wrapper = $("#team__create");
+    $(inputs).each(function () {
+      var disabled = $(this).prop("disabled"),
+          name = $(this).attr("name");
+
+      if (!disabled && !fields.includes(name) && name != undefined) {
+        fields.push(name);
+      }
+    });
+
+    for (var _i = 0, _fields = fields; _i < _fields.length; _i++) {
+      field = _fields[_i];
+      var input = $("[name=\"".concat(field, "\"]"), wrapper);
+      var multiple = input.prop("multiple");
+
+      if (multiple) {
+        var vals = [];
+        input.each(function () {
+          if ($(this).prop("checked")) {
+            vals.push($(this).val());
+          }
+
+          values[field] = vals.length || null;
+        });
+      } else {
+        values[field] = input.val() || null;
+      }
+    }
+
+    return values;
+  }
+
+  function precent() {
+    var values = fields(),
+        len = Object.keys(values).length,
+        notEmpty = 0;
+
+    for (value in values) {
+      if (values[value] != null) {
+        notEmpty++;
+      }
+    }
+
+    var equal = Math.floor(notEmpty * 100 / len);
+    proccessBar.width("".concat(equal, "%"));
+  }
 });
 
 /***/ }),

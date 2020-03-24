@@ -1,4 +1,4 @@
-window._ = require('lodash');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                window._ = require('lodash');
 Snackbar = require("node-snackbar") ;
 NProgress = require("nprogress") ;
 window.$ = window.jQuery = require('jquery');
@@ -4586,12 +4586,12 @@ $(function () {
             content.find("input").each(function () {
                 switch (value) {
                     case "profile" :{
-                        $(this).prop("readonly" , true )
+                        $(this).prop("readonly" , true ).prop("disabled" , true );
                         $(this).val( $(this).data("default") );
                         break ;
                     }
                     case "custom" : {
-                        $(this).prop("readonly" , false )
+                        $(this).prop("readonly" , false ).prop("disabled" , false );
                         $(this).val("") ;
                         break ;
                     }
@@ -4601,7 +4601,7 @@ $(function () {
                         break ;
                     }
                     default : {
-                        $(this).prop("readonly" , true ).prop("disabled" , false );
+                        $(this).prop("readonly" , true ).prop("disabled" , true  );
                         break ;
                     }
                 }
@@ -4681,4 +4681,58 @@ $(".slider").slick({
             }
         }
     ]
+});
+
+
+$(function () {
+    
+    var proccessBar = $(".proccess .proccess_bar") ;
+    
+    inputs = $("input,textarea,select" , $("#team__create") ).change(function(){
+        precent() ;
+    });
+
+    function fields(){
+        var fields = [] ;
+        var values = {} ;
+        var wrapper = $("#team__create")
+        $(inputs).each(function(){
+            var disabled = $(this).prop("disabled") ,
+                name = $(this).attr("name");
+            if( !disabled && !fields.includes( name ) && (name != undefined ) ){
+                fields.push( name ) ;
+            }
+        });
+        for( field of fields ){
+            var input = $(`[name="${field}"]` , wrapper) ;
+            var multiple = input.prop("multiple")
+            if( multiple ){
+                var vals = [] ;
+                input.each(function(){
+                    if( $(this).prop("checked") ){
+                        vals.push( $(this).val() ) ;
+                    }
+                    values[field] = vals.length || null  ; 
+                })
+            }else {
+                values[field] = input.val() || null ;
+            }
+        }
+        return values ;
+    }
+
+    function precent(){
+        var values = fields() ,
+            len = Object.keys(values).length ,
+            notEmpty = 0 ;
+        for( value in values ){
+            if( values[value] != null ){
+                notEmpty++ ;
+            }
+        }
+        var equal = Math.floor( notEmpty * 100 / len );
+        proccessBar.width(
+            `${equal}%`
+        )
+    }
 });

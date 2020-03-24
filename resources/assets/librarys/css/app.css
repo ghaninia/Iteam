@@ -592,7 +592,7 @@ i.large-icon{
 .overflow_hidden {
     overflow: hidden;
 }
-.font-en , .pagination ul li a{
+.font-en , .pagination ul li a , .lengthCheck:after{
     font-family: 'Roboto', sans-serif !important;
 }
 .card{
@@ -1175,33 +1175,59 @@ i.large-icon{
 .compelete_step{
     display : flex ;
     flex-direction: column;
-    background : rgba(0,0,0,0.05) ;
+    background-image: linear-gradient(to left top,#d15f12,#f9a550,#ff9c37);
+    box-shadow: 0 1px 6px rgba(0,0,0,.1), 0 1px 6px rgba(0,0,0,.1);
     padding : 20px ;
     align-items: center;
     justify-content: center;
     border-radius: 5px ;
 }
 
+.compelete_step span{
+    font-size : 20px;
+    font-weight: 600 ; 
+    margin-bottom: 10px ;
+    letter-spacing: -.5px ;
+    color : #fff 
+}
+
+.sticky{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px ;
+    font-size: 20px;
+    z-index: 9 ;
+}
+
 .compelete_step .proccess{
     display: block ;
-    background: rgba( 0,0,0,0.05 );
     border-radius: 15px ;
+    background :rgba(255,255,255,0.2) ; 
     width: 100% ;
-    height: 10px ;
+    height: 5px ;
     margin : 15px 0 0 0 ;
     position: relative;
     overflow: hidden;
 }
-.compelete_step .proccess .proccess_bar[data-width]{
+
+.compelete_step .proccess .proccess_bar{
     display: block;
     height: 100% ;
-    background-image: linear-gradient(-45deg, #e2863b, #e2d141);
+    background: linear-gradient(45deg, #824c21, #c35c0a) ;
     position: absolute ;
     right : 0 ;
     top : 0 ;
     border-radius: 15px ;
+    transition: width .3s, height .3s;
+    
 }
 
+.overflow-x-auto{
+    overflow-x: auto;
+}
+.overflow-inherit {
+    overflow-x: inherit;
+}
 .content-box{
     background: linear-gradient(45deg, rgba(0,0,0,0.05), rgba(0,0,0,0.08));
     padding: 1rem;

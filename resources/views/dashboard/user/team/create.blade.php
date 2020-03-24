@@ -2,21 +2,21 @@
 @section("main")
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" style="position:relative">
             <div class="card">
                 <div class="card-body">
-                    <div class="compelete_step mb-4 pt-4" align="center">
-                        <h3>{{ trans("dashboard.pages.team.create_desc") }}</h3>
+                    <div class="compelete_step mb-5 pt-4 sticky" align="center">
+                        <span>{{ trans("dashboard.pages.team.create_desc") }}</span>
                         <div class="proccess">
-                            <div class="proccess_bar" width="50%"></div>
+                            <div class="proccess_bar" width="0"></div>
                         </div>
                     </div>
-                    <form action="" id="team__create">
+                    <form action="" class="mt-5" id="team__create" autocomplete="off">
                         <section>
                             <div class="row">
                                 <div class="col-lg-6 push-lg-3">
                                     <label class="form-group has-top-label">
-                                        <input class="form-control">
+                                        <input class="form-control" name="name">
                                         <span>{{ trans("dashboard.pages.team.items.name") }}</span>
                                     </label>
                                 </div>
@@ -29,6 +29,7 @@
                                                 class="form-group has-top-label lengthCheck"
                                                 data-length="{{  config("timo.max_team_desc") }}" >
                                                  <textarea
+                                                     name="excerpt"
                                                      rows="5"
                                                       name="bio"
                                                       maxlength="{{ config("timo.max_team_desc") }}"
@@ -62,7 +63,7 @@
                                         </select>
                                     </div>
                                     <label class="form-group has-top-label">
-                                        <input class="form-control">
+                                        <input class="form-control" name="address">
                                         <span>{{ trans("dashboard.pages.team.items.address") }}</span>
                                     </label>
                                 </div>
@@ -86,21 +87,21 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <label class="form-group has-top-label">
-                                                    <input dir="ltr" class="form-control font-en" data-default="{{ $user->phone }}" value="{{ $user->phone }}" readonly>
+                                                    <input dir="ltr" class="form-control font-en" name="phone" data-default="{{ $user->phone }}" value="{{ $user->phone }}" readonly disabled>
                                                     <span>{{ trans("dashboard.pages.team.items.phone") }}</span>
                                                 </label>
                                                 <label class="form-group has-top-label">
-                                                    <input dir="ltr" class="form-control font-en" data-default="{{ $user->fax }}" value="{{ $user->fax }}" readonly>
+                                                    <input dir="ltr" class="form-control font-en" name="fax" data-default="{{ $user->fax }}" value="{{ $user->fax }}" readonly disabled>
                                                     <span>{{ trans("dashboard.pages.team.items.fax") }}</span>
                                                 </label>
                                             </div>
                                             <div class="col-lg-6">
                                                 <label class="form-group has-top-label">
-                                                    <input dir="ltr" class="form-control font-en" data-default="{{ $user->mobile }}" value="{{ $user->mobile }}" readonly>
+                                                    <input dir="ltr" class="form-control font-en" name="mobile" data-default="{{ $user->mobile }}" value="{{ $user->mobile }}" readonly disabled>
                                                     <span>{{ trans("dashboard.pages.team.items.mobile") }}</span>
                                                 </label>
                                                 <label class="form-group has-top-label">
-                                                    <input dir="ltr" class="form-control font-en" data-default="{{ $user->website }}" value="{{ $user->website }}" readonly>
+                                                    <input dir="ltr" class="form-control font-en" name="website" data-default="{{ $user->website }}" value="{{ $user->website }}" readonly disabled>
                                                     <span>{{ trans("dashboard.pages.team.items.website") }}</span>
                                                 </label>
                                             </div>
@@ -131,7 +132,7 @@
                                             <div class="g_checkbox selector">
                                                 @foreach( genders() as $key  )
                                                         <label class="checkbox">
-                                                            <input type="checkbox" value="{{ $key }}" name="gender[]" multiple  @if ($loop->index == 0 ) checked @endif>
+                                                            <input type="checkbox" value="{{ $key }}" name="required_gender[]" multiple  @if($loop->index == 0) checked @endif>
                                                             <span>{{ trans("dashboard.profile.gender.{$key}") }}</span>
                                                         </label>
                                                 @endforeach
@@ -148,7 +149,7 @@
                                     <div class="g_checkbox">
                                         @foreach(typeAssists() as $type)
                                             <label class="checkbox">
-                                                <input type="radio" value="{{ $type }}" name="type_assists"  @if ($loop->index == 0 ) checked @endif>
+                                                <input type="radio" value="{{ $type }}" name="type_assists"  @if($loop->index == 0) checked @endif>
                                                 <span>{!! trans("dashboard.pages.team.items.type_assists.{$type}") !!}</span>
                                             </label>
                                         @endforeach
@@ -157,7 +158,7 @@
                                         <div class="g_checkbox selector">
                                             @foreach(interplayFiscals() as $type)
                                                 <label class="checkbox">
-                                                    <input type="radio" value="{{ $type }}" name="interplay_fiscals" @if ($loop->index == 0 ) checked @endif>
+                                                    <input type="radio" value="{{ $type }}" name="interplay_fiscals"  @if($loop->index == 0) checked @endif>
                                                     <span>{!! trans("dashboard.pages.team.items.interplay_fiscals.{$type}") !!}</span>
                                                 </label>
                                             @endforeach
@@ -172,7 +173,7 @@
                                                                type="number"
                                                                autocomplete="off"
                                                                disabled
-                                                               name="">
+                                                               name="min_salary">
                                                         <span>{{ trans("dashboard.pages.team.items.salary.min") }}</span>
                                                     </label>
                                                 </div>
@@ -184,7 +185,7 @@
                                                                type="number"
                                                                autocomplete="off"
                                                                disabled
-                                                               name="">
+                                                               name="max_salary">
                                                         <span>{{ trans("dashboard.pages.team.items.salary.max") }}</span>
                                                     </label>
                                                 </div>
@@ -202,7 +203,7 @@
                                     <div class="tags__team slider">
                                         @foreach($tags as $tag)
                                             <label>
-                                                <input type="radio" name="tag" value="{{ $tag->id }}">
+                                                <input type="radio" name="tag" value="{{ $tag->id }}" @if($loop->index == 0) checked @endif >
                                                 <div>
                                                     <i class="{{ $tag->icon }}"></i>
                                                     <span>{{ $tag->name }}</span>
