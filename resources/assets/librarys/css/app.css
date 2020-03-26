@@ -278,7 +278,7 @@ button.close {
     width: 0;
     border: 10px transparent solid;
     position: absolute;
-    border-top-color: #c0702f ;
+    border-top-color: #ff9c37 ;
     bottom:-20px;
     left:calc(50% - 10px);
 }
@@ -292,7 +292,7 @@ button.close {
 }
 
 .accrodin.active .head{
-    background:#c0702f;
+    background:linear-gradient(to left top,#d15f12,#f9a550,#ff9c37) ;
     font-weight: normal;
     box-shadow: 0 2px 4px rgba(0,0,0,.2);
     color: #fff ;
@@ -352,7 +352,7 @@ button.close {
 
 .account-type input.account-type-radio:checked~label {
     color: #000 ;
-    background-color: #c0702f
+    background : linear-gradient(to left top,#d15f12,#f9a550,#ff9c37)
 }
 
 .account-type input.account-type-radio:empty~label:after,
@@ -425,7 +425,7 @@ button.products {
     -moz-transition: background-color .3s ease;
     transition: background-color .3s ease;
     cursor: pointer;
-    background: #c0702f;
+    background:linear-gradient(to left top,#d15f12,#f9a550,#ff9c37);
     font-weight: normal;
     box-shadow: 0 2px 4px rgba(0,0,0,.2);
     color: #fff;
@@ -621,7 +621,7 @@ i.large-icon{
 }
 
 .alert-dismissible .close {
-    top: 10px !important;
+    top: calc(50% - 15px) !important;
     color : #fff !important;
 }
 
@@ -1185,10 +1185,10 @@ i.large-icon{
 
 .compelete_step span{
     font-size : 20px;
-    font-weight: 600 ; 
+    font-weight: 600 ;
     margin-bottom: 10px ;
-    letter-spacing: -.5px ;
-    color : #fff 
+    letter-spacing: -2px ;
+    color : #fff
 }
 
 .sticky{
@@ -1196,13 +1196,13 @@ i.large-icon{
     position: sticky;
     top: 100px ;
     font-size: 20px;
-    z-index: 9 ;
+    z-index: 4 ;
 }
 
 .compelete_step .proccess{
     display: block ;
     border-radius: 15px ;
-    background :rgba(255,255,255,0.2) ; 
+    background :rgba(255,255,255,0.2) ;
     width: 100% ;
     height: 5px ;
     margin : 15px 0 0 0 ;
@@ -1219,7 +1219,7 @@ i.large-icon{
     top : 0 ;
     border-radius: 15px ;
     transition: width .3s, height .3s;
-    
+
 }
 
 .overflow-x-auto{
@@ -1237,17 +1237,20 @@ i.large-icon{
     border: 1px rgba(175, 175, 175, 0.2) solid;
 }
 .content-box h3{
-    font-weight: bold ;
-    font-size : 14px ;
+    font-weight: bold;
+    display: flex;
+    font-size: 14px;
+    align-items: center;
 }
 
 .content-box h3:before{
-    content : "\e01c" ;
-    font-family: 'simple-line-icons';
+    content : "\e66f" ;
+    font-family: 'icomoon' ;
     display: block ;
     float : right;
     color : #e2863b ;
     margin: 0 0 0 3px ;
+    font-size: 20px;
 }
 
 .g_checkbox{
@@ -1370,6 +1373,9 @@ input[type=number] {
     color: #e2863b ;
     background: rgba(255, 157, 64, 0.34);
 }
+.tags__team label input:checked + div i{
+    transform: scale(1.2);
+}
 
 .tags__team label input + div span{
     font-size: 15px;
@@ -1381,6 +1387,7 @@ input[type=number] {
     display : block ;
     font-size : 30px;
     margin-bottom: 15px ;
+    transition: all .3s ease ;
 }
 
 .tags__team .next , .tags__team .prev{
@@ -1411,4 +1418,29 @@ input[type=number] {
 .tags__team .slick-disabled{
     opacity: 0.1 ;
     cursor: not-allowed ;
+}
+
+label.error {
+    display: block !important;
+    position: relative!important ;
+    bottom: 0 !important ;
+    left: 0 !important;
+    padding: 0 0 5px!important;
+    margin: 0!important;
+    right: 0!important;
+    font-size: 12px!important;
+    color: #ef6565 !important ;
+}
+
+.btn__team{
+    display: block;
+    padding: 5px 25px;
+    background: #eee;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px transparent solid;
+    color: #777;
+}
+.btn__team:hover{
+    box-shadow: 0 0 1px rgba(0,0,0,.1);
 }

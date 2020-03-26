@@ -123,6 +123,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(PorfileNotification::class) ;
     }
 
+    public function myPlanTeams()
+    {
+        return $this->hasMany( Team::class , "plan_user_id" , "plan_user_id" ) ;
+    }
+
     //* boot model event *//
     public static function boot()
     {
@@ -203,22 +208,6 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
 
         return $information ;
-    }
-
-    public static function canAddTeam($user = null)
-    {
-        $user = !! $user ? $user : me() ;
-        $user = User::with('plan')->whereId($user->id)->withCount([
-            'teams' => function ($query) use ($user) {
-                $query->where('plan_id' , $user->plan->id )
-                    ->where('created_at' , ">=" , $user->plan_created_at ?? $user->created_at ) ;
-            }
-        ])->first() ;
-
-        if (!! $user)
-            return $user->teams_count < $user->plan->max_create_team ;
-
-        return false ;
     }
 
     public function completedProfilePrecent()

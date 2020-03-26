@@ -3,6 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12" style="position:relative">
+            <section class="mb-5" id="messages"></section>
             <div class="card">
                 <div class="card-body">
                     <div class="compelete_step mb-5 pt-4 sticky" align="center">
@@ -11,12 +12,13 @@
                             <div class="proccess_bar" width="0"></div>
                         </div>
                     </div>
-                    <form action="" class="mt-5" id="team__create" autocomplete="off">
+                    <form action="{{ route("user.team.store") }}" method="POST" class="mt-5" id="team__create" autocomplete="off">
+                        @csrf
                         <section>
                             <div class="row">
                                 <div class="col-lg-6 push-lg-3">
                                     <label class="form-group has-top-label">
-                                        <input class="form-control" name="name">
+                                        <input class="form-control" name="name" value="{{ old("name") }}">
                                         <span>{{ trans("dashboard.pages.team.items.name") }}</span>
                                     </label>
                                 </div>
@@ -29,11 +31,11 @@
                                                 class="form-group has-top-label lengthCheck"
                                                 data-length="{{  config("timo.max_team_desc") }}" >
                                                  <textarea
-                                                     name="excerpt"
-                                                     rows="5"
-                                                      name="bio"
-                                                      maxlength="{{ config("timo.max_team_desc") }}"
-                                                      class="form-control"></textarea>
+                                                    name="excerpt"
+                                                    rows="5"
+                                                    name="bio"
+                                                    maxlength="{{ config("timo.max_team_desc") }}"
+                                                    class="form-control">{{ old("excerpt") }}</textarea>
                                                 <span>{{ trans("dashboard.pages.team.items.excerpt") }}</span>
                                             </label>
                                         </div>
@@ -63,7 +65,7 @@
                                         </select>
                                     </div>
                                     <label class="form-group has-top-label">
-                                        <input class="form-control" name="address">
+                                        <input class="form-control" name="address" value="{{ old("address") }}">
                                         <span>{{ trans("dashboard.pages.team.items.address") }}</span>
                                     </label>
                                 </div>
@@ -74,14 +76,14 @@
                             <div class="row">
                                 <div class="col-lg-6 push-lg-3">
                                     <div class="g_checkbox selector">
-                                        <label class="checkbox">
-                                            <input checked type="radio" value="profile" name="contact_type">
-                                            <span>{{ trans("dashboard.pages.team.items.contact.profile") }}</span>
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="radio" value="custom" name="contact_type">
-                                            <span>{{ trans("dashboard.pages.team.items.contact.custom") }}</span>
-                                        </label>
+
+                                        @foreach (["profile" , "custom"] as $item)
+                                            <label class="checkbox">
+                                                <input @if($loop->index == 0) checked @endif type="radio" value="{{ $item }}" name="contact_type">
+                                                <span>{{ trans("dashboard.pages.team.items.contact.$item") }}</span>
+                                            </label>
+                                        @endforeach
+
                                     </div>
                                     <div class="mt-2 content_selector">
                                         <div class="row">
@@ -180,12 +182,13 @@
                                                 <div class="col">
                                                     <label class="form-group has-top-label">
                                                         <input
-                                                               class="form-control font-en"
-                                                               dir="ltr"
-                                                               type="number"
-                                                               autocomplete="off"
-                                                               disabled
-                                                               name="max_salary">
+                                                            min="1"
+                                                            class="form-control font-en"
+                                                            dir="ltr"
+                                                            type="number"
+                                                            autocomplete="off"
+                                                            disabled
+                                                            name="max_salary">
                                                         <span>{{ trans("dashboard.pages.team.items.salary.max") }}</span>
                                                     </label>
                                                 </div>
@@ -199,11 +202,10 @@
                         <section class="mt-5">
                             <div class="row">
                                 <div class="col-lg-10 push-lg-1">
-
                                     <div class="tags__team slider">
                                         @foreach($tags as $tag)
                                             <label>
-                                                <input type="radio" name="tag" value="{{ $tag->id }}" @if($loop->index == 0) checked @endif >
+                                                <input multiple type="checkbox" name="tags[]" value="{{ $tag->id }}" @if($loop->index == 0) checked @endif >
                                                 <div>
                                                     <i class="{{ $tag->icon }}"></i>
                                                     <span>{{ $tag->name }}</span>
@@ -214,6 +216,11 @@
                                 </div>
                             </div>
                         </section>
+
+                        <section>
+                            <button class="btn__team">{{ trans("dashboard.pages.team.items.submit") }}</button>
+                        </section>
+
                     </form>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                window._ = require('lodash');
+window._ = require('lodash');
 Snackbar = require("node-snackbar") ;
 NProgress = require("nprogress") ;
 window.$ = window.jQuery = require('jquery');
@@ -7,11 +7,14 @@ SlimSelect = require('slim-select') ;
 
 require("./_jquery-ui.min") ;
 require("./persian-selector") ;
+require("./overhang") ;
 
 const ProgressBar = require('progressbar.js') ;
 window.axios = require('axios');
 window.alertify = require("alertifyjs") ;
 window.msk = require("msk");
+window.validate = require("jquery-validation") ;
+require ('jquery-validation/dist/localization/messages_fa') ;
 
 window.slick = require("slick-carousel") ;
 
@@ -4554,6 +4557,8 @@ $(function () {
                 select: "#" + id,
                 searchingText: 'درحال بررسی نتیجه ...',
                 placeholder: 'استان',
+                allowDeselect: true ,
+                deselectLabel: '<i class="simple-icon-close"></i>' ,
                 data,
                 beforeOnChange: ( province ) => {
                     var c = new Promise(function (resolve, reject) {
@@ -4592,12 +4597,10 @@ $(function () {
                     }
                     case "custom" : {
                         $(this).prop("readonly" , false ).prop("disabled" , false );
-                        $(this).val("") ;
                         break ;
                     }
                     case "fixedsalary" : {
                         $(this).prop("readonly" , false ).prop("disabled" , false );
-                        $(this).val("") ;
                         break ;
                     }
                     default : {
@@ -4683,15 +4686,15 @@ $(".slider").slick({
     ]
 });
 
-
 $(function () {
-    
+
     var proccessBar = $(".proccess .proccess_bar") ;
-    
-    inputs = $("input,textarea,select" , $("#team__create") ).change(function(){
+
+    const inputs = $("input,textarea,select" , $("#team__create") );
+    inputs.change(function(){
         precent() ;
     });
-
+    precent() ;
     function fields(){
         var fields = [] ;
         var values = {} ;
@@ -4712,7 +4715,7 @@ $(function () {
                     if( $(this).prop("checked") ){
                         vals.push( $(this).val() ) ;
                     }
-                    values[field] = vals.length || null  ; 
+                    values[field] = vals.length || null  ;
                 })
             }else {
                 values[field] = input.val() || null ;
@@ -4735,4 +4738,155 @@ $(function () {
             `${equal}%`
         )
     }
+});
+
+jQuery.validator.addMethod("mobile", function(value, element) {
+    return /^09[0-9]{9}/.test(value);
+}, "شماره موبایل با فرمت درست وارد نشده است.");
+
+jQuery.validator.addMethod("tellphone", function(value, element) {
+    if( value == "" )
+        return true ;
+    return /^0[0-9]{10}/.test(value);
+}, "شماره تلفن با فرمت درست وارد نشده است.");
+
+
+$(function(){
+    $("form#team__create").validate({
+        lang: 'fa' ,
+        rules: {
+            name: {
+                required: true ,
+                minlength : 5 ,
+                maxlength : 255
+            } ,
+            excerpt : {
+                required: true ,
+                minlength : 5 ,
+                maxlength : 500
+            },
+            provinces : {
+                required: true ,
+            } ,
+            cities : {
+                required: true ,
+            } ,
+            address : {
+                required: true ,
+                minlength : 3 ,
+                maxlength : 255
+            },
+            phone : {
+                required : false ,
+                tellphone : true
+            },
+            fax : {
+                required : false ,
+                tellphone : true
+            },
+            mobile : {
+                required : true ,
+                mobile : true
+            },
+            website : {
+                required : false ,
+                url : true
+            },
+            count_member : {
+                required : true
+            } ,
+            min_salary : {
+                required : true ,
+                min : 1
+            },
+            max_salary : {
+                required : true ,
+                min : 1
+            }
+        }
+    });
+
+    var TEAM_CREATE_CLICK = true ;
+    $("form#team__create").submit(function(e){
+        e.preventDefault();
+        var placeERR = $("section#messages") ;
+        if( $(this).valid() && TEAM_CREATE_CLICK ){
+            var wrapper = $(this) ;
+            const inputs = $("input,textarea,select" , wrapper );
+            var FORM_DATA = new FormData( wrapper[0] ) ,
+                url = $(this).attr("action") ;
+            const pro = new Promise(function(resolve,reject){
+                $.ajax({
+                    cache: false,
+                    contentType: false,
+                    processData: false ,
+                    url : url ,
+                    data : FORM_DATA ,
+                    type : "POST" ,
+                    dataType : "JSON" ,
+                    success : ( response ) => { resolve(response) } ,
+                    error   : ( error ) => { reject(error) }
+                })
+            }).then(function(response){
+                placeERR.html( $(`
+                           <div class="alert alert-success alert-dismissible fade show p-3" role="alert">
+                                ${response.msg}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>`) ) ;
+                scrollToTop(500) ;
+                TEAM_CREATE_CLICK = false  ;
+            }).catch(function(error){
+                const {status , responseJSON} = error ;
+                switch( status ){
+                    case 422 : {
+                        const { message , errors} = responseJSON ;
+                        stepMessage( errors , Object.keys(errors).length , 0 ) ;
+                    }
+                    case 400 : {
+                        const { responseText } = error  ;
+                        placeERR.html( $(`
+                           <div class="alert alert-danger alert-dismissible fade show p-3" role="alert">
+                                ${responseText}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>`) ) ;
+                        scrollToTop(500)
+                    }
+                }
+                TEAM_CREATE_CLICK = true ;
+            });
+        }
+    })
+
+    function scrollToTop(scrollDuration) {
+        var scrollStep = -window.scrollY / (scrollDuration / 15),
+            scrollInterval = setInterval(function(){
+                if ( window.scrollY != 0 ) {
+                    window.scrollBy( 0, scrollStep );
+                }
+                else clearInterval(scrollInterval);
+            },15);
+    }
+
+    function stepMessage( objectERR , length , step = 0){
+        if( length > step ){
+            var KEY = Object.keys(objectERR)[step] ;
+            var ERR = objectERR[KEY][0] ;
+            Snackbar.show({
+                text: ERR ,
+                pos: 'bottom-right' ,
+                showAction: false ,
+                duration : 1000 ,
+                onClose: function () {
+                    step +=1 ;
+                    stepMessage( objectERR , length , step ) ;
+                }
+            });
+        }
+
+    }
+
 });

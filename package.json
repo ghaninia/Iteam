@@ -26,9 +26,11 @@
   "dependencies": {
     "alertifyjs": "^1.13.1",
     "jquery": "^3.4.1",
+    "jquery-validation": "^1.19.1",
     "msk": "^1.0.5",
     "node-snackbar": "^0.1.16",
     "nprogress": "^0.2.0",
+    "overhang": "^1.0.5",
     "persian-date": "^1.1.0",
     "progressbar.js": "^1.1.0",
     "react-dom": "^16.12.0",

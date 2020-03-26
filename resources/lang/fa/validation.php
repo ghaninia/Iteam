@@ -133,7 +133,7 @@ return [
         'city'                  => 'شهر',
         'province'              => 'استان',
         'country'               => 'کشور',
-        'address'               => 'نشانی',
+        'address'               => 'محله',
         'phone'                 => 'تلفن',
         'mobile'                => 'تلفن همراه',
         'fax'                   => 'فکس',
@@ -158,10 +158,16 @@ return [
         'text'                  => 'متن',
         'content'               => 'محتوا',
         'description'           => 'توضیحات',
-        'excerpt'               => 'گلچین کردن',
+        'excerpt'               => 'خلاصه داستان',
         'date'                  => 'تاریخ',
         'time'                  => 'زمان',
         'available'             => 'موجود',
-        'size'                  => 'اندازه'
+        'size'                  => 'اندازه' ,
+        "required gender"       => "جنسیت",
+        "count_member"          => "تعداد افراد" ,
+        "type_assists"          => "روش همکاری" ,
+        "bothfounder"           => "روش تسویه" ,
+        "tag"                   => "برچسب" ,
+        "cities"                => "شهر"
     ],
 ];

@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
             'team' => 'App\Models\Team' ,
             'user' => 'App\Models\User' ,
         ]);
+
     }
 
     /**

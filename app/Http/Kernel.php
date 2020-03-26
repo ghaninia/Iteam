@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CanCreateTeam;
 use App\Http\Middleware\checkPlanUserNotNull;
 use App\Http\Middleware\DefaultPlanCheck;
 use App\Http\Middleware\TokenMiddleware;
@@ -64,7 +65,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         "token" => TokenMiddleware::class ,
-        "check.plan" => CheckPlanUserNotNull::class
+        "check.plan" => CheckPlanUserNotNull::class ,
+        "create.team" => CanCreateTeam::class
     ];
 
     /**

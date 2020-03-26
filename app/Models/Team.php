@@ -10,7 +10,6 @@ class Team extends Model
 
     protected $fillable = [
         'user_id' ,
-        'plan_id' ,
         'name' ,
         'expired_at' ,
         'status' ,
@@ -97,18 +96,6 @@ class Team extends Model
     public function isExpire()
     {
         return ($this->status == 2 && $this->expired_at < now()) ? true : false ;
-    }
-
-    /// repository
-
-    public static function userCreate(array $data)
-    {
-        $data['slug'] = time() ;
-        $data['plan_id'] = me()->plan->id ;
-        $data['expired_at'] = Carbon::now()->addDays( me()->plan->max_life ) ;
-        $data['user_id'] = me()->id ;
-        $data['default_plan'] = config("timo.panel_default") != me()->plan->id ? false : true ;
-        return static::create($data) ;
     }
 
     public function canAddOffer()
