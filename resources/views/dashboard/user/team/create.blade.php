@@ -217,9 +217,12 @@
                             </div>
                         </section>
 
-                        <section>
-                            <button class="btn__team">{{ trans("dashboard.pages.team.items.submit") }}</button>
-                        </section>
+                        <center>
+                            <button class="fancy-button bg-gradient1 mb-5 mt-2">
+                                <i class="simple-icon-chemistry"></i>
+                                {{ trans("dashboard.pages.team.items.submit") }}
+                            </button>
+                        </center>
 
                     </form>
                 </div>

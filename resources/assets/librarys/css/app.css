@@ -1175,7 +1175,7 @@ i.large-icon{
 .compelete_step{
     display : flex ;
     flex-direction: column;
-    background-image: linear-gradient(to left top,#d15f12,#f9a550,#ff9c37);
+    background-image: linear-gradient(180deg, #fa7e29 0%, #F6682F 80%, #F6682F 100%) ;
     box-shadow: 0 1px 6px rgba(0,0,0,.1), 0 1px 6px rgba(0,0,0,.1);
     padding : 20px ;
     align-items: center;
@@ -1244,7 +1244,7 @@ i.large-icon{
 }
 
 .content-box h3:before{
-    content : "\e66f" ;
+    content : "\e74d" ;
     font-family: 'icomoon' ;
     display: block ;
     float : right;
@@ -1443,4 +1443,33 @@ label.error {
 }
 .btn__team:hover{
     box-shadow: 0 0 1px rgba(0,0,0,.1);
+}
+.bg-gradient1{
+    background: #fa7e29;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fa7e29), color-stop(80%, #F6682F), to(#F6682F));
+    background: linear-gradient(180deg, #fa7e29 0%, #F6682F 80%, #F6682F 100%);
+    box-shadow : 0px 10px 10px #fa7e29ab ;
+    transition: all .3s ease ;
+}
+
+.bg-gradient1:hover{
+    box-shadow: 0 2px 2px #fa7e29ab ;
+}
+
+.fancy-button{
+    display : block ;
+    border : 0 transparent ;
+    outline : none  ;
+    color : #fff ;
+    text-shadow : 1px 1px 1px rgba(255,255,255,0.5) ;
+    border-radius: 40px ;
+    padding: 15px 25px ;
+    font-size : 140% ;
+    cursor: pointer ;
+}
+
+.fancy-button i {
+    display: inline-block ;
+    margin : 0 0 0 10px ;
+    float : right;
 }

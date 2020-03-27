@@ -4870,7 +4870,6 @@ $(function(){
                 else clearInterval(scrollInterval);
             },15);
     }
-
     function stepMessage( objectERR , length , step = 0){
         if( length > step ){
             var KEY = Object.keys(objectERR)[step] ;
@@ -4886,7 +4885,5 @@ $(function(){
                 }
             });
         }
-
     }
-
 });

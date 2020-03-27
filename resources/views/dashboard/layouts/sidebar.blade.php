@@ -85,7 +85,7 @@
             <ul class="list-unstyled" data-link="team">
                 <li {{ activeSidebar(["user.team.create"] , true ) }}>
                     <a href="{{ route("user.team.create") }}">
-                        <i class="iconsmind-Wolf"></i>
+                        <i class="simple-icon-chemistry"></i>
                         {{ trans("dashboard.pages.team.new") }}
                     </a>
                 </li>
