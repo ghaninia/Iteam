@@ -4750,7 +4750,6 @@ jQuery.validator.addMethod("tellphone", function(value, element) {
     return /^0[0-9]{10}/.test(value);
 }, "شماره تلفن با فرمت درست وارد نشده است.");
 
-
 $(function(){
     $("form#team__create").validate({
         lang: 'fa' ,

@@ -15,7 +15,7 @@ class TeamController extends Controller
     use Notifiable ;
     public function __construct()
     {
-        $this->middleware("create.team" , ["only" => "store"]);
+        // $this->middleware("create.team" , ["only" => "store"]);
     }
 
     public function index(Request $request)
@@ -23,8 +23,6 @@ class TeamController extends Controller
         $information = [
             'title' => trans("dashboard.pages.team.create")
         ] ;
-
-
 
         return view('dashboard.user.team.index' , compact(
             'information'

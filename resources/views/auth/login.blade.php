@@ -7,7 +7,7 @@
                 <div class="col-12 col-md-10 mx-auto my-auto">
                     <div class="card auth-card">
 
-                        <div class="position-relative image-side">
+                        <div class="position-relative image-side hidden-xs">
                         </div>
                         <div class="form-side">
                             <h6 class="mb-4">{{ isset($information['title']) ? $information['title'] : options('title')  }}</h6>

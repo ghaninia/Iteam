@@ -247,7 +247,7 @@ button.close {
 .lengthCheck:after{
     content: attr(data-length);
     position: absolute;
-    bottom: 10px;
+    top : 10px;
     left: 10px;
     background: #fff;
     color: #000;
@@ -1320,7 +1320,7 @@ input[type=number] {
     overflow: hidden;
     display: block;
     position: absolute;
-    bottom: 8px;
+    top : 8px;
     left: 8px;
     background: rgba(0,0,0,0.01) ;
 }
