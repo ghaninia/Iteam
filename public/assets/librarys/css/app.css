@@ -11,7 +11,7 @@ body {
     direction:  rtl ;
 }
 
-.font-2 , .table.table-padded thead tr th , .skills__list .counter , .lead , h1 , h2 , h3 , h4 , h5 , h6 , .head , .h1 , .h2 , .h3 , .h4 , .h5 , .h6 , .sidebar .main-menu ul li span{
+.main__face .nav__item a , .font-2 , .table.table-padded thead tr th , .skills__list .counter , .lead , h1 , h2 , h3 , h4 , h5 , h6 , .head , .h1 , .h2 , .h3 , .h4 , .h5 , .h6 , .sidebar .main-menu ul li span{
     font-family: "agoogle" , SansSerif , Tahoma !important ;
 }
 
@@ -1472,4 +1472,363 @@ label.error {
     display: inline-block ;
     margin : 0 0 0 10px ;
     float : right;
+}
+
+.bg-triangles {
+    background-image: url(../img/triangles-top.svg),
+    url(../img/triangles-bottom.svg);
+    background-position: left top, right bottom;
+    background-repeat: no-repeat;
+    background-size: inherit;
+}
+
+.main__face .nav-wrap {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+    max-width: 1030px;
+    width: 100%;
+}
+.main__face  {
+    height: 100%;
+}
+.main__face {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding: 1.87rem;
+}
+
+.main__face .nav {
+    background-color: #fff;
+    border-radius: 0 3rem 0 0;
+    color: #5F6F81;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    height: 4.35rem;
+    letter-spacing: .04rem;
+    margin-left: auto;
+    padding-top: 1rem;
+    padding-right: 2.5rem;
+    position: relative;
+    bottom: -.1px;
+    z-index: 1;
+}
+.main__face .nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.main__face .nav::before {
+    content: '';
+    background-image: url(../img/nav-edge.svg);
+    height: 101.1%;
+    position: absolute;
+    top: 0;
+    left: -124px;
+    width: 135px;
+    z-index: -1;
+}
+.main__face .nav__item {
+    margin-right: .4rem;
+}
+.main__face .nav__item a.active {
+    background-color: #304CFD;
+    border-radius: 50px;
+    color: #fff;
+}
+.main__face .nav__item a {
+    color: #5F6F81;
+    padding: .6rem 1rem;
+    text-transform: uppercase;
+}
+.main__face  .wrapper {
+    max-height: 100%;
+}
+.main__face .wrapper {
+    background-color: #fff;
+    border-radius: 3rem 0 3rem 3rem;
+    box-shadow: 0px 40px 50px rgba(134, 151, 168, 0.1);
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+    max-height: 680px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1030px;
+    position: relative;
+    width: 100%;
+}
+.main__face .sidebar {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F5F8F9;
+    border-radius: 3rem;
+    overflow: hidden;
+    padding: 2.5rem;
+    width: 280px;
+    text-align: center;
+}
+.main__face .sticky-column {
+    width: 100%;
+}
+.main__face .content {
+    max-height: 100%;
+    height: 100%;
+}
+
+.main__face .content {
+    max-height: 680px;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    width: calc(100% - 280px);
+    position: relative;
+}
+.main__face .section {
+    margin-top: 1.8rem;
+    padding: .1px 0;
+}
+.main__face .sidebar {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F5F8F9;
+    border-radius: 3rem;
+    overflow: hidden;
+    padding: 2.5rem;
+    width: 280px;
+    text-align: center;
+}
+
+/* teams */ 
+.teams {
+
+} 
+
+.teams .team{
+    display: block ;
+    background-color: #fff ;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) ;
+    overflow: hidden ; 
+    margin : 0 0 20px 0 ;
+    border-radius: 4px ;
+    transition: all .3s ease ;
+}
+
+.teams .team .pic {
+    background : rgba(0,0,0,.05) ;
+    padding : 15px ;
+    font-size : 16px ;
+    background-position: fixed ;
+    background-size: cover ;
+    position: relative;
+}
+.teams .team .pic h6{
+    margin: 0 ;
+    padding: 0 ;
+}
+
+.teams .team .pic .link{
+    position: absolute ;
+    top : 10px; 
+    left : 10px; 
+    color : #fff ;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.1);
+}
+.teams .team .pic .link i{
+    color : #000000 ;
+    text-shadow: 1px 1px 1px white ;
+    cursor: pointer;
+}
+
+.teams .team .pic .link ul{
+    display: none  ; 
+    position: absolute ;
+    top : 0 ;
+    left : 30px ;
+    background-color: white ;
+    box-shadow: 0 0 5px rgba(0,0,0,.2); 
+    overflow: hidden ;
+    list-style: none ;
+    border-radius: 5px ;
+    z-index: 2;
+    padding : 0 
+}
+.teams .team .pic .link ul li{
+    display: block ;
+    list-style: none ;
+    padding : 0;
+    margin: 0  ;
+    border-bottom: 1px rgba(0,0,0,.08) solid ;
+}
+.teams .team .pic .link ul li:nth-last-child(1){
+    border: none ;
+}
+.teams .team .pic .link ul li a{
+    padding: 5px ;
+    display: block ;
+    font-size : 12px 
+}
+
+.teams .team .pic small{
+    display : block ;
+    text-align: right ;
+    direction: rtl ;
+    font-size : 13px;
+    line-height: 20px ;
+    margin: 10px 0 0 0 ;
+}
+
+.teams .team .tools{
+    display : flex ;
+    align-items: center ;
+    justify-content: space-between ;
+}
+
+.teams .team .tools .tool{
+    display: block ;
+    padding : 5px 15px ;
+    text-align: center ;
+    position: relative;
+}
+
+.teams .team .tools row {
+    display : flex ; 
+    align-items: center ;
+    justify-content: center ;
+}
+
+.teams .team .tools .tool i{
+    font-size : 20px ;
+    display : block ;
+}
+.teams .team .tools .tool span{
+    display : block ;
+    font-size : 12px ; 
+    padding : 2px 0 0 0 ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.teams .team .tools .tool .tip{
+    visibility: hidden ;
+    background : white ;
+    box-shadow : 0 0 2px rgba(0,0,0,0.1) ;
+    padding : 2px 10px ;
+    position: absolute ;
+    top : -30px ;
+    right : calc( 50% - 40px ) ;
+    height: 22px ;
+    width: 80px ;
+    border-radius: 2px ;
+    font-weight: bold ;
+    transition: all .3s ease ;
+    opacity: 0 ;
+}
+
+.teams .team .tools .tool:hover .tip{
+    visibility: visible ;
+    opacity: 1 ;
+}
+
+.teams .team .tools .tool .tip:after , 
+.teams .team .tools .tool .tip:before {
+    display : block;
+    content : "" ;
+    border : 5px transparent solid ;
+    position: absolute ;
+    left : calc(50% - 5px );
+}
+
+.teams .team .tools .tool .tip:after{
+    border-top-color: white ;
+    bottom : -10px ;
+    z-index: 1 ;
+}
+
+.teams .team .tools .tool .tip:before {
+    border-top-color: rgba(0,0,0,.1) ;
+    bottom : -11px ;
+    z-index: 0 ;
+}
+
+
+.teams .team .tools .tool ul.offers{
+    list-style : none ;
+}
+
+.teams .team .tools .tool ul.offers ,
+.teams .team .tools .tool ul.offers li{
+    list-style : none
+}
+.teams .team .tools .tool ul.offers li{
+    margin  : 0 ;
+    position: relative ;
+    display : inline-block;
+    overflow: hidden ;
+    float: left ;
+    height :30px ;
+    width :30px;
+    border-radius: 50% ;
+    transition: all .3s ease ;
+    background : #eee ;
+}
+.teams .team .tools .tool ul.offers li:nth-of-type(2){
+    left : -10px ;
+}
+.teams .team .tools .tool ul.offers li:nth-of-type(3){
+    left : -20px ;
+}
+.teams .team .tools .tool ul.offers li img{
+    height: 100% ;
+    width: 100% ;
+    transition: all .3s ease ;
+}
+
+
+.teams .team .tools .tool ul.offers .inf {
+    float : left ;
+    background : #000 ;
+    color : #fff ;
+    border-radius: 20px ;
+    padding : 0 5px ;
+    position: relative ;
+    left : -30px ;
+    font-weight: bold ;
+
 }

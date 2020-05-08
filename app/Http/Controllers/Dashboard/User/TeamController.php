@@ -78,10 +78,15 @@ class TeamController extends Controller
 
     public function show(Team $team ,Request $request)
     {
+        
     }
 
-    public function edit($id)
+    public function edit(Team $team ,Request $request)
     {
+        $information = [
+            "title" => trans("dashboard.pages.team.edit.text")
+        ] ;
+        return view("dashboard.user.team.edit" , compact("team","information")) ;
     }
 
     public function update(Request $request, $id)

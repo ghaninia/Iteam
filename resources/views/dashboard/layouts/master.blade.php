@@ -2,7 +2,7 @@
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
-    <title>{{ isset($information['title']) ? $information['title'] : options('title')  }}</title>
+    <title>{!! isset($information['title']) ? $information['title'] : options('title') !!}</title>
     <meta type="description" content="{{ isset($information['desc']) ? $information['desc'] : options('desc')  }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,5 +43,6 @@
             asset("assets/dashboard/js/app.js")
         }}"
     ></script>
+
 </body>
 </html>

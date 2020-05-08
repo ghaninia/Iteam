@@ -21,7 +21,7 @@
                         <span>{{ trans("dashboard.pages.profile.label") }}</span>
                     </a>
                 </li>
-                <li {{ activeSidebar(["user.team.create" , "user.team.index"] , true ) }}>
+                <li {{ activeSidebar(["user.team.create" , "user.team.index", "user.team.edit"] , true ) }}>
                     <a href="#team">
                         <i class="iconsmind-Big-Data"></i>
                         <span>{!! trans("dashboard.pages.team.label") !!}</span>
@@ -87,6 +87,12 @@
                     <a href="{{ route("user.team.create") }}">
                         <i class="simple-icon-chemistry"></i>
                         {{ trans("dashboard.pages.team.new") }}
+                    </a>
+                </li>
+                <li {{ activeSidebar(['user.team.edit' , "user.team.index"] , true ) }}>
+                    <a href="{{ route("user.team.index") }}">
+                        <i class="simple-icon-puzzle"></i>
+                        {{ trans("dashboard.pages.team.my_team") }}
                     </a>
                 </li>
             </ul>

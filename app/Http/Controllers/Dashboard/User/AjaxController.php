@@ -125,4 +125,46 @@ class AjaxController extends Controller
 
     }
 
+    public function teams(Request $request)
+    {
+        $per = 1 ;
+        $user = $request->user() ;
+        $page = $request->input("page" , 1) ;
+        $teams = Team::select("id" , "status" , "name" , "slug" , "content" , "created_at", "expired_at")->where("user_id" , $user->id )
+            ->with(["offers" => function($query){
+                return $query->where("offers.status" , true )->with("user") ;
+            }])
+            ->withCount("offers" , "visits")
+            ->take( $page * $per )->get() ;
+        
+
+        $items = $teams->map(function($team){
+            return [
+                "link" => [
+                    "edit" => route("user.team.edit" , $team->slug ) , 
+                    "show" => route("user.team.show" , $team->slug ) , 
+                ] ,
+                "name" => $team->name ,
+                "created_at" => $team->created_at->format("Y/m/d") ,
+                "expired_at" => verta($team->expired_at)->format("Y/m/d") ,
+                "content" => str_slice( $team->content , 100 ) ,
+                "offers_total" => $team->offers_count , 
+                "visits_total" => $team->visits_count ,
+                "status" => $team->status , 
+                "offers" => $team->offers->map(function($user){
+                    return [
+                        "picture"  => userPicture( 'avatar' , 'thumbnail' , 'user' , $user->user ) ,
+                        "fullname" => $user->user->fullname
+                    ];
+                })
+            ];
+        });
+
+        return response()->json([
+            "teams" => $items ,
+            "limit" => $teams->count() ,
+            "total" => $user->teams->count() 
+        ]);
+
+    }
 }

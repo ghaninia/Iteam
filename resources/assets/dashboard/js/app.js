@@ -2,6 +2,7 @@ window._ = require('lodash');
 Snackbar = require("node-snackbar") ;
 NProgress = require("nprogress") ;
 window.$ = window.jQuery = require('jquery');
+const queryString = require('query-string');
 
 SlimSelect = require('slim-select') ;
 
@@ -4885,4 +4886,142 @@ $(function(){
             });
         }
     }
+});
+// teams 
+$(function(){
+    var AreaTeams = $("#teams") ;
+
+    getState() ;
+
+    function getINFO(){
+        var sign   = document.location.href.split("?") ,
+            info = {
+                url : sign[0] ,
+                params : queryString.parse( location.search , {arrayFormat: 'bracket'})
+            } ;
+        return info
+    }
+
+    function getState(){
+        pushState( getINFO().params ) ;
+    }
+
+    function fetchTeams( data ){
+        NProgress.start() ;
+        axios.post(options.ajax , {
+            action : "teams" , 
+            ...data 
+        }).then(function(response){
+            renderTeams( response.data );
+            renderBtnMore( response.data );
+            NProgress.done() ; 
+        }).catch(function(xhr){
+            NProgress.done() ;
+        });
+    }
+
+    function renderBtnMore( data ){
+        const { total , limit} = data ; 
+        var more = $(".more" , AreaTeams) ;
+        if(total > limit){
+            more.show() ;
+        }else {
+            more.hide() ;
+        }
+    }
+
+    $(".more button" , AreaTeams).click(function(){
+        const { params } = getINFO() ;
+        params.page =  (params.page || 1) + 1 ;
+        pushState( params ) ;
+    });
+    
+    function renderTeams( data ){
+        const { teams  } = data ; 
+        if( teams ){
+            var innerHtml = `` ;
+            teams.map(function(team){
+
+                const { offers  , status } = team ; 
+                //offer parse 
+                var innerOffer = `` ;
+                var per = 3 ;
+                offers.forEach(function(offer , index){
+                    if(index < per ){
+                        innerOffer += `
+                            <li title="${ offer.fullname }">
+                                <img  src="${offer.picture}" />
+                            </li>
+                        `;
+                    }
+                });
+
+                if( offers.length > per ){
+                    innerOffer += `
+                        <span class="inf">
+                            ${offers.length - per } +
+                        </span>
+                    `;
+                }
+
+                // end offer 
+                innerHtml += `
+                        <div class="team ${ status }">
+                            <div class="pic" style="background-image:url('${ team.picture }')">
+                                <h6>${ team.name }</h6>
+                                <div class="link">
+                                    <i class="icon-feather-more-vertical"></i>
+                                    <ul>
+                                        <li>
+                                            <a href="${ team.link.show }">نمایش</a>
+                                        </li>
+                                        <li>
+                                            <a href="${ team.link.edit }">ویرایش</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tools">
+                                <row>
+                                    <div class="tool">
+                                        <i class="icon-feather-eye"></i>
+                                        <span>${ team.visits_total }</span>
+                                    </div>
+                                    <div class="tool">
+                                        <i class="icon-feather-clock"></i>
+                                        <span class="tip">${ team.created_at }</span>
+                                    </div>
+                                </row>
+                                <div class="tool">
+                                    <ul class="offers">
+                                        ${ innerOffer }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                `;
+            });
+
+            var innerHTML = $(innerHtml) ;
+            $(".teams" , AreaTeams).html( innerHTML ) ;
+            $(".link" , AreaTeams ).each(function(){
+                var wrapper = $(this) ;
+                $("i" , wrapper).click(function(){
+                    $("ul" , wrapper).toggle() ;
+                }) ;
+            });
+            
+        }
+    }
+
+    function pushState( data ){
+        var url = getINFO().url ;
+        if( Object.keys(data).length > 0 ){
+            url += "?" + $.param(data) ;
+        }
+        window.history.pushState(null , null , url );
+        fetchTeams(data) ;
+    }
+
+ 
 });

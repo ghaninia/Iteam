@@ -45,11 +45,11 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $information = [
-            'title' => trans("dash.message.success.register.title") ,
-            'desc'  => trans("dash.message.success.register.desc") ,
+            'title' => trans("auth.register.text") ,
+            'desc'  => trans("auth.register.desc") ,
         ] ;
 
-        return view('dashboard.auth.register' , compact('information'));
+        return view('auth.register' , compact('information'));
     }
 
     protected function registered(Request $request, $user)

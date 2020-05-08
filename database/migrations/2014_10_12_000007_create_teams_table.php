@@ -15,7 +15,7 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger("status")->default(0)->comment("0 => not confirmed , 1 => confirmed , 2 => expired ") ;
+            $table->tinyInteger("status")->default(0)->comment("0 => not confirmed , 1 => confirmed , 2 => expired") ;
             $table->timestamp('expired_at')->nullable() ; // zamani ke karbar plan dash in barasas plan taeed mishe
 
             $table->unsignedInteger("user_id") ; // maker team user id

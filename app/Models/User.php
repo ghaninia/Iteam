@@ -247,4 +247,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return @ceil( ($counter * 100) / $len ) ;
     }
 
+
+    //کسایی که من دنبالشان میکنم
+    public function followers(){
+        return $this->hasMany( Follow::class , "user_id" , "id" ) ;
+    }
+
+    public function following(){
+        return $this->hasMany( Follow::class , "friend_id" , "id") ;
+    }
+
 }
