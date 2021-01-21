@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Auth::routes(['verify' => true]);
 
 Route::namespace('Dashboard\User')->name('user.')->middleware(['auth:user' , 'check.plan'])->group(function (){

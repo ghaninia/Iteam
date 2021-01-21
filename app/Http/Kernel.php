@@ -3,7 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\CanCreateTeam;
-use App\Http\Middleware\checkPlanUserNotNull;
+use App\Http\Middleware\CheckPlanUserNotNull;
 use App\Http\Middleware\DefaultPlanCheck;
 use App\Http\Middleware\TokenMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
