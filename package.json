@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.8.3",
-    "axios": "^0.19",
+    "axios": "^0.21",
     "bootstrap": "^4.4.1",
     "cross-env": "^7.0",
     "laravel-mix": "^5.0.1",
