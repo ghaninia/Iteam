@@ -26,7 +26,7 @@
   "dependencies": {
     "alertifyjs": "^1.13.1",
     "jquery": "^3.4.1",
-    "jquery-validation": "^1.19.1",
+    "jquery-validation": "^1.19.4",
     "msk": "^1.0.5",
     "node-snackbar": "^0.1.16",
     "nprogress": "^0.2.0",
